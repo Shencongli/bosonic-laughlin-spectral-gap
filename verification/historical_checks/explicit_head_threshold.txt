@@ -1,0 +1,253 @@
+EXPLICIT UNIFORM THRESHOLD FOR THE FROZEN FINITE CERTIFICATE
+==========================================================
+
+Conclusion. Write delta=10^-6. Conditional only on the already replayable
+exact planar certificate E_{r,infinity}+delta H_{r,infinity}>=0 and the
+exact finite planar head test H^2-(1/2)H>=0, the frozen rows satisfy
+
+  E_{3,Q} >= -2 delta H_{3,Q} Pi_{<=8,Q},
+  E_{4,Q} >= -2 delta H_{4,Q} Pi_{<=16,Q}
+
+for EVERY integer Q>=10^50. These are few-body inequalities, and their
+threshold has no dependence on the eventual many-body particle number.
+The planar head test concerns ONLY r=3,z<=8 and r=4,z<=16; it is neither
+a spherical four-body gap assumption nor a many-body gap assumption.
+The threshold is deliberately extremely wasteful.
+
+The analytic estimates below hold for Q>=1024. Norms are Euclidean operator
+norms in normalized occupation bases, or their restrictions. All source and
+target spaces have fixed particle number <=4 and total orbital weight <=16.
+They are COMPLETE finite-weight spaces. There is no orbital approximation.
+
+1. Exact coordinates with a fixed highest space and fixed zero kernel
+--------------------------------------------------------------------
+Let W_{n,M} have the normalized planar occupation basis indexed by partitions
+A=(j_1,...,j_n), sum j_i=M. The spherical weight-M space uses the identically
+labelled normalized occupation basis; Q>=16 makes its labels identical.
+The following identification is an identification of coordinate vector
+spaces and is not asserted to intertwine the two physical inner products
+after the further diagonal map below.
+
+Define the positive diagonal matrix D_{n,M,Q} on W_{n,M} by
+
+  d_A = product_{j in A} sqrt(product_{l=0}^{j-1}(1-l/Q)).
+
+The normalized spherical orbital, written in x=sqrt(Q)v/u after removal of
+u^Q, is d_j x^j/sqrt(j!). Thus D converts physical spherical occupation
+coefficients into the coefficients of the same affine polynomial in the
+normalized planar monomial basis. It is an invertible linear map, not a
+unitary map. Products with a zero particle output use D=1.
+
+Let L be the planar center-of-mass lowering operator, and J_+ the sphere
+operator that decreases orbital weight. Directly on an occupation basis,
+
+  J_+/sqrt(Q) = D_{n,M-1,Q}^{-1} L D_{n,M,Q}.                 (1)
+
+Choose any orthonormal column frame U for ker L in W_{r,z}; U itself need
+not be computed for the proof. Then V_{Q,0}=D_{r,z,Q}^{-1}U is a bijective
+frame for the spherical highest space. All following finite forms are
+pulled back to the SAME coefficient space C^m by this frame, where
+m=dim ker L. Their positivity is invariant under this congruence.
+
+For the pair annihilator B_p from W_{n,M} to W_{n-2,M-p}, define
+
+  e_{p,Q}=sqrt(product_{l=0}^{p-1}(1-l/(2Q))).
+
+The exact Clebsch-Gordan formula gives the identity
+
+  B_{p,Q}=e_{p,Q}^{-1} D_{n-2,M-p,Q}^{-1}
+                    B_{p,infinity} D_{n,M,Q}.               (2)
+
+Consequently B_{p,Q} V_{Q,0}x=0 for all p if and only if
+B_{p,infinity} Ux=0 for all p. The nullspace
+
+  N=ker(U^* H_{r,infinity} U)
+
+in C^m is EXACTLY the nullspace of V_{Q,0}^*H_{r,Q}V_{Q,0} for every
+Q>=16. This gives fixed kernels without a kernel angle, a rank gap,
+or a perturbatively chosen spherical kernel.
+
+Every unaveraged K_3,K_4 term retains a pair annihilator on the right and
+its adjoint on the left; H, H^2-H, and S_4 annihilate ker H as well.
+SU(2) averaging and the spin projections preserve ker H. Hence the
+congruent E matrices, and all their shifted versions used below, annihilate
+N EXACTLY. In particular their matrix elements between N and its Euclidean
+orthogonal complement vanish, by Hermiticity.
+
+2. Elementary diagonal and pair estimates
+-----------------------------------------
+For a weight-M partition with M<=16,
+
+  sum_{j in A} j(j-1)/2 <= M(M-1)/2 <=120.
+
+The elementary inequality product(1-x_i)>=1-sum x_i, for x_i in [0,1],
+therefore gives d_A^2>=1-120/Q and e_p^2>=1-60/Q. For Q>=1024,
+
+  ||D-I||<=120/Q,    ||D^{-1}||<=2,
+  ||D^{-1}-I||<=240/Q,    |e_p^{-1}-1|<=120/Q.              (3)
+
+For example, the inverse estimates follow from
+(1-x)^(-1/2)-1<=2x for 0<=x<=1/2. The weaker constants in (3) leave slack.
+The pair-projector normalization gives, in every n<=4 sector,
+0<=H_n<=binom(n,2)I<=6I; thus ||B_p||<=sqrt(6)<3, on the sphere and plane.
+Apply (2), subtract B_{p,infinity}, and insert (3):
+
+  ||B_{p,Q}-B_{p,infinity}||
+  <= (120*2*3+240*3+120*3)/Q =1800/Q <2000/Q.              (4)
+
+There are at most 17 pair channels at the retained weights, so
+
+  ||H_Q-H_infinity|| <=17*(3+3)*2000/Q <10^6/Q.            (5)
+
+For the three-body target S_3=H_3^2-H_3, this gives
+||S_3||<=42 and ||S_{3,Q}-S_{3,infinity}||<10^8/Q.
+For S_4 on weight M, write T_p=B_{M-p}^{(2)}B_p^{(4)} and
+S_4=sum_{p=0}^M T_p^*T_p. Then ||T_p||<=9,
+||T_{p,Q}-T_{p,infinity}||<=12000/Q, so
+
+  ||S_4||<=17*81<2000,
+  ||S_{4,Q}-S_{4,infinity}||<=17*18*12000/Q<10^8/Q.        (6)
+
+The target for r=4 includes beta=1-c9-1/50, and 0<beta<1.
+Thus the COMMON target bounds 2000 and 10^8/Q cover both r.
+
+3. Frozen row and normal-order bounds
+-------------------------------------
+The checked JSON has 138 rows, at most 46 coefficients per row, and all
+scaled rational row coefficients have absolute value <1. The scaling
+y_0=lambda*kappa_t and y_pj=alpha_pj*kappa_p*sqrt(j!/i!), i=p+j-t,
+has t<=3 and p,j,i<=8. Therefore
+
+  |lambda|<=2,
+  |alpha_pj|^2<=2^9*8!<5000^2.
+
+On the output of B_p, at most two particles remain. The number-preserving
+operator a_i^*a_j has norm at most two on that sector: it is the sum of
+the one-particle rank-one operator |i><j| in each of at most two slots.
+Thus for every row F and n<=4,
+
+  ||F_Q||,||F_infinity||<=46*5000*6<2*10^6,
+  ||F_Q-F_infinity||<=46*5000*4000/Q<10^9/Q.              (7)
+
+For R_n=sum_rows F^*F restricted to n particles, (7) implies
+
+  ||R_n||<=10^15,   ||R_{n,Q}-R_{n,infinity}||<=10^18/Q.  (8)
+
+The normalized k-body lift restricted to n particles is the sum over
+unordered k-element subsets of the first-quantized particle slots.
+Consequently its norm as a map on bounded operators is <=binom(n,k).
+Equivalently, positivity and L_k^n(I)=binom(n,k)I imply the same bound
+for every Hermitian input by applying the lift to -||R||I<=R<=||R||I.
+It is the SAME map in the matched normalized occupation coordinates on
+sphere and plane. Each fixed body-weight matrix is extended by zero to
+its full k-particle space before invoking this norm bound; direct sums of
+body weights take the maximum, not the sum, of their norms.
+
+Using K2=R2, K3=R3-L2^3(K2),
+K4=R4-L2^4(K2)-L3^4(K3), obtain the multipliers
+1, 1+3=4, and 1+6+4*4=23. Hence uniformly over all retained body weights,
+
+  ||K_{r,Q}||,||K_{r,infinity}||<=3*10^16,
+  ||K_{r,Q}-K_{r,infinity}||<=3*10^19/Q,  r=3,4.          (9)
+
+These K_r are the UNAVERAGED body coefficient matrices. Their supports
+are M<=8 for r=3 and M<=16 for r=4, by exact normal ordering.
+
+4. Uniform comparison of all finitely many descendants
+-------------------------------------------------------
+For k=M-z, define the spherical descendant frame recursively by
+
+  V_{Q,k}= T_{Q,k} V_{Q,k-1},
+  T_{Q,k}= (J_-/sqrt(Q))/sqrt(k*(r-(2z+k-1)/Q)).           (10)
+
+The corresponding planar map uses T_{infinity,k}=L^*/sqrt(rk) and starts
+at U. Write the resulting planar isometric descendant frame as U_k.
+The SU(2) ladder identity implies EXACTLY
+V_{Q,k}^*V_{Q,k}=V_{Q,0}^*V_{Q,0}, so ||V_{Q,k}||<=2.
+All k<=16 are well inside the spin multiplet for Q>=1024.
+
+On the full weight-(M-1) space, ||L^*||<=sqrt(rM)<=8. This follows from
+the canonical CM oscillator L/sqrt(r), whose occupation is <=M-1.
+Each spherical matrix entry is its nonnegative planar matrix entry times
+sqrt(1-j/Q), with j<=15. Entrywise absolute domination gives
+||J_-/sqrt(Q)-L^*||<=120/Q. (If |A_ij|<=B_ij with B_ij>=0 then
+||A||<=||B||, since |Ax|<=B|x|.)
+
+For s=(2z+k-1)/(rQ), 0<=s<=31/(3Q)<1/2, and
+(1-s)^(-1/2)-1<=s on this smaller range (indeed on [0,1/2]).
+The inverse ladder denominator therefore differs from 1/sqrt(rk) by
+at most 11/Q, and is at most 2. Thus the safe uniform bounds are
+
+  ||T_{Q,k}||<=16,
+  ||T_{Q,k}-T_{infinity,k}||<=512/Q.
+
+Set epsilon_k=||V_{Q,k}-U_k||. Then
+epsilon_0<=240/Q and epsilon_k<=16 epsilon_{k-1}+512/Q. For k<=16,
+
+  epsilon_k <= [240*16^16+512*(16^16-1)/15]/Q <10^22/Q.  (11)
+
+This very coarse estimate is sufficient because the final Q is enormous.
+
+5. Schur averaging and the final finite-form perturbation
+---------------------------------------------------------
+The exact Schur factor is f_Q=(2+1/Q)/(r+(1-2z)/Q), with f_infinity=2/r.
+For the ranges above, 0<f_Q<=1 and |f_Q-f_infinity|<=16/Q.
+The matrix of the averaged coefficient pulled back by V_{Q,0} is exactly
+
+  Ktilde_{r,z,Q}= f_Q sum_{M=z}^{D_r}
+                  V_{Q,M-z}^* K_{r,M,Q} V_{Q,M-z},       (12)
+
+where D_3=8,D_4=16. Formula (12) remains valid for the nonorthonormal
+highest frame because every normalized ladder map preserves its Gram
+matrix. It is a formula for QUADRATIC FORMS, not a claim that V is unitary.
+
+Each summand's difference from its planar counterpart is, by (9),(11),
+
+  <= [4*(3*10^19)+3*(3*10^16)*10^22]/Q.
+
+There are at most 17 summands. Including the Schur factor error proves
+
+  ||Ktilde_Q-Ktilde_infinity|| <10^42/Q.                  (13)
+
+For the target, pulled back only at highest weight, (3),(5),(6) give
+
+  ||Stilde_Q-Stilde_infinity||
+  <= [4*10^8+3*2000*240]/Q <10^9/Q,
+  ||Htilde_Q-Htilde_infinity||
+  <= [4*10^6+3*6*240]/Q <5*10^6/Q.
+
+Consequently the Hermitian matrix
+Ftilde_Q=Etilde_Q+2 delta Htilde_Q obeys
+
+  ||Ftilde_Q-Ftilde_infinity|| <=10^43/Q.                (14)
+
+6. Positivity and status of computational inputs
+------------------------------------------------
+The frozen exact verifier proves Etilde_infinity+delta Htilde_infinity>=0.
+The independent exact finite head test proves H^2-(1/2)H>=0 on the
+relative planar space and checks its invariance under H. Since H>=0,
+its nonzero eigenvalues on that space are >=1/2. Thus on N^perp,
+
+  Ftilde_infinity
+  =(Etilde_infinity+delta Htilde_infinity)+delta Htilde_infinity
+  >= delta/2 I =5*10^-7 I.                              (15)
+
+For Q>=10^50, (14) is at most 10^-7, so (15) leaves margin 4*10^-7.
+Both Ftilde_Q and Ftilde_infinity annihilate the SAME N exactly by (1),(2)
+and the pair-annihilator structure. Therefore Ftilde_Q>=0 on the WHOLE
+relative coefficient space. Invertibility of the highest frame and
+rotational invariance transfer the inequality to all spherical descendants.
+Outside the indicated spin cutoffs E is zero, so the displayed cutoff
+inequalities hold globally on the physical r-particle space.
+
+To replay the computational inputs, run with Python standard library only:
+
+  python -S exact_shifted_certificate.py
+  python -S exact_planar_head_gap.py
+  python -S explicit_head_threshold_checker.py
+
+The last script independently rechecks the finite planar half-gap, checks
+the frozen row bounds, and verifies all displayed numerical upper bounds
+using integer or Fraction arithmetic. Its analytic identities are justified
+in this note; like the other verifier it is not a proof-assistant formalization.
+No tests at a finite collection of spherical fluxes enter the proof of (14).

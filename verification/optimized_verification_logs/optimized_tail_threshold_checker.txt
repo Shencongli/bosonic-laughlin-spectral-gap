@@ -1,0 +1,19 @@
+{
+  "status": "EXACT_ALL_INTEGER_FLUX_NEGATIVE_TAIL_CERTIFIED",
+  "scope": "T9,Q <= (c9 + nu)(S4,Q + H_Q), every integer Q >= 0",
+  "coherent_exponent": "M = (2/27) Q, with no integer rounding",
+  "infinite_flux_range": "all Q >= 256; exact interval x in [0,1/256]",
+  "truncation": "0 <= n <= 32; omitted summands are nonnegative",
+  "z9_derivative_lower_greater_than": "73",
+  "all_Q_z_ge_27_coefficient_less_than": "13/100",
+  "finite_range": "all integers 9 <= Q <= 255, odd 9 <= z <= min(Q,25)",
+  "exhaustive_finite_blocks": 2151,
+  "finite_coefficient_less_than": "7/50",
+  "largest_finite_coefficient_at_Q_z": [
+    255,
+    9
+  ],
+  "Q_less_than_9": "C9,Q = T9,Q = 0 exactly"
+}
+Strengthened bounds: Q >= 2500: c9 + nu - (77/20)/Q, Q >= 3000: c9 + nu - (391/100)/Q, Q >= 5000: c9 + nu - (4)/Q
+All interval endpoints, derivative bounds, and finite checks use exact Fraction arithmetic.

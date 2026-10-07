@@ -1,0 +1,223 @@
+OPTIMIZED SPHERICAL NEGATIVE TAIL: NO FLUX THRESHOLD IS NEEDED
+
+THEOREM AND STATUS
+
+In the full spherical bosonic V0 model with coefficient one per unordered
+pair projector, define c9=30(5/9)^9=19531250/129140163 and nu=10^-10.
+Then the following operator/form inequalities hold independently of total
+particle number:
+
+  T_{9,Q} <= (c9+nu)(S_{4,Q}+H_Q), EVERY integer Q>=0;              (1)
+  T_{9,Q} <= (c9+nu-4/Q)(S_{4,Q}+H_Q), EVERY integer Q>=5000.       (2)
+
+The same strengthened form holds with 4 replaced by 77/20 for every
+Q>=2500, and with 4 replaced by 391/100 for every Q>=3000. These additional
+options use the identical interval construction and are certified below.
+
+This is an exact computer-assisted inequality. It uses the previously
+derived exact spherical recoupling/eigenvalue and positive-lifting formulas.
+The only new computer-assisted steps are finite rational arithmetic checks
+specified below. The unbounded range of Q is certified by explicit rational
+interval bounds on the entire interval 0<=1/Q<=1/256 (and <=1/5000 for
+the improvement), NOT by checking finitely many large fluxes. The finite
+remainder Q=9,...,255 is checked exhaustively. There is no floating-point
+decision, fit, numerical spectral-gap input, or many-body cutoff.
+
+1. A REAL COHERENT EXPONENT
+
+Set a=2/27 and use M=aQ exactly, with no floor. The coherent auxiliary
+operator A_{M,Q}, on V_Q tensor U_Q, is
+
+  A_{M,Q}=(2Q+1)(Q+1) integral dOmega_alpha dOmega_beta
+     s(alpha,beta)^M |alpha_pair><alpha_pair| tensor |beta><beta|,
+  s(alpha,beta)=cos^2(theta_alpha,beta/2),                          (3)
+
+with normalized sphere measures and normalized spin-coherent vectors.
+This integral defines a positive rotation-invariant operator for EVERY
+real M>=0; M is merely the exponent of a nonnegative scalar weight, not
+a spin label or a dimension. The formulas formerly derived for integer
+M hold for real M>=0: repeated integration by parts gives
+
+  b_{j,Q}=(Q+1) binom(Q,j) integral_0^1 s^(M+Q-j)(1-s)^j ds
+         =(Q+1)/(M+Q+1) * (Q)_j/(M+Q)_j.                        (4)
+
+The integral converges for 0<=j<=Q and M>=0. Descending factorials of
+the real number M+Q in (4) are positive, and the exact scalar marginal
+is still (Q+1)/(M+1). Thus the exact positive lifting bound remains
+
+  L3(W3 A_{M,Q} W3^dagger)
+          <= [(Q+1)/(M+1)] (S4,Q+H_Q).                          (5)
+
+Write Pi_z for the auxiliary spin-(3Q/2-z) projection, 0<=z<=Q, and
+A_{M,Q}=sum_z tau_{z,Q} Pi_z. Recall the exact positive eigenvalue formula
+
+  tau_{z,Q}=(2Q+1)/(3Q-2z+1) sum_{j=z}^Q b_{j,Q} gamma_{z,j,Q},
+  gamma_{z,j,Q}=[(2Q)_z/(3Q-z+1)_z]
+                 binom(j,z) (Q-z)_{j-z}/(3Q-2z)_{j-z},
+  f_{z,Q}=(Q)_z/(2Q)_z.                                        (6)
+
+Here (x)_k is a descending factorial with (x)_0=1. All factors in (6)
+are positive on their relevant range, and tau_{z,Q}>0. The tail coefficient
+is C_{9,Q}=2 sum_{odd z>=9} f_{z,Q} Pi_z.
+
+The scalar absorption cost of spin z is
+
+  k_{z,Q} := [(Q+1)/(M+1)] * [2 f_{z,Q}/tau_{z,Q}].              (7)
+
+Consequently, bounding k_{z,Q} by a common K on the odd z>=9 blocks and
+using the positive map X -> L3(W3 X W3^dagger) proves
+T_{9,Q}<=K(S4,Q+H_Q). This includes the coherent marginal in the scalar
+analysis; it must not be replaced by an uncontrolled asymptotic value.
+
+2. A FINITE POSITIVE RATIONAL LOWER BOUND FOR THE RECIPROCAL COST
+
+For Q>0 put x=1/Q. Define the reciprocal scalar
+
+  D_{z,Q}:=[(M+1)/(Q+1)] tau_{z,Q}/f_{z,Q}=2/k_{z,Q}.             (8)
+
+By dividing the j=z+n term of (6) by f_{z,Q} and cancelling powers of Q,
+
+  D_{z,Q}=sum_{n=0}^{Q-z} g_{z,n}(x),                           (9)
+
+where the following is an explicit rational function:
+
+  g_{z,n}(x)=binom(z+n,z)
+    [(2+x)(a+x)/((3-(2z-1)x)(1+a+x))]
+    product_{i=0}^{z-1} [(2-i x)^2 /
+                        ((1+a-i x)(3-(z-1+i)x))]
+    product_{i=0}^{n-1} [(1-(z+i)x)^2 /
+                        ((1+a-(z+i)x)(3-(2z+i)x))].             (10)
+
+All terms in (9) are nonnegative. For Q>=256, z<=25, the fixed truncation
+
+  G_z(x):=sum_{n=0}^{32} g_{z,n}(x) <= D_{z,Q}                  (11)
+
+is valid because z+32<=57<Q. Every linear numerator and denominator
+factor of G_z is strictly positive on 0<=x<=1/256.
+
+3. ELEMENTARY EXACT INTERVAL CERTIFICATES
+
+The interval checks are specified here completely, to make clear what the
+companion script proves. Consider one rational term g(x)=b product_i(c_i+d_i x)
+/product_j(e_j+f_j x), where b>0 and all linear factors are positive on
+[0,h]. Repeated factors in (10), including squares, are listed repeatedly.
+For any positive linear factor ell, let ell_- and ell_+ be the minimum
+and maximum of its two endpoint values. Then
+
+  g_-:=b product numerator_- / product denominator_+ <= g(x),
+  g(x)<=g_+:=b product numerator_+ / product denominator_-.      (12)
+
+Because d/(c+d x) has derivative -d^2/(c+d x)^2<=0,
+
+  g'(x)/g(x) >= L_h:=sum_i d_i/(c_i+d_i h) - sum_j f_j/e_j.     (13)
+
+Thus a rigorous constant lower bound for g' is
+
+  beta_h(g):=L_h*g_- if L_h>=0;  L_h*g_+ if L_h<0.               (14)
+
+All endpoint extrema, products, sums, and sign decisions in (12)--(14)
+are rational. There is no discretization of [0,h]. Applying these formulas
+to the precisely specified functions (10), exact integer/Fraction checks give
+
+  sum_{n=0}^{32} beta_{1/256}(g_{9,n}) > 73;                    (15)
+  G_9(0) >= 2/(c9+10^-10);                                    (16)
+  sum_{n=0}^{32} (g_{z,n})_- > 20,
+                      odd z in {11,13,...,25}, h=1/256.        (17)
+
+For an independent expression checking the endpoint calculation,
+
+  G_9(0)=(2/c9)(20/29)^10
+                    sum_{n=0}^{32} binom(n+9,9)(9/29)^n.        (18)
+
+The finite truncation raises 2/G_9(0) above c9 by approximately
+4.58673e-11, strictly below 10^-10; the comparison in (16) is exact.
+Equation (15) proves G_9(x)>=G_9(0) throughout the interval, so (11)
+and (16) prove k_{9,Q}<=c9+nu for ALL Q>=256. Equation (17) proves
+k_{z,Q}<1/10<c9 for the other retained odd z and all Q>=256.
+
+4. ALL HIGH SPINS AND THE EXHAUSTIVE FINITE-FLUX REMAINDER
+
+The earlier coarse all-z bound still holds when M=aQ is real:
+
+  2 f_{z,Q}/tau_{z,Q} <= 3(1+a) rho^z, rho=3(1+a)/4=29/36.      (19)
+
+Indeed it uses only M<=aQ, not integrality. It follows by keeping j=z
+in (6) and bounding the exact product factors by rho, as in the previous
+tail proof. Because a<1 and M=aQ exactly,
+
+  (Q+1)/(M+1) <=1/a.                                          (20)
+
+Consequently every z>=27, at every Q admitting that z, satisfies
+
+  k_{z,Q} <= [3(1+a)/a](29/36)^27 <13/100<c9.                  (21)
+
+Both scalar comparisons in (21) are verified rationally. For the finite
+remaining range, the checker exhausts all 2151 pairs
+
+  9<=Q<=255, Q integer; odd 9<=z<=min(Q,25),
+
+and verifies the exact rational inequalities
+
+  sum_{n=0}^{min(32,Q-z)} g_{z,n}(1/Q) >100/7.                 (22)
+
+This positive partial sum is <=D_{z,Q}, so these blocks all have
+k_{z,Q}<7/50<c9. The maximum certified upper bound among these finite
+blocks occurs at Q=255,z=9 and is about 0.135684; no decimal is used in
+the verification. For Q<9 there is no odd z>=9 in the auxiliary space,
+so C_{9,Q}=T_{9,Q}=0 exactly. These statements exhaust ALL integers Q>=0
+and all relevant z, proving (1).
+
+5. A USEFUL NEGATIVE 1/Q CORRECTION
+
+Apply exactly the same interval construction (12)--(14) on the smaller
+interval h=1/5000. The exact checker additionally proves
+
+  sum_{n=0}^{32} beta_{1/5000}(g_{9,n}) >353.                   (23)
+
+Put C=c9+nu. From (16),(23), for Q>=5000,
+
+  D_{9,Q}>=G_9(1/Q)>=2/C+353/Q,
+  k_{9,Q}<=C/[1+353 C/(2Q)] <= C-4/Q.                        (24)
+
+The last comparison follows by cross-multiplication with positive
+denominators and the exact scalar inequality
+
+  353 C^2 >= 4[2+353 C/5000].                                 (25)
+
+The other z ranges satisfy k<1/10 or k<13/100, both strictly below
+C-4/5000, again checked exactly. Thus the common scalar bound for ALL
+odd z>=9 is C-4/Q whenever Q>=5000, proving (2).
+
+More generally, if beta is a lower bound for G_9' on [0,1/Q_*], the same
+argument gives the improvement C-d/Q for Q>=Q_* whenever
+
+  beta C^2 >= d(2+beta C/Q_*),  C-d/Q_*>13/100.                  (26)
+
+The checker additionally verifies the exact triples
+
+  (Q_*, beta, d) = (2500, 681/2, 77/20),
+                   (3000, 345, 391/100),
+                   (5000, 353, 4).
+
+Thus, in particular, ALL Q>=3000 admit d=391/100. These are independent
+uniform interval certificates, not interpolation between sampled fluxes.
+
+6. REPLAY AND OUTPUTS
+
+Run, from any directory,
+
+  python -S /absolute/path/to/optimized_tail_threshold_checker.py
+
+The checker uses only fractions.Fraction, math, pathlib, and json. It
+fails with a nonzero exit status if any required inequality fails. It
+writes optimized_tail_threshold_results.json next to itself, containing
+the exact rational derivative lower bounds, endpoint values and margins,
+eight remaining low-z interval bounds, the coarse tail bound, and the
+finite exhaustion count and worst block. The definitions of the rational
+functions and all interval operations are included in the script.
+
+The LaTeX fragment optimized_tail_threshold.tex gives the same proof for
+the manuscript appendix. This result supersedes the earlier conservative
+Q>=10^7 negative-tail threshold; the improved auxiliary kernel is allowed
+to have a real coherent exponent. The physical Hamiltonian and tail
+operator are unchanged.

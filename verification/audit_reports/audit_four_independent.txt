@@ -1,0 +1,336 @@
+Independent adversarial audit of the four-body coherent domination
+2026-10-07
+
+Scope: Section 4 of outputs/bosonic_V0_tail_estimate.tex and
+work/boson_v0/finite_spin_coherent_domination.txt. This audit reconstructs
+the core inequality from its definitions and does not use the proposed
+many-body spectral gap or conclusions of other audits.
+
+VERDICT
+The claimed eventual bound
+
+  L4(H4,Q Pi_phys,z<=16,Q) <= 2100 (2 S4,Q + H_Q)
+
+is supported by the definitions. I found no fatal normalization,
+multiplicity, dominated-convergence, or particle-number-uniformity flaw.
+There is an exposition gap in the current phrase "Its limit can be
+identified": the connection between the limiting Schur descendant sum
+and the translation-invariant planar Gaussian integral needs an explicit
+argument. The CM displacement twirl below supplies that argument, including
+its essential factor 1/2, without an extra assumption.
+
+Status: exact inequality for every Q beyond an existential threshold,
+proved using fixed-block asymptotics. It is not a quantitative bound at
+specified Q and is not a global norm convergence assertion on a growing
+auxiliary Hilbert space. No many-body gap is used.
+
+1. EXACT MAP AND FOCK NORMALIZATIONS
+
+Let U_Q be spin Q/2 and V_Q the spin-Q subspace of Sym^2 U_Q. On physical
+four-boson space, B_p maps Sym^4 U_Q into Sym^2 U_Q. Therefore the adjoint
+of W(v_p tensor u)=B_p^dagger u is
+
+  W^dagger psi = sum_p v_p tensor (B_p psi),
+  W W^dagger = sum_p B_p^dagger B_p = H4,Q.
+
+This identity is exact. W is neither an isometry nor required to be
+injective. An independent first-quantized check is
+W=sqrt(6) P_sym^(4) J, with J including a V_Q pair and a symmetric
+spectator pair into four tensor slots. For four particles in e_0,
+W(v_0 tensor |2 e_0>)=sqrt(6)|4 e_0>, matching H4 eigenvalue 6.
+
+The canonical symmetric-tensor/Fock isometry sends
+
+  P_sym^(2)(beta tensor gamma)
+       to a_beta^dagger a_gamma^dagger|vac>/sqrt(2).
+
+Both sides have norm squared (1+|<beta,gamma>|^2)/2. Thus this statement
+does not silently assume orthogonal orbitals, and beta=gamma gives a
+normalized vector. After W, the creation polynomial of this possibly
+unnormalized four-particle vector is
+
+  B_alpha^dagger a_beta^dagger a_gamma^dagger / sqrt(2).
+
+Consequently its rank-one four-body lift is exactly
+
+  (1/2) B_alpha^dagger A^dagger A B_alpha,
+  A=a_gamma a_beta.
+
+No binomial or additional spectator factor belongs in this expression.
+
+Equivariance implies Pi_aux W^dagger=W^dagger Pi_phys when both Pi's
+retain the complete same total-spin isotypic components, hence
+
+  W Pi_aux W^dagger = H4,Q Pi_phys.
+
+Retaining ALL multiplicities is essential to this particular argument.
+
+2. EXACT NONORTHOGONAL OCCUPATION ESTIMATE
+
+Put a=a_beta, b=a_gamma, s=[a,b^dagger]=<beta,gamma> and n_a=a^dagger a,
+n_b=b^dagger b. CCR give
+
+  n_a n_b=A^dagger A+s a^dagger b,
+  n_b n_a=A^dagger A+conjugate(s) b^dagger a.
+
+Thus the displayed Hermitian-part identity in the source is correct.
+The positive square (n_a-n_b)^2 gives
+
+  (n_a n_b+n_b n_a)/2 <= (n_a^2+n_b^2)/2.
+
+The positive squares (a +/- exp(i phi)b)^dagger(a +/- exp(i phi)b)
+give -Re(s a^dagger b) <= |s|(n_a+n_b)/2 <= (n_a+n_b)/2. Neither
+step assumes [n_a,n_b]=0.
+
+For a COHERENT orbital x, its pair vector lies exactly in V_Q, so
+
+  H_Q >= B_x^dagger B_x = n_x(n_x-1)/2.
+
+This is a pair-channel Cauchy-Schwarz inequality, not a many-body gap.
+The scalar integer inequality n <= n(n-1)/2+1, n=0,1,..., gives
+n_x<=H_Q+I. Also n_x^2<=2H_Q+n_x. Combining,
+
+  A^dagger A
+    <= (n_beta^2+n_gamma^2)/2+(n_beta+n_gamma)/2
+    <= 2H_Q+n_beta+n_gamma <=4H_Q+2I.
+
+Here H_Q acts on the N-2 sector when this is inserted between B_alpha
+and B_alpha^dagger. This bookkeeping is valid for every N.
+
+3. EXACT COHERENT MARGINAL AND POSITIVE LIFT
+
+Use unit-mass spherical measures and d=Q+1, da=2Q+1. The scalar overlap
+s(alpha,beta)=cos^2(theta/2) is uniformly distributed on [0,1] at fixed
+alpha, hence each spectator marginal is d/(M+1). The exact pair frame is
+
+  da integral B_alpha^dagger X B_alpha dOmega_alpha
+       =sum_p B_p^dagger X B_p
+
+for any fixed operator X on the intermediate sector. Setting X=I gives
+H_Q; setting X=H_Q gives S4,Q, since pair annihilators commute. Therefore
+
+  L4(W A_Q W^dagger)
+       <= [d/(M+1)]^2 (2S4,Q+H_Q).                    (A)
+
+All steps in (A) are exact at finite Q. Positivity of L4 is enough:
+a positive few-body matrix decomposes into positive rank-one terms,
+each lifted to A(w)^dagger A(w). An isometric lift is not required.
+
+4. EXACT SCHUR FORMULA AND STABLE MULTIPLICITIES
+
+At the north pole define
+
+  R_Q=d integral s(north,beta)^M |beta><beta| dOmega_beta.
+
+Its eigenvalues in normalized single-particle orbital j are
+
+  b_j,Q = (Q+1)/(M+Q+1) * (Q)_j/(M+Q)_j, 0<=j<=Q.
+
+This follows by integrating binomial(Q,j)s^(M+Q-j)(1-s)^j with the
+beta-function factorial formula. The north-pole seed is
+
+  T_Q=|v_0><v_0| tensor (R_Q tensor R_Q)|Sym^2 U_Q.
+
+It is invariant under rotations fixing the north pole, so the original
+sphere integral is EXACTLY da times its normalized SU(2) conjugation
+average. Schur averaging on the spin-J isotypic component gives identity
+on that spin representation times the multiplicity matrix
+
+  (A_z,Q)_{bc} = da/(2J+1) sum_{n=0}^{2J}
+      <chi_b,n,Q|T_Q|chi_c,n,Q>,  J=2Q-z.             (B)
+
+The seed has pair orbital p=0. At descendant n the total weight deficit
+is z+n, so (B) is precisely the stated sum over j<=k, j+k=z+n. In the
+orthonormal spectator basis, |j,k> has denominator sqrt(2) for j<k,
+while |j,j>=e_j tensor e_j. In BOTH cases the seed eigenvalue is b_j b_k;
+the sum must NOT carry a further factor 2 or 1/2.
+
+For Q>=z, the weight-z auxiliary basis is indexed by p+j+k=z with
+p>=0 and 0<=j<=k. Its dimension f(z) is independent of Q, with generating
+function 1/[(1-t)^2(1-t^2)]. The multiplicity at J=2Q-z is
+
+  mu_z=f(z)-f(z-1)=floor(z/2)+1.                      (C)
+
+One can justify stable highest-weight bases constructively. Rescale
+spherical J_+ by sqrt(Q). On these finite weight spaces it converges to
+
+  sqrt(2) a_u+a_v+a_w = 2 a_eta,
+  eta=(sqrt(2)u+v+w)/2.
+
+The limiting annihilator is onto the degree-(z-1) symmetric spectator
+space: (1/2)a_eta^dagger(N_eta+1)^(-1) is a right inverse of 2a_eta.
+Thus the finite matrices have full row rank for sufficiently large Q.
+Their kernel projectors
+
+  I-T_z,Q^dagger(T_z,Q T_z,Q^dagger)^(-1)T_z,Q
+
+converge in norm. Project a fixed limiting orthonormal kernel basis and
+multiply by the inverse square root of its Gram matrix. This constructs
+convergent orthonormal finite-Q highest-weight bases explicitly.
+
+The limiting relative coordinates are
+
+  xi_1=(v-w)/sqrt(2),
+  xi_2=u/sqrt(2)-(v+w)/2.
+
+The three coordinate rows (eta,xi_1,xi_2) are orthonormal. Spectator
+exchange changes only xi_1's sign. A complete limiting highest basis is
+
+  (a_xi1^dagger)^(2k) (a_xi2^dagger)^(z-2k)|vac>
+       /sqrt[(2k)!(z-2k)!], 0<=k<=floor(z/2).
+
+This independently recovers (C) and includes the n1=0 channel needed for
+the claimed minimum eigenvalue.
+
+For fixed n, the exact descendant normalization is
+sqrt[n!(2J)_n]. Since J_-/sqrt(Q) tends to 2a_eta^dagger, the normalized
+descendants tend to (a_eta^dagger)^n/sqrt(n!) times the highest vector.
+
+5. DOMINATED CONVERGENCE OF THE ENTIRE DESCENDANT SUM
+
+Fix a>0, M=floor(aQ). For Q>=2/a, M>=aQ/2. Every falling-factorial ratio
+is bounded by [Q/(Q+M)]^j, and the leading factor is <=1. Therefore
+
+  0<=b_j,Q<=(1+a/2)^(-j)=q^j, q<1.
+
+At fixed descendant n, normalized vectors satisfy sum_{j,k}|c_b,jk|^2
+<=1 on the pair-highest slice. Cauchy-Schwarz bounds the absolute matrix
+entry of the inner sum in (B) by q^(z+n). The dimension ratio is <=2 for
+Q>=z. Extend all nonexistent descendants and orbitals by zero. The
+whole summand is bounded by 2q^(z+n), summable over all n independently
+of Q. Each fixed-n finite-weight coefficient converges, and
+b_j,Q -> r^(j+1), r=(1+a)^(-1). Thus ordinary scalar dominated
+convergence, entry by entry in the fixed finite multiplicity dimension,
+proves matrix-norm convergence of the FULL sum. This does not exchange
+an uncontrolled number of descendants with the Q limit.
+
+6. THE REQUIRED BRIDGE FROM SCHUR LIMIT TO THE PLANAR GAUSSIAN
+
+In three oscillator factors (u,v,w), restricted to spectator exchange
+symmetry, define the positive trace-class seed
+
+  T_inf=|0_u><0_u| tensor r^(N_v+1) tensor r^(N_w+1).
+
+Equation (B), the factor da/(2J+1)->1/2, and the descendant convergence
+just proved show that the limiting relative multiplicity matrix is the
+degree-z block of
+
+  (1/2) Tr_eta(T_inf).                               (D)
+
+This is an operator on the relative oscillators, not on physical
+four-boson space. The partial trace sums ALL normalized eta descendants.
+
+Here is an exact way to identify (D). Simultaneously displace the three
+oscillators by (sqrt(2)alpha,alpha,alpha). This displaces eta by 2alpha
+and leaves xi_1,xi_2 fixed. The displacement twirl identity is
+
+  integral d^2 t/pi D_eta(t) T D_eta(t)^dagger
+       = I_eta tensor Tr_eta T.
+
+For completeness, with t=(q+ip)/sqrt(2), its measure is dq dp/(2pi).
+The position-space kernel is multiplied by exp[ip(x-y)] and translated
+from (x,y) to (x-q,y-q). Integrating p yields delta(x-y), and integrating
+q traces the CM kernel. This proves the identity weakly for positive
+trace-class T, including the operator-valued relative kernel here.
+
+Since t=2alpha,
+
+  integral 2d^2 alpha/pi D_sim(alpha)T_inf D_sim(alpha)^dagger
+       = (1/2) I_eta tensor Tr_eta T_inf.              (E)
+
+The factor 1/2 in (E) is ESSENTIAL: 2d^2 alpha=(1/2)d^2 t. It agrees
+exactly with the large-Q Schur dimension ratio, so no normalization
+constant is inferred heuristically from local sphere flattening.
+
+Resolve each r^(N+1) as
+
+  integral d^2 beta/pi exp(-a|beta|^2)|beta><beta|.
+
+After the simultaneous displacement, (E) becomes the triple coherent
+integral with measure 2d^2 alpha d^2 beta d^2 gamma/pi^3 and weight
+exp[-a(|beta-alpha|^2+|gamma-alpha|^2)]. Put u=sqrt(2)alpha, v=beta,
+w=gamma. The measure is now d^2u d^2v d^2w/pi^3; the unitary Jacobi
+change has Jacobian one; and
+
+  |beta-alpha|^2+|gamma-alpha|^2=|xi_1|^2+2|xi_2|^2.
+
+The one-oscillator Gaussian diagonal matrix element is exactly
+
+  integral d^2 xi/pi e^(-c|xi|^2) |<n|xi>|^2
+       =1/(1+c)^(n+1).
+
+Consequently (E) equals
+
+  I_eta tensor r1^(N_1+1) r2^(N_2+1),
+  r1=(1+a)^(-1), r2=(1+2a)^(-1),
+
+on the even-N_1 spectator-symmetric subspace. This proves the Gaussian
+identification asserted in the draft, rather than assuming it.
+
+A separate normalization check: at z=0 the limiting descendant slice
+has total squared pair-highest amplitude (1/2)^n. Equation (B) therefore
+gives (1/2)sum_n r^(n+2)2^(-n)=r^2/(2-r)
+=1/[(1+a)(1+2a)], exactly r1 r2.
+
+7. LOWER BOUND, LIFT, AND UNIFORMITY IN N
+
+At fixed z, N_1+N_2=z and N_1 is even. Since 0<r2<r1<1, the smallest
+eigenvalue is attained at N_1=0 and is r1 r2^(z+1). Across the finite
+retained set 0<=z<=D the smallest limiting value is
+
+  t_D=r1 r2^(D+1)>0.
+
+Fixed-block norm convergence therefore implies, for any scalar delta>0
+and all sufficiently large Q,
+
+  Pi_aux,<=D <= (t_D^(-1)+delta) A_Q.                (F)
+
+This really is a WHOLE-auxiliary-space inequality: Pi_aux retains full
+isotypic components; rotational invariance forbids cross terms between
+these components and different-spin components; A_Q is positive on
+every unretained component. Invariance alone would NOT justify (F) for
+an arbitrary subspace inside a multiplicity block, but that is not the
+cutoff being used.
+
+Compose (F) with W and W^dagger, apply positive L4, and use exact (A).
+Since d/(floor(aQ)+1)->1/a, for every eps>0 the resulting exact inequality
+eventually has coefficient
+
+  C4,D(a)+eps,  C4,D(a)=(1+a)(1+2a)^(D+1)/a^2.
+
+At D=16, a=1/16 this is 272(9/8)^17=2014.47455...<2100.
+The threshold only involves a,D,eps and finite auxiliary blocks. All
+inequalities involving Fock-space operators are exact after that choice,
+so no growing-N norm convergence, N-dependent error, or hidden density
+restriction occurs. For N<4 the left side vanishes. Direct-sum form
+interpretation then gives the stated all-sector result.
+
+8. LIMITATIONS AND A SEPARATE UNSUPPORTED SIDESTATEMENT
+
+The audit proves the core four-body domination and does not prove the
+finite certificate, zero-space transfer, or the global spectral-gap
+conclusion elsewhere in the paper.
+
+The work note's NEGATIVE RESIDUAL APPLICATION separately invokes
+"the exact few-body inequality H4^2>=H4/2". That inequality is not
+established in the two reviewed passages and must have its own proof if
+the projector-error variant is used. It is NOT used anywhere in the
+core lemma above. Section 4 and the final argument instead use an
+energy-weighted certificate E4+delta H4>=0, which avoids that extra
+claim. It should not be presented as a consequence of this audit.
+
+Recommended local revision to Section 4: insert (D)-(E), or an equivalent
+explicit displacement-twirl paragraph, after dominated convergence and
+before declaring the planar Gaussian operator. The rest of the reviewed
+normalizations and limiting constants require no change.
+
+FOLLOW-UP READ OF THE PARENT'S REVISION
+The revised Section 4 now includes equation eq:twirl-audit and the
+fixed-weight kernel-projector construction. I read those inserted
+paragraphs and confirmed their equations and factors are correct. The
+principal exposition gap identified above is therefore repaired in that
+revision. Optional clarifications sent to the parent: qualify the partial
+trace as its relative-degree-z block; define n_i=a_xi_i^dagger a_xi_i;
+avoid reusing cutoff D as a matrix name; and add the one-line position
+kernel proof of the Weyl twirl if a fully self-contained derivation is
+desired. These are clarity improvements, not a correction to the bound.

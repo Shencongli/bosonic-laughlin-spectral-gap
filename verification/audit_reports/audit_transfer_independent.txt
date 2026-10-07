@@ -1,0 +1,229 @@
+Independent adversarial audit: planar finite certificate -> large-Q spheres
+Date: 2026-10-07
+Scope: bosonic_V0_tail_estimate.tex, sections 5--7; exact_shifted_certificate.py;
+       exact_relative_blocks.py; additional finite-sphere floating audit.
+
+Verdict
+-------
+No counterexample, missing normalization factor, or particle-number-dependent
+threshold was found in the finite-certificate transfer. The transfer is valid
+provided the stated finite planar matrices are PSD, preserve the H kernel,
+and have exactly the H rank, and provided the preceding coherent error/tail
+bounds hold. I did not rerun the full fixed-row PSD checker (another audit
+owns that task). I independently checked that all saved physical H ranks agree
+with the algebraic rank formula. The arguments below supply details that the
+current manuscript abbreviates. They are exact finite-dimensional arguments,
+not extrapolation evidence or a numerical proof of a concrete Q0.
+
+1. Normal ordering, body order, and the support bounds
+---------------------------------------------------
+Fix a single row with channel t and write
+
+  F = lambda B_t + sum_A alpha_A a_{i_A}^dagger a_{j_A} B_{p_A},
+  A=(p_A,j_A), T_A=p_A+j_A, i_A=T_A-t, t<=T_A<=8.
+
+The B operators are physical pair annihilators on the sphere or plane; their
+coefficients do not enter the following CCR calculation. For real coefficients,
+the exact unaveraged normal-ordered contributions are
+
+  C2 = lambda^2 B_t^dagger B_t;
+
+  C3 = lambda sum_A alpha_A
+       [B_t^dagger a_{i_A}^dagger a_{j_A} B_{p_A}
+        +B_{p_A}^dagger a_{j_A}^dagger a_{i_A} B_t]
+       + sum_{A,B: i_A=i_B} alpha_A alpha_B
+         B_{p_A}^dagger a_{j_A}^dagger a_{j_B} B_{p_B};
+
+  C4 = sum_{A,B} alpha_A alpha_B
+       B_{p_A}^dagger a_{j_A}^dagger a_{i_B}^dagger
+       a_{i_A} a_{j_B} B_{p_B}.
+
+Only a_i a_{i'}^dagger crosses in the cubic-cubic product, producing one
+contraction. There are therefore no fifth- or higher-body coefficients and
+no extra two-body contributions. Both creation and annihilation orbital sums
+in every C3 term equal T_A (the contraction imposes T_A=T_B). Thus its total
+weight support is <=8. In C4 these sums equal T_A+T_B-t<=16-t<=16. These
+claims are exact at finite Q, once the finite orbital labels exist (Q>=8).
+
+For an r-body operator supported on total weights M<=D, its SU(2) average
+has no spin-deficit block z>D: a spin J=rQ/2-z has no weight M<z. This
+explains why finite orbital support before averaging becomes a finite spin
+cutoff after averaging, despite the averaged operator having descendants
+at arbitrarily large M as Q grows. It is not legitimate to say that the
+averaged operator still has orbital-weight support <=D; the manuscript's
+support statement is understood as referring to its unaveraged coefficient.
+
+2. Exact zero-kernel preservation: it is not an assumption about a limit
+---------------------------------------------------------------------
+Every term in C3 and C4 has a pair annihilator at the far right and a pair
+creator at the far left. If psi is in ker H_{r,Q}, positivity of
+H_{r,Q}=sum_p B_p^dagger B_p implies B_p psi=0 for all p. Hence C3 psi=0
+or C4 psi=0 exactly, with no norm estimate. SU(2) rotation preserves the
+pair space V_Q and ker H_{r,Q}; every rotated coefficient therefore also
+annihilates the kernel. The spin projections used in E_r commute with H_r.
+H_3^2-H_3 kills ker H_3, and the S4 coefficient is a sum of (B_q B_p)^dagger
+(B_q B_p), so it too kills the H_4 kernel. Consequently both E_{r,Q} and
+E_{r,Q}+delta H_{r,Q} kill the relevant kernel exactly.
+
+The claim does NOT require S4 to be strictly positive on the whole H_4
+image, nor any equality between the H_4 image and the pair-pair image.
+The wide map V_Q tensor Sym^2 U_Q -> Sym^4 U_Q has image ran H_4;
+the narrower pair-pair map can have a smaller image. The manuscript avoids
+equating these, which is essential.
+
+3. Divisibility and rank stability, including the finite-Q degree cap
+------------------------------------------------------------------
+For a pair of spin-Q/2 particles, restriction of the pair polynomial to
+coincident spinors is the multiplication intertwiner to the spin-Q module.
+It is nonzero on the unique maximal-spin summand and zero on every other
+summand. Thus the V0 pair projector annihilates a state iff the polynomial
+vanishes at this coincidence. In a local affine chart, boson symmetry makes
+the polynomial even in the relative coordinate, so vanishing implies a
+second-order zero. Equivalently the homogeneous determinant
+d_ij=u_i v_j-u_j v_i divides it twice. Each d_ij is irreducible and distinct
+factors are coprime in the polynomial ring. Therefore all pair constraints
+are exactly equivalent to divisibility by Delta_r^2=product_{i<j} d_ij^2.
+
+Delta_r^2 is SU(2)-invariant. It has degree 2(r-1) in each particle and
+total v degree r(r-1). For Q>=2(r-1), multiplication by it is an injective
+SU(2) intertwiner from symmetric residual polynomials of per-particle
+degree Q'=Q-2(r-1) onto the zero-mode space. A spin deficit z in the
+physical degree-Q space corresponds to deficit w=z-r(r-1) in the residual
+space. For z<r(r-1), the zero space in that weight and relative block is zero.
+For z>=r(r-1) and Q>=z, Q'>=w follows from
+
+  Q'-w = Q-z+(r-1)(r-2)>=0.
+
+Thus the finite orbital cap on the residual polynomials is inactive. For
+fixed z and Q>=z, physical highest-weight multiplicity is
+d_r(z)=p_r(z)-p_r(z-1), and zero-mode multiplicity is
+d_r(z-r(r-1)), with d_r(negative)=0. The active rank is therefore exactly
+d_r(z)-d_r(z-r(r-1)), equal to the planar rank. The same conclusion for
+small Q<2(r-1) and z below the shift is immediate because there are no
+zero modes; only the sufficiently-large-Q regime is needed for the proof.
+
+Saved exact H ranks independently matched this formula in every block:
+ r=3, z=0..8:  [1,0,1,1,1,1,1,1,1]
+ r=4, z=0..16: [1,0,1,1,2,1,3,2,4,3,5,4,6,5,7,6,8].
+
+4. Fixed coefficients really define the same limiting certificate
+----------------------------------------------------------------
+The JSON gives y0=lambda*kappa_t and
+y_pj=alpha_pj*kappa_p*sqrt(j!/i!), with kappa_p^2=p!/2^(p+1).
+Inverting these finite nonzero scale factors gives fixed real algebraic
+lambda and alpha, independent of Q and N. On each sphere one inserts these
+same physical coefficients into F with the spherical B_p^Q. One must not
+reuse y as physical spherical coefficients in the polynomial basis; the
+manuscript does not do that. In a fixed complete occupation-weight sector,
+
+  binom(Q,i) binom(Q,j) / binom(2Q,p)
+       -> p!/(2^p i!j!), p=i+j.
+
+All relevant matrices therefore converge entrywise and in operator norm.
+Normal-order extraction is a finite algebraic operation, and its support
+has already been proved independently of Q. No limiting exchange involving
+growing N or all orbital weights occurs at this step.
+
+5. Highest spaces, descendants, and the Schur factor 2/r
+-------------------------------------------------------
+Let J_+ lower total orbital weight and J_- raise it. On a fixed occupation
+sector, J_+/sqrt(Q) -> L and J_-/sqrt(Q) -> L^dagger. The limiting L has full
+row rank: [L,L^dagger]=r implies L L^dagger >= r I on the lower-weight
+sector. Thus highest-weight kernels have constant dimension and admit
+convergent orthonormal frames for large Q.
+
+In spin J=rQ/2-z, the normalized k-th descendant is
+
+  (J_-)^k psi / sqrt(k! * (2J)_k),
+
+where (2J)_k is the falling factorial. After rescaling by sqrt(Q) per
+lowering step, its step-k normalization tends to sqrt(r k). This gives
+(L^dagger)^k/sqrt(r^k k!) as in the exact checker.
+
+For an unaveraged r-body coefficient C commuting with J_z, normalized Haar
+averaging is identity on the spin factor times its partial trace divided
+by 2J+1. Multiplying by d_pair=2Q+1 therefore gives the multiplicity block
+
+  (2Q+1)/(rQ-2z+1) * sum_{M=z}^{D} U_Q(M)^dagger C_M,Q U_Q(M).
+
+The limit factor is 2/r. There is no missing r!, binomial(N,r), or pair
+factor 1/2 here. Those combinatorics have already been fixed by the positive
+lift convention; L_r restricted to r particles is the identity on r-body
+coefficient matrices. At body order two, Schur averaging of
+lambda^2 |v_t><v_t| times (2Q+1) is exactly lambda^2 P_{V_Q}. Summing rows
+therefore gives precisely eta H_Q at every Q.
+
+6. Positivity with a moving kernel
+---------------------------------
+After the preceding continuous choices of highest frames, H_Q and
+S_Q=E_Q+delta H_Q are finite Hermitian matrices converging in norm. Stable
+rank is essential: norm convergence alone would permit tiny new positive
+H eigenvalues and could fail to control E there. Here stable rank excludes
+that failure. A contour separating zero from the finitely many positive
+eigenvalues of H_infinity gives a continuous spectral projection P_Q onto
+ran H_Q. One can transport an orthonormal frame of ran H_infinity to ran
+H_Q, for example by the polar part of P_Q restricted to the limiting image.
+
+The exact planar PSD test, exact preservation of ker H, and equal ranks
+imply that S_infinity restricted to ran H_infinity is positive definite.
+Its smallest eigenvalue in an orthonormal active frame is strictly positive.
+Hence the transported active S_Q remains positive for all sufficiently
+large Q. S_Q kills ker H_Q exactly by point 2, so no uncontrolled off-diagonal
+kernel-image block remains. This proves E_Q>=-delta H_Q already; the stated
+2*10^-6 allowance is weaker and valid. The positive smallest eigenvalue may
+be very small; that affects the unknown Q threshold, not the argument.
+
+7. Independence from total particle number and the plane limit
+------------------------------------------------------------
+Only r=3,4 and finitely many fixed deficits enter the continuity argument.
+Their common flux threshold is therefore independent of the later particle
+number N. Positive normal-ordered lifting preserves finite coefficient
+inequalities without any norm bound that grows in N. The separately proved
+coherent bounds absorb the lifted H_r Pi errors into H_Q and S4_Q with
+fixed constants. Their thresholds, plus the tail threshold, are also
+independent of N. The final budget calculation has no omitted N factor.
+
+For the final sphere-to-plane implication, first fix N and total degree D.
+For Q>=D the whole weight sector exists on the sphere and its pair
+Hamiltonian matrix converges to the plane one. Matrix polynomial continuity
+passes H_Q^2>=H_Q/3 to the limit. Positivity then extends by direct sums in
+D and N on the appropriate quadratic-form domain. This does not choose
+Q as a function of N inside the original uniform spherical inequality.
+
+8. Audit of the added finite-sphere implementation
+-------------------------------------------------
+audit_finite_sphere_certificate.py was inspected with fock_certificate_maps.py.
+Its unordered-orbital pair coefficient is the exact spherical CG coefficient
+multiplied by sqrt(2) when i!=j and 1/sqrt(2) when i=j. Its scaled J_+ entry
+sqrt[j(1-(j-1)/Q)] and descendant denominator
+sqrt{k[r-(2z+k-1)/Q]} are correct. The Schur factor
+(2+1/Q)/(r+(1-2z)/Q) equals the exact factor above. S4 sums ordered pair
+channels as required. The normalized occupation lift has the correct two
+square-root binomial factors. The active basis v_pos/sqrt(eig H_pos) indeed
+tests E>=-delta H on the active image. All configured Q exceed 16, so its
+use of unbounded partition labels for fixed degree<=16 is legitimate.
+An explicit Q>=16 guard would make the intended scope clearer for reuse.
+
+The script uses floating arithmetic, approximate SVD kernels, and numerical
+eigenvalues; even a pass is not a certified flux threshold. A negative
+residual at Q=10^3 or Q=10^5 does not contradict the existential large-Q
+theorem. Its role is an independent falsification/normalization check.
+
+9. Implementation issue noticed and communicated to the root agent
+-----------------------------------------------------------------
+The original exact_shifted_certificate.py set all_pass using only the PSD
+boolean, even though transfer additionally needs positive_on_H_image
+(the rank and exact-kernel condition). All saved results satisfy that
+stronger condition, so this is not a defect in the present mathematical
+certificate. It is a verifier exit-status weakness for future altered data.
+The root agent reports strengthening that gate. Frozen row data are unchanged.
+
+Recommended clarification rather than mathematical repair
+---------------------------------------------------------
+Explain explicitly that the <=8/16 support statement concerns unaveraged
+orbital degree and averaged spin deficit; add the normal-order display and
+the finite-Q residual cap inequality Q'-w>=0. State the active-image
+continuity argument with exact kernel preservation. These additions expose
+the potentially dangerous steps and remove ambiguity, but do not change
+the certificate or constants. No counterexample in this audit requires
+weakening the theorem beyond its existing existential-Q qualification.

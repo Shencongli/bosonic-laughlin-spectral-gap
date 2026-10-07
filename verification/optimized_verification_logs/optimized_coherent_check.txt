@@ -1,0 +1,16 @@
+PASS r=3, cutoff=8, theta=1/14, target=35, Q>=4505
+  Z=28, c=3235/104; exact positive target margin=770496878795605295/11854080614509116915712
+  decimal diagnostic coefficient=34.999935001549
+PASS r=3, cutoff=8, theta=1/7, target=36, Q>=1254
+  Z=28, c=1025/32; exact positive target margin=1840291204919463/1663273221024776192
+  decimal diagnostic coefficient=35.998893572516
+PASS r=3, cutoff=8, theta=1/5, target=38, Q>=544
+  Z=28, c=2105/64; exact positive target margin=581810983/94628605148
+  decimal diagnostic coefficient=37.993851637334
+PASS r=4, cutoff=16, theta=1/12, target=2100, Q>=4330
+  Z=120, c=988/11; exact positive target margin=47580248227575766372156548975/4709180165852666631845551538176
+  decimal diagnostic coefficient=2099.989896277791
+PASS r=4, cutoff=16, theta=1/8, target=2200, Q>=2107
+  Z=120, c=646/7; exact positive target margin=120337657323797864536820137249/1387468003758479864624809246720
+  decimal diagnostic coefficient=2199.913268156817
+ALL EXACT CHECKS PASSED. Original 35/2100 constants hold simultaneously for Q>=4505.

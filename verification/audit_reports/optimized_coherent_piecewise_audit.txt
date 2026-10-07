@@ -1,0 +1,103 @@
+INDEPENDENT TYPING AUDIT: DEGREE-WEIGHTED ABSORPTION AND PIECEWISE Q
+7 October 2026
+
+VERDICT
+
+The proposed weighted absorption and piecewise-Q budget are correctly
+typed and preserve all operator normalizations. I find no missing kernel
+projection, multiplicity factor, spectator-symmetrization factor, or sum
+over spin degrees. This audit is conditional on each cited head run
+actually certifying its stated ALL-Q operator inequality and the refined
+tail theorem applying throughout the chosen intervals; it does not itself
+replay those separate certificate runs or select interval endpoints.
+
+1. FROM HIGHEST-WEIGHT MATRICES TO FULL PHYSICAL SPIN BLOCKS
+
+Suppose a head run at q_i establishes, for all Q>=q_i and each retained z,
+
+  E_{r,z,Q}+delta_{r,z}(q_i) H_{r,z,Q} >=0.
+
+These are physical multiplicity-space matrices. Because E_r and H_r are
+rotationally invariant, the corresponding full spin-isotypic operators
+are identity on the spin representation tensor those matrices. Hence
+the certified inequality holds on the complete physical isotypic block.
+If the computational certificate uses only the active image of H_r, it
+must also establish exact kernel annihilation by E_r; the existing normal
+ordering argument supplies precisely that fact. The operator-level input
+is then valid on the entire block, including its kernel.
+
+2. THE AUXILIARY WEIGHTED PROJECTOR AND THE CREATION MAP
+
+For a fixed r and Q, use one common coherent kernel A_{r,Q}, with one
+common a_r. Let lambda_{r,z}(Q)>0 be its proved lower eigenvalue on ALL
+auxiliary multiplicities at spin deficit z. Different theta_z are allowed
+because they only prove lower bounds for this same kernel.
+
+For nonnegative scalar delta_z,
+
+  sum_z delta_z Pi^{aux}_z
+     <= max_z[delta_z/lambda_{r,z}(Q)] A_{r,Q}.
+
+This is a whole-space operator inequality: each full auxiliary spin block
+is retained, and the kernel remains positive on all omitted blocks.
+No projection onto a chosen multiplicity subspace is being inserted.
+
+The equivariant creation map W_r obeys W_r W_r^*=H_{r,Q} exactly, and
+intertwines the full spin projections. Consequently
+
+  W_r(sum_z delta_z Pi^{aux}_z)W_r^*
+     =sum_z delta_z H_{r,Q} Pi^{phys}_z.
+
+This identity uses neither injectivity nor isometry of W_r. Applying the
+positive r-body lift and the exact coherent occupation estimate gives
+cost max_z delta_z C_{r,z}(Q), where C_{r,z} already contains the h=r-2
+spectator marginals. In particular the four-body 1/2 spectator-Fock
+factor was already used in the exact bound 2S4+H; it must not be inserted
+again. There is no further dimension, r!, or binomial factor.
+
+Thus choosing
+
+  delta_{r,z}(q_i)=L_r/Cbar_{r,z}(q_i)
+
+with Cbar uniform for every Q>=q_i proves the desired lifted errors
+L_3(S4+H) and L_4(2S4+H), respectively. The scalar is a maximum over z,
+not a sum, because the weighted projector is compared to one kernel and
+lifted once. All zero-rank physical blocks are harmless.
+
+3. FINITE INTERVAL BUDGET
+
+Use the head run at q_i only for Q in [q_i,q_{i+1}]. This is valid because
+the head run already holds for every Q>=q_i. The refined tail bound
+
+  T9,Q <=(c9+nu-rho/Q)(S4+H),
+  nu=1/10^10, rho=391/100,
+
+implies on this interval
+
+  T9,Q <=(c9+nu-rho/q_{i+1})(S4+H).
+
+The direction is correct: -rho/Q is increasing as Q increases. Starting
+from H^2=H+S3+S4 and K=eta H+K3+K4, the fixed definition of the four-body
+head uses (1-c9-mu)S4-K4 with mu=1/50. Substitution gives exactly
+
+  H_Q^2 >= K_Q+A_i H_Q+B_i S4,Q,
+  A_i=1-eta-c9-nu+rho/q_{i+1}-L_3-L_4,
+  B_i=mu-nu+rho/q_{i+1}-L_3-2L_4.
+
+Thus A_i>=1/3 and B_i>=0 are the correct two rational budget conditions.
+No extra c9 or mu term remains. Since K_Q and S4,Q are positive, these
+conditions imply H_Q^2>=H_Q/3 on the interval, uniformly in total N.
+
+4. FINAL INFINITE INTERVAL
+
+For Q>=4000, use the head run at 4000 and discard the favorable negative
+tail correction. The valid bound T9,Q<=(c9+nu)(S4+H) gives the same formulas
+with rho/q_{i+1} replaced by zero. A finite collection of adjacent closed
+intervals ending at 4000, followed by this infinite interval, covers all
+Q at or above the first endpoint; overlap at endpoints is harmless.
+
+The only remaining obligations are external to this typing audit: each
+head run must pass its exact certificate, every coherent domain condition
+must hold at its left endpoint, the tail theorem must apply there, and the
+two scalar budgets must pass exactly in every interval and in the final
+infinite interval.

@@ -1,0 +1,2295 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=24mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newcommand{\Sym}{\operatorname{Sym}}
+\newcommand{\ran}{\operatorname{ran}}
+\newcommand{\fall}[2]{(#1)_{#2}}
+\title{The Bosonic Laughlin Spectral Gap: A Candidate Proof\\[0.5em]\large\textit{An AI-generated research note}}
+\author{\normalsize Prepared and curated by Xin Shen\thanks{\textbf{AI-generated candidate proof.}
+OpenAI Codex AI agents developed the core argument, verification code,
+threshold optimization, and manuscript under Xin Shen's direction and
+curation on 7 October 2026. The session identifies the model family as
+GPT-6; the exact deployed model identifier was not recorded.
+Exact planar and scalar checks and 156 interval block certificates were
+replayed successfully. The analytical reduction and its implementation
+remain open to independent review; no independent human proof review or
+proof-assistant formalization is recorded for v0.1.
+See the repository's AI contribution and verification statement.}}
+\date{Version 0.1, 7 October 2026; $Q_0=3088$}
+\begin{document}
+\maketitle
+\begin{abstract}
+We present a candidate computer-assisted proof of $H_Q^2\ge H_Q/3$ for the full spherical
+bosonic $V_0$ interaction at every integer flux $Q\ge3088$, independently
+of particle number. Each unordered pair projector has coefficient one.
+At flux $Q=2(N-1)$ this gives a gap of at least $1/3$ above the unique
+bosonic Laughlin state. The argument combines 138 fixed operator rows,
+coherent comparisons resolved by total spin, and 156 parameter-interval
+block certificates. Six overlapping flux ranges cover $[3088,\infty)$.
+The certificate checks use exact rational arithmetic or outward-rounded
+integer intervals.
+\end{abstract}
+
+\section*{Introduction}
+The bosonic Laughlin state at filling $\nu=1/2$ is an exact zero mode of
+the $V_0$ Haldane pseudopotential in the lowest Landau level. The
+wavefunction and spherical parent-Hamiltonian construction belong to the
+Laughlin--Haldane framework~\cite{Laughlin1983,Haldane1983}. The
+second-quantized pseudopotential algebra and its zero modes have also been
+studied directly~\cite{OrtizEtAl2013,ChenSeidel2015}. Here we consider the
+complete projected interaction on the round sphere, with coefficient one
+for each unordered pair projector onto relative angular momentum zero.
+
+The spectral question is whether the positive spectrum stays uniformly
+separated from zero as the number of particles and the flux grow.
+Rougerie's survey states the Laughlin spectral-gap conjecture and discusses
+its geometric variants~\cite[Appendix~A]{Rougerie2019}. For a truncated
+bosonic pseudopotential arising from the thin-cylinder regime, Warzel and
+Young proved gap bounds uniform in volume and particle
+number~\cite{WarzelYoung2023}. The present candidate proof concerns the
+full spherical $V_0$ interaction. Writing $H_Q$ for this Hamiltonian at integer flux $Q$, its proposed
+estimate is $H_Q^2\ge H_Q/3$ for $Q\ge3088$, uniformly in the particle
+number $N$; at $Q=2(N-1)$ this gives the stated gap above the Laughlin zero mode.
+
+The argument adapts the comparison on the full Fock space in
+OpenAI's preprint on the fermionic $V_1$ interaction~\cite{OpenAI2026}. Its structure
+is a normal-ordered Hamiltonian square, a rotation average of positive
+operator rows, finite spin-block comparisons, and transfer from planar
+coefficients to finite flux. For the bosonic model, coherent occupation
+bounds control the comparison errors before the many-body lift. The
+resulting finite inequalities are supplied as frozen data and checked with
+exact rational arithmetic and outward-rounded intervals.
+
+\section{Model, normalization, and three-body input}
+On the sphere, $Q$ is the integer number of flux quanta. The one-particle LLL
+is $U_Q$, the spin-$Q/2$ representation, with normalized orbitals $e_i$,
+$0\le i\le Q$. The physical $N$-particle space is $\Sym^N U_Q$.
+The pair space $V_Q\subset\Sym^2U_Q$ is the maximal-spin-$Q$ subspace,
+the subspace of relative angular momentum zero. Its normalized orbital-sum basis
+is $v_p$, $0\le p\le2Q$. With bosonic CCR
+$[a_i,a_j^\dagger]=\delta_{ij}$, set
+\begin{equation}
+ t_p^Q(i,j)=\delta_{i+j,p}
+ \sqrt{\frac{\binom Qi\binom Qj}{\binom{2Q}p}},\qquad
+ B_p=\frac1{\sqrt2}\sum_{i,j=0}^Q t_p^Q(i,j)a_i a_j,
+ \qquad H_Q=\sum_p B_p^\dagger B_p.
+\end{equation}
+Thus $B_p^\dagger|0\rangle=v_p$ and each unordered pair projector has
+coefficient one. The interaction is not orbitally truncated. At
+$Q=2(N-1)$ its zero mode is the bosonic Laughlin polynomial
+$\prod_{i<j}(u_iv_j-u_jv_i)^2$, where $(u_i,v_i)$ are homogeneous
+spinor coordinates of particle $i$ on the sphere; an LLL polynomial is
+homogeneous of degree $Q$ in each particle's spinor.
+
+On the plane, $U$ is the Bargmann LLL with normalized orbitals $e_i$,
+$i\ge0$. Replace the tensor by
+\begin{equation}
+ t_p^\infty(i,j)=\delta_{i+j,p}
+ \sqrt{\frac{p!}{2^p i!j!}},\qquad H=\sum_{p\ge0}B_p^\dagger B_p.
+\end{equation}
+All forms below can first be read on finite-particle algebraic Fock vectors.
+In each fixed $N$ sector the projected pair Hamiltonian is bounded. The
+particle-number-independent inequalities then hold on the appropriate
+direct-sum form domain.
+
+For a normalized $k$-particle vector $w$, let $A(w)^\dagger$ be the unique
+homogeneous degree-$k$ polynomial in creation operators satisfying
+$A(w)^\dagger|0\rangle=w$, and let $A(w)$ be its physical adjoint.
+The positive, normal-ordered $k$-body lift is the linear map
+\begin{equation}
+ \mathcal L_k(|w\rangle\langle w'|)=A(w)^\dagger A(w').
+\end{equation}
+It takes positive operators on the physical $k$-particle space to positive
+forms on all bosonic particle sectors. In an occupation basis $\nu$,
+$A(\nu)=\prod_i a_i^{\nu_i}/\sqrt{\nu_i!}$; no extra factorial is present.
+
+Normal ordering gives the exact identity
+\begin{equation}\label{eq:normal}
+ H_Q^2=H_Q+S_{3,Q}+S_{4,Q},\qquad
+ S_{4,Q}=\sum_{p,q}(B_qB_p)^\dagger(B_qB_p)\ge0.
+\end{equation}
+
+The auxiliary space $V_Q\otimes U_Q$ contains a pair and a distinguished
+third particle. The linear creation map
+\begin{equation}
+ W_3:V_Q\otimes U_Q\longrightarrow\Sym^3U_Q,
+ \qquad v_p\otimes u\longmapsto B_p^\dagger u
+\end{equation}
+is not an isometry. Couple pair spin $Q$ and single-particle spin $Q/2$.
+Let $\Pi_z$ be the auxiliary projection onto spin $J_z=3Q/2-z$,
+$0\le z\le Q$, with dimension $d_z=3Q-2z+1$.
+The recoupling identities are
+\begin{equation}\label{eq:recouple}
+ W_3^\dagger W_3=\sum_{z=0}^Q\lambda_{z,Q}\Pi_z,
+ \qquad \lambda_{z,Q}=1+2(-1)^z f_{z,Q},\qquad
+ f_{z,Q}=\frac{\fall Qz}{\fall{2Q}z},
+\end{equation}
+and
+\begin{equation}
+ S_{3,Q}=\mathcal L_3\!\left[
+ W_3\Big(2\sum_z(-1)^z f_{z,Q}\Pi_z\Big)W_3^\dagger\right].
+\end{equation}
+Here $\fall xz=x(x-1)\cdots(x-z+1)$, with $\fall x0=1$.
+Let $J:V_Q\otimes U_Q\to U_Q^{\otimes3}$ be the inclusion
+putting the pair in the first two tensor slots, and let $P_{\rm sym}$ be the
+orthogonal three-particle symmetrizer. Then
+$W_3=\sqrt3P_{\rm sym}J$ and
+$W_3^\dagger W_3=I+2T$, where $T=J^\dagger(23)J$ is the compressed
+transposition of slots two and three. The pair--single spin decomposition is
+multiplicity free. A highest vector at deficit $z$ has the form
+$\sum_{p=0}^zs_pv_p\otimes e_{z-p}$, with
+\begin{equation}
+ \frac{s_{p+1}}{s_p}
+ =-\sqrt{\frac{(z-p)(Q-z+p+1)}{(p+1)(2Q-p)}},\qquad
+ \frac{s_z}{s_0}=(-1)^z\sqrt{f_{z,Q}}.
+\end{equation}
+Taking the $v_0\otimes e_z$ coefficient after transposition gives
+$s_zt_z^Q(0,z)=s_z\sqrt{f_{z,Q}}$; hence $T$ has eigenvalue
+$(-1)^zf_{z,Q}$. This proves \eqref{eq:recouple}. Also
+$W_3W_3^\dagger=H_{3,Q}$, so its three-body square minus itself is the
+displayed three-body coefficient. Direct CCR normal ordering gives
+$[B_p,B_q^\dagger]=\delta_{pq}+
+2\sum_{i,j,k}t_p^Q(i,k)t_q^Q(j,k)a_j^\dagger a_i$,
+and consequently \eqref{eq:normal} on every particle sector by the positive
+three-body lift. In particular, $S_3$ is not positive; the $z=1$ auxiliary
+block is annihilated by $W_3$.
+
+Fix an odd integer $m\ge3$. The positive magnitude of the negative tail is
+\begin{equation}\label{eq:taildef}
+ C_{m,Q}=2\sum_{\substack{z\ge m\\z\text{ odd}}}f_{z,Q}\Pi_z,
+ \qquad T_{m,Q}=\mathcal L_3(W_3 C_{m,Q}W_3^\dagger).
+\end{equation}
+In the plane, $f_{z,\infty}=2^{-z}$. The index $z$ there is the degree of
+the internal oscillator between pair center of mass and the third particle.
+
+\section{Plane estimate}
+\begin{theorem}\label{thm:plane}
+For odd $m\ge3$ and every particle number,
+\begin{equation}\label{eq:planebound}
+ T_m\le c_m(S_4+H),\qquad
+ c_m=3(m+1)\left(\frac{m+1}{2m}\right)^m.
+\end{equation}
+More generally, for $1/2<r<1$ and $\eta>0$,
+\begin{equation}
+ T_m\le \frac3{1-r}\left(\frac1{2r}\right)^m
+ \big(\eta S_4+C_\eta H\big),\qquad
+ C_\eta=\max_{n\in\mathbb Z_{\ge0}}
+ \left[n-\frac\eta2n(n-1)\right].
+\end{equation}
+In particular $C_1=1$.
+\end{theorem}
+\begin{proof}
+Use the pair center-of-mass oscillator $u$ and third-particle oscillator $v$. The unitary
+oscillator change is
+\begin{equation}
+ \zeta=\frac{\sqrt2u+v}{\sqrt3},\qquad
+ \xi=\frac{-u+\sqrt2v}{\sqrt3}.
+\end{equation}
+Let $n_R$ count quanta of $\xi$. The auxiliary tail satisfies
+\begin{equation}
+ C_m=2\,2^{-n_R}P_{\text{odd},\ge m}
+ \le2\left(\frac1{2r}\right)^m(I_{\rm CM}\otimes r^{n_R}).
+\end{equation}
+For normalized oscillator coherent vectors the exact positive representation
+is
+\begin{equation}
+ r^{n_R}=\int\frac{d^2\xi}{\pi r}
+ e^{-(1-r)|\xi|^2/r}|\xi\rangle\langle\xi|.
+\end{equation}
+Its $j$-th diagonal matrix element is $r^j$, obtained by the elementary
+Gaussian moment integral. Resolve $I_{\rm CM}$ in coherent states as well.
+Write $u=\sqrt2\alpha$, $v=\beta$, where $\alpha,\beta$ are physical
+one-particle coherent coordinates. Then
+\begin{equation}\label{eq:coherent}
+ I_{\rm CM}\otimes r^{n_R}
+ =\int\frac{2d^2\alpha\,d^2\beta}{\pi^2r}
+ e^{-\kappa|\beta-\alpha|^2}
+ |\sqrt2\alpha\rangle_V\langle\sqrt2\alpha|
+ \otimes|\beta\rangle\langle\beta|,
+ \qquad \kappa=\frac{2(1-r)}{3r}.
+\end{equation}
+The factor $2$ is the Jacobian of $u=\sqrt2\alpha$.
+
+Let $a_\alpha$ annihilate in the normalized physical coherent orbital,
+$B_\alpha=a_\alpha^2/\sqrt2$, and $n_\beta=a_\beta^\dagger a_\beta$.
+The pair coherent vector is exactly $B_\alpha^\dagger|0\rangle$.
+Positive lifting the integrand in \eqref{eq:coherent} after $W_3$ produces
+$B_\alpha^\dagger n_\beta B_\alpha$. Since the coherent pair belongs to $V$,
+\begin{equation}\label{eq:occupation}
+ H\ge B_\beta^\dagger B_\beta=\tfrac12n_\beta(n_\beta-1),\qquad
+ n_\beta\le\eta H+C_\eta I.
+\end{equation}
+The latter inequality acts on the output sector after
+$B_\alpha$ removes two particles. The Gaussian $\beta$ marginal is
+$3/[2(1-r)]$. The pair coherent resolution gives the exact identities
+\begin{equation}\label{eq:frames}
+ \int\frac{2d^2\alpha}{\pi}B_\alpha^\dagger B_\alpha=H,\qquad
+ \int\frac{2d^2\alpha}{\pi}B_\alpha^\dagger H B_\alpha
+ =\sum_p B_p^\dagger H B_p=S_4.
+\end{equation}
+Pair annihilators commute, which explains the last equality. Consequently
+\begin{equation}
+ \mathcal L_3[W_3(I_{\rm CM}\otimes r^{n_R})W_3^\dagger]
+ \le\frac3{2(1-r)}(\eta S_4+C_\eta H).
+\end{equation}
+Combine with the auxiliary spectral bound. At $\eta=1$, minimize over $r$;
+the minimum occurs at $r=m/(m+1)$ and gives \eqref{eq:planebound}.
+\end{proof}
+
+\section{Spherical estimate with the same asymptotic constant}
+\begin{theorem}\label{thm:sphere}
+Fix odd $m\ge3$ and $\varepsilon>0$. There exists a flux threshold
+$Q_{m,\varepsilon}$ independent of particle number such that
+\begin{equation}\label{eq:spherebound}
+ T_{m,Q}\le(c_m+\varepsilon)(S_{4,Q}+H_Q)
+ \quad(Q\ge Q_{m,\varepsilon})
+\end{equation}
+on all bosonic particle sectors, with the same $c_m$ as in
+Theorem~\ref{thm:plane}. The threshold is existential in this argument.
+\end{theorem}
+\begin{proof}
+Let $d=Q+1$, $d_a=2Q+1$. Sphere measures have total mass one. Fix
+$0<a<1/3$, $M=\lfloor aQ\rfloor$, and introduce the positive auxiliary kernel
+\begin{equation}
+ A_{M,Q}=d_ad\int d\Omega_\alpha d\Omega_\beta\,
+ s(\alpha,\beta)^M
+ |\alpha_{\rm pair}\rangle\langle\alpha_{\rm pair}|
+ \otimes|\beta\rangle\langle\beta|,
+ \quad s=\cos^2(\theta_{\alpha\beta}/2).
+\end{equation}
+These are normalized spin-coherent vectors. Rotation invariance gives
+$A_{M,Q}=\sum_z\tau_{z,Q}\Pi_z$.
+
+Fix $\alpha$ at the north pole. A beta integral gives the diagonal coefficient
+\begin{equation}
+ b_{j,Q}=d\binom Qj\int_0^1s^{M+Q-j}(1-s)^j ds
+ =\frac{Q+1}{M+Q+1}\frac{\fall Qj}{\fall{M+Q}j}.
+\end{equation}
+Tracing in the coupled spin block yields
+\begin{equation}\label{eq:fulltau}
+ \tau_{z,Q}=\frac{d_a}{d_z}\sum_{j=z}^Q b_{j,Q}\gamma_{z,j,Q},\quad
+ \gamma_{z,j,Q}=
+ \frac{\fall{2Q}z}{\fall{3Q-z+1}z}
+ \binom jz\frac{\fall{Q-z}{j-z}}{\fall{3Q-2z}{j-z}}.
+\end{equation}
+Here $\gamma$ is the squared Clebsch--Gordan coefficient for a highest pair
+and a single orbital lowered $j$ times. To derive it, normalize the highest
+coupled-spin vector using
+\begin{equation}
+ \frac{|c_p|^2}{|c_{p-1}|^2}
+ =\frac{(z-p+1)(Q-z+p)}{p(2Q-p+1)}.
+\end{equation}
+The terminating Chu--Vandermonde identity gives
+$|c_0|^2=\fall{2Q}z/\fall{3Q-z+1}z$. After total lowering $j-z$ times,
+only lowering the single-particle component can retain pair highest weight;
+the normalization ratio gives the remaining binomial and falling-factorial
+factors in \eqref{eq:fulltau}.
+
+We first need an all-$z$ coarse bound. Retaining only the positive $j=z$
+term in \eqref{eq:fulltau}, with $\rho=3(1+a)/4<1$, gives
+\begin{equation}\label{eq:coarse}
+ \frac{2f_{z,Q}}{\tau_{z,Q}}\le3(1+a)\rho^z.
+\end{equation}
+Indeed the ratio before the factor $2$ is at most
+\begin{equation}
+ \frac{d_z}{d_a}\frac{M+Q+1}{d}
+ \prod_{i=0}^{z-1}
+ \frac{(M+Q-i)(3Q-z+1-i)}{(2Q-i)^2}.
+\end{equation}
+The prefactor is at most $\tfrac32(1+a)$. Since $i\le z-1$ and $M\le aQ$,
+each product factor is at most
+$(1+a-x)(3-2x)/(2-x)^2\le\rho$, $x=i/Q\in[0,1)$.
+The last inequality is equivalent to
+$x[(8-4a)-(5-3a)x]\ge0$.
+
+For each fixed $z$, the full sum in \eqref{eq:fulltau} has the limit
+\begin{equation}\label{eq:taulimit}
+ \tau_{z,Q}\longrightarrow r^{z+1},\qquad r=\frac2{2+3a}.
+\end{equation}
+For fixed $z,j$, the limiting summand uses
+$b_{j,Q}\to(1+a)^{-j-1}$ and
+$\gamma_{z,j,Q}\to\binom jz(2/3)^z(1/3)^{j-z}$,
+while $d_a/d_z\to2/3$. The binomial-series identity sums these limits.
+To justify exchanging limit and sum, extend summands by zero for $j>Q$.
+For $Q\ge2/a$, $M\ge aQ/2$,
+\begin{equation}
+ 0\le b_{j,Q}\le(1+a/2)^{-j},\quad
+ 0\le\gamma_{z,j,Q}\le1,\quad d_a/d_z<2.
+\end{equation}
+This provides a summable majorant independent of $Q$.
+
+Now fix $m$ and choose $a=2/(3m)$, so $r=m/(m+1)>1/2$. The fixed-$z$ ratio
+limit is $(2/r)(1/(2r))^z$, decreasing on odd $z\ge m$. Pick a finite
+$L$ so large that the right side of \eqref{eq:coarse} for $z>L$ is at most
+its limiting maximum at $z=m$. On the finite set $m\le z\le L$ use
+\eqref{eq:taulimit}. For any $\delta>0$, sufficiently large $Q$ therefore
+gives the whole-space inequality
+\begin{equation}
+ C_{m,Q}\le\left[\frac2r\left(\frac1{2r}\right)^m+\delta\right]A_{M,Q}.
+\end{equation}
+
+Finally lift the coherent kernel. Equation~\eqref{eq:occupation} holds on
+the sphere as well. The exact beta marginal is $d/(M+1)$, while the pair
+coherent resolution has factor $d_a$. Thus
+\begin{equation}
+ \mathcal L_3(W_3A_{M,Q}W_3^\dagger)
+ \le\frac{d}{M+1}(S_{4,Q}+H_Q).
+\end{equation}
+Since $d/(M+1)\to1/a$, the resulting scalar tends to
+$(2/(ra))(1/(2r))^m=c_m$. Choose $\delta$ small and then $Q$ sufficiently
+large. All comparisons precede lifting and their constants are independent
+of $N$, proving \eqref{eq:spherebound}.
+\end{proof}
+
+
+\section{Absorbing finite three- and four-body comparison errors}
+Write $H_{r,Q}$ for $H_Q$ restricted to the physical $r$-particle space,
+where $r=3,4$. Let $\Pi^{(r)}_{\le D,Q}$ be its total-spin projection onto
+$J=rQ/2-z$, $0\le z\le D$, including all multiplicities. Define the
+many-body positive forms
+\begin{equation}
+ \mathcal R_{r,D,Q}:=\mathcal L_r(H_{r,Q}\Pi^{(r)}_{\le D,Q}).
+\end{equation}
+The product is positive because the Hamiltonian is rotationally invariant.
+The cutoff is in the few-body coefficient, not in the physical many-body
+Hamiltonian or in particle occupation.
+
+\begin{lemma}\label{lem:finite-errors}
+For all sufficiently large $Q$, uniformly in total particle number,
+\begin{equation}\label{eq:error-bounds}
+ \mathcal R_{3,8,Q}\le35(S_{4,Q}+H_Q),\qquad
+ \mathcal R_{4,16,Q}\le2100(2S_{4,Q}+H_Q).
+\end{equation}
+Both estimates hold, in particular, for every integer $Q\ge10^{50}$,
+as shown in Appendix~\ref{app:explicit-coherent-threshold}. Their thresholds
+depend only on the displayed fixed cutoffs.
+\end{lemma}
+\begin{proof}
+The three-body claim follows from the positive auxiliary operator
+$A_{M,Q}$ of the preceding section. On each retained spin block its
+eigenvalue tends to $r^{z+1}$, $r=2/(2+3a)$. Since only $z\le D$ is now
+retained, positivity outside this finite set and finite-block convergence
+give
+\begin{equation}
+ \Pi^{\rm aux}_{\le D,Q}\le(r^{-(D+1)}+o(1))A_{M,Q}.
+\end{equation}
+After positive lifting, the limiting constant is
+$a^{-1}(1+3a/2)^{D+1}$. Taking $D=8,a=1/12$ gives
+$12(9/8)^9=34.63809\ldots<35$.
+
+For the four-body claim, use the wide pair map
+\begin{equation}
+ W_4:V_Q\otimes\Sym^2U_Q\longrightarrow\Sym^4U_Q,
+ \qquad W_4(v_p\otimes u)=B_p^\dagger u.
+\end{equation}
+It satisfies $W_4W_4^\dagger=H_{4,Q}$. Its domain differs from the narrower
+pair--pair space that represents $S_4$. Equivariance gives
+$W_4\Pi^{\rm aux}_{\le D,Q}W_4^\dagger
+=H_{4,Q}\Pi^{(4)}_{\le D,Q}$.
+
+First establish an occupation bound for possibly nonorthogonal coherent
+orbitals $\beta,\gamma$. Put $A=a_\gamma a_\beta$ and
+$s=\langle\beta,\gamma\rangle$, with $|s|\le1$. Normal ordering and
+$(n_\beta-n_\gamma)^2\ge0$ imply
+\begin{align}
+ A^\dagger A
+ &=\tfrac12(n_\beta n_\gamma+n_\gamma n_\beta)
+       -\operatorname{Re}(s a_\beta^\dagger a_\gamma)\notag\\
+ &\le\tfrac12(n_\beta^2+n_\gamma^2)
+       +\tfrac12(n_\beta+n_\gamma)
+ \le4H_Q+2I.\label{eq:two-spectators}
+\end{align}
+For the middle inequality, quadratic-form Cauchy--Schwarz bounds the real
+cross term by $|s|(n_\beta+n_\gamma)/2$. The last step uses
+$n_x^2\le2H_Q+n_x$ and $n_x\le H_Q+I$ for each coherent $x$.
+
+Set $M=\lfloor aQ\rfloor$ and introduce the positive invariant operator
+on $V_Q\otimes\Sym^2U_Q$
+\begin{align}
+ A^{(4)}_{M,Q}=d_ad^2\int &d\Omega_\alpha d\Omega_\beta d\Omega_\gamma\,
+ [s(\alpha,\beta)s(\alpha,\gamma)]^M
+ |\alpha_{\rm pair}\rangle\langle\alpha_{\rm pair}|\notag\\[-2pt]
+ &\otimes P_{\rm sym}^{(2)}|\beta\gamma\rangle
+       \langle\beta\gamma|P_{\rm sym}^{(2)}.
+\end{align}
+The isometry from symmetric tensors to bosonic Fock space sends
+$P_{\rm sym}^{(2)}|\beta\gamma\rangle$ to
+$a_\beta^\dagger a_\gamma^\dagger|0\rangle/\sqrt2$.
+Consequently the lifted coherent integrand is
+$\tfrac12B_\alpha^\dagger A^\dagger A B_\alpha$, and
+\eqref{eq:two-spectators}, the exact two spectator marginals, and the pair
+frame give
+\begin{equation}\label{eq:four-kernel-lift}
+ \mathcal L_4(W_4A^{(4)}_{M,Q}W_4^\dagger)
+ \le\left(\frac{d}{M+1}\right)^2(2S_{4,Q}+H_Q).
+\end{equation}
+
+We next compute the limit of every fixed auxiliary spin block, including
+its multiplicities. Choose continuous normalized highest-weight bases at
+deficit $z$, and normalized total-lowering descendants numbered by $n$.
+Such bases exist for large $Q$: the finite-weight raising matrices converge
+to the oscillator lowering matrix, which has full row rank. More explicitly,
+the auxiliary weight-$z$ basis consists of $v_p\otimes|j,k\rangle_{\rm sym}$,
+$p+j+k=z$, $j\le k$. For $Q\ge z$ its dimension is fixed, and the
+highest-weight multiplicity is $\lfloor z/2\rfloor+1$. After division by
+$\sqrt Q$, the raising matrix tends to $2a_\zeta$, where $a_\zeta$ annihilates
+the total center-of-mass oscillator introduced below. It is surjective from
+weight $z$ to weight $z-1$. For a full-row-rank matrix $T$, the kernel
+projector is $I-T^\dagger(TT^\dagger)^{-1}T$; this formula proves convergence
+of these kernel projections and permits convergent orthonormal bases.
+The case $z=0$ is the one-dimensional highest line and needs no inverse.
+Normalized spherical descendants then converge, for each fixed descendant
+number $n$, to $(a_\zeta^\dagger)^n/\sqrt{n!}$ applied to the limiting
+highest vectors.
+Fix the pair at the north pole. The two-spectator operator is the restriction of
+$R_Q\otimes R_Q$ to symmetric tensors, where $R_Q$ is diagonal with
+eigenvalues $b_{j,Q}$ from the preceding section. Schur averaging expresses
+each multiplicity-matrix entry as
+\begin{equation}
+ \frac{d_a}{4Q-2z+1}\sum_{n\ge0}
+ \sum_{\substack{j\le k\\j+k=z+n}}
+ b_{j,Q}b_{k,Q}\,\overline{c_{b,jk,n,Q}}c_{c,jk,n,Q}.
+\end{equation}
+Here $c_{b,jk,n,Q}$ is the pair-highest component of the normalized
+descendant of highest vector $b$; the spectator basis is orthonormal, also
+when $j=k$. The squared sum of these components is at most one. For
+$Q\ge2/a$, the inner sum is therefore bounded in absolute value by
+$q^{z+n}$, where $q=(1+a/2)^{-1}<1$. The dimension ratio is bounded.
+This summable majorant justifies dominated convergence of the entire
+descendant sum.
+
+To identify that limit, use the unitary Jacobi-oscillator change
+\begin{equation}
+ u=\sqrt2\alpha,\quad v=\beta,\quad w=\gamma,\qquad
+ \zeta=\frac{\sqrt2u+v+w}{2},\quad
+ \xi_1=\frac{v-w}{\sqrt2},\quad
+ \xi_2=\frac{u}{\sqrt2}-\frac{v+w}{2}.
+\end{equation}
+In this limit the pair-north seed is the positive trace-class operator
+\begin{equation}
+ \sigma=|0\rangle_u\langle0|\otimes
+ \left[R\otimes R\right]_{\rm sym},\qquad
+ R=(1+a)^{-(n+1)}
+   =\int\frac{d^2\beta}{\pi}e^{-a|\beta|^2}|\beta\rangle\langle\beta|,
+\end{equation}
+where $n$ is the one-oscillator occupation operator in either spectator
+factor. On relative degree $z$, the full descendant sum is the restriction
+of the center-of-mass partial trace of $\sigma$, with the prefactor
+$d_a/(4Q-2z+1)\to1/2$.
+Let $D_\zeta(h)=\exp(h a_\zeta^\dagger-\bar h a_\zeta)$ be
+the Weyl displacement on the center-of-mass factor. Simultaneously
+displacing $(u,v,w)$ by $(\sqrt2\alpha,\alpha,\alpha)$ displaces only
+$\zeta$, by $2\alpha$. The Weyl twirling identity for the positive
+trace-class seed therefore gives, as a weak operator integral,
+\begin{equation}\label{eq:twirl-audit}
+ \int\frac{2d^2\alpha}{\pi}
+ D_\zeta(2\alpha)\sigma D_\zeta(2\alpha)^\dagger
+ =\frac12 I_{\rm CM}\otimes\operatorname{Tr}_{\rm CM}\sigma.
+\end{equation}
+The factor $1/2$ follows from $d^2(2\alpha)=4d^2\alpha$ and agrees with
+the Schur dimension ratio. Inserting the coherent representation of $R$
+into the left side of \eqref{eq:twirl-audit} gives the measure
+$2d^2\alpha\,d^2\beta\,d^2\gamma/\pi^3$ with weight
+$e^{-a(|\beta-\alpha|^2+|\gamma-\alpha|^2)}$.
+The twirling identity can also be checked in center-of-mass position
+coordinates $x,y$. For $h=(q+ip)/\sqrt2$, conjugation by $D_\zeta(h)$
+sends the operator-valued kernel to
+$e^{ip(x-y)}\sigma(x-q,y-q)$. Integrating $dq\,dp/(2\pi)$ first gives
+$\delta(x-y)$ and then the partial trace. Here the Gaussian, positive
+trace-class seed permits this identity in the weak sense.
+The substitution $u=\sqrt2\alpha$ cancels this factor two. Thus the
+limiting coherent kernel has weight
+$\exp[-a|\xi_1|^2-2a|\xi_2|^2]$, and hence is exactly
+\begin{equation}
+ A^{(4)}_{\infty}=I_{\rm CM}\otimes r_1^{n_1+1}r_2^{n_2+1},\qquad
+ r_1=(1+a)^{-1},\quad r_2=(1+2a)^{-1}.
+\end{equation}
+Here $n_i=a_{\xi_i}^\dagger a_{\xi_i}$ counts quanta of relative oscillator
+$\xi_i$, for $i=1,2$.
+Spectator symmetry restricts $n_1$ to even values. At fixed deficit
+$n_1+n_2=z$, the least eigenvalue is $r_1r_2^{z+1}$. Thus on the finite
+set $z\le D$, continuity gives
+\begin{equation}
+ \Pi^{\rm aux}_{\le D,Q}
+ \le\big[(r_1r_2^{D+1})^{-1}+o(1)\big]A^{(4)}_{M,Q}.
+\end{equation}
+The inequality holds on the whole auxiliary space because invariance
+prohibits cross terms between distinct spins and the right side is positive
+outside the retained blocks.
+Combining with \eqref{eq:four-kernel-lift}, the limiting scalar is
+\begin{equation}
+ C_{4,D}(a)=\frac{(1+a)(1+2a)^{D+1}}{a^2}.
+\end{equation}
+At $D=16,a=1/16$, this equals $272(9/8)^{17}=2014.47455\ldots<2100$.
+All constants and thresholds were obtained before the many-body lift and
+are independent of total particle number.
+\end{proof}
+
+\section{Frozen finite certificate and its exact verification}
+We use rows with net orbital weight $t\in\{0,1,2,3\}$,
+\begin{equation}\label{eq:rows}
+ F_\rho=\lambda_\rho B_{t_\rho}
+ +\sum_{\substack{p,j\ge0\\t_\rho\le p+j\le8}}
+ \alpha^\rho_{pj}a_{p+j-t_\rho}^\dagger a_jB_p.
+\end{equation}
+All coefficients are fixed real algebraic numbers, independent of $Q,N$.
+They are defined exactly by the companion file
+\path{exact_shifted_certificate_rows.json}, as specified below. The four
+channels contain $31,37,36,34$ rows, respectively, totaling $138$.
+Set
+\begin{equation}
+ K_Q=(2Q+1)\int\sum_\rho F_\rho(g)^\dagger F_\rho(g)\,dg
+ =\eta H_Q+K_{3,Q}+K_{4,Q}\ge0,\qquad
+ \eta=\sum_\rho\lambda_\rho^2.
+\end{equation}
+Haar measure has mass one. Normal ordering terminates at body order four.
+Here $g\in SU(2)$ and $F_\rho(g)=U(g)F_\rho U(g)^\dagger$, with $U(g)$
+the rotation representation on the direct sum of all particle sectors.
+Before averaging, the three-body coefficient has orbital-weight support at
+most $8$, and the four-body coefficient at most $16$. After $SU(2)$
+averaging their spin-deficit supports are $z\le8$ and $z\le16$, because
+an irrep of deficit $z$ contains no orbital-weight space $M<z$.
+The averaged comparison coefficients extend over all descendants of the retained
+irreps; $H_Q$ remains untruncated.
+Suppress the row index and put $i=p+j-t$, $i'=p'+j'-t$. For a real row, its unaveraged
+normal-ordered terms beyond $\lambda^2B_t^\dagger B_t$ are
+\begin{align}
+ K_3^{\rm row}
+ &=\lambda\sum_{p,j}\alpha_{pj}
+    (B_t^\dagger a_i^\dagger a_jB_p+\mathrm{h.c.})\notag\\
+ &\quad+\sum_{p,j,p',j'}\alpha_{pj}\alpha_{p'j'}\delta_{ii'}
+     B_p^\dagger a_j^\dagger a_{j'}B_{p'},\notag\\
+ K_4^{\rm row}
+ &=\sum_{p,j,p',j'}\alpha_{pj}\alpha_{p'j'}
+     B_p^\dagger a_j^\dagger a_{i'}^\dagger a_i a_{j'}B_{p'}.
+ \label{eq:normal-rows-audit}
+\end{align}
+The three-body weights are $p+j\le8$ and the four-body weights are
+$(p+j)+(p'+j')-t\le16$. Every term retains a pair annihilator on the right
+and a pair creator on the left. These are exact CCR identities on each sphere.
+
+Let $\mathsf K_{r,Q}$ denote the physical $r$-particle coefficient whose
+lift is $K_{r,Q}$. Let
+$\mathsf S_{3,Q}=H_{3,Q}^2-H_{3,Q}$ and let $\mathsf S_{4,Q}$ be the
+physical four-body coefficient of $S_{4,Q}$. Define
+\begin{align}
+ E_{3,Q}&=\Pi^{(3)}_{\le8,Q}\mathsf S_{3,Q}\Pi^{(3)}_{\le8,Q}
+                    -\mathsf K_{3,Q},\notag\\
+ E_{4,Q}&=\Pi^{(4)}_{\le16,Q}
+  \big[(1-c_9-\mu)\mathsf S_{4,Q}-\mathsf K_{4,Q}\big]
+                  \Pi^{(4)}_{\le16,Q},\label{eq:finiteE}\\
+ c_9&=30(5/9)^9=\frac{19531250}{129140163},\qquad \mu=\frac1{50}.
+\end{align}
+Outside the four-body cutoff the comparison coefficient is a
+positive multiple of $\mathsf S_{4,Q}$.
+
+The finite certificate is evaluated in planar limiting relative blocks.
+If $L=\sum_{j\ge1}\sqrt j\,a_{j-1}^\dagger a_j$ on the $r$-particle
+space, then $[L,L^\dagger]=r$. A highest (relative) vector at degree $z$
+has $L\psi=0$, and its normalized degree-$M$ descendant is
+$(L^\dagger)^{M-z}\psi/\sqrt{r^{M-z}(M-z)!}$.
+Denote this isometric map from the relative highest-weight space to the
+degree-$M$ physical space by $U_{r,z}^{(M)}$. In the next formula,
+$\mathsf K_{r,M}$ is the unaveraged normal-ordered body coefficient
+restricted to total orbital degree $M$; the overbar denotes its averaged
+relative block.
+Schur averaging on the sphere, followed by the fixed-block limit, gives
+\begin{equation}\label{eq:average-formula}
+ \overline{\mathsf K}_{r,z}
+ =\frac2r\sum_{M\ge z}
+ (U_{r,z}^{(M)})^\dagger\mathsf K_{r,M}U_{r,z}^{(M)}.
+\end{equation}
+The sum is finite. The factor is
+$(2Q+1)/(rQ-2z+1)\to2/r$. This also follows from the oscillator
+center-of-mass partial trace. Two-body averaging is exactly $\eta H$.
+
+To make the verification entirely rational, introduce canonical polynomial
+operators
+\begin{equation}
+ x_j=\sqrt{j!}\,a_j^\dagger,\qquad \partial_j=a_j/\sqrt{j!}.
+\end{equation}
+They satisfy $[\partial_i,x_j]=\delta_{ij}$, but are not physical adjoints:
+$\partial_j^*=x_j/j!$ and $x_j^*=j!\partial_j$.
+For the unnormalized physical occupation basis
+$|A]_x=\prod_jx_j^{n_j}|0\rangle$, the metric is the positive integer
+$g_A=\prod_jn_j!(j!)^{n_j}$. On the plane,
+\begin{equation}
+ B_p=\kappa_p\widehat B_p,\qquad
+ \kappa_p^2=\frac{p!}{2^{p+1}},\qquad
+ \widehat B_p=\sum_{i+j=p}\partial_i\partial_j.
+\end{equation}
+The frozen JSON integers divided by $10^{12}$ define the scaled row
+coefficients
+\begin{equation}\label{eq:scaledrows}
+ y_0=\lambda\kappa_t,\qquad
+ y_{pj}=\alpha_{pj}\kappa_p\sqrt{j!/i!},\qquad i=p+j-t.
+\end{equation}
+Equations \eqref{eq:rows} and \eqref{eq:scaledrows} uniquely define the
+same fixed coefficients used on every sphere.
+
+For the finite verification,
+compute $F^*F$ in the $2,3,4$-particle sectors with the metric just given.
+Here $F^*F$ is summed over all rows, and $\mathcal L_r^N$ denotes
+$\mathcal L_r$ restricted to the physical $N$-particle sector.
+Extract the normal-ordered coefficients recursively:
+\begin{align}
+ \mathsf K_2&=(F^*F)|_{N=2},\notag\\
+ \mathsf K_3&=(F^*F)|_{N=3}-\mathcal L_2^3(\mathsf K_2),\notag\\
+ \mathsf K_4&=(F^*F)|_{N=4}-\mathcal L_2^4(\mathsf K_2)
+                                      -\mathcal L_3^4(\mathsf K_3).
+\end{align}
+The coefficient at body order $r$ is recovered because its normalized lift
+restricts to itself on $r$ particles. There are no higher body orders in
+$F^*F$. The integer CM operators are
+$L=\sum_{j\ge1}j x_{j-1}\partial_j$ and
+$L^\dagger=\sum_{j\ge0}x_{j+1}\partial_j$.
+Rational row reduction gives a highest-weight basis. To use
+\eqref{eq:average-formula} without square roots, use unnormalized descendants
+and divide their quadratic forms by $r^{M-z}(M-z)!$.
+
+With $\delta=10^{-6}$, the exact rational tests give
+\begin{equation}\label{eq:exactfinite}
+ E_{3,\infty}+\delta H_{3,\infty}\Pi^{(3)}_{\le8,\infty}\ge0,
+ \qquad
+ E_{4,\infty}+\delta H_{4,\infty}\Pi^{(4)}_{\le16,\infty}\ge0.
+\end{equation}
+All $9+17=26$ relative blocks were tested, including zero-dimensional ones.
+Positive-pivot rational Schur elimination establishes semidefiniteness;
+no floating eigenvalue tolerance enters. In every block the rank equals
+the rank of $H_r$, and the exact kernel of $H_r$ is preserved. Thus each
+shifted matrix is strictly positive on the physical image of $H_r$.
+The exact two-body cost is
+\begin{equation}\label{eq:eta}
+ \eta=\frac{764191703750823432978457}{1500000000000000000000000}
+       <\frac{51}{100}.
+\end{equation}
+The full rational pivots, ranks, and zero-kernel checks are in
+\path{exact_shifted_certificate_results.json}.
+
+Only three adjacent files are needed to replay the proof of
+\eqref{eq:exactfinite}: the frozen JSON rows,
+\path{exact_relative_blocks.py}, and
+\path{exact_shifted_certificate.py}. Running
+\begin{quote}\ttfamily python -S exact\_shifted\_certificate.py\end{quote}
+uses Python integers and
+\texttt{fractions.Fraction} to verify the frozen rows. The optional proposal
+mode is separate from the default verifier. The verifier returns a nonzero exit status on failure.
+
+\section{Transferring the finite certificate to spheres}
+Fix $r=3,4$ and $z\le16$. In the sphere weight-$z$ occupation basis, all
+pair coefficients and the rescaled raising/lowering matrices converge to
+their planar counterparts. For $Q\ge z$ the finite weight spaces have
+fixed dimensions. Dividing the spherical lowering operator by $\sqrt Q$
+gives $L^\dagger$ in the limit, and normalizing descendants gives
+\eqref{eq:average-formula}. The finite normal-order supports make this a
+finite sum for the certificate.
+
+The relevant zero spaces also have exactly stable dimensions. In the
+bosonic LLL, $H_{r,Q}\psi=0$ if and only if the polynomial vanishes at
+every pair coincidence. Symmetry makes this vanishing at least quadratic,
+so the polynomial is divisible by
+\begin{equation}
+ \Delta_r^2=\prod_{i<j}(u_iv_j-u_jv_i)^2.
+\end{equation}
+Conversely this divisibility annihilates every $V_0$ pair channel.
+The factor is an $SU(2)$ invariant and reduces each single-particle degree
+by $2(r-1)$. Let $p_r(z)$ count partitions of $z$ into at most $r$ parts,
+with $p_r(z)=0$ for $z<0$, and put $d_r(z)=p_r(z)-p_r(z-1)$.
+For $Q\ge z$, the relative physical dimension is $d_r(z)$ and the relative
+zero-space dimension is $d_r(z-r(r-1))$. Thus the active rank is exactly
+\begin{equation}\label{eq:stable-rank}
+ d_r(z)-d_r(z-r(r-1)),
+\end{equation}
+the same as on the plane.
+Indeed multiplication by $\Delta_r^2$ is an injective $SU(2)$ intertwiner
+from the residual symmetric polynomial space with single-particle degree
+$Q'=Q-2(r-1)$. It shifts total orbital degree by $r(r-1)$, while preserving
+total spin. If $z\ge r(r-1)$ and $Q\ge z$, the residual weight
+$z'=z-r(r-1)$ obeys $z'\le Q'$, so the orbital cap is inactive in both
+weight spaces used to compute the highest-weight multiplicity. If
+$z<r(r-1)$ there are no zero modes in this block.
+
+The unprojected normal-ordered coefficients defining $E_{3,Q},E_{4,Q}$
+have a pair annihilator on the right and a pair creator on the left.
+The spin projections preserve $\ker H_{r,Q}$ because $H_{r,Q}$ is
+rotationally invariant. Thus $E_{r,Q}$ annihilates this kernel exactly.
+The kernel may rotate with $Q$, but the ranks in
+\eqref{eq:stable-rank} are constant. Identify the highest spaces by convergent
+orthonormal frames. In one block write $H_Q,E_Q$ for the corresponding
+matrices, $P_Q$ for the orthogonal projection onto $\ran H_Q$, and
+$G_Q=E_Q+\delta H_Q$ with the planar allowance $\delta=10^{-6}$.
+Stable rank and norm convergence imply $P_Q\to P_\infty$: the positive
+spectrum of $H_\infty$ is separated from zero, and its spectral cluster
+projection is continuous; rank equality rules out additional small positive
+eigenvalues. Exact kernel preservation gives $G_Q=P_QG_QP_Q$.
+On any nonzero active block let $g>0$ be the least eigenvalue of
+$G_\infty$ restricted to $\ran H_\infty$, whose strict positivity was
+verified exactly. For a unit vector $x\in\ran H_Q$,
+\begin{equation}\label{eq:transfer-margin}
+ \langle x,G_Qx\rangle
+ \ge g\left(1-\|P_Q-P_\infty\|^2\right)
+       -\|G_Q-G_\infty\|.
+\end{equation}
+This follows from $G_\infty\ge gP_\infty$ and
+$\|(I-P_\infty)x\|\le\|P_Q-P_\infty\|$.
+For all sufficiently large $Q$, both norms are small enough to make the
+right side positive. A zero-rank block is identically zero by kernel
+preservation. Thus $G_Q\ge0$ on the entire block, including its rotating
+zero space.
+In particular the following slightly weaker bounds hold with a fixed allowance
+$\delta_Q=2\times10^{-6}$:
+\begin{equation}\label{eq:sphere-head}
+ E_{3,Q}\ge-\delta_QH_{3,Q}\Pi^{(3)}_{\le8,Q},\qquad
+ E_{4,Q}\ge-\delta_QH_{4,Q}\Pi^{(4)}_{\le16,Q}.
+\end{equation}
+There are only finitely many blocks. The threshold depends on their
+matrices and the fixed certificate and is uniform in the total particle number
+to which these inequalities are lifted. Appendix~\ref{sec:explicit-head}
+gives a quantitative proof using exact polynomial coordinates and an
+additional finite planar half-gap check; it establishes these same
+inequalities for every integer $Q\ge10^{50}$.
+
+\section{The resulting Fock-space inequality}
+\begin{theorem}\label{thm:gap}
+For the full spherical bosonic $V_0$ interaction with coefficient one per
+unordered pair projector, the explicit integer threshold $Q_0=3088$
+works independently of particle number:
+\begin{equation}\label{eq:gap}
+ H_Q^2\ge\frac13H_Q\qquad(Q\ge Q_0)
+\end{equation}
+on the entire bosonic LLL Fock space, as a quadratic-form inequality.
+For $Q=2(N-1)\ge Q_0$,
+\begin{equation}
+ H_{N,Q}\ge\frac13(I-P_{\mathrm L,N}),
+\end{equation}
+where $P_{\mathrm L,N}$ projects onto the normalized bosonic Laughlin state.
+The plane interaction also satisfies $H^2\ge H/3$ on every particle sector.
+\end{theorem}
+\begin{proof}
+For $Q\ge3088$, select a row of Table~\ref{tab:optimized-budget}
+whose flux interval contains $Q$. Write $L_3,L_4$ for its two exact
+rational error budgets and $g$ for its tail improvement. The row ending
+at a finite flux $q_+$ uses $g=391/(100q_+)$; the last row uses $g=0$.
+Put $\nu=10^{-10}$ and retain $\mu=1/50$.
+
+Appendix~\ref{app:optimized-thresholds} supplies a direct certificate on
+the entire parameter interval $0\le1/Q\le1/q_-$ for each row, where $q_-$
+is its lower endpoint. Its comparison error in spin block $z$ is the exact
+rational allowance $\delta_{r,z}=L_r/\overline C_{r,z}(q_-)$.
+The degree-resolved coherent comparison in
+Appendix~\ref{app:optimized-coherent} absorbs these errors with cost
+$L_3(S_{4,Q}+H_Q)$ and $L_4(2S_{4,Q}+H_Q)$, respectively.
+The common positive coherent kernel dominates all its orthogonal spin
+blocks, so the cost is the maximum over $z$. Outside the retained blocks, the only negative contribution
+is the three-body tail. Thus the positive lifts obey
+\begin{align}
+ S_{3,Q}-K_{3,Q}&\ge-L_3(S_{4,Q}+H_Q)-T_{9,Q},\notag\\
+ (1-c_9-\mu)S_{4,Q}-K_{4,Q}&\ge-L_4(2S_{4,Q}+H_Q).
+\end{align}
+The exact tail improvement, valid for all $Q\ge3000$, is
+\begin{equation}
+ T_{9,Q}\le(c_9+\nu-391/(100Q))(S_{4,Q}+H_Q)
+          \le(c_9+\nu-g)(S_{4,Q}+H_Q).
+\end{equation}
+For the last flux interval the second inequality follows by dropping the
+negative correction. Substituting into $H_Q^2=H_Q+S_{3,Q}+S_{4,Q}$ and
+$K_Q=\eta H_Q+K_{3,Q}+K_{4,Q}$ gives
+\begin{align}
+ H_Q^2&\ge K_Q+A H_Q+B S_{4,Q},\label{eq:finalbudget}\\
+ A&=1-\eta-c_9-\nu+g-L_3-L_4,\notag\\
+ B&=\mu-\nu+g-L_3-2L_4.\notag
+\end{align}
+For every table row, exact rational comparison gives $A>1/3$ and
+$B>1/100$. The smallest margin $A-1/3$ is greater than
+$42/10^8$. Since $K_Q,S_{4,Q}\ge0$, this proves \eqref{eq:gap}.
+Every estimate is on fixed few-body coefficients before the positive
+many-body lift, so the flux threshold is independent of total $N$.
+
+At flux $Q=2(N-1)$ the zero-mode factor $\Delta_N^2$ exhausts the
+single-particle degree, so the residual symmetric polynomial is constant.
+The kernel is therefore the one-dimensional Laughlin line, and the claimed
+ground-state gap follows by spectral calculus. In particle sectors with
+no zero mode, \eqref{eq:gap} means that the spectrum avoids $(0,1/3)$;
+it does not assert the spacing between the two lowest positive levels.
+
+Finally fix a plane particle number and total orbital degree. For all large
+$Q$ that complete finite-dimensional sector embeds into the sphere sector
+and its Hamiltonian matrices converge to the plane matrices. Passing
+\eqref{eq:gap} to this finite-matrix limit gives the same constant.
+The direct sum over all degree sectors and then all particle numbers proves
+the plane form inequality.
+\end{proof}
+
+\section{Reproducibility and scope}
+The frozen certificate was replayed in a fresh Python process with site
+packages disabled. All 26 blocks passed the exact matrix, rank, and kernel
+checks.
+An independent implementation reconstructing normalized occupation-space
+operators from the frozen rows agreed with the exact two-body cost and all
+blocks. Separate checks verified the lift normalization
+$\mathcal L_r^N(I)=\binom NrI$, normal ordering through five-particle
+sectors, CM descendant metrics, and the finite-$Q$ recoupling formula.
+The coherent-frame constants and their normalizations were also
+cross-checked.
+
+A separate implementation reconstructed the four-body auxiliary kernel
+directly from the total raising matrix. For $a=1/16$, all
+descendants contributing to the pair-north Schur sum were included at
+$Q=32,64,128$, for $z=0,1,2,4,8,16$. At $z=16$ the smallest eigenvalues
+were respectively $0.101477757$, $0.114709929$, and $0.120986698$,
+approaching the predicted limit $0.127080285$. Setting the coherent weight
+exponent to zero recovered the identity frame with maximum residual
+$1.1\times10^{-13}$. Tensor--Fock normalization and the coherent double
+integral were also checked independently. These checks used
+floating-point arithmetic.
+
+Separately, the frozen rows were evaluated with the actual spherical pair
+coefficients and normalized $SU(2)$ descendants. For each retained block
+define the energy-relative residual
+\begin{equation}
+ e_{r,z,Q}:=\lambda_{\min}\!\left[
+ H_{r,z,Q}^{-1/2}E_{r,z,Q}H_{r,z,Q}^{-1/2}
+ \big|_{\ran H_{r,z,Q}}\right],
+\end{equation}
+where $H_{r,z,Q}$ and $E_{r,z,Q}$ are the block restrictions and the inverse
+acts only on the positive image of $H_{r,z,Q}$. In double precision,
+the minimum over all retained nonzero blocks was
+\begin{center}
+\begin{tabular}{rl}
+\toprule
+$Q$ & $\min_{r,z}e_{r,z,Q}$\\
+\midrule
+$10^3$ & $-7.42874\times10^{-4}$\\
+$10^5$ & $-6.94088\times10^{-6}$\\
+$10^7$ & $-3.58164\times10^{-7}$\\
+$10^9$ & $-3.58164\times10^{-7}$\\
+Plane & $-3.58164\times10^{-7}$\\
+\bottomrule
+\end{tabular}
+\end{center}
+Kernel and descendant-metric residuals were below $1.1\times10^{-15}$ and
+$1.8\times10^{-15}$, respectively. The frozen head certificate therefore
+does not numerically fit the chosen allowance $2\times10^{-6}$ at $Q=10^5$;
+it does at the two larger sampled fluxes. The original conservative
+threshold in Appendix~\ref{app:explicit-thresholds} follows from uniform
+analytic estimates and exact rational comparisons.
+
+The verifier requires the shifted matrix to be positive semidefinite,
+to annihilate the Hamiltonian kernel, and to have the same rank as the
+Hamiltonian. The frozen rows pass all three checks.
+
+This candidate proof is accompanied by the finite data and a replayable
+checker. It has not been checked by an external referee or
+formalized in a proof assistant. The explicit sufficient threshold
+$Q_0=3088$ follows from the interval certificates and exact budgets in
+Appendix~\ref{app:optimized-thresholds}. No optimality is claimed for this
+threshold, which does not locate an onset of the physical gap. At Laughlin flux this sufficient
+range starts at $N=1545$. The result concerns the complete projected LLL
+interaction on the round sphere and its planar limit.
+
+\paragraph{Source.}
+The Fock-space comparison is adapted from OpenAI~\cite{OpenAI2026},
+which treats the fermionic $V_1$ interaction. The bosonic coherent-error
+bounds and frozen rows used here are given above.
+
+\appendix
+\section{The original conservative threshold}\label{app:explicit-thresholds}
+This appendix gives the original conservative bound $10^{50}$;
+Appendix~\ref{app:optimized-thresholds} gives the current threshold $3088$.
+The original argument assigns an explicit sufficient threshold to each
+large-$Q$ step in the gap inequality.
+ All comparisons are made on fixed few-body spaces before positive
+lifting, so their thresholds are uniform in the eventual particle number.
+The three thresholds are
+\begin{center}
+\begin{tabular}{lr}
+\toprule
+Ingredient & Sufficient integer flux\\
+\midrule
+Negative three-body tail with allowance $1/2000$ & $Q\ge10^7$\\
+Finite coherent comparison bounds $35,2100$ & $Q\ge10^{50}$\\
+Frozen head certificate with allowance $2\times10^{-6}$ & $Q\ge10^{50}$\\
+\bottomrule
+\end{tabular}
+\end{center}
+Their common sufficient threshold is therefore $Q_0=10^{50}$. This
+value comes from the loose norm estimates below. The command
+\begin{quote}\ttfamily python -S verify\_explicit\_threshold.py\end{quote}
+replays the frozen shifted certificate, the finite planar half-gap, and all
+scalar budgets using Python's standard library. The analytic
+identities and norm estimates in this appendix complete the argument.
+\subsection{An explicit threshold for the negative three-body tail}
+\label{app:explicit-tail}
+
+The following estimate replaces the existential threshold of
+Theorem~\ref{thm:sphere} at the values needed for the gap budget.
+
+\begin{lemma}\label{lem:explicit-tail}
+For every integer $Q\ge10^7$, with the full spherical pair Hamiltonian
+normalized as in Section~1,
+\begin{equation}\label{eq:explicit-tail-result}
+ T_{9,Q}\le\left(c_9+\frac1{2000}\right)(S_{4,Q}+H_Q),
+ \qquad c_9=30\left(\frac59\right)^9
+             =\frac{19531250}{129140163}.
+\end{equation}
+\end{lemma}
+\begin{proof}
+Put
+\begin{equation}\label{eq:explicit-tail-parameters}
+ a=\frac2{27},\qquad M=\lfloor aQ\rfloor,\qquad
+ r=\frac9{10},\qquad t=\frac9{29},\qquad \rho=\frac{29}{36}.
+\end{equation}
+On the auxiliary space $V_Q\otimes U_Q$, write $\Pi_z$ for the
+orthogonal spin-$(3Q/2-z)$ projection, $0\le z\le Q$. Recall the positive
+coherent operator
+\begin{equation}
+ A_{M,Q}=(2Q+1)(Q+1)\int d\Omega_\alpha d\Omega_\beta\,
+ s(\alpha,\beta)^M
+ |\alpha_{\rm pair}\rangle\langle\alpha_{\rm pair}|
+ \otimes|\beta\rangle\langle\beta|
+ =\sum_{z=0}^Q\tau_{z,Q}\Pi_z.
+\end{equation}
+Here each sphere measure has total mass one, the coherent vectors are
+normalized, and $s(\alpha,\beta)=\cos^2(\theta_{\alpha\beta}/2)$.
+The exact eigenvalue formula is
+\begin{align}
+ \tau_{z,Q}&=\frac{2Q+1}{3Q-2z+1}
+       \sum_{j=z}^Q b_{j,Q}\gamma_{z,j,Q},\label{eq:explicit-tail-tau}\\
+ b_{j,Q}&=\frac{Q+1}{M+Q+1}\frac{(Q)_j}{(M+Q)_j},\notag\\
+ \gamma_{z,j,Q}&=\frac{(2Q)_z}{(3Q-z+1)_z}
+       \binom jz\frac{(Q-z)_{j-z}}{(3Q-2z)_{j-z}}.\notag
+\end{align}
+The notation $(x)_k=x(x-1)\cdots(x-k+1)$ denotes a descending factorial,
+with $(x)_0=1$. Every term in this sum is nonnegative, and the $j=z$
+term is positive.
+
+We first bound the finite set $0\le z\le32$ by retaining $j\le100$.
+For integers $0\le z\le j\le100$, define
+\begin{equation}
+ \ell_{z,j}:=\left(\frac23\right)^{z+1}(1+a)^{-j-1}
+       \binom jz\left(\frac13\right)^{j-z}
+       =2^{z+1}\binom jz t^{j+1}.
+\end{equation}
+For $Q\ge100$, the $j$th summand in
+\eqref{eq:explicit-tail-tau}, including the factor outside the sum, is at
+least $\ell_{z,j}P_{z,j,Q}$, where
+\begin{equation}\label{eq:explicit-tail-products}
+ P_{z,j,Q}=
+ \prod_{i=0}^{j-1}\left(1-\frac iQ\right)
+ \prod_{i=0}^{z-1}\left(1-\frac i{2Q}\right)
+ \prod_{i=z}^{j-1}\left(1-\frac iQ\right).
+\end{equation}
+To see this factor by factor, use
+\begin{equation}
+ \frac{2Q+1}{3Q-2z+1}\ge\frac23,\qquad
+ \frac{Q+1}{M+Q+1}\ge\frac1{1+a},\qquad
+ \frac{Q-i}{M+Q-i}\ge\frac{1-i/Q}{1+a}.
+\end{equation}
+For $0\le i<z$ and $z\ge1$,
+$(2Q-i)/(3Q-z+1-i)\ge(2/3)(1-i/(2Q))$;
+for $z=0$ this product is empty. For $0\le i<j-z$,
+$(Q-z-i)/(3Q-2z-i)\ge(1/3)(1-(z+i)/Q)$.
+All denominators are positive in the stated range. These inequalities
+prove~\eqref{eq:explicit-tail-products}.
+
+Every factor in that product belongs to $[0,1]$. The elementary inequality
+$\prod_k(1-u_k)\ge1-\sum_k u_k$ for $0\le u_k\le1$, proved by induction,
+therefore gives
+\begin{equation}
+ P_{z,j,Q}\ge
+ 1-\frac{j(j-1)-z(z-1)/4}{Q}\ge1-\frac{9900}{Q}.
+\end{equation}
+Consequently, for $0\le z\le32$ and $Q\ge100$,
+\begin{equation}\label{eq:explicit-tail-truncated}
+ \tau_{z,Q}\ge\left(1-\frac{9900}{Q}\right)
+                        \sum_{j=z}^{100}\ell_{z,j}.
+\end{equation}
+
+The binomial-series identity, with $0<t<1$, evaluates the full positive sum:
+\begin{equation}
+ \sum_{j=z}^{\infty}\ell_{z,j}
+ =\left(\frac{2t}{1-t}\right)^{z+1}=r^{z+1}.
+\end{equation}
+Since $\binom jz\le2^j$ and $2t<1$, its omitted part has the uniform
+relative bound
+\begin{align}
+ r^{-z-1}\sum_{j=101}^{\infty}\ell_{z,j}
+ &\le\left(\frac2r\right)^{z+1}
+       \frac{t}{1-2t}(2t)^{101}\notag\\
+ &\le\left(\frac{20}{9}\right)^{33}
+       \frac9{11}\left(\frac{18}{29}\right)^{101}
+ \le\frac1{1000},\qquad 0\le z\le32.
+ \label{eq:explicit-tail-series-check}
+\end{align}
+The checker specified below verifies the last rational inequality exactly.
+For every $Q\ge10^7$, $9900/Q\le1/1000$. Thus
+\eqref{eq:explicit-tail-truncated}--\eqref{eq:explicit-tail-series-check}
+imply
+\begin{equation}\label{eq:explicit-tail-low-z}
+ \tau_{z,Q}\ge\left(\frac{999}{1000}\right)^2r^{z+1}
+             \ge\frac{499}{500}r^{z+1},\qquad 0\le z\le32.
+\end{equation}
+Since $(Q-i)/(2Q-i)\le1/2$ for $0\le i<z\le Q$,
+$f_{z,Q}=(Q)_z/(2Q)_z\le2^{-z}$. Define
+\begin{equation}
+ A_*:=\frac2r\left(\frac1{2r}\right)^9
+     =\frac{20}{9}\left(\frac59\right)^9=ac_9.
+\end{equation}
+Since $1/(2r)=5/9<1$, \eqref{eq:explicit-tail-low-z} gives
+\begin{equation}\label{eq:explicit-tail-ratio-low}
+ \frac{2f_{z,Q}}{\tau_{z,Q}}\le\frac{500}{499}A_*,
+ \qquad 9\le z\le32.
+\end{equation}
+
+The remaining range is controlled without any expansion in $z/Q$.
+Keeping only the $j=z$ term in~\eqref{eq:explicit-tail-tau} gives
+\begin{align}
+ \frac{2f_{z,Q}}{\tau_{z,Q}}
+ &\le2\frac{3Q-2z+1}{2Q+1}\frac{M+Q+1}{Q+1}
+ \prod_{i=0}^{z-1}
+ \frac{(M+Q-i)(3Q-z+1-i)}{(2Q-i)^2}\notag\\
+ &\le3(1+a)\rho^z.\label{eq:explicit-tail-coarse}
+\end{align}
+For the last inequality the prefactor is at most $3(1+a)$.
+With $x=i/Q\in[0,1)$, each product factor is bounded by
+\begin{equation}
+ \frac{(1+a-x)(3-2x)}{(2-x)^2}\le\frac{3(1+a)}4=\rho.
+\end{equation}
+After multiplication by the positive denominator, the difference is
+$x[(8-4a)-(5-3a)x]/4\ge0$. The second finite rational comparison is
+\begin{equation}\label{eq:explicit-tail-coarse-check}
+ 3\frac{29}{27}\left(\frac{29}{36}\right)^{33}\le A_*.
+\end{equation}
+Since $0<\rho<1$, this proves $2f_{z,Q}/\tau_{z,Q}\le A_*$ for
+every $33\le z\le Q$. In conjunction with
+\eqref{eq:explicit-tail-ratio-low}, it gives the whole-space inequality
+\begin{equation}
+ C_{9,Q}=2\sum_{\substack{9\le z\le Q\\z\text{ odd}}}
+                       f_{z,Q}\Pi_z
+ \le\frac{500}{499}A_* A_{M,Q},\qquad Q\ge10^7.
+\end{equation}
+
+Apply the positive map $X\mapsto\mathcal L_3(W_3XW_3^\dagger)$.
+The exact coherent marginal and pair frame give
+\begin{equation}
+ \mathcal L_3(W_3A_{M,Q}W_3^\dagger)
+ \le\frac{Q+1}{M+1}(S_{4,Q}+H_Q).
+\end{equation}
+Because $M+1>aQ$, for $Q\ge1000$,
+\begin{equation}
+ \frac{Q+1}{M+1}\le\frac1a\left(1+\frac1Q\right)
+                    \le\frac1a\frac{1001}{1000}.
+\end{equation}
+Using $A_*=ac_9$, the resulting coefficient is at most
+$(1001/998)c_9$. Its exact distance below the coefficient in
+\eqref{eq:explicit-tail-result} is
+\begin{equation}\label{eq:explicit-tail-budget-check}
+ c_9+\frac1{2000}-\frac{1001}{998}c_9
+ =\frac{1949063779}{42960627558000}>0.
+\end{equation}
+This proves the claim for every integer $Q\ge10^7$.
+\end{proof}
+
+The comparisons in
+\eqref{eq:explicit-tail-series-check},
+\eqref{eq:explicit-tail-coarse-check}, and
+\eqref{eq:explicit-tail-budget-check}, together with the parameter identities
+and threshold inequalities, are replayed using integers and
+\texttt{fractions.Fraction} by
+\path{verify_explicit_tail_threshold.py} with Python's \texttt{-S} flag.
+The same argument also permits $Q\ge9900000$; the rounded threshold $10^7$
+is used for simplicity.
+
+\subsection{An explicit threshold for the coherent comparison bounds}
+\label{app:explicit-coherent-threshold}
+
+We make the coherent comparison bounds of Lemma~\ref{lem:finite-errors}
+quantitative, independently of the finite certificate.
+
+\begin{lemma}\label{lem:explicit-coherent-threshold}
+For every integer $Q\ge10^{50}$, on every particle-number sector,
+\begin{equation}
+ \mathcal R_{3,8,Q}\le35(S_{4,Q}+H_Q),\qquad
+ \mathcal R_{4,16,Q}\le2100(2S_{4,Q}+H_Q).
+\end{equation}
+\end{lemma}
+\begin{proof}
+Put $r\in\{3,4\}$ and $h=r-2$. The auxiliary spin space is
+$V_Q\otimes\Sym^hU_Q$: it contains the maximal-spin pair and $h$
+spectators, symmetrized only among themselves. Introduce an auxiliary
+oscillator space with pair mode $u$ and spectator modes
+$v_1,\ldots,v_h$, restricted to spectator symmetry. Its degree-$l$
+subspace has normalized occupation labels $(p;j_1,\ldots,j_h)$ with
+$p+\sum_sj_s=l$. At $l\le Q$ these labels identify its orthonormal basis
+with the spherical auxiliary weight-$l$ basis. All finite-weight matrix
+norms below use this unitary identification.
+
+Define the center-of-mass annihilator
+$a_\zeta=(\sqrt2a_u+\sum_sa_{v_s})/\sqrt r$. For $z\le16$, let
+$F_{z,\infty}$ be an isometric frame from a fixed multiplicity coordinate
+space onto the degree-$z$ kernel of $a_\zeta$. Its dimension is one for
+$r=3$, and $\lfloor z/2\rfloor+1$ for $r=4$. We need only $z\le8$
+when $r=3$. On degree $l$, define the positive diagonal matrix
+\begin{equation}\label{eq:explicit-coh-D}
+ D_{Q,l}(p;j_1,\ldots,j_h)
+ =\sqrt{\frac{\fall{2Q}p}{(2Q)^p}}
+       \prod_{s=1}^h\sqrt{\frac{\fall Q{j_s}}{Q^{j_s}}}.
+\end{equation}
+It preserves spectator symmetry. With $J_\pm$ the total auxiliary spin
+raising and lowering operators, the exact matrix identity is
+\begin{equation}\label{eq:explicit-coh-raising}
+ \frac{J_+}{\sqrt Q}
+ =D_{Q,l-1}^{-1}(\sqrt r\,a_\zeta)D_{Q,l}.
+\end{equation}
+Indeed, the spin raising coefficient for a factor of capacity $cQ$ is
+$\sqrt{j(cQ-j+1)}$, where $c=2$ for the pair and $c=1$ for a
+spectator; consecutive entries in \eqref{eq:explicit-coh-D} have ratio
+$\sqrt{1-(j-1)/(cQ)}$. Thus $D_{Q,z}^{-1}$ maps the oscillator highest
+space bijectively onto the spherical highest space. Normalize that map:
+\begin{equation}
+ V_{z,Q}=D_{Q,z}^{-1}F_{z,\infty},\qquad
+ G_{z,Q}=V_{z,Q}^\dagger V_{z,Q},\qquad
+ F_{z,Q}=V_{z,Q}G_{z,Q}^{-1/2}.
+\end{equation}
+Here $G_{z,Q}$ acts in the fixed multiplicity coordinate space.
+For $z\le16$, the inequality
+$\prod_i(1-x_i)\ge1-\sum_ix_i$, for $x_i\in[0,1]$, gives
+\begin{equation}
+ (1-128/Q)I\le D_{Q,z}^2\le I.
+\end{equation}
+The sum of the factors $i/(cQ)$ is at most
+$z(z-1)/(2Q)\le120/Q$. For $Q\ge256$ this implies
+\begin{equation}\label{eq:explicit-coh-highest-error}
+ \|D_{Q,z}^{-1}-I\|\le256/Q,\qquad
+ \|G_{z,Q}^{-1/2}-I\|\le256/Q,\qquad
+ \|F_{z,Q}-F_{z,\infty}\|\le512/Q.
+\end{equation}
+For the middle estimate, use
+$I\le G_{z,Q}\le(1-128/Q)^{-1}I$ and functional calculus.
+The last estimate follows by adding and subtracting
+$F_{z,\infty}G_{z,Q}^{-1/2}$.
+
+We next compare normalized descendants through $K=1024$; set $B=4096$.
+All retained weights obey $z+n\le1040<B$. Define isometries from the
+multiplicity coordinate space to degree $z+n$ by
+\begin{equation}
+ X_{z,n,Q}=\frac{J_-^nF_{z,Q}}
+  {\sqrt{n!\fall{rQ-2z}n}},\qquad
+ X_{z,n,\infty}=\frac{(a_\zeta^\dagger)^nF_{z,\infty}}{\sqrt{n!}}.
+\end{equation}
+The first normalization is the exact spin-$rQ/2-z$ ladder
+normalization. The second is isometric because the highest vectors have
+center-of-mass occupation zero. On weight $l=z+n$, set
+$T_Q=J_-/\sqrt Q$ and $T_\infty=\sqrt r\,a_\zeta^\dagger$.
+The respective step maps $X_{z,n+1}=C_{z,n}X_{z,n}$ are
+\begin{equation}\label{eq:explicit-coh-step}
+ C_{z,n,Q}=\frac{T_Q}{\sqrt{r(n+1)}\sqrt{1-x_{z,n,Q}}},\qquad
+ C_{z,n,\infty}=\frac{T_\infty}{\sqrt{r(n+1)}},\qquad
+ x_{z,n,Q}=\frac{2z+n}{rQ}.
+\end{equation}
+In the occupation basis $T_Q$ has nonnegative entries bounded entrywise
+by those of $T_\infty$: each one-mode coefficient acquires a factor
+$\sqrt{1-i/(cQ)}\le1$. For such matrices,
+$|T_Qv|\le T_\infty|v|$ componentwise, which implies the norm bound.
+Since $\|T_\infty\|=\sqrt{r(l+1)}$ on degree $l$,
+\begin{equation}\label{eq:explicit-coh-step-norm}
+ \|C_{z,n,Q}\|
+ \le\sqrt{\frac{z+n+1}{n+1}}(1-x_{z,n,Q})^{-1/2}.
+\end{equation}
+For $Q\ge2^{24}$, the elementary inequality
+$1-\sqrt{1-y}\le y$ bounds the sum of the one-mode differences by
+$\|T_Q-T_\infty\|\le3B^{3/2}/Q$.
+Using $(1-x)^{-1/2}\le2$, $(1-x)^{-1/2}-1\le2x$ for $0\le x\le1/2$,
+and $\|C_{z,n,\infty}\|\le\sqrt{17}<5$, gives
+\begin{equation}\label{eq:explicit-coh-step-error}
+ \|C_{z,n,Q}-C_{z,n,\infty}\|
+ \le\frac{6B^{3/2}+10B}{Q}<\frac{2^{22}}Q.
+\end{equation}
+To control accumulated errors, for $0\le s\le n\le K$ the factors in
+\eqref{eq:explicit-coh-step-norm} telescope:
+\begin{equation}
+ \prod_{t=s}^{n-1}\sqrt{\frac{z+t+1}{t+1}}
+ =\sqrt{\frac{\binom{z+n}z}{\binom{z+s}z}}
+ \le(z+n)^{z/2}\le2^{88}.
+\end{equation}
+Empty products equal one, including the case $z=n=0$.
+Moreover,
+$\sum_{t=s}^{n-1}x_{z,t,Q}\le K(32+K)/(3Q)<2^{19}/Q\le1/32$.
+The product inequality used above therefore bounds the product of the
+curvature factors $(1-x_{z,t,Q})^{-1/2}$ by $2$.
+Every consecutive product of the finite-$Q$ step maps has norm at most
+$2^{89}$. Subtracting the two descendant recursions and unrolling them,
+\eqref{eq:explicit-coh-highest-error} and
+\eqref{eq:explicit-coh-step-error} now give
+\begin{equation}\label{eq:explicit-coh-descendant-error}
+ \|X_{z,n,Q}-X_{z,n,\infty}\|
+ \le\frac{2^{89}(512+K2^{22})}Q<\frac{2^{122}}Q,
+ \qquad 0\le n\le K.
+\end{equation}
+
+Take $a=1/12$ for $r=3$, and $a=1/16$ for $r=4$, with
+$M=\lfloor aQ\rfloor$. The one-spectator north-pole seed $R_Q$ has
+diagonal entries
+\begin{equation}
+ b_{j,Q}=\frac{Q+1}{M+Q+1}\prod_{i=0}^{j-1}\frac{Q-i}{M+Q-i},
+ \qquad b_{j,\infty}=(1+a)^{-j-1}.
+\end{equation}
+Write $M=aQ-e$, $0\le e<1$. For $j\le B$ and $Q\ge2^{24}$,
+\begin{equation}
+ \left|\frac{Q+1}{M+Q+1}-\frac1{1+a}\right|\le\frac2Q,
+ \quad
+ \left|\frac{Q-i}{M+Q-i}-\frac1{1+a}\right|
+ \le\frac{2(i+1)}Q.
+\end{equation}
+For the second estimate the difference has numerator $(e-ai)/Q$ and
+denominator $(1+a)[1+a-(e+i)/Q]\ge1/2$.
+All product factors lie in $[0,1]$, so telescoping the products gives
+$|b_{j,Q}-b_{j,\infty}|\le[2+j(j+1)]/Q<2^{26}/Q$.
+On degree $l$, define the pair-north seeds
+\begin{equation}
+ \Sigma_{Q,l}=\left[|0_u\rangle\langle0_u|
+          \otimes(R_Q^{\otimes h})_{\rm sym}\right]_l,
+ \qquad
+ \Sigma_{\infty,l}=\left[|0_u\rangle\langle0_u|
+          \otimes(R_\infty^{\otimes h})_{\rm sym}\right]_l.
+\end{equation}
+Brackets with subscript $l$ mean restriction to degree $l$.
+The symmetric spectator basis is orthonormal also for coincident
+occupations, so no extra combinatorial factor enters these diagonal
+operators. On the retained weights,
+\begin{equation}\label{eq:explicit-coh-seed-error}
+ \|\Sigma_{Q,l}-\Sigma_{\infty,l}\|\le2^{27}/Q,
+ \qquad \|\Sigma_{Q,l}\|,\|\Sigma_{\infty,l}\|\le1.
+\end{equation}
+For the remaining weights, $Q\ge2/a$ gives $M\ge aQ/2$ and hence
+$0\le b_{j,Q}\le(1+a/2)^{-j}$. For both choices of $a$, put $q=32/33$;
+then $(1+a/2)^{-1}\le q$, and the limiting seed obeys the same bound.
+The pair-north slice at degree $l$ has spectator degree $l$, giving
+\begin{equation}\label{eq:explicit-coh-seed-tail}
+ \|\Sigma_{Q,l}\|,\|\Sigma_{\infty,l}\|\le q^l.
+\end{equation}
+If the finite pair-north slice is absent, its seed is zero.
+
+The exact Schur formula for the spin-deficit-$z$ multiplicity matrix is
+\begin{equation}
+ A_{r,z,Q}=c_{r,z,Q}\sum_{n=0}^{rQ-2z}
+       X_{z,n,Q}^\dagger\Sigma_{Q,z+n}X_{z,n,Q},\qquad
+ c_{r,z,Q}=\frac{2Q+1}{rQ-2z+1}.
+\end{equation}
+The oscillator matrix $A_{r,z,\infty}$ is the same sum over $n\ge0$
+with the limiting frames and seeds, and $c_{r,z,\infty}=2/r$.
+This is the center-of-mass partial trace evaluated by the displacement
+twirl in the proof of Lemma~\ref{lem:finite-errors}.
+For $Q\ge2^{24}$ and $z\le16$,
+$c_{r,z,Q},c_{r,z,\infty}\le1$ and
+$|c_{r,z,Q}-c_{r,z,\infty}|\le32/Q$.
+Both descendant frames are isometries, so a compressed-seed difference
+is bounded by twice the frame error plus the seed error. Thus the
+truncated Schur sums differ by at most
+\begin{equation}
+ \frac{(K+1)(32+2^{27}+2^{123})}Q<\frac{2^{135}}Q.
+\end{equation}
+The sum of their omitted tails is, by
+\eqref{eq:explicit-coh-seed-tail}, at most
+$2q^{K+1}/(1-q)=66(32/33)^{1025}$.
+The binomial theorem gives $(33/32)^{32}>2$, and therefore
+\begin{equation}\label{eq:explicit-coh-block-error}
+ \|A_{r,z,Q}-A_{r,z,\infty}\|
+ \le\frac{2^{135}}Q+66(32/33)^{1025}
+ <\frac{2^{135}}Q+\frac{66}{2^{32}}<10^{-6},
+ \qquad Q\ge10^{50}.
+\end{equation}
+This is uniform in the retained $z$ and all multiplicities.
+
+For $r=3$, the exact limiting eigenvalue is
+$[2/(2+3a)]^{z+1}$, whose minimum for $a=1/12$, $z\le8$ is
+$t_3=(8/9)^9$. For $r=4$, the eigenvalues are
+$(1+a)^{-n_1-1}(1+2a)^{-n_2-1}$, with $n_1+n_2=z$ and $n_1$ even;
+their minimum for $a=1/16$, $z\le16$ is
+$t_4=(16/17)(8/9)^{17}$. Put $\delta=10^{-6}$.
+Equation~\eqref{eq:explicit-coh-block-error}, invariance, and positivity
+outside the retained spin blocks imply the whole-space inequalities
+\begin{equation}
+ \Pi^{\rm aux}_{\le D,Q}\le(t_r-\delta)^{-1}A_{r,Q},
+ \qquad (r,D)=(3,8),(4,16).
+\end{equation}
+Here $A_{3,Q}=A_{M,Q}$ and $A_{4,Q}=A^{(4)}_{M,Q}$ are precisely the
+positive kernels of the preceding proofs. Compose with $W_r,W_r^\dagger$
+and use the positive lift and exact spectator marginals. Since
+$(Q+1)/(M+1)\le a^{-1}(1+1/Q)$ and
+$1+1/Q\le10001/10000$ for $Q\ge10^{50}$, the resulting coefficients
+are bounded by the exact rational numbers
+\begin{equation}
+ \frac{12(10001/10000)}{(8/9)^9-10^{-6}}<35,\qquad
+ \frac{256(10001/10000)^2}{(16/17)(8/9)^{17}-10^{-6}}<2100.
+\end{equation}
+All comparisons precede the many-body lift, so the threshold is
+independent of particle number. The companion verifier
+\path{check_explicit_coherent_threshold.py} checks the final rational
+inequalities and the integer bounds used in these constants exactly.
+\end{proof}
+
+\subsection{An explicit threshold for transferring the finite certificate}
+\label{sec:explicit-head}
+
+The estimates in this subsection give the uniform threshold
+$Q_{\rm head}=10^{50}$ for the finite comparison errors.
+They use an additional exact calculation on the finite planar
+relative spaces retained in the certificate:
+\begin{equation}\label{eq:planar-head-half-gap}
+ H_{r,\infty}^2-\tfrac12H_{r,\infty}\ge0
+ \quad\text{on relative degree }z\le D_r,
+ \qquad D_3=8,\quad D_4=16.
+\end{equation}
+The companion \path{exact_planar_head_gap.py} verifies all 26 rational
+quadratic forms and checks that each relative space is invariant under
+$H_{r,\infty}$. Since $H_{r,\infty}\ge0$, its nonzero eigenvalues on
+these finite spaces are therefore at least $1/2$. 
+Throughout this subsection $Q\ge1024$, and all norms are operator norms
+in normalized occupation coordinates.
+
+For $n\le4$ and total orbital weight $M\le16$, let $\mathcal W_{n,M}$
+be the finite coordinate Hilbert space with orthonormal basis indexed by
+partitions $A=(j_1,\ldots,j_n)$ with $\sum_i j_i=M$. These are complete
+fixed-weight physical spaces: the same labels identify the spherical and
+planar normalized occupation bases for $Q\ge16$. Define the invertible
+positive diagonal map $D_{n,M,Q}:\mathcal W_{n,M}\to\mathcal W_{n,M}$ by
+\begin{equation}\label{eq:head-diagonal-map}
+ D_{n,M,Q}|A\rangle=d_A|A\rangle,
+ \qquad d_A=\prod_{j\in A}\sqrt{\prod_{\ell=0}^{j-1}(1-\ell/Q)}.
+\end{equation}
+It converts normalized spherical coefficients to coefficients of the same
+polynomial in the planar monomial convention: after writing
+$x=\sqrt Q\,v/u$ and removing $u^Q$, the spherical orbital is
+$d_jx^j/\sqrt{j!}$. The map is not unitary. If $J_+$ decreases spherical
+orbital weight and $L$ is the planar CM lowering operator, direct action
+on the basis gives the exact identity
+\begin{equation}\label{eq:head-raising-conjugacy}
+ Q^{-1/2}J_+=D_{n,M-1,Q}^{-1}L D_{n,M,Q}.
+\end{equation}
+For the pair annihilator from $\mathcal W_{n,M}$ to
+$\mathcal W_{n-2,M-p}$, the exact Clebsch--Gordan coefficients similarly
+give
+\begin{equation}\label{eq:head-pair-conjugacy}
+ B_{p,Q}=e_{p,Q}^{-1}D_{n-2,M-p,Q}^{-1}
+ B_{p,\infty}D_{n,M,Q},\qquad
+ e_{p,Q}=\sqrt{\prod_{\ell=0}^{p-1}(1-\ell/(2Q))}.
+\end{equation}
+The zero-particle diagonal map is the identity.
+
+Fix $r,z$ in the retained ranges, and let
+$U:\mathbb C^m\to\mathcal W_{r,z}$ be any isometric frame for $\ker L$,
+where $m=\dim\ker L$. The map
+$V_{Q,0}=D_{r,z,Q}^{-1}U$ is an invertible frame onto the spherical
+highest-weight space, by \eqref{eq:head-raising-conjugacy}. Pullback by
+$V_{Q,0}$ is a congruence of quadratic forms. Equation
+\eqref{eq:head-pair-conjugacy} shows that their Hamiltonian kernel is the
+fixed subspace
+\begin{equation}\label{eq:head-fixed-kernel}
+ \mathcal N:=\ker(U^\dagger H_{r,\infty}U)
+ =\ker(V_{Q,0}^\dagger H_{r,Q}V_{Q,0})\subset\mathbb C^m.
+\end{equation}
+Indeed both kernels are the simultaneous kernels of all corresponding
+pair annihilators. The normal-ordered pair-sandwich structure of
+$\mathsf K_r$, and invariance of $\ker H_r$ under rotations and spin
+projections, imply that the congruent $E_r$ matrices also annihilate
+$\mathcal N$ exactly. Hermiticity then excludes matrix elements between
+$\mathcal N$ and $\mathcal N^\perp$.
+
+Since
+$\sum_{j\in A}j(j-1)/2\le120$ at weight at most 16, the elementary
+product inequality $\prod_i(1-x_i)\ge1-\sum_i x_i$ gives
+\begin{equation}\label{eq:head-D-bounds}
+ \|D-I\|\le120/Q,\qquad \|D^{-1}\|\le2,\qquad
+ \|D^{-1}-I\|\le240/Q,\qquad |e_p^{-1}-1|\le120/Q.
+\end{equation}
+Each pair interaction is a projector, so
+$0\le H_n\le\binom n2I\le6I$ and $\|B_p\|<3$ on either geometry.
+Subtracting $B_{p,\infty}$ from \eqref{eq:head-pair-conjugacy} and using
+\eqref{eq:head-D-bounds} therefore gives
+\begin{equation}\label{eq:head-pair-bound}
+ \|B_{p,Q}-B_{p,\infty}\|
+ \le\frac{120\cdot2\cdot3+240\cdot3+120\cdot3}{Q}
+ <\frac{2000}{Q},\qquad
+ \|H_Q-H_\infty\|<\frac{10^6}{Q}.
+\end{equation}
+The second estimate sums at most 17 pair channels. For the target
+$S_3=H_3^2-H_3$, its norm is at most 42 and its difference is at most
+$13\cdot10^6/Q$. For $S_4$ on weight $M$, set
+$T_p=B_{M-p}^{(2)}B_p^{(4)}$. There are at most 17 such terms,
+$\|T_p\|\le9$, and $\|T_{p,Q}-T_{p,\infty}\|\le12000/Q$.
+Thus, writing $\mathsf T_3=\mathsf S_3$ and
+$\mathsf T_4=(1-c_9-\mu)\mathsf S_4$, where $0<1-c_9-\mu<1$, the
+following common bounds hold:
+\begin{equation}\label{eq:head-target-bounds}
+ \|\mathsf T_{r,Q}\|,\|\mathsf T_{r,\infty}\|<2000,
+ \qquad
+ \|\mathsf T_{r,Q}-\mathsf T_{r,\infty}\|<10^8/Q.
+\end{equation}
+
+The frozen JSON has 138 rows, at most 46 coefficients in each row, and
+all its scaled coefficients $y$ have absolute value less than one. The
+scaling \eqref{eq:scaledrows}, with $p,j,i\le8$, yields
+$|\lambda|\le2$ and
+$|\alpha_{pj}|\le\sqrt{2^9\,8!}<5000$. On the output of a pair
+annihilator at most two particles remain, and
+$\|a_i^\dagger a_j\|\le2$ there. This last bound follows by expressing
+the operator as a sum of the single-particle operator
+$|i\rangle\langle j|$ in the remaining particle slots. Consequently
+\begin{equation}\label{eq:head-row-bounds}
+ \|F_Q\|,\|F_\infty\|<2\cdot10^6,\qquad
+ \|F_Q-F_\infty\|<10^9/Q.
+\end{equation}
+For $R_n=\sum_\rho F_\rho^\dagger F_\rho|_n$, these imply
+$\|R_n\|<10^{15}$ and $\|R_{n,Q}-R_{n,\infty}\|<10^{18}/Q$.
+The normalized $k$-body lift on $n$ particles is the sum over unordered
+$k$-particle subsets, hence has norm as a linear map on bounded operators
+at most $\binom nk$. It is the same map in matched occupation coordinates.
+For the Hermitian inputs needed here, this bound also follows directly
+from positivity and $\mathcal L_k^n(I)=\binom nk I$, applied to
+$-\|R\|I\le R\le\|R\|I$.
+Apply this to the recursive normal-order extraction of $\mathsf K_r$.
+The respective multipliers for $r=2,3,4$ are
+$1$, $1+3=4$, and $1+6+4\cdot4=23$. For every retained unaveraged
+body-weight matrix we therefore obtain
+\begin{equation}\label{eq:head-K-bounds}
+ \|\mathsf K_{r,M,Q}\|,\|\mathsf K_{r,M,\infty}\|<3\cdot10^{16},
+ \qquad
+ \|\mathsf K_{r,M,Q}-\mathsf K_{r,M,\infty}\|<3\cdot10^{19}/Q.
+\end{equation}
+Here body-weight matrices are extended by zero before applying a lift;
+the norm of their direct sum is their maximum norm.
+
+For $k=M-z$, define the descendant frames recursively by
+\begin{equation}\label{eq:head-descendant-recursion}
+ V_{Q,k}=T_{Q,k}V_{Q,k-1},\qquad
+ T_{Q,k}:=\frac{J_-/\sqrt Q}
+ {\sqrt{k[r-(2z+k-1)/Q]}}.
+\end{equation}
+Let $U_k$ be the analogous planar frame, starting at $U$ and replacing
+$T_{Q,k}$ by $T_{\infty,k}=L^\dagger/\sqrt{rk}$. The SU(2) ladder
+identity gives $V_{Q,k}^\dagger V_{Q,k}=V_{Q,0}^\dagger V_{Q,0}$
+exactly, so $\|V_{Q,k}\|\le2$, while $\|U_k\|=1$.
+On weight $M-1$, $\|L^\dagger\|\le\sqrt{rM}\le8$. Every nonnegative
+spherical matrix entry is the corresponding planar entry times
+$\sqrt{1-j/Q}$ for $j\le15$, giving
+$\|J_-/\sqrt Q-L^\dagger\|\le120/Q$ by entrywise domination.
+The inverse denominator in \eqref{eq:head-descendant-recursion} differs
+from $1/\sqrt{rk}$ by at most $11/Q$, since
+$(2z+k-1)/(rQ)\le31/(3Q)$. The resulting uniform bounds are
+\begin{equation}
+ \|T_{Q,k}\|\le16,\qquad
+ \|T_{Q,k}-T_{\infty,k}\|\le512/Q.
+\end{equation}
+With $\epsilon_k=\|V_{Q,k}-U_k\|$, we have
+$\epsilon_0\le240/Q$ and
+$\epsilon_k\le16\epsilon_{k-1}+512/Q$. Since $k\le16$,
+\begin{equation}\label{eq:head-descendant-bound}
+ \epsilon_k\le\frac{240\cdot16^{16}
+       +512(16^{16}-1)/15}{Q}<\frac{10^{22}}Q.
+\end{equation}
+
+The exact Schur factor is
+$f_Q=(2+1/Q)/(r+(1-2z)/Q)$; its limit is $f_\infty=2/r$.
+For the specified ranges, $0<f_Q\le1$ and
+$|f_Q-f_\infty|\le16/Q$. If a tilde denotes pullback of a relative
+quadratic form by $V_{Q,0}$, the averaged coefficient is exactly
+\begin{equation}\label{eq:head-Schur-pullback}
+ \widetilde{\mathsf K}_{r,z,Q}
+ =f_Q\sum_{M=z}^{D_r}
+ V_{Q,M-z}^\dagger\mathsf K_{r,M,Q}V_{Q,M-z}.
+\end{equation}
+This identity holds for the nonorthonormal highest frame because the
+normalized ladder maps preserve its Gram matrix. Combining
+\eqref{eq:head-K-bounds} and \eqref{eq:head-descendant-bound}, each
+summand differs from its planar counterpart by at most
+$[4(3\cdot10^{19})+3(3\cdot10^{16})10^{22}]/Q$.
+There are at most 17 summands, and the Schur-factor error contributes
+at most $16\cdot17\cdot3\cdot10^{16}/Q$. Hence
+\begin{equation}
+ \|\widetilde{\mathsf K}_{r,z,Q}
+       -\widetilde{\mathsf K}_{r,z,\infty}\|<10^{42}/Q.
+\end{equation}
+For the highest-frame targets, \eqref{eq:head-D-bounds} gives the bounds
+$[4\cdot10^8+3\cdot2000\cdot240]/Q<10^9/Q$ and
+$[4\cdot10^6+3\cdot6\cdot240]/Q<5\cdot10^6/Q$ for the target and
+Hamiltonian differences, respectively. Thus with $\delta=10^{-6}$ and
+$\widetilde F_Q:=\widetilde E_{r,z,Q}
+ +2\delta\widetilde H_{r,z,Q}$,
+\begin{equation}\label{eq:head-complete-perturbation}
+ \|\widetilde F_Q-\widetilde F_\infty\|\le10^{43}/Q.
+\end{equation}
+
+The frozen certificate \eqref{eq:exactfinite} and
+\eqref{eq:planar-head-half-gap} imply, on the fixed $\mathcal N^\perp$,
+\begin{equation}
+ \widetilde F_\infty
+ =(\widetilde E_\infty+\delta\widetilde H_\infty)
+   +\delta\widetilde H_\infty
+ \ge\frac\delta2 I=5\cdot10^{-7}I.
+\end{equation}
+At every integer $Q\ge10^{50}$, the error in
+\eqref{eq:head-complete-perturbation} is at most $10^{-7}$.
+The remaining margin on $\mathcal N^\perp$ is therefore at least
+$4\cdot10^{-7}$, while $\widetilde F_Q$ annihilates $\mathcal N$
+exactly. Congruence and rotational invariance give
+\begin{equation}\label{eq:explicit-head-result}
+ E_{r,Q}\ge-2\cdot10^{-6}H_{r,Q}\Pi^{(r)}_{\le D_r,Q},
+ \qquad r=3,4,\quad Q\ge10^{50}.
+\end{equation}
+The companion \path{explicit_head_threshold_checker.py} checks all scalar
+budgets with integers and fractions, validates the frozen row bounds, and
+independently recomputes the finite planar half-gap. The planar shifted
+certificate itself is replayed by \path{exact_shifted_certificate.py}.
+
+
+\section{The optimized threshold \texorpdfstring{$Q_0=3088$}{Q0=3088}}\label{app:optimized-thresholds}
+The frozen operator rows are unchanged. The optimized argument replaces
+the coarse perturbation norms of the previous appendix by direct interval
+certification and uses one coherent comparison coefficient for each
+retained spin deficit. The real kernel exponents have slopes
+$a_3=83/500$ and $a_4=43/500$. These parameters enter only the auxiliary
+coherent kernels.
+
+\begin{table}[ht]
+\centering\small
+\begin{tabular}{rrrrr}
+\toprule
+Flux interval & $L_3$ & $L_4$ & $A-1/3$ lower bound\\
+\midrule
+$[3088,3090]$ & $0.00442365$ & $0.00280612$ & $4.2\,10^{-7}$\\
+$[3090,3100]$ & $0.00442076$ & $0.00280405$ & $1.3\,10^{-6}$\\
+$[3100,3125]$ & $0.004409$   & $0.002802$   & $5.0\,10^{-6}$\\
+$[3125,3300]$ & $0.004373$   & $0.002776$   & $6.6\,10^{-7}$\\
+$[3300,4000]$ & $0.004139$   & $0.002610$   & $1.93\,10^{-4}$\\
+$[4000,\infty)$ & $0.003410$ & $0.002100$   & $4.54\,10^{-4}$\\
+\bottomrule
+\end{tabular}
+\caption{Exact terminating-decimal budgets. For finite upper endpoint
+$q_+$ use $g=391/(100q_+)$ in \eqref{eq:finalbudget}; the last row uses
+$g=0$. The displayed margin bounds are rounded down and are checked as
+rational inequalities. Every row has $B>1/100$.}
+\label{tab:optimized-budget}
+\end{table}
+
+For each lower endpoint $q_-$ the verifier computes
+$\delta_{r,z}=L_r/\overline C_{r,z}(q_-)$ exactly. The coefficient
+$\overline C$ is defined below and controls every $Q\ge q_-$.
+The head verification likewise covers the entire interval
+$0\le1/Q\le1/q_-$, including the plane endpoint. Restricting that already
+uniform statement to the row's flux interval permits the sharper tail
+budget. The overlapping intervals cover the full flux range.
+Six runs each contain all nine three-body and all seventeen four-body
+degree blocks, including zero-dimensional ones, for 156 block checks.
+
+Run \path{python -S verify_optimized_threshold.py} from the certificate
+directory. It reconstructs the exact budgets, checks all shifts
+against the frozen files, replays every interval certificate,
+and checks the six final rational budgets and interval coverage.
+It also replays the original rational planar certificate and the optimized
+tail checker and uses only the Python standard library.
+
+\subsection{An optimized negative-tail bound at every flux}
+\label{app:optimized-tail}
+
+Allowing a real coherent weight exponent gives a negative-tail estimate
+valid at every flux and a finite-$Q$ improvement.
+
+\begin{lemma}\label{lem:optimized-tail}
+Put $c_9=30(5/9)^9$ and $\nu=10^{-10}$. For every integer $Q\ge0$,
+\begin{equation}\label{eq:optimized-tail-all-Q}
+ T_{9,Q}\le(c_9+\nu)(S_{4,Q}+H_Q).
+\end{equation}
+The stronger bound
+\begin{equation}\label{eq:optimized-tail-improvement}
+ T_{9,Q}\le\left(c_9+\nu-\frac dQ\right)(S_{4,Q}+H_Q)
+ \qquad(Q\ge Q_*)
+\end{equation}
+holds for each of the following independent choices:
+\begin{equation}\label{eq:optimized-tail-choices}
+ (Q_*,d)=(2500,77/20),\qquad(3000,391/100),\qquad(5000,4).
+\end{equation}
+All these inequalities are independent of total particle number.
+\end{lemma}
+\begin{proof}
+Take $a=2/27$ and $M=aQ$ exactly. The positive coherent auxiliary operator is
+\begin{equation}
+ A_{M,Q}=(2Q+1)(Q+1)\int d\Omega_\alpha d\Omega_\beta\,
+ s(\alpha,\beta)^M
+ |\alpha_{\rm pair}\rangle\langle\alpha_{\rm pair}|
+ \otimes|\beta\rangle\langle\beta|.
+\end{equation}
+The measures have total mass one, the vectors are normalized, and
+$s(\alpha,\beta)=\cos^2(\theta_{\alpha\beta}/2)$.
+Here $M$ is only the exponent of a nonnegative weight, not a spin label;
+the integral defines a positive invariant operator for every real $M\ge0$.
+The exact beta integral still gives
+\begin{equation}
+ b_{j,Q}=(Q+1)\binom Qj\int_0^1s^{M+Q-j}(1-s)^j\,ds
+ =\frac{Q+1}{M+Q+1}\frac{(Q)_j}{(M+Q)_j}.
+\end{equation}
+This formula follows by $j$ integrations by parts, valid for
+$0\le j\le Q$ and $M\ge0$. The notation $(x)_k$ denotes a descending
+factorial, also for real $x$, with $(x)_0=1$.
+
+Writing $A_{M,Q}=\sum_z\tau_{z,Q}\Pi_z$ in the auxiliary pair--single
+spin decomposition, the exact eigenvalue formula remains
+\begin{align}
+ \tau_{z,Q}&=\frac{2Q+1}{3Q-2z+1}
+                 \sum_{j=z}^Q b_{j,Q}\gamma_{z,j,Q},\notag\\
+ \gamma_{z,j,Q}&=\frac{(2Q)_z}{(3Q-z+1)_z}
+                 \binom jz\frac{(Q-z)_{j-z}}{(3Q-2z)_{j-z}}.
+ \label{eq:optimized-tail-eigenvalue}
+\end{align}
+Every term is nonnegative and $\tau_{z,Q}>0$. The exact coherent marginal
+and positive lifting give
+\begin{equation}
+ \mathcal L_3(W_3A_{M,Q}W_3^\dagger)
+ \le\frac{Q+1}{M+1}(S_{4,Q}+H_Q).
+\end{equation}
+Thus it suffices to bound, on every odd $9\le z\le Q$, the scalar cost
+\begin{equation}\label{eq:optimized-tail-cost}
+ k_{z,Q}:=\frac{Q+1}{M+1}\frac{2f_{z,Q}}{\tau_{z,Q}},
+ \qquad f_{z,Q}=\frac{(Q)_z}{(2Q)_z}.
+\end{equation}
+
+For $Q>0$, put $x=1/Q$ and
+$D_{z,Q}:=2/k_{z,Q}=[(M+1)/(Q+1)]\tau_{z,Q}/f_{z,Q}$.
+Dividing each $j=z+n$ term in~\eqref{eq:optimized-tail-eigenvalue} by
+$f_{z,Q}$ and cancelling powers of $Q$ gives the exact positive sum
+\begin{equation}\label{eq:optimized-tail-D}
+ D_{z,Q}=\sum_{n=0}^{Q-z}g_{z,n}(x),
+\end{equation}
+where
+\begin{align}
+ g_{z,n}(x)&=\binom{z+n}{z}
+ \frac{(2+x)(a+x)}{[3-(2z-1)x](1+a+x)}\notag\\
+ &\quad\times\prod_{i=0}^{z-1}
+ \frac{(2-ix)^2}{(1+a-ix)[3-(z-1+i)x]}\notag\\
+ &\quad\times\prod_{i=0}^{n-1}
+ \frac{[1-(z+i)x]^2}{[1+a-(z+i)x][3-(2z+i)x]}.
+ \label{eq:optimized-tail-g}
+\end{align}
+For $Q\ge256$ and $z\le25$, retain the first $33$ terms:
+\begin{equation}
+ G_z(x):=\sum_{n=0}^{32}g_{z,n}(x)\le D_{z,Q}.
+\end{equation}
+This truncation is valid because $z+32\le57<Q$. All linear factors in
+these rational functions are strictly positive on $[0,1/256]$.
+
+For a positive term
+$g(x)=b\prod_i(c_i+d_ix)/\prod_j(e_j+f_jx)$ on $[0,h]$, let the subscript
+$-$ or $+$ on a linear factor denote its minimum or maximum endpoint value.
+Then
+\begin{equation}
+ g_-:=\frac{b\prod_i(c_i+d_ix)_-}{\prod_j(e_j+f_jx)_+}
+ \le g(x)\le
+ g_+:=\frac{b\prod_i(c_i+d_ix)_+}{\prod_j(e_j+f_jx)_-}.
+\end{equation}
+Since $d/(c+dx)$ has derivative $-d^2/(c+dx)^2\le0$,
+\begin{equation}
+ \frac{g'(x)}{g(x)}\ge
+ L_h(g):=\sum_i\frac{d_i}{c_i+d_ih}-\sum_j\frac{f_j}{e_j}.
+\end{equation}
+Hence a constant derivative lower bound is
+\begin{equation}\label{eq:optimized-tail-interval-rule}
+ \beta_h(g):=
+ \begin{cases}L_h(g)g_-,&L_h(g)\ge0,\\
+               L_h(g)g_+,&L_h(g)<0.
+ \end{cases}
+ \qquad g'(x)\ge\beta_h(g).
+\end{equation}
+Repeated factors in~\eqref{eq:optimized-tail-g} are simply listed repeatedly.
+All operations and sign decisions in these rules are rational, and the
+bounds hold throughout the interval.
+
+Applying these rules to~\eqref{eq:optimized-tail-g}, the supplied exact
+checker verifies
+\begin{align}
+ \sum_{n=0}^{32}\beta_{1/256}(g_{9,n})&>73,
+       \label{eq:optimized-tail-derivative}\\
+ G_9(0)&\ge\frac2{c_9+10^{-10}},\label{eq:optimized-tail-endpoint}\\
+ \sum_{n=0}^{32}(g_{z,n})_-&>20,
+ \quad z=11,13,\ldots,25,\quad h=1/256.
+ \label{eq:optimized-tail-other}
+\end{align}
+The endpoint is also checked independently through
+\begin{equation}
+ G_9(0)=\frac2{c_9}\left(\frac{20}{29}\right)^{10}
+         \sum_{n=0}^{32}\binom{n+9}{9}\left(\frac9{29}\right)^n.
+\end{equation}
+Thus $G_9$ is increasing on the interval, so
+$k_{9,Q}\le c_9+\nu$ for every $Q\ge256$. The other retained odd blocks
+satisfy $k_{z,Q}<1/10<c_9$ by~\eqref{eq:optimized-tail-other}.
+
+For all remaining spins, the coarse bound obtained by retaining $j=z$ in
+\eqref{eq:optimized-tail-eigenvalue} remains valid with real $M=aQ$:
+\begin{equation}
+ \frac{2f_{z,Q}}{\tau_{z,Q}}\le3(1+a)\rho^z,
+ \qquad\rho=\frac{3(1+a)}4=\frac{29}{36}.
+\end{equation}
+Its factor-by-factor proof uses only $M\le aQ$, not integrality. Since
+$(Q+1)/(aQ+1)\le1/a$, every $z\ge27$ obeys
+\begin{equation}\label{eq:optimized-tail-high}
+ k_{z,Q}\le\frac{3(1+a)}a\left(\frac{29}{36}\right)^{27}
+              <\frac{13}{100}<c_9,
+\end{equation}
+with both comparisons checked exactly.
+
+To exhaust the finite flux remainder, the checker verifies all $2151$
+pairs consisting of an integer $9\le Q\le255$ and an odd
+$9\le z\le\min(Q,25)$. For each such pair it checks
+\begin{equation}
+ \sum_{n=0}^{\min(32,Q-z)}g_{z,n}(1/Q)>\frac{100}{7}.
+\end{equation}
+The omitted terms in~\eqref{eq:optimized-tail-D} are nonnegative, so these
+blocks have $k_{z,Q}<7/50<c_9$. For $Q<9$, the negative tail
+is empty. These arguments prove~\eqref{eq:optimized-tail-all-Q}.
+
+Finally put $C=c_9+\nu$. The same exact interval rules verify
+\begin{equation}\label{eq:optimized-tail-strong-data}
+ \sum_{n=0}^{32}\beta_{1/Q_*}(g_{9,n})>b
+ \quad\text{for}\quad
+ (Q_*,b,d)=(2500,681/2,77/20),\ (3000,345,391/100),\ (5000,353,4).
+\end{equation}
+For each triple the checker also verifies
+\begin{equation}\label{eq:optimized-tail-strong-budget}
+ bC^2\ge d\left(2+\frac{bC}{Q_*}\right),
+ \qquad C-\frac d{Q_*}>\frac{13}{100}.
+\end{equation}
+Equations~\eqref{eq:optimized-tail-endpoint} and
+\eqref{eq:optimized-tail-strong-data} imply, for every $Q\ge Q_*$,
+\begin{equation}
+ D_{9,Q}\ge\frac2C+\frac bQ,
+ \qquad k_{9,Q}\le\frac{C}{1+bC/(2Q)}\le C-\frac dQ.
+\end{equation}
+The last inequality follows by cross-multiplication and
+\eqref{eq:optimized-tail-strong-budget}. The other odd blocks cost less than
+$1/10$ or $13/100$ and therefore fit the same strengthened bound. Positive
+lifting now proves~\eqref{eq:optimized-tail-improvement}.
+\end{proof}
+
+The tail checker replays all scalar interval certificates and the finite
+remainder checks, using only Python's standard library and exact fractions.
+Run \path{optimized_tail_threshold_checker.py} with the \texttt{-S} flag.
+Its JSON output records the exact derivative
+lower bounds, endpoint margins, other retained-block bounds, coarse tail
+bound, and finite exhaustion count.
+
+\subsection{A direct quantitative coherent comparison}
+\label{app:optimized-coherent}
+
+The following comparison avoids descendant truncation. Throughout this
+subsection $r\in\{3,4\}$, $h=r-2$, and the auxiliary space is
+$V_Q\otimes\Sym^hU_Q$. Choose any fixed $a>0$ and use the real exponent
+$M=aQ$ in the positive coherent kernel. Its positivity and the exact
+spectator marginal $(Q+1)/(M+1)$ do not require $M$ to be an integer.
+
+For a retained spin deficit $z$, let
+\begin{equation}\label{eq:opt-coh-parameters}
+ Z_z=\frac{z(z-1)}2,\qquad k_z=z+r-1,\qquad
+ b_z=\frac{a(r/2)^2}{2(1-\theta_z)},\qquad
+ c_z=2k_z+b_zk_z(k_z+1),
+\end{equation}
+where $0<\theta_z<1$ is a proof parameter. Define
+\begin{equation}
+ t_{3,z}(a)=(1+3a/2)^{-z-1},\qquad
+ t_{4,z}(a)=(1+a)^{-1}(1+2a)^{-z-1}.
+\end{equation}
+These are the exact smallest eigenvalues of the limiting relative
+Gaussian kernels in degree $z$, including all multiplicities.
+
+\begin{lemma}\label{lem:opt-coh}
+Suppose
+\begin{equation}\label{eq:opt-coh-domain}
+ Q\ge z,\qquad Q>\max(Z_z,c_z),\qquad
+ Q\ge\frac{2(1-\theta_z)}{a\theta_z^2}.
+\end{equation}
+The spin-deficit-$z$ multiplicity matrix of the coherent kernel obeys
+\begin{equation}\label{eq:opt-coh-block-lower}
+ A_{r,z,Q}\ge
+ \left(1+\frac1{2Q}\right)\left(1+\frac1Q\right)^h
+ \left(1-\frac{Z_z}Q\right)\left(1-\frac{c_z}Q\right)t_{r,z}(a)I.
+\end{equation}
+Consequently its degree-resolved lifted comparison coefficient is
+\begin{equation}\label{eq:opt-coh-coefficient}
+ C_{r,z}(Q)=
+ \frac1{a^ht_{r,z}(a)(1+1/(aQ))^h(1+1/(2Q))
+                 (1-Z_z/Q)(1-c_z/Q)}.
+\end{equation}
+For the three-body lift the corresponding form is $S_{4,Q}+H_Q$;
+for the four-body lift it is $2S_{4,Q}+H_Q$.
+\end{lemma}
+\begin{proof}
+Use oscillator coordinates $x=(u,v_1,\ldots,v_h)\in\mathbb C^{h+1}$,
+with the spectators symmetrized. Degree-$z$ normalized occupation labels
+are identified with the spherical weight-$z$ labels. The normalized
+center-of-mass annihilator is
+$a_\zeta=(\sqrt2a_u+\sum_sa_{v_s})/\sqrt r$.
+Let $F_z$ be an isometric frame for its degree-$z$ kernel. The exact
+diagonal matrix
+\begin{equation}
+ D_{Q,z}(p;j_1,\ldots,j_h)=
+ \sqrt{\frac{\fall{2Q}p}{(2Q)^p}}
+ \prod_{s=1}^h\sqrt{\frac{\fall Q{j_s}}{Q^{j_s}}},
+ \qquad p+\sum_sj_s=z,
+\end{equation}
+satisfies $J_+/\sqrt Q=D_{Q,z-1}^{-1}(\sqrt r\,a_\zeta)D_{Q,z}$.
+Thus $V_z=D_{Q,z}^{-1}F_z$ spans the exact spherical highest space.
+With $G_z=V_z^\dagger V_z$, its normalized frame is
+$F_{z,Q}=V_zG_z^{-1/2}$. The product inequality
+$\prod_i(1-x_i)\ge1-\sum_ix_i$ gives
+\begin{equation}\label{eq:opt-coh-gram}
+ (1-Z_z/Q)I\le D_{Q,z}^2\le I,
+ \qquad I\le G_z\le(1-Z_z/Q)^{-1}I.
+\end{equation}
+Indeed, the sum of its diagonal product losses is
+$[p(p-1)/4+\sum_sj_s(j_s-1)/2]/Q\le Z_z/Q$.
+
+In the stereographic coordinate $\alpha$, the unit-mass spherical measure
+is $d^2\alpha/[\pi(1+|\alpha|^2)^2]$, and a spin of capacity $L$ has
+coherent coefficients
+$(1+|\alpha|^2)^{-L/2}\sqrt{\binom Li}\alpha^i$.
+Rescale the pair coordinate to $u=\sqrt{2Q}\alpha$, and the spectators
+to $v_s=\sqrt Q\beta_s$. Set
+\begin{equation}
+ X=|u|^2+\sum_s|v_s|^2,\qquad
+ d_s=|v_s-u/\sqrt2|^2,\qquad D_{\rm rel}=\sum_sd_s.
+\end{equation}
+The relative quadratic form satisfies $D_{\rm rel}\le\kappa X$ with
+$\kappa=r/2$: its nonzero eigenvalue is $3/2$ for $r=3$, and its relative
+eigenvalues are $1,2$ for $r=4$.
+
+For a multiplicity vector $w$, set $\psi=F_zG_z^{-1/2}w$ and define its
+coherent-overlap polynomial
+$P(x)=\sum_{\boldsymbol n}\overline{\psi_{\boldsymbol n}}
+x^{\boldsymbol n}/\sqrt{\boldsymbol n!}$.
+It is homogeneous of degree $z$; the conjugation follows the bra-overlap
+convention, and its Gaussian norm equals $\|\psi\|$.
+The factor $D_{Q,z}^{-1}$ in the spherical highest vector cancels the
+falling-factorial factors of the coherent coefficients exactly. Therefore
+\begin{align}
+ \langle w,A_{r,z,Q}w\rangle
+ &=\mathcal J_Q\int_{\mathbb C^{h+1}}|P(x)|^2W_Q(x)
+                      \prod_i\frac{d^2x_i}{\pi},\\
+ \mathcal J_Q&=(1+1/(2Q))(1+1/Q)^h,\notag\\
+ W_Q(x)&=\prod_{i=0}^h
+ \left(1+\frac{|x_i|^2}{\ell_iQ}\right)^{-\ell_iQ-2}
+                  \prod_{s=1}^h(1-y_s)^{aQ},\notag\\
+ y_s&=\frac{d_s}{Q(1+|u|^2/(2Q))(1+|v_s|^2/Q)},
+ \qquad \ell_0=2,\quad\ell_s=1\ (s\ge1).\notag
+\end{align}
+Here $x_0=u$ and $x_s=v_s$. The identity for $y_s$ follows from
+$1-s(\alpha,\beta)=|\alpha-\beta|^2/
+[(1+|\alpha|^2)(1+|\beta|^2)]$, so $0\le y_s\le1$.
+The normalized spectator symmetrizer gives no additional factor in a
+highest-vector overlap.
+
+The corresponding exact planar weight is
+$W_\infty=\exp(-X-aD_{\rm rel})$. For $X\le\theta_zQ/\kappa$,
+we have $y_s\le d_s/Q\le\theta_z$. The logarithmic-series bound
+$-\log(1-y)\le y+y^2/[2(1-\theta_z)]$, together with
+$\log(1+t)\le t$ and $\sum_sd_s^2\le\kappa^2X^2$, gives
+\begin{equation}\label{eq:opt-coh-global-weight}
+ W_Q\ge W_\infty\exp[-(2X+b_zX^2)/Q]
+      \ge W_\infty[1-(2X+b_zX^2)/Q].
+\end{equation}
+For $X>\theta_zQ/\kappa$, the bracket is nonpositive by
+\eqref{eq:opt-coh-domain}, since
+$b_z(\theta_zQ/\kappa)^2/Q\ge1$.
+Positivity of $W_Q$ therefore makes the last bound in
+\eqref{eq:opt-coh-global-weight} valid on all of $\mathbb C^{h+1}$.
+
+Normalize the positive measure $|P|^2W_\infty\prod_i d^2x_i/\pi$.
+At fixed angular direction $\omega$, writing $x=\sqrt X\omega$ gives
+the radial density proportional to
+$X^{k_z-1}e^{-\lambda(\omega)X}$, with
+$\lambda(\omega)=1+aD_{\rm rel}(\omega)\ge1$.
+The exact Gamma-distribution moments therefore give
+$\mathbb E[X]\le k_z$ and $\mathbb E[X^2]\le k_z(k_z+1)$,
+including after averaging over $\omega$.
+Integrating the global weight bound yields
+\begin{equation}
+ \int|P|^2W_Q\ge(1-c_z/Q)\int|P|^2W_\infty.
+\end{equation}
+The planar integral is bounded below by
+$t_{r,z}(a)\|G_z^{-1/2}w\|^2$.
+Equation~\eqref{eq:opt-coh-gram} now proves
+\eqref{eq:opt-coh-block-lower}. Inverting this bound, composing with
+$W_r,W_r^\dagger$, and applying the positive lift gives the claimed
+coefficient, because the exact marginal $\mu_Q=(Q+1)/(aQ+1)$ obeys
+\begin{equation}
+ \frac{\mu_Q^h}{\mathcal J_Q}
+ =\frac{a^{-h}}{(1+1/(aQ))^h(1+1/(2Q))}.
+\end{equation}
+\end{proof}
+
+For uniform bounds at all $Q\ge Q_0$, define
+\begin{equation}\label{eq:opt-coh-uniform}
+ \overline C_{r,z}(Q_0)=
+ \max\{C_{r,z}(Q_0),a^{-h}t_{r,z}(a)^{-1}\}.
+\end{equation}
+This bound applies even at small $z$ where $C_{r,z}(Q)$ need not decrease.
+Indeed, the logarithm of
+$(1+x/a)^h(1+x/2)(1-Z_zx)(1-c_zx)$ is concave for
+$0\le x\le1/Q_0$, so its minimum is bounded by its endpoint minimum.
+If $Z_z+c_z>h/a+1/2$, logarithmic differentiation gives a strictly
+negative derivative, and the simpler bound $C_{r,z}(Q)\le C_{r,z}(Q_0)$
+holds for every $Q\ge Q_0$.
+
+In particular, a degree-resolved few-body error satisfying
+\begin{equation}
+ E_{r,Q}\ge-\sum_{z=0}^D\delta_zH_{r,Q}\Pi^{(r)}_{z,Q},
+ \qquad\delta_z\ge0,
+\end{equation}
+has lifted negative cost at most
+$\max_z\delta_z\overline C_{r,z}(Q_0)$ times the corresponding form.
+To see this, compare the single auxiliary weighted projector
+$\sum_z\delta_z\Pi_z$ with the same positive coherent kernel in every
+spin block, and then lift once. The value of $a$ must be common to all
+blocks of that kernel; $\theta_z$ may vary since it is only a proof
+parameter.
+
+With $a=1/12$ for $r=3$ and $a=1/16$ for $r=4$,
+the following thresholds are obtained by exact rational evaluation of
+\eqref{eq:opt-coh-coefficient} and its monotonicity:
+\begin{center}
+\begin{tabular}{ccccc}
+\toprule
+$r$ & cutoff $D$ & comparison constant & sufficient $Q$ & $\theta$\\
+\midrule
+3&8&35&4505&$1/14$\\
+3&8&36&1254&$1/7$\\
+3&8&38&544&$1/5$\\
+4&16&2100&4330&$1/12$\\
+4&16&2200&2107&$1/8$\\
+\bottomrule
+\end{tabular}
+\end{center}
+The threshold in each row is uniform over the retained degrees, since
+$Z_z,c_z$ increase with $z$ and $t_{r,z}(a)$ decreases.
+The constants $35,2100$ therefore hold simultaneously for
+$Q\ge4505$, independently of particle number.
+The exact scalar checks are supplied in
+\path{optimized_coherent_check.py}; general rational parameters and
+degree-resolved bounds are implemented in
+\path{optimized_coherent_coefficients.py}.
+
+\subsection{A parameter-interval certificate for the finite head}
+\label{sec:optimized-head-interval}
+
+We certify degree-dependent errors on the entire flux interval
+$Q\ge q_0$. The parameter is the real scalar $x=Q^{-1}\in[0,X]$, where
+$X=q_0^{-1}$; $x=0$ denotes the planar limit.
+For each retained pair $(r,z)$ and specified rational $\delta_{r,z}\ge0$,
+the verifier proves
+\begin{equation}\label{eq:interval-head-claim}
+ E_{r,Q}\big|_z+\delta_{r,z}H_{r,Q}\big|_z\ge0
+ \qquad\text{for every integer }Q\ge q_0.
+\end{equation}
+Here restriction is to the highest-weight multiplicity space of deficit
+$z$; rotational invariance extends the claim to the whole spin block.
+The interval enclosure establishes \eqref{eq:interval-head-claim}
+throughout the real parameter interval.
+
+We first express all finite forms in fixed polynomial coordinates. Use
+the canonical basis $|A]_{x,Q}=\prod_j(\sqrt{j!}\,a_j^\dagger)^{n_j}|0\rangle$
+on the sphere, with $A$ a partition of total weight $M$ into $n$ parts.
+The indexed creator $x_j$ from the rational verifier remains distinct from
+the scalar $x=Q^{-1}$. The planar Gram entry is
+$g_A=\prod_jn_j!(j!)^{n_j}$. Define the scalar polynomials and their
+positive square roots by
+\begin{equation}\label{eq:interval-scalar-products}
+ P_j(x)=\prod_{\ell=0}^{j-1}(1-\ell x),\quad
+ T_p(x)=\prod_{\ell=0}^{p-1}(1-\ell x/2),\quad
+ d_j=\sqrt{P_j},\quad e_p=\sqrt{T_p},\quad
+ d_A=\prod_{j\in A}d_j.
+\end{equation}
+For $n\le4$ and $M\le16$, let $\mathcal P_{n,M}$ be the coordinate
+space of columns indexed by these complete fixed-weight occupation
+states. The invertible map to the spherical weight space is
+\begin{equation}\label{eq:interval-polynomial-map}
+ \Phi_{n,M,Q}:\mathcal P_{n,M}\longrightarrow
+       (\Sym^nU_Q)_M,
+ \qquad c\longmapsto\sum_Ac_A d_A^{-1}|A]_{x,Q}.
+\end{equation}
+It is a polynomial-coordinate identification, not a unitary map. Its
+Gram matrix is
+\begin{equation}\label{eq:interval-metric}
+ G_{n,M}(x)=\Phi_{n,M,Q}^\dagger\Phi_{n,M,Q}
+          =\operatorname{diag}(g_A/d_A^2).
+\end{equation}
+All matrices with superscript $\mathrm{pol}$ below are pullbacks of
+physical quadratic forms by $\Phi$, already including this metric.
+
+Let $\widehat B_p=\sum_{a=0}^p\partial_a\partial_{p-a}$, with
+$\partial_j$ the canonical polynomial derivative. Direct substitution
+of the spherical pair coefficients gives the exact identity
+\begin{equation}\label{eq:interval-pair-map}
+ B_{p,Q}\Phi_{n,M,Q}
+ =\frac{\kappa_p}{e_p}\Phi_{n-2,M-p,Q}\widehat B_p,
+ \qquad \kappa_p^2=\frac{p!}{2^{p+1}}.
+\end{equation}
+The polynomial highest-weight space is the fixed rational kernel of
+$L=\sum_{j\ge1}j x_{j-1}\partial_j$. The exact raising identity is
+\begin{equation}
+ Q^{-1/2}J_+\Phi_{n,M,Q}=\Phi_{n,M-1,Q}L.
+\end{equation}
+If $U$ is a full rational basis of this kernel, then
+\begin{equation}\label{eq:interval-common-kernel}
+ \ker\big[U^\dagger H^{\mathrm{pol}}_{r,z}(x)U\big]
+ =\ker\big[U^\dagger H^{\mathrm{pol}}_{r,z}(0)U\big]
+ \quad (0\le x\le X).
+\end{equation}
+This follows by applying \eqref{eq:interval-pair-map} to every pair
+annihilator; all scalar factors and Gram matrices are invertible.
+The pair-sandwich structure of the normal-ordered coefficients, together
+with invariance of $\ker H_r$ under rotations and spin projections,
+implies that the comparison form also annihilates this same kernel exactly.
+
+The verifier chooses a fixed linear complement using principal pivot
+coordinates of the exact rational planar Hamiltonian form. Its principal
+matrix is positive definite by rational elimination. A further invertible
+rational upper triangular change of coordinates approximately normalizes
+this Hamiltonian form to the identity. Decimal arithmetic proposes its
+entries, which are rounded to exact rationals; the nonzero diagonal is
+then checked. Write the resulting canonical coordinate frame as
+$U_{\rm a}$. Positivity on its image suffices, because the exact form
+annihilates the complementary kernel. A block of rank zero is identically
+zero and requires no positive-pivot test.
+
+The interval verifier uses the following direct normal-order construction.
+In a fixed channel $t$, label row columns by $0$ and
+$a=(p,j)$, put $i=p+j-t$, and define the exact rational covariance
+\begin{equation}\label{eq:interval-row-covariance}
+ C_{ab}^{(t)}=\sum_\rho y_{\rho,a}y_{\rho,b},
+ \qquad h_a(x)=\frac{i!}{e_p d_i d_j}.
+\end{equation}
+The sum is over the frozen rows in that channel. For $n=3,4$, define the
+integer row functional $\ell_{p;l_1,\ldots,l_{n-2}}$ as the vacuum
+coefficient of
+$\partial_{l_1}\cdots\partial_{l_{n-2}}\widehat B_p$ on the canonical
+occupation basis at weight $p+\sum_s l_s$. Integer occupation
+multiplicities are included. Within this channel suppress the superscript
+$t$ on $C$, and write $b=(p',j')$, $i'=p'+j'-t$. The channel's
+unaveraged three-body form is
+\begin{align}\label{eq:interval-direct-K3}
+ &\sum_a C_{0a}\frac{h_a}{e_t}
+   \big(\ell_{t;i}^{\mathsf T}\ell_{p;j}
+         +\ell_{p;j}^{\mathsf T}\ell_{t;i}\big)\notag\\
+ &\quad+\sum_{a,b:\,i=i'}
+    \frac{C_{ab}i!}{e_p e_{p'}d_jd_{j'}}
+       \ell_{p;j}^{\mathsf T}\ell_{p';j'}.
+\end{align}
+Its four-body form is
+\begin{equation}\label{eq:interval-direct-K4}
+ \sum_{a,b}C_{ab}h_ah_b
+       \ell_{p;j,i'}^{\mathsf T}\ell_{p';i,j'}.
+\end{equation}
+Terms in \eqref{eq:interval-direct-K3} belong to weight $M=p+j$;
+terms in \eqref{eq:interval-direct-K4} belong to
+$M=p+j+i'=(p+j)+(p'+j')-t$. Summing channels therefore gives the full
+forms $\mathsf K^{\mathrm{pol}}_{3,M}$ and
+$\mathsf K^{\mathrm{pol}}_{4,M}$, supported at $M\le8$ and $M\le16$.
+To verify their coefficients, the physical functional
+$a_{l_1}\cdots a_{l_s}B_p$ after pullback is
+\begin{equation}
+ \frac{\kappa_p\sqrt{l_1!\cdots l_s!}}
+ {e_p d_{l_1}\cdots d_{l_s}}\,\ell_{p;l_1,\ldots,l_s}.
+\end{equation}
+Substitution of $\lambda=y_0/\kappa_t$ and
+$\alpha_{p,j}=y_{p,j}\sqrt{i!/(\kappa_p^2j!)}$ into the exact
+normal-order identities cancels the square-root factorials and gives
+\eqref{eq:interval-direct-K3}--\eqref{eq:interval-direct-K4}.
+
+The remaining targets also have finite coordinate formulas:
+\begin{align}\label{eq:interval-target-forms}
+ H^{\mathrm{pol}}_{n,M}(x)
+ &=\sum_{p=0}^M\frac{\kappa_p^2}{e_p^2}
+    \widehat B_p^{\mathsf T}G_{n-2,M-p}(x)\widehat B_p,\notag\\
+ \mathsf S^{\mathrm{pol}}_{3,M}
+ &=H^{\mathrm{pol}}_{3,M}G_{3,M}^{-1}H^{\mathrm{pol}}_{3,M}
+       -H^{\mathrm{pol}}_{3,M},\notag\\
+ \mathsf S^{\mathrm{pol}}_{4,M}
+ &=\sum_{p=0}^M\frac{\kappa_p^2\kappa_{M-p}^2}
+                    {e_p^2 e_{M-p}^2}\,v_p^{\mathsf T}v_p,
+ \qquad v_p=\widehat B_{M-p}\widehat B_p.
+\end{align}
+Here $v_p$ is a row functional to the vacuum; the intermediate diagonal
+maps cancel in the two successive pair annihilators. The four-body target
+is $(1-c_9-\mu)\mathsf S^{\mathrm{pol}}_{4,M}$.
+
+In polynomial coordinates the rescaled spherical lowering operator is
+\begin{equation}\label{eq:interval-descendant-polynomial}
+ R(x)=\sum_j(1-jx)x_{j+1}\partial_j,
+ \qquad C_k(x)=R(x)^kU_{\rm a},\qquad
+ n_k(x)=\prod_{l=1}^k l\,[r-(2z+l-1)x].
+\end{equation}
+Thus $\Phi C_k/\sqrt{n_k}$ is the normalized descendant of the chosen
+highest frame. With $D_3=8,D_4=16$, exact Schur averaging gives the
+highest-frame form
+\begin{equation}\label{eq:interval-Schur}
+ \overline K_{r,z}(x)=\frac{2+x}{r+(1-2z)x}
+ \sum_{M=z}^{D_r}
+ \frac{C_{M-z}(x)^{\mathsf T}\mathsf K^{\mathrm{pol}}_{r,M}(x)
+ C_{M-z}(x)}{n_{M-z}(x)}.
+\end{equation}
+This formula applies to a nonorthonormal frame because the normalized
+ladder maps preserve its Gram matrix. The finite Hermitian matrix tested
+by the verifier is
+\begin{equation}\label{eq:interval-final-matrix}
+ F_{r,z}(x)=U_{\rm a}^{\mathsf T}
+  [\mathsf T^{\mathrm{pol}}_{r,z}(x)
+     +\delta_{r,z}H^{\mathrm{pol}}_{r,z}(x)]U_{\rm a}
+       -\overline K_{r,z}(x),
+\end{equation}
+where $\mathsf T_3=\mathsf S_3$ and
+$\mathsf T_4=(1-c_9-\mu)\mathsf S_4$.
+
+Every scalar interval has integer endpoints divided by
+$2^{192}$. Products and reciprocals round lower endpoints down and upper
+endpoints up using integer floor and ceiling division. Square roots use
+integer square roots of the appropriately scaled endpoints, with an
+increment of the upper endpoint unless its square is exact. All
+denominator intervals must exclude zero and all square-root intervals
+must be nonnegative; otherwise verification stops.
+
+A Taylor interval record of order $m$ encloses the exact representation
+\begin{equation}\label{eq:interval-jet-definition}
+ f(x)=P_f(x)+x^{m+1}\rho_f(x),\qquad
+ P_f(x)=\sum_{k=0}^m c_kx^k,\qquad 0\le x\le X.
+\end{equation}
+It stores intervals for every fixed coefficient $c_k$ and for all values
+of $\rho_f$ on the full interval. The certificates here use $m=3$.
+Addition is componentwise. If $\operatorname{tail}_{>m}$ discards
+degrees at most $m$ from a polynomial, the product remainder is exactly
+\begin{equation}\label{eq:interval-jet-product}
+ \rho_{fg}=
+ \frac{\operatorname{tail}_{>m}(P_fP_g)}{x^{m+1}}
+ +P_f\rho_g+P_g\rho_f+x^{m+1}\rho_f\rho_g.
+\end{equation}
+The polynomial quotient in the first term is well defined also at zero.
+Interval Horner evaluation of this identity encloses the product
+remainder on the whole interval.
+
+For an inverse, its Taylor coefficients satisfy
+\begin{equation}\label{eq:interval-jet-inverse}
+ b_0=c_0^{-1},\qquad
+ b_k=-c_0^{-1}\sum_{i=1}^kc_i b_{k-i},\qquad
+ \rho_{1/f}=-\frac{\rho_{fP_b}}{f},\quad
+ P_b=\sum_{k=0}^mb_kx^k.
+\end{equation}
+The last identity holds because the polynomial part of $fP_b$ is exactly
+one. For the positive square root, the corresponding exact formulas are
+\begin{equation}\label{eq:interval-jet-root}
+ b_0=\sqrt{c_0},\qquad
+ b_k=\frac{c_k-\sum_{i=1}^{k-1}b_ib_{k-i}}{2b_0},\qquad
+ \rho_{\sqrt f}=\frac{\rho_f-\rho_{P_b^2}}{\sqrt f+P_b}.
+\end{equation}
+The remainder identity rationalizes $\sqrt f-P_b$. These identities refer
+to the exact coefficients; rounding intervals may enclose a nonzero
+width around a canceled coefficient without affecting the algebraic
+cancellation. Structural induction using
+\eqref{eq:interval-jet-product}--\eqref{eq:interval-jet-root} proves that
+the final record encloses every matrix entry throughout $[0,X]$.
+
+After symmetric averaging of the matrix records, write the exact form as
+\begin{equation}
+ F_{r,z}(x)=\sum_{i=0}^m A_ix^i+x^{m+1}\mathcal E(x).
+\end{equation}
+All coefficient and remainder matrices are symmetric. If
+$\mathcal E_{ij}(x)\in[\ell_{ij},u_{ij}]$, a uniform remainder
+bound is
+\begin{equation}\label{eq:interval-remainder-norm}
+ \gamma=X^{m+1}\max_i\sum_j
+              \max\{|\ell_{ij}|,|u_{ij}|\},\qquad
+ \|x^{m+1}\mathcal E(x)\|\le\gamma.
+\end{equation}
+The computed $\gamma$ is rounded upward. This is the maximum absolute
+row-sum bound for a symmetric matrix in the chosen finite coordinate
+space.
+
+For $s=x/X\in[0,1]$, define the Bernstein control matrices
+\begin{equation}\label{eq:interval-Bernstein}
+ B_k=\sum_{i=0}^k\frac{\binom ki}{\binom mi}X^i A_i,
+ \qquad
+ \sum_{i=0}^m A_ix^i
+ =\sum_{k=0}^m\binom mk s^k(1-s)^{m-k}B_k.
+\end{equation}
+The scalar weights are nonnegative and sum to one. The verifier proves
+$B_k-\gamma I>0$ by interval $LDL^{\mathsf T}$ elimination, requiring
+each pivot interval to have strictly positive lower endpoint. Hence
+every actual symmetric matrix enclosed by that interval matrix is
+positive definite. If a control matrix is too conservative, repeated
+arithmetic averaging performs de Casteljau subdivision into the two
+half intervals. The verifier requires both halves to pass, recursively,
+using the same valid $\gamma$.
+
+Equations \eqref{eq:interval-remainder-norm} and
+\eqref{eq:interval-Bernstein} prove $F_{r,z}(x)\ge0$ for the whole real
+interval. The common-kernel identity \eqref{eq:interval-common-kernel}
+extends this to the full highest space; invertible coordinate pullback
+and rotational invariance give \eqref{eq:interval-head-claim}.
+
+The standard-library script \path{optimized_head_interval.py} takes
+\texttt{--qmin}, an exact rational shift JSON through \texttt{--shifts},
+and an output path through \texttt{--result}. Its saved records include
+the rational frames, every Taylor coefficient and remainder interval,
+all Bernstein/LDL pivot intervals, and the exact shifts for the nonzero
+blocks. A complete run checks all $9+17=26$ relative blocks.
+
+\begin{thebibliography}{9}
+
+\bibitem{Laughlin1983}
+R.~B.~Laughlin,
+\emph{Anomalous Quantum Hall Effect: An Incompressible Quantum Fluid with
+Fractionally Charged Excitations},
+Phys. Rev. Lett. \textbf{50}, 1395--1398 (1983).
+\href{https://doi.org/10.1103/PhysRevLett.50.1395}{doi:10.1103/PhysRevLett.50.1395}.
+
+\bibitem{Haldane1983}
+F.~D.~M.~Haldane,
+\emph{Fractional Quantization of the Hall Effect: A Hierarchy of
+Incompressible Quantum Fluid States},
+Phys. Rev. Lett. \textbf{51}, 605--608 (1983).
+\href{https://doi.org/10.1103/PhysRevLett.51.605}{doi:10.1103/PhysRevLett.51.605}.
+
+\bibitem{OrtizEtAl2013}
+G.~Ortiz, Z.~Nussinov, J.~Dukelsky, and A.~Seidel,
+\emph{Repulsive interactions in quantum Hall systems as a pairing problem},
+Phys. Rev. B \textbf{88}, 165303 (2013).
+\href{https://doi.org/10.1103/PhysRevB.88.165303}{doi:10.1103/PhysRevB.88.165303}.
+
+\bibitem{ChenSeidel2015}
+L.~Chen and A.~Seidel,
+\emph{Algebraic approach to the study of zero modes of Haldane pseudopotentials},
+Phys. Rev. B \textbf{91}, 085103 (2015).
+\href{https://doi.org/10.1103/PhysRevB.91.085103}{doi:10.1103/PhysRevB.91.085103}.
+
+\bibitem{Rougerie2019}
+N.~Rougerie,
+\emph{On the Laughlin function and its perturbations},
+S\'eminaire Laurent Schwartz---EDP et applications (2018--2019),
+Exp. II, 1--17.
+\href{https://doi.org/10.5802/slsedp.131}{doi:10.5802/slsedp.131};
+\href{https://arxiv.org/abs/1906.11656}{arXiv:1906.11656}.
+
+\bibitem{WarzelYoung2023}
+S.~Warzel and A.~Young,
+\emph{A Bulk Spectral Gap in the Presence of Edge States for a Truncated
+Pseudopotential},
+Ann. Henri Poincar\'e \textbf{24}, 133--178 (2023).
+\href{https://doi.org/10.1007/s00023-022-01210-z}{doi:10.1007/s00023-022-01210-z}.
+
+\bibitem{OpenAI2026}
+OpenAI,
+\emph{A Fock-space inequality and the Laughlin spectral gap},
+preprint, 24 September 2026.
+\href{https://github.com/openai/math/blob/main/preprints/A-Fock-space-inequality-and-the-Laughlin-spectral-gap-September-24-2026/A-Fock-space-inequality-and-the-Laughlin-spectral-gap-September-24-2026.pdf}{Official preprint and source repository}.
+
+\end{thebibliography}
+
+\end{document}
+

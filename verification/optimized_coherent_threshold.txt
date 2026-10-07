@@ -1,0 +1,294 @@
+OPTIMIZED, EXPLICIT COHERENT DOMINATION WITHOUT DESCENDANT TRUNCATION
+7 October 2026
+
+RESULT
+
+The original coherent comparisons are valid simultaneously for all integer
+Q >= 4505, uniformly in total particle number N:
+
+  R_{3,8,Q} <= 35(S_{4,Q}+H_Q),
+  R_{4,16,Q} <= 2100(2S_{4,Q}+H_Q).
+
+Optional constants and separately certified all-Q thresholds are:
+
+  r   cutoff D   coefficient   sufficient Q   theta
+  3      8          35             4505       1/14
+  3      8          36             1254       1/7
+  3      8          38              544       1/5
+  4     16        2100             4330       1/12
+  4     16        2200             2107       1/8
+
+For r=3 the right-hand form is S4+H; for r=4 it is 2S4+H.
+These are rigorous sufficient thresholds from the inequalities below, not
+claims about optimal physical thresholds. This proves only the coherent
+comparison lemma, independently of the finite certificate and gap theorem.
+
+The main change is to take the coherent-kernel exponent M=aQ as a real
+number, without rounding. This is allowed: the kernel is nonnegative for
+every real M>=0, and the exact spectator marginal is (Q+1)/(M+1).
+Nothing in the positive-lift bounds requires M to be an integer. We use
+a=1/12 for three bodies and a=1/16 for four bodies. This choice is local
+to these auxiliary comparison kernels and does not modify H_Q.
+
+1. EXACT HIGHEST-SPACE AND COHERENT-OVERLAP IDENTIFICATION
+
+Let r=3 or 4, h=r-2, and E_{r,Q}=V_Q tensor Sym^h U_Q. The oscillator
+comparison space has one pair mode u and h spectator modes v_s, symmetric
+under spectator interchange. Put d=h+1. At total oscillator degree z<=Q,
+identify normalized occupation labels (p;j_1,...,j_h), p+sum j_s=z, with
+the normalized spherical auxiliary weight-z basis.
+
+The oscillator CM annihilator is
+
+  a_zeta=(sqrt(2)a_u+sum_s a_{v_s})/sqrt(r).
+
+Let F_z be any isometry onto its degree-z kernel, from a fixed multiplicity
+coordinate space. Define the positive diagonal D_{Q,z} by
+
+  D_{Q,z}(p;j_1,...,j_h)
+   =sqrt[(2Q)_p/(2Q)^p] product_s sqrt[(Q)_{j_s}/Q^{j_s}].        (1)
+
+The exact raising identity J_+/sqrt(Q)=D_{Q,z-1}^{-1}
+(sqrt(r)a_zeta)D_{Q,z} shows that V_z=D_{Q,z}^{-1}F_z spans the exact
+spherical highest space. Normalize with G_z=V_z^*V_z and frame
+F_{z,Q}=V_z G_z^{-1/2}. The product inequality product(1-x)>=1-sum x
+gives, for Z_z=z(z-1)/2 and Q>Z_z,
+
+  (1-Z_z/Q)I <= D_{Q,z}^2 <= I,
+  I <= G_z <= (1-Z_z/Q)^{-1}I,
+  ||G_z^{-1/2}w||^2 >= (1-Z_z/Q)||w||^2.                       (2)
+
+Here w is a vector in multiplicity coordinates. The first bound follows
+because the sum of the losses in D^2 is
+[p(p-1)/4 + sum_s j_s(j_s-1)/2]/Q <=z(z-1)/(2Q).
+
+Use the stereographic coherent coordinate alpha on the sphere, with
+unit-mass measure dOmega=d^2 alpha/[pi(1+|alpha|^2)^2]. A normalized
+spin-capacity-L coherent vector is
+
+  |alpha>_L=(1+|alpha|^2)^(-L/2)
+               sum_{i=0}^L sqrt[binom(L,i)] alpha^i |i>.
+
+Rescale the pair coordinate by u=sqrt(2Q)alpha and each spectator by
+v_s=sqrt(Q)beta_s. Write x=(u,v_1,...,v_h) in C^d and
+
+  X=|u|^2+sum_s|v_s|^2,
+  d_s=|v_s-u/sqrt(2)|^2,
+  Drel=sum_s d_s.
+
+These are nonnegative dimensionless scalars. For r=3 or 4,
+
+  Drel <= kappa X,   kappa=r/2.                                (3)
+
+For r=3 the nonzero eigenvalue of this quadratic form is 3/2. For r=4,
+in orthonormal relative coordinates it is |xi_1|^2+2|xi_2|^2.
+
+Let psi=F_z G_z^{-1/2}w, and define its coherent-overlap polynomial
+P(x)=sum_n conjugate(psi_n) x^n/sqrt(n!), a homogeneous degree-z
+polynomial. Its complex-conjugated coefficients follow the bra-overlap
+convention; its Gaussian norm is ||psi||. In a
+coherent overlap, the D_{Q,z}^{-1} in the spherical highest vector
+EXACTLY cancels the falling-factorial factors in the coherent expansion.
+The quadratic form of A_{r,Q} on the normalized highest vector is
+therefore exactly
+
+  <w,A_{r,z,Q}w>
+      = C_Q integral_{C^d} |P(x)|^2 W_Q(x) product_i d^2x_i/pi,
+
+  C_Q=(1+1/(2Q))(1+1/Q)^h,
+  W_Q= product_i (1+|x_i|^2/(c_i Q))^{-(c_i Q+2)}
+                 product_s (1-y_s)^{aQ},
+  c_0=2, c_s=1 (s>=1),
+  y_s=d_s/[Q(1+|u|^2/(2Q))(1+|v_s|^2/Q)].                     (4)
+
+This follows directly from the stereographic measures and the exact
+identity 1-s(alpha,beta)=|alpha-beta|^2/
+[(1+|alpha|^2)(1+|beta|^2)]. In particular 0<=y_s<=1. The spectator
+symmetrizer gives no further factor: the highest vector is symmetric,
+so its overlap with a symmetrized product equals its overlap with the
+unsymmetrized product. The factor C_Q includes ALL dimension factors and
+Jacobian factors.
+
+The corresponding exact planar quadratic form uses
+
+  W_infinity(x)=exp[-X-a Drel].                                (5)
+
+It is the already evaluated oscillator coherent kernel: the CM factor
+is the identity and the relative factors are thermal Gaussian operators.
+
+2. A GLOBAL POLYNOMIAL LOWER BOUND FOR THE SPHERICAL WEIGHT
+
+Choose 0<theta<1 and put
+
+  b=a kappa^2/[2(1-theta)].                                    (6)
+
+First consider X<=theta Q/kappa. Then y_s<=d_s/Q<=theta. For
+0<=y<=theta, summing the logarithmic series gives
+
+  -log(1-y) <= y+y^2/[2(1-theta)].
+
+Also log(1+t)<=t. Applying these two scalar inequalities to (4), using
+sum_s d_s^2 <= Drel^2 <=kappa^2 X^2, yields
+
+  W_Q >= W_infinity exp[-(2X+bX^2)/Q]
+      >= W_infinity [1-(2X+bX^2)/Q].                           (7)
+
+The single-particle measure loss here is
+2 sum_i |x_i|^2/(c_i Q)<=2X/Q. For the interaction weight,
+Qy_s<=d_s and Qy_s^2<=d_s^2/Q. All signs in (7) consequently give a
+lower bound, without using a truncated asymptotic series.
+
+For X>theta Q/kappa the bracket in (7) is nonpositive provided
+
+  Q >= Qloc := 2(1-theta)/(a theta^2),                           (8)
+
+because b(theta Q/kappa)^2/Q>=1. Since W_Q>=0, (7) is then valid
+for EVERY x in C^d. This is the step that removes any radial-tail or
+descendant-tail estimate entirely. Even at zeros of a coherent overlap,
+the outside-region bound remains valid.
+
+3. EXACT GAUSSIAN MOMENT CONTROL
+
+For any nonzero homogeneous polynomial P of degree z, normalize the
+positive measure |P|^2 W_infinity product_i d^2x_i/pi to mass one.
+In polar coordinates x=sqrt(X)omega, omega on the unit sphere in C^d,
+its conditional radial distribution at fixed omega is Gamma with integer
+shape k=z+d and rate lambda(omega)=1+a Drel(omega)>=1:
+
+  const(omega) X^{k-1} exp[-lambda(omega)X] dX.
+
+Consequently its exact conditional moments satisfy E[X|omega]<=k and
+E[X^2|omega]<=k(k+1). Averaging in omega preserves these bounds. Thus
+integrating the global inequality (7) gives
+
+  integral |P|^2 W_Q
+     >= [1-c_z/Q] integral |P|^2 W_infinity,
+  c_z=2(z+d)+b(z+d)(z+d+1).                                   (9)
+
+No unproved isotropy of P or of the relative Gaussian is assumed: the
+Gamma argument is conditional on the angular direction. The inequality
+is also true for P=0.
+
+Let the retained cutoff be D=8 for r=3 and D=16 for r=4. Put
+
+  Z=D(D-1)/2,
+  k=D+d,
+  c=2k+b k(k+1).
+
+For Q>max(Z,c) and Q>=max(D,Qloc), equations (2), (4), and (9) imply
+
+  A_{r,z,Q} >= C_Q (1-Z/Q)(1-c/Q) t_r I,  0<=z<=D,             (10)
+
+where t_r is the smallest retained planar eigenvalue. The known exact
+Gaussian evaluations give
+
+  t_3=(8/9)^9,
+  t_4=(16/17)(8/9)^17.                                       (11)
+
+The inequalities hold on all multiplicities. Spin invariance and kernel
+positivity make the corresponding projector comparison valid on the
+whole auxiliary space, as in the previous coherent proof.
+
+4. POSITIVE LIFT, EXACT RATIONAL COEFFICIENT, AND ALL-Q MONOTONICITY
+
+The exact spectator marginal is mu_Q=(Q+1)/(aQ+1). Compose the
+projector bound from (10) with W_r,W_r^*, apply the positive r-body lift,
+and use the exact occupation estimates already established in the draft.
+The resulting coefficient multiplying S4+H (r=3) or 2S4+H (r=4) is
+at most
+
+  C_r(Q) := C_{r,infinity}/D_r(1/Q),
+  C_{r,infinity}=1/(a^h t_r),
+  D_r(x)=(1+x/a)^h(1+x/2)(1-Zx)(1-cx).                        (12)
+
+This keeps the useful exact cancellation
+mu_Q^h/C_Q=a^{-h}/[(1+1/(aQ))^h(1+1/(2Q))].
+For each parameter choice in the table, Z+c>h/a+1/2. For
+0<=x<min(1/Z,1/c), logarithmic differentiation gives
+
+  D_r'(x)/D_r(x)
+    =h/(a+x)+1/(2+x)-Z/(1-Zx)-c/(1-cx)
+    <=h/a+1/2-Z-c<0.                                         (13)
+
+Therefore C_r(Q) is decreasing for every Q in the permitted range.
+Checking the exact rational inequality at a threshold Q0 proves it for
+ALL larger integer Q. This is not a sampled-Q extrapolation.
+
+The five table rows have the following c values:
+
+  (r,target,theta,c,Q0)
+  (3, 35,  1/14, 3235/104, 4505),
+  (3, 36,  1/7,  1025/32,  1254),
+  (3, 38,  1/5,  2105/64,   544),
+  (4,2100, 1/12, 988/11,   4330),
+  (4,2200, 1/8,  646/7,    2107).
+
+The exact Fraction checker optimized_coherent_check.py verifies all
+domain conditions, Q0>=Qloc, the strict sign needed for (13), and
+C_r(Q0)<=target. It also verifies C_r(Q0-1)>target for the same theta,
+which only proves local optimality of the integer threshold within that
+specific bound and parameter choice. No floating value enters a proof.
+
+All estimates are on auxiliary few-body coefficients before lifting.
+Thus their thresholds are uniform in the total physical particle number.
+
+5. GENERAL a AND DEGREE-RESOLVED ERROR ABSORPTION
+
+The preceding proof remains valid for ANY fixed real a>0; rational a
+makes the final scalar certificate entirely rational. For a single kernel,
+a must be the same for all its spin blocks. Its exact lowest limiting
+eigenvalues at relative degree z are
+
+  t_{3,z}(a)=(1+3a/2)^(-z-1),
+  t_{4,z}(a)=(1+a)^(-1)(1+2a)^(-z-1).                         (14)
+
+For each z put Z_z=z(z-1)/2, k_z=z+r-1, and choose any proof parameter
+0<theta_z<1 satisfying Q0>=2(1-theta_z)/(a theta_z^2). Define
+
+  b_z=a(r/2)^2/[2(1-theta_z)],
+  c_z=2k_z+b_z k_z(k_z+1),
+  C_{r,z}(Q)=1/{a^h t_{r,z}(a)
+      (1+1/(aQ))^h (1+1/(2Q))(1-Z_z/Q)(1-c_z/Q)}.             (15)
+
+All conditions are Q>=z, Q>max(Z_z,c_z), and the displayed condition
+on theta_z. Choosing theta_z differently across blocks does not change
+the kernel: theta is only used to prove a lower bound on its positive
+weight. Consequently, if delta_z>=0 and a physical few-body error obeys
+
+  E_{r,Q} >= -sum_{z=0}^D delta_z H_{r,Q} Pi^{phys}_{z,Q},
+
+then its negative contribution after lifting is bounded by
+
+  max_{0<=z<=D}[delta_z C_{r,z}(Q)] times (S4+H)       (r=3),
+  max_{0<=z<=D}[delta_z C_{r,z}(Q)] times (2S4+H)      (r=4).  (16)
+
+Indeed, the single auxiliary weighted projector sum_z delta_z Pi_z is
+bounded by max_z(delta_z/lambda_z) times the SAME positive kernel A,
+where lambda_z is its degree-z lower bound from (10) with z-dependent
+constants. W_r(sum_z delta_z Pi_z)W_r^*=sum_z delta_z H_r Pi_z,
+and the positive lift gives (16). There is no sum over z in its scalar
+cost. This argument includes all multiplicities in each spin block.
+
+For a bound uniform in all Q>=Q0, small z needs care: C_{r,z}(Q) is not
+always decreasing. A general exact bound valid for every z is
+
+  Cbar_{r,z}(Q0)=max{C_{r,z}(Q0), 1/[a^h t_{r,z}(a)]}.          (17)
+
+To prove it, the logarithm of
+D_z(x)=(1+x/a)^h(1+x/2)(1-Z_z x)(1-c_z x) is concave on
+0<=x<=1/Q0. Therefore log D_z(x)>=min(log D_z(0),log D_z(1/Q0));
+since D_z(0)=1, its reciprocal is bounded by the maximum of the endpoint
+reciprocals. If Z_z+c_z>h/a+1/2, (13) also proves the simpler monotone
+bound C_{r,z}(Q)<=C_{r,z}(Q0).
+
+Thus (16) holds uniformly with max_z delta_z Cbar_{r,z}(Q0), when the
+delta_z themselves are uniform error bounds for Q>=Q0. If the errors
+are Q-dependent, their dependence must separately be retained or bounded.
+
+The importable module optimized_coherent_coefficients.py implements
+parameters(r,z,a,theta,q0), coefficient(r,z,q,a,theta),
+uniform_coefficient(r,z,q0,a,theta), and weighted_cost(r,errors,q0,a,theta)
+using only exact Fractions. Its automatic theta choice chooses the largest
+integer m>=2 with 2m(m-1)/a<=Q0, then theta=1/m. This is a convenient
+discrete choice, not a claim of global parameter optimality. Supply a and
+theta as Fraction objects; floating inputs are rejected.

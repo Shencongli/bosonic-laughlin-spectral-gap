@@ -1,0 +1,168 @@
+EXPLICIT UNIFORM FLUX THRESHOLD FOR THE BOSONIC V0 NEGATIVE TAIL
+
+Result. With the definitions and normalization of Section 3 of
+outputs/bosonic_V0_tail_estimate.tex, every integer Q >= 10,000,000 obeys
+
+  T_{9,Q} <= (c_9 + 1/2000) (S_{4,Q} + H_Q),
+  c_9 = 30(5/9)^9 = 19531250/129140163.                 (1)
+
+This is an exact operator/form bound, uniform in bosonic particle number.
+It uses the exact auxiliary eigenvalue formula and coherent lifting formula
+already proved in that section. The scalar estimates below are explicit for
+every Q in the stated range, not merely at a sampled value of Q. No floating
+point comparison occurs in the proof or its three finite rational checks.
+
+DEFINITIONS AND THE TWO INPUT IDENTITIES
+
+Set a=2/27, M=floor(aQ), r=9/10, t=9/29 and rho=29/36.
+On the auxiliary pair--single space V_Q tensor U_Q, let Pi_z be the
+orthogonal projection onto total spin 3Q/2-z, for 0<=z<=Q. Let
+
+  f_{z,Q} = (Q)_z/(2Q)_z,
+  C_{9,Q} = 2 sum_{z odd, 9<=z<=Q} f_{z,Q} Pi_z.
+
+Here (x)_k is the descending factorial. The positive coherent auxiliary
+operator A_{M,Q} of Section 3 has eigenvalues tau_{z,Q}>0 satisfying
+
+  tau_{z,Q} = [(2Q+1)/(3Q-2z+1)] sum_{j=z}^Q b_{j,Q} gamma_{z,j,Q},
+  b_{j,Q} = [(Q+1)/(M+Q+1)] (Q)_j/(M+Q)_j,
+  gamma_{z,j,Q} = [(2Q)_z/(3Q-z+1)_z]
+                  binom(j,z) (Q-z)_{j-z}/(3Q-2z)_{j-z}.             (2)
+
+All summands in (2) are nonnegative. The coherent frame identity and the
+occupation estimate on the output sector after a pair annihilation give
+
+  L_3(W_3 A_{M,Q} W_3^dagger)
+        <= [(Q+1)/(M+1)] (S_{4,Q}+H_Q).                            (3)
+
+The linear map X -> L_3(W_3 X W_3^dagger) is positive. Thus an auxiliary
+bound C_{9,Q}<=k A_{M,Q} can be inserted into (3) without changing k.
+
+STEP 1: AN EXACT LOWER BOUND ON EVERY RETAINED SUMMAND
+
+For integers 0<=z<=j<=100 and Q>=100, define the limiting summand
+
+  ell_{z,j} := (2/3)^(z+1) (1+a)^(-j-1)
+                       binom(j,z) (1/3)^(j-z)
+              = 2^(z+1) binom(j,z) t^(j+1).                       (4)
+
+No limit is taken in using ell; it is an explicitly defined positive
+rational number. Bounds on each factor of (2) show that its j-th summand
+is at least ell_{z,j} times the following product:
+
+  P_{z,j,Q} = product_{i=0}^{j-1} (1-i/Q)
+             product_{i=0}^{z-1} (1-i/(2Q))
+             product_{i=z}^{j-1} (1-i/Q).                         (5)
+
+Indeed, (2Q+1)/(3Q-2z+1)>=2/3 and
+(Q+1)/(M+Q+1)>=1/(1+a). Each factor of (Q)_j/(M+Q)_j is at least
+(1-i/Q)/(1+a), since M+Q-i <= (1+a)Q. Each factor of
+(2Q)_z/(3Q-z+1)_z is at least (2/3)(1-i/(2Q)), since
+3Q-z+1-i<=3Q whenever z>=1; for z=0 that product is empty. Finally,
+each factor of (Q-z)_{j-z}/(3Q-2z)_{j-z} is at least
+(1/3)(1-(z+i)/Q), because its denominator is at most 3Q.
+
+Every loss factor appearing in (5) lies in [0,1]. The elementary product
+inequality product_k(1-u_k)>=1-sum_k u_k for 0<=u_k<=1 (proved by induction)
+therefore gives
+
+  P_{z,j,Q} >= 1 - [j(j-1)-z(z-1)/4]/Q
+             >= 1 - 9900/Q.                                      (6)
+
+Retaining j<=100 in the nonnegative sum (2), for 0<=z<=32 one obtains
+
+  tau_{z,Q} >= (1-9900/Q) sum_{j=z}^{100} ell_{z,j}.                 (7)
+
+STEP 2: A UNIFORM EXACT BOUND ON THE OMITTED LIMITING SUM
+
+The binomial-series identity, valid since 0<t<1, implies
+
+  sum_{j=z}^infinity ell_{z,j}
+      = [2t/(1-t)]^(z+1) = r^(z+1).                               (8)
+
+For j>=0, binom(j,z)<=2^j follows by retaining one term of
+sum_{k=0}^j binom(j,k)=2^j (with binom(j,z)=0 when z>j).
+Since 2t=18/29<1, for every 0<=z<=32 the relative omitted tail obeys
+
+  [sum_{j=101}^infinity ell_{z,j}]/r^(z+1)
+     <= (2/r)^(z+1) [t/(1-2t)] (2t)^101
+     <= (20/9)^33 (9/11) (18/29)^101
+     <= 1/1000.                                                   (9)
+
+The last comparison is the first of three explicit rational checks below.
+For Q>=10^7, 9900/Q<=1/1000, so (7)--(9) yield
+
+  tau_{z,Q} >= (999/1000)^2 r^(z+1)
+             >= (499/500) r^(z+1),   0<=z<=32.                    (10)
+
+Moreover, (Q-i)/(2Q-i)<=1/2 for 0<=i<z<=Q, hence
+f_{z,Q}<=2^(-z). Define the positive scalar
+
+  A_* := (2/r)(1/(2r))^9 = (20/9)(5/9)^9 = a c_9.                 (11)
+
+Because 1/(2r)=5/9<1, (10) gives
+
+  2 f_{z,Q}/tau_{z,Q} <= (500/499) A_*,  9<=z<=32.                (12)
+
+The estimate covers all these integer z; only the odd ones are needed.
+
+STEP 3: THE UNBOUNDED z RANGE
+
+For completeness, retaining just j=z in (2) gives the previously proved
+coarse bound
+
+  2 f_{z,Q}/tau_{z,Q} <= 3(1+a) rho^z,
+  rho = 3(1+a)/4 = 29/36,                  0<=z<=Q.               (13)
+
+It follows directly from the exact product
+
+  2 [(3Q-2z+1)/(2Q+1)] [(M+Q+1)/(Q+1)]
+      product_{i=0}^{z-1}
+       [(M+Q-i)(3Q-z+1-i)/(2Q-i)^2]
+
+as an upper bound on 2f/tau. Its prefactor is at most 3(1+a).
+Writing x=i/Q, each product factor is at most
+(1+a-x)(3-2x)/(2-x)^2 <=3(1+a)/4. The latter inequality holds because
+its denominator is positive and its numerator difference is
+x[(8-4a)-(5-3a)x]/4>=0 for 0<=x<1 and 0<a<1/3.
+
+The second exact rational check is
+
+  3(29/27)(29/36)^33 <= A_*.                                     (14)
+
+Since 0<rho<1, (13)--(14) imply 2f/tau<=A_* for all z>=33,
+uniformly in Q. Combining with (12), and observing that the left
+side vanishes on the other auxiliary spin blocks, gives
+
+  C_{9,Q} <= (500/499) A_* A_{M,Q},   Q>=10^7.                    (15)
+
+STEP 4: LIFTING AND THE FINAL CONSTANT
+
+Because M+1>aQ,
+
+  (Q+1)/(M+1) <= (1/a)(1+1/Q) <= (1/a)(1001/1000),               (16)
+
+where the last inequality only requires Q>=1000. Applying (3) and (15)
+then proves
+
+  T_{9,Q} <= (1001/998)c_9 (S_{4,Q}+H_Q)
+           <= (c_9+1/2000)(S_{4,Q}+H_Q).                          (17)
+
+For the final rational check, the difference between the two coefficients
+in the second inequality is strictly positive:
+
+  1/2000 - (3/998)c_9
+    = 1,949,063,779 / 42,960,627,558,000 > 0.                    (18)
+
+The margin is about 4.54e-5, but this decimal is not used. The only uniform
+Q conditions used above are Q>=100, Q>=9,900,000 (to make 9900/Q<=1/1000),
+and Q>=1000. Hence 10,000,000 is a convenient valid threshold; the slightly
+smaller integer 9,900,000 is also valid by the identical argument.
+
+FINITE EXACT CHECKER
+
+Run `python -S work/boson_v0/verify_explicit_tail_threshold.py` from the
+workspace root. It checks (9), (14), (18), all parameter identities, and
+the stated threshold using only integers and fractions.Fraction. It writes
+no data on execution, and fails with nonzero exit status on any failure.
+Its captured output is in work/boson_v0/explicit_tail_threshold_result.txt.

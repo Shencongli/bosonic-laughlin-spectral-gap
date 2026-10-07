@@ -1,0 +1,677 @@
+{
+  "status": "FLOATING_CROSSCHECK_ONLY",
+  "blocks": [
+    {
+      "Q": 4000,
+      "body": 3,
+      "z": 0,
+      "difference": 2.3592239273284576e-15,
+      "Taylor_remainder_envelope": 4.089521684552326e-15
+    },
+    {
+      "Q": 4000,
+      "body": 3,
+      "z": 2,
+      "difference": 1.156713613781335e-14,
+      "Taylor_remainder_envelope": 1.979722503189494e-14
+    },
+    {
+      "Q": 4000,
+      "body": 3,
+      "z": 3,
+      "difference": 1.7591397089011807e-14,
+      "Taylor_remainder_envelope": 3.4884085123429174e-14
+    },
+    {
+      "Q": 4000,
+      "body": 3,
+      "z": 4,
+      "difference": 1.5654789069880978e-13,
+      "Taylor_remainder_envelope": 1.7850321318303584e-13
+    },
+    {
+      "Q": 4000,
+      "body": 3,
+      "z": 5,
+      "difference": 4.971594967304038e-13,
+      "Taylor_remainder_envelope": 5.412257808826922e-13
+    },
+    {
+      "Q": 4000,
+      "body": 3,
+      "z": 6,
+      "difference": 1.2081136058997993e-13,
+      "Taylor_remainder_envelope": 3.3953185585323556e-13
+    },
+    {
+      "Q": 4000,
+      "body": 3,
+      "z": 7,
+      "difference": 3.132949899942866e-13,
+      "Taylor_remainder_envelope": 8.610583945000731e-13
+    },
+    {
+      "Q": 4000,
+      "body": 3,
+      "z": 8,
+      "difference": 4.671312707309194e-13,
+      "Taylor_remainder_envelope": 3.4828243245484446e-12
+    },
+    {
+      "Q": 4000,
+      "body": 4,
+      "z": 0,
+      "difference": 4.8606951796870135e-15,
+      "Taylor_remainder_envelope": 1.485274797252027e-14
+    },
+    {
+      "Q": 4000,
+      "body": 4,
+      "z": 2,
+      "difference": 2.6020852139652106e-14,
+      "Taylor_remainder_envelope": 4.9532384083160585e-14
+    },
+    {
+      "Q": 4000,
+      "body": 4,
+      "z": 3,
+      "difference": 3.0142555118573e-14,
+      "Taylor_remainder_envelope": 6.725119332597459e-14
+    },
+    {
+      "Q": 4000,
+      "body": 4,
+      "z": 4,
+      "difference": 5.897960832416744e-14,
+      "Taylor_remainder_envelope": 2.1139733147794005e-13
+    },
+    {
+      "Q": 4000,
+      "body": 4,
+      "z": 5,
+      "difference": 3.6286598725787655e-13,
+      "Taylor_remainder_envelope": 3.8343334715484213e-13
+    },
+    {
+      "Q": 4000,
+      "body": 4,
+      "z": 6,
+      "difference": 5.191536253705164e-13,
+      "Taylor_remainder_envelope": 7.486117141898053e-13
+    },
+    {
+      "Q": 4000,
+      "body": 4,
+      "z": 7,
+      "difference": 1.2175914868602791e-12,
+      "Taylor_remainder_envelope": 1.2666136539349075e-12
+    },
+    {
+      "Q": 4000,
+      "body": 4,
+      "z": 8,
+      "difference": 1.6440824481227786e-12,
+      "Taylor_remainder_envelope": 1.858975701478099e-12
+    },
+    {
+      "Q": 4000,
+      "body": 4,
+      "z": 9,
+      "difference": 9.758280711464713e-13,
+      "Taylor_remainder_envelope": 1.3898738297906266e-12
+    },
+    {
+      "Q": 4000,
+      "body": 4,
+      "z": 10,
+      "difference": 6.474473083978493e-12,
+      "Taylor_remainder_envelope": 6.900335105665907e-12
+    },
+    {
+      "Q": 4000,
+      "body": 4,
+      "z": 11,
+      "difference": 1.317656032108812e-12,
+      "Taylor_remainder_envelope": 2.3200292004952123e-12
+    },
+    {
+      "Q": 4000,
+      "body": 4,
+      "z": 12,
+      "difference": 2.2671533487255768e-11,
+      "Taylor_remainder_envelope": 2.5322884496977098e-11
+    },
+    {
+      "Q": 4000,
+      "body": 4,
+      "z": 13,
+      "difference": 4.4173098891490147e-13,
+      "Taylor_remainder_envelope": 7.427521300087689e-12
+    },
+    {
+      "Q": 4000,
+      "body": 4,
+      "z": 14,
+      "difference": 7.085411826466858e-11,
+      "Taylor_remainder_envelope": 1.0752325253716607e-10
+    },
+    {
+      "Q": 4000,
+      "body": 4,
+      "z": 15,
+      "difference": 1.0289205036917944e-13,
+      "Taylor_remainder_envelope": 3.807983971292693e-11
+    },
+    {
+      "Q": 4000,
+      "body": 4,
+      "z": 16,
+      "difference": 1.9504288439884777e-10,
+      "Taylor_remainder_envelope": 7.421411270210216e-10
+    },
+    {
+      "Q": 7000,
+      "body": 3,
+      "z": 0,
+      "difference": 6.106226635438361e-16,
+      "Taylor_remainder_envelope": 4.360339655332759e-16
+    },
+    {
+      "Q": 7000,
+      "body": 3,
+      "z": 2,
+      "difference": 9.575673587391975e-16,
+      "Taylor_remainder_envelope": 2.1108244931966287e-15
+    },
+    {
+      "Q": 7000,
+      "body": 3,
+      "z": 3,
+      "difference": 2.3245294578089215e-15,
+      "Taylor_remainder_envelope": 3.719419321781703e-15
+    },
+    {
+      "Q": 7000,
+      "body": 3,
+      "z": 4,
+      "difference": 1.665985058241226e-14,
+      "Taylor_remainder_envelope": 1.903241256762065e-14
+    },
+    {
+      "Q": 7000,
+      "body": 3,
+      "z": 5,
+      "difference": 5.2929340597918095e-14,
+      "Taylor_remainder_envelope": 5.770670550019543e-14
+    },
+    {
+      "Q": 7000,
+      "body": 3,
+      "z": 6,
+      "difference": 1.3149420788338695e-14,
+      "Taylor_remainder_envelope": 3.620164727131541e-14
+    },
+    {
+      "Q": 7000,
+      "body": 3,
+      "z": 7,
+      "difference": 3.3581183623773714e-14,
+      "Taylor_remainder_envelope": 9.180797542358132e-14
+    },
+    {
+      "Q": 7000,
+      "body": 3,
+      "z": 8,
+      "difference": 4.9515730057847485e-14,
+      "Taylor_remainder_envelope": 3.713465335628496e-13
+    },
+    {
+      "Q": 7000,
+      "body": 4,
+      "z": 0,
+      "difference": 3.0184188481996443e-16,
+      "Taylor_remainder_envelope": 1.5836332698730485e-15
+    },
+    {
+      "Q": 7000,
+      "body": 4,
+      "z": 2,
+      "difference": 2.8449465006019636e-15,
+      "Taylor_remainder_envelope": 5.281253779795548e-15
+    },
+    {
+      "Q": 7000,
+      "body": 4,
+      "z": 3,
+      "difference": 2.768618667658984e-15,
+      "Taylor_remainder_envelope": 7.170472924385463e-15
+    },
+    {
+      "Q": 7000,
+      "body": 4,
+      "z": 4,
+      "difference": 6.237103195755005e-15,
+      "Taylor_remainder_envelope": 2.2539657167160616e-14
+    },
+    {
+      "Q": 7000,
+      "body": 4,
+      "z": 5,
+      "difference": 3.887515309664025e-14,
+      "Taylor_remainder_envelope": 4.088252264541424e-14
+    },
+    {
+      "Q": 7000,
+      "body": 4,
+      "z": 6,
+      "difference": 5.5224201300948054e-14,
+      "Taylor_remainder_envelope": 7.981865840591012e-14
+    },
+    {
+      "Q": 7000,
+      "body": 4,
+      "z": 7,
+      "difference": 1.296444582162247e-13,
+      "Taylor_remainder_envelope": 1.3504918592558782e-13
+    },
+    {
+      "Q": 7000,
+      "body": 4,
+      "z": 8,
+      "difference": 1.757690071794713e-13,
+      "Taylor_remainder_envelope": 1.9820815475984724e-13
+    },
+    {
+      "Q": 7000,
+      "body": 4,
+      "z": 9,
+      "difference": 1.039149652315709e-13,
+      "Taylor_remainder_envelope": 1.481914620684716e-13
+    },
+    {
+      "Q": 7000,
+      "body": 4,
+      "z": 10,
+      "difference": 6.90441887948088e-13,
+      "Taylor_remainder_envelope": 7.357291907748741e-13
+    },
+    {
+      "Q": 7000,
+      "body": 4,
+      "z": 11,
+      "difference": 1.4034848100051494e-13,
+      "Taylor_remainder_envelope": 2.473667119228549e-13
+    },
+    {
+      "Q": 7000,
+      "body": 4,
+      "z": 12,
+      "difference": 2.416399385200471e-12,
+      "Taylor_remainder_envelope": 2.6999826868913525e-12
+    },
+    {
+      "Q": 7000,
+      "body": 4,
+      "z": 13,
+      "difference": 4.7062948148869485e-14,
+      "Taylor_remainder_envelope": 7.919389641076421e-13
+    },
+    {
+      "Q": 7000,
+      "body": 4,
+      "z": 14,
+      "difference": 7.547399412706304e-12,
+      "Taylor_remainder_envelope": 1.1464370116415877e-11
+    },
+    {
+      "Q": 7000,
+      "body": 4,
+      "z": 15,
+      "difference": 1.095213504397553e-14,
+      "Taylor_remainder_envelope": 4.060157836946811e-12
+    },
+    {
+      "Q": 7000,
+      "body": 4,
+      "z": 16,
+      "difference": 2.077581869844019e-11,
+      "Taylor_remainder_envelope": 7.912874990311604e-11
+    },
+    {
+      "Q": 30000,
+      "body": 3,
+      "z": 0,
+      "difference": 1.609823385706477e-15,
+      "Taylor_remainder_envelope": 1.2924908040066609e-18
+    },
+    {
+      "Q": 30000,
+      "body": 3,
+      "z": 2,
+      "difference": 4.475586568020162e-16,
+      "Taylor_remainder_envelope": 6.2569007508211166e-18
+    },
+    {
+      "Q": 30000,
+      "body": 3,
+      "z": 3,
+      "difference": 7.19910242530375e-17,
+      "Taylor_remainder_envelope": 1.102509356987391e-17
+    },
+    {
+      "Q": 30000,
+      "body": 3,
+      "z": 4,
+      "difference": 1.541464438731266e-16,
+      "Taylor_remainder_envelope": 5.641583033932984e-17
+    },
+    {
+      "Q": 30000,
+      "body": 3,
+      "z": 5,
+      "difference": 3.7399553939887475e-16,
+      "Taylor_remainder_envelope": 1.7105407395798667e-16
+    },
+    {
+      "Q": 30000,
+      "body": 3,
+      "z": 6,
+      "difference": 5.740850503310746e-17,
+      "Taylor_remainder_envelope": 1.0730883345484974e-16
+    },
+    {
+      "Q": 30000,
+      "body": 3,
+      "z": 7,
+      "difference": 3.7465961322952213e-16,
+      "Taylor_remainder_envelope": 2.7213697406422063e-16
+    },
+    {
+      "Q": 30000,
+      "body": 3,
+      "z": 8,
+      "difference": 1.1080546202801855e-16,
+      "Taylor_remainder_envelope": 1.1007444778819775e-15
+    },
+    {
+      "Q": 30000,
+      "body": 4,
+      "z": 0,
+      "difference": 1.2975731600306517e-15,
+      "Taylor_remainder_envelope": 4.694201828352085e-18
+    },
+    {
+      "Q": 30000,
+      "body": 4,
+      "z": 2,
+      "difference": 1.1102230246251565e-16,
+      "Taylor_remainder_envelope": 1.565467941393717e-17
+    },
+    {
+      "Q": 30000,
+      "body": 4,
+      "z": 3,
+      "difference": 6.557254739192331e-16,
+      "Taylor_remainder_envelope": 2.125469813759197e-17
+    },
+    {
+      "Q": 30000,
+      "body": 4,
+      "z": 4,
+      "difference": 3.200531194000121e-16,
+      "Taylor_remainder_envelope": 6.6811996121423e-17
+    },
+    {
+      "Q": 30000,
+      "body": 4,
+      "z": 5,
+      "difference": 3.5388358909926865e-16,
+      "Taylor_remainder_envelope": 1.2118387268103652e-16
+    },
+    {
+      "Q": 30000,
+      "body": 4,
+      "z": 6,
+      "difference": 5.356126525936195e-16,
+      "Taylor_remainder_envelope": 2.3659827016369155e-16
+    },
+    {
+      "Q": 30000,
+      "body": 4,
+      "z": 7,
+      "difference": 3.9517263591481777e-16,
+      "Taylor_remainder_envelope": 4.0031246346584726e-16
+    },
+    {
+      "Q": 30000,
+      "body": 4,
+      "z": 8,
+      "difference": 6.516163098527999e-16,
+      "Taylor_remainder_envelope": 5.875281229362879e-16
+    },
+    {
+      "Q": 30000,
+      "body": 4,
+      "z": 9,
+      "difference": 2.884758285595171e-16,
+      "Taylor_remainder_envelope": 4.3926876595851887e-16
+    },
+    {
+      "Q": 30000,
+      "body": 4,
+      "z": 10,
+      "difference": 1.8908527318315e-15,
+      "Taylor_remainder_envelope": 2.180846650679596e-15
+    },
+    {
+      "Q": 30000,
+      "body": 4,
+      "z": 11,
+      "difference": 3.9233911890901236e-16,
+      "Taylor_remainder_envelope": 7.332437966997216e-16
+    },
+    {
+      "Q": 30000,
+      "body": 4,
+      "z": 12,
+      "difference": 7.353333612366555e-15,
+      "Taylor_remainder_envelope": 8.003282013859428e-15
+    },
+    {
+      "Q": 30000,
+      "body": 4,
+      "z": 13,
+      "difference": 1.3912361810463503e-16,
+      "Taylor_remainder_envelope": 2.3474635220030222e-15
+    },
+    {
+      "Q": 30000,
+      "body": 4,
+      "z": 14,
+      "difference": 2.2394598229345555e-14,
+      "Taylor_remainder_envelope": 3.3982657591993225e-14
+    },
+    {
+      "Q": 30000,
+      "body": 4,
+      "z": 15,
+      "difference": 4.26268724778122e-17,
+      "Taylor_remainder_envelope": 1.2035109835196656e-14
+    },
+    {
+      "Q": 30000,
+      "body": 4,
+      "z": 16,
+      "difference": 6.470523408948937e-14,
+      "Taylor_remainder_envelope": 2.3455324508318715e-13
+    },
+    {
+      "Q": null,
+      "body": 3,
+      "z": 0,
+      "difference": 1.3877787807814457e-15,
+      "Taylor_remainder_envelope": 0.0
+    },
+    {
+      "Q": null,
+      "body": 3,
+      "z": 2,
+      "difference": 1.734723475976807e-18,
+      "Taylor_remainder_envelope": 0.0
+    },
+    {
+      "Q": null,
+      "body": 3,
+      "z": 3,
+      "difference": 1.8149544367407344e-16,
+      "Taylor_remainder_envelope": 0.0
+    },
+    {
+      "Q": null,
+      "body": 3,
+      "z": 4,
+      "difference": 5.119060557390309e-16,
+      "Taylor_remainder_envelope": 0.0
+    },
+    {
+      "Q": null,
+      "body": 3,
+      "z": 5,
+      "difference": 3.9329433806911673e-16,
+      "Taylor_remainder_envelope": 0.0
+    },
+    {
+      "Q": null,
+      "body": 3,
+      "z": 6,
+      "difference": 1.0885389811754465e-16,
+      "Taylor_remainder_envelope": 0.0
+    },
+    {
+      "Q": null,
+      "body": 3,
+      "z": 7,
+      "difference": 1.8015374348562263e-16,
+      "Taylor_remainder_envelope": 0.0
+    },
+    {
+      "Q": null,
+      "body": 3,
+      "z": 8,
+      "difference": 3.872228059031979e-16,
+      "Taylor_remainder_envelope": 0.0
+    },
+    {
+      "Q": null,
+      "body": 4,
+      "z": 0,
+      "difference": 1.1587952819525071e-15,
+      "Taylor_remainder_envelope": 0.0
+    },
+    {
+      "Q": null,
+      "body": 4,
+      "z": 2,
+      "difference": 1.8041124150158794e-16,
+      "Taylor_remainder_envelope": 0.0
+    },
+    {
+      "Q": null,
+      "body": 4,
+      "z": 3,
+      "difference": 4.0939474033052647e-16,
+      "Taylor_remainder_envelope": 0.0
+    },
+    {
+      "Q": null,
+      "body": 4,
+      "z": 4,
+      "difference": 3.9692513871169347e-16,
+      "Taylor_remainder_envelope": 0.0
+    },
+    {
+      "Q": null,
+      "body": 4,
+      "z": 5,
+      "difference": 9.71445146547012e-17,
+      "Taylor_remainder_envelope": 0.0
+    },
+    {
+      "Q": null,
+      "body": 4,
+      "z": 6,
+      "difference": 2.0845190975479737e-16,
+      "Taylor_remainder_envelope": 0.0
+    },
+    {
+      "Q": null,
+      "body": 4,
+      "z": 7,
+      "difference": 1.8546089114340884e-16,
+      "Taylor_remainder_envelope": 0.0
+    },
+    {
+      "Q": null,
+      "body": 4,
+      "z": 8,
+      "difference": 4.459358393815637e-16,
+      "Taylor_remainder_envelope": 0.0
+    },
+    {
+      "Q": null,
+      "body": 4,
+      "z": 9,
+      "difference": 1.430630758639512e-16,
+      "Taylor_remainder_envelope": 0.0
+    },
+    {
+      "Q": null,
+      "body": 4,
+      "z": 10,
+      "difference": 6.722935508338848e-16,
+      "Taylor_remainder_envelope": 0.0
+    },
+    {
+      "Q": null,
+      "body": 4,
+      "z": 11,
+      "difference": 7.060924049631907e-17,
+      "Taylor_remainder_envelope": 0.0
+    },
+    {
+      "Q": null,
+      "body": 4,
+      "z": 12,
+      "difference": 3.342400603750007e-16,
+      "Taylor_remainder_envelope": 0.0
+    },
+    {
+      "Q": null,
+      "body": 4,
+      "z": 13,
+      "difference": 2.9717319737910795e-17,
+      "Taylor_remainder_envelope": 0.0
+    },
+    {
+      "Q": null,
+      "body": 4,
+      "z": 14,
+      "difference": 7.9089830603214995e-16,
+      "Taylor_remainder_envelope": 0.0
+    },
+    {
+      "Q": null,
+      "body": 4,
+      "z": 15,
+      "difference": 5.697947828794147e-17,
+      "Taylor_remainder_envelope": 0.0
+    },
+    {
+      "Q": null,
+      "body": 4,
+      "z": 16,
+      "difference": 1.4338593414344194e-15,
+      "Taylor_remainder_envelope": 0.0
+    }
+  ]
+}

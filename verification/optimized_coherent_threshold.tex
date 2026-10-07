@@ -1,0 +1,200 @@
+\subsection{A direct quantitative coherent comparison}
+\label{app:optimized-coherent}
+
+The following comparison avoids descendant truncation. Throughout this
+subsection $r\in\{3,4\}$, $h=r-2$, and the auxiliary space is
+$V_Q\otimes\Sym^hU_Q$. Choose any fixed $a>0$ and use the real exponent
+$M=aQ$ in the positive coherent kernel. Its positivity and the exact
+spectator marginal $(Q+1)/(M+1)$ do not require $M$ to be an integer.
+This choice changes only an auxiliary comparison kernel.
+
+For a retained spin deficit $z$, let
+\begin{equation}\label{eq:opt-coh-parameters}
+ Z_z=\frac{z(z-1)}2,\qquad k_z=z+r-1,\qquad
+ b_z=\frac{a(r/2)^2}{2(1-\theta_z)},\qquad
+ c_z=2k_z+b_zk_z(k_z+1),
+\end{equation}
+where $0<\theta_z<1$ is a proof parameter. Define
+\begin{equation}
+ t_{3,z}(a)=(1+3a/2)^{-z-1},\qquad
+ t_{4,z}(a)=(1+a)^{-1}(1+2a)^{-z-1}.
+\end{equation}
+These are the exact smallest eigenvalues of the limiting relative
+Gaussian kernels in degree $z$, including all multiplicities.
+
+\begin{lemma}\label{lem:opt-coh}
+Suppose
+\begin{equation}\label{eq:opt-coh-domain}
+ Q\ge z,\qquad Q>\max(Z_z,c_z),\qquad
+ Q\ge\frac{2(1-\theta_z)}{a\theta_z^2}.
+\end{equation}
+The spin-deficit-$z$ multiplicity matrix of the coherent kernel obeys
+\begin{equation}\label{eq:opt-coh-block-lower}
+ A_{r,z,Q}\ge
+ \left(1+\frac1{2Q}\right)\left(1+\frac1Q\right)^h
+ \left(1-\frac{Z_z}Q\right)\left(1-\frac{c_z}Q\right)t_{r,z}(a)I.
+\end{equation}
+Consequently its degree-resolved lifted comparison coefficient is
+\begin{equation}\label{eq:opt-coh-coefficient}
+ C_{r,z}(Q)=
+ \frac1{a^ht_{r,z}(a)(1+1/(aQ))^h(1+1/(2Q))
+                 (1-Z_z/Q)(1-c_z/Q)}.
+\end{equation}
+For the three-body lift the corresponding form is $S_{4,Q}+H_Q$;
+for the four-body lift it is $2S_{4,Q}+H_Q$.
+\end{lemma}
+\begin{proof}
+Use oscillator coordinates $x=(u,v_1,\ldots,v_h)\in\mathbb C^{h+1}$,
+with the spectators symmetrized. Degree-$z$ normalized occupation labels
+are identified with the spherical weight-$z$ labels. The normalized
+center-of-mass annihilator is
+$a_\zeta=(\sqrt2a_u+\sum_sa_{v_s})/\sqrt r$.
+Let $F_z$ be an isometric frame for its degree-$z$ kernel. The exact
+diagonal matrix
+\begin{equation}
+ D_{Q,z}(p;j_1,\ldots,j_h)=
+ \sqrt{\frac{\fall{2Q}p}{(2Q)^p}}
+ \prod_{s=1}^h\sqrt{\frac{\fall Q{j_s}}{Q^{j_s}}},
+ \qquad p+\sum_sj_s=z,
+\end{equation}
+satisfies $J_+/\sqrt Q=D_{Q,z-1}^{-1}(\sqrt r\,a_\zeta)D_{Q,z}$.
+Thus $V_z=D_{Q,z}^{-1}F_z$ spans the exact spherical highest space.
+With $G_z=V_z^\dagger V_z$, its normalized frame is
+$F_{z,Q}=V_zG_z^{-1/2}$. The product inequality
+$\prod_i(1-x_i)\ge1-\sum_ix_i$ gives
+\begin{equation}\label{eq:opt-coh-gram}
+ (1-Z_z/Q)I\le D_{Q,z}^2\le I,
+ \qquad I\le G_z\le(1-Z_z/Q)^{-1}I.
+\end{equation}
+Indeed, the sum of its diagonal product losses is
+$[p(p-1)/4+\sum_sj_s(j_s-1)/2]/Q\le Z_z/Q$.
+
+In the stereographic coordinate $\alpha$, the unit-mass spherical measure
+is $d^2\alpha/[\pi(1+|\alpha|^2)^2]$, and a spin of capacity $L$ has
+coherent coefficients
+$(1+|\alpha|^2)^{-L/2}\sqrt{\binom Li}\alpha^i$.
+Rescale the pair coordinate to $u=\sqrt{2Q}\alpha$, and the spectators
+to $v_s=\sqrt Q\beta_s$. Set
+\begin{equation}
+ X=|u|^2+\sum_s|v_s|^2,\qquad
+ d_s=|v_s-u/\sqrt2|^2,\qquad D_{\rm rel}=\sum_sd_s.
+\end{equation}
+The relative quadratic form satisfies $D_{\rm rel}\le\kappa X$ with
+$\kappa=r/2$: its nonzero eigenvalue is $3/2$ for $r=3$, and its relative
+eigenvalues are $1,2$ for $r=4$.
+
+For a multiplicity vector $w$, set $\psi=F_zG_z^{-1/2}w$ and define its
+coherent-overlap polynomial
+$P(x)=\sum_{\boldsymbol n}\overline{\psi_{\boldsymbol n}}
+x^{\boldsymbol n}/\sqrt{\boldsymbol n!}$.
+It is homogeneous of degree $z$; the conjugation follows the bra-overlap
+convention, and its Gaussian norm equals $\|\psi\|$.
+The factor $D_{Q,z}^{-1}$ in the spherical highest vector cancels the
+falling-factorial factors of the coherent coefficients exactly. Therefore
+\begin{align}
+ \langle w,A_{r,z,Q}w\rangle
+ &=\mathcal J_Q\int_{\mathbb C^{h+1}}|P(x)|^2W_Q(x)
+                      \prod_i\frac{d^2x_i}{\pi},\\
+ \mathcal J_Q&=(1+1/(2Q))(1+1/Q)^h,\notag\\
+ W_Q(x)&=\prod_{i=0}^h
+ \left(1+\frac{|x_i|^2}{\ell_iQ}\right)^{-\ell_iQ-2}
+                  \prod_{s=1}^h(1-y_s)^{aQ},\notag\\
+ y_s&=\frac{d_s}{Q(1+|u|^2/(2Q))(1+|v_s|^2/Q)},
+ \qquad \ell_0=2,\quad\ell_s=1\ (s\ge1).\notag
+\end{align}
+Here $x_0=u$ and $x_s=v_s$. The identity for $y_s$ follows from
+$1-s(\alpha,\beta)=|\alpha-\beta|^2/
+[(1+|\alpha|^2)(1+|\beta|^2)]$, so $0\le y_s\le1$.
+The normalized spectator symmetrizer gives no additional factor in a
+highest-vector overlap. All dimensions and Jacobians are included in
+$\mathcal J_Q$.
+
+The corresponding exact planar weight is
+$W_\infty=\exp(-X-aD_{\rm rel})$. For $X\le\theta_zQ/\kappa$,
+we have $y_s\le d_s/Q\le\theta_z$. The logarithmic-series bound
+$-\log(1-y)\le y+y^2/[2(1-\theta_z)]$, together with
+$\log(1+t)\le t$ and $\sum_sd_s^2\le\kappa^2X^2$, gives
+\begin{equation}\label{eq:opt-coh-global-weight}
+ W_Q\ge W_\infty\exp[-(2X+b_zX^2)/Q]
+      \ge W_\infty[1-(2X+b_zX^2)/Q].
+\end{equation}
+For $X>\theta_zQ/\kappa$, the bracket is nonpositive by
+\eqref{eq:opt-coh-domain}, since
+$b_z(\theta_zQ/\kappa)^2/Q\ge1$.
+Positivity of $W_Q$ therefore makes the last bound in
+\eqref{eq:opt-coh-global-weight} valid on all of $\mathbb C^{h+1}$.
+
+Normalize the positive measure $|P|^2W_\infty\prod_i d^2x_i/\pi$.
+At fixed angular direction $\omega$, writing $x=\sqrt X\omega$ gives
+the radial density proportional to
+$X^{k_z-1}e^{-\lambda(\omega)X}$, with
+$\lambda(\omega)=1+aD_{\rm rel}(\omega)\ge1$.
+The exact Gamma-distribution moments therefore give
+$\mathbb E[X]\le k_z$ and $\mathbb E[X^2]\le k_z(k_z+1)$,
+including after averaging over $\omega$.
+Integrating the global weight bound yields
+\begin{equation}
+ \int|P|^2W_Q\ge(1-c_z/Q)\int|P|^2W_\infty.
+\end{equation}
+The planar integral is bounded below by
+$t_{r,z}(a)\|G_z^{-1/2}w\|^2$.
+Equation~\eqref{eq:opt-coh-gram} now proves
+\eqref{eq:opt-coh-block-lower}. Inverting this bound, composing with
+$W_r,W_r^\dagger$, and applying the positive lift gives the claimed
+coefficient, because the exact marginal $\mu_Q=(Q+1)/(aQ+1)$ obeys
+\begin{equation}
+ \frac{\mu_Q^h}{\mathcal J_Q}
+ =\frac{a^{-h}}{(1+1/(aQ))^h(1+1/(2Q))}.
+\end{equation}
+\end{proof}
+
+For uniform bounds at all $Q\ge Q_0$, define
+\begin{equation}\label{eq:opt-coh-uniform}
+ \overline C_{r,z}(Q_0)=
+ \max\{C_{r,z}(Q_0),a^{-h}t_{r,z}(a)^{-1}\}.
+\end{equation}
+This bound applies even at small $z$ where $C_{r,z}(Q)$ need not decrease.
+Indeed, the logarithm of
+$(1+x/a)^h(1+x/2)(1-Z_zx)(1-c_zx)$ is concave for
+$0\le x\le1/Q_0$, so its minimum is bounded by its endpoint minimum.
+If $Z_z+c_z>h/a+1/2$, logarithmic differentiation gives a strictly
+negative derivative, and the simpler bound $C_{r,z}(Q)\le C_{r,z}(Q_0)$
+holds for every $Q\ge Q_0$.
+
+In particular, a degree-resolved few-body error satisfying
+\begin{equation}
+ E_{r,Q}\ge-\sum_{z=0}^D\delta_zH_{r,Q}\Pi^{(r)}_{z,Q},
+ \qquad\delta_z\ge0,
+\end{equation}
+has lifted negative cost at most
+$\max_z\delta_z\overline C_{r,z}(Q_0)$ times the corresponding form.
+To see this, compare the single auxiliary weighted projector
+$\sum_z\delta_z\Pi_z$ with the same positive coherent kernel in every
+spin block, and then lift once. The value of $a$ must be common to all
+blocks of that kernel; $\theta_z$ may vary since it is only a proof
+parameter. Thus no sum of the per-degree scalar costs is required.
+
+As a direct corollary using $a=1/12$ for $r=3$ and $a=1/16$ for $r=4$,
+the following thresholds follow by exact rational evaluation of
+\eqref{eq:opt-coh-coefficient} and its monotonicity:
+\begin{center}
+\begin{tabular}{ccccc}
+\toprule
+$r$ & cutoff $D$ & comparison constant & sufficient $Q$ & $\theta$\\
+\midrule
+3&8&35&4505&$1/14$\\
+3&8&36&1254&$1/7$\\
+3&8&38&544&$1/5$\\
+4&16&2100&4330&$1/12$\\
+4&16&2200&2107&$1/8$\\
+\bottomrule
+\end{tabular}
+\end{center}
+The threshold in each row is uniform over the retained degrees, since
+$Z_z,c_z$ increase with $z$ and $t_{r,z}(a)$ decreases.
+The original constants $35,2100$ therefore hold simultaneously for
+$Q\ge4505$, independently of particle number.
+The exact scalar checks are supplied in
+\path{optimized_coherent_check.py}; general rational parameters and
+degree-resolved bounds are implemented in
+\path{optimized_coherent_coefficients.py}.

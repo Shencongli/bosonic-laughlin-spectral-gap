@@ -1,0 +1,67 @@
+normal order 3 0 elapsed 0.0
+normal order 3 1 elapsed 0.0
+normal order 3 2 elapsed 0.0
+normal order 3 3 elapsed 0.0
+normal order 3 4 elapsed 0.0
+normal order 3 5 elapsed 0.01
+normal order 3 6 elapsed 0.01
+normal order 3 7 elapsed 0.01
+normal order 3 8 elapsed 0.02
+normal order 4 0 elapsed 0.02
+normal order 4 1 elapsed 0.02
+normal order 4 2 elapsed 0.02
+normal order 4 3 elapsed 0.02
+normal order 4 4 elapsed 0.03
+normal order 4 5 elapsed 0.03
+normal order 4 6 elapsed 0.04
+normal order 4 7 elapsed 0.05
+normal order 4 8 elapsed 0.06
+normal order 4 9 elapsed 0.08
+normal order 4 10 elapsed 0.1
+normal order 4 11 elapsed 0.13
+normal order 4 12 elapsed 0.17
+normal order 4 13 elapsed 0.21
+normal order 4 14 elapsed 0.28
+normal order 4 15 elapsed 0.36
+normal order 4 16 elapsed 0.46
+shifted PSD 3 0 pass True rank 1 H rank 1 elapsed 0.47
+shifted PSD 3 1 pass True rank 0 H rank 0 elapsed 0.47
+shifted PSD 3 2 pass True rank 1 H rank 1 elapsed 0.48
+shifted PSD 3 3 pass True rank 1 H rank 1 elapsed 0.48
+shifted PSD 3 4 pass True rank 1 H rank 1 elapsed 0.48
+shifted PSD 3 5 pass True rank 1 H rank 1 elapsed 0.48
+shifted PSD 3 6 pass True rank 1 H rank 1 elapsed 0.48
+shifted PSD 3 7 pass True rank 1 H rank 1 elapsed 0.48
+shifted PSD 3 8 pass True rank 1 H rank 1 elapsed 0.48
+shifted PSD 4 0 pass True rank 1 H rank 1 elapsed 1.14
+shifted PSD 4 1 pass True rank 0 H rank 0 elapsed 1.14
+shifted PSD 4 2 pass True rank 1 H rank 1 elapsed 1.14
+shifted PSD 4 3 pass True rank 1 H rank 1 elapsed 1.14
+shifted PSD 4 4 pass True rank 2 H rank 2 elapsed 1.15
+shifted PSD 4 5 pass True rank 1 H rank 1 elapsed 1.15
+shifted PSD 4 6 pass True rank 3 H rank 3 elapsed 1.15
+shifted PSD 4 7 pass True rank 2 H rank 2 elapsed 1.16
+shifted PSD 4 8 pass True rank 4 H rank 4 elapsed 1.17
+shifted PSD 4 9 pass True rank 3 H rank 3 elapsed 1.19
+shifted PSD 4 10 pass True rank 5 H rank 5 elapsed 1.22
+shifted PSD 4 11 pass True rank 4 H rank 4 elapsed 1.27
+shifted PSD 4 12 pass True rank 6 H rank 6 elapsed 1.35
+shifted PSD 4 13 pass True rank 5 H rank 5 elapsed 1.45
+shifted PSD 4 14 pass True rank 7 H rank 7 elapsed 1.63
+shifted PSD 4 15 pass True rank 6 H rank 6 elapsed 1.86
+shifted PSD 4 16 pass True rank 8 H rank 8 elapsed 2.25
+{
+  "status": "EXACT_SHIFTED_PSD_VERIFIED",
+  "source": "exact_shifted_certificate_rows.json",
+  "row_denominator": 1000000000000,
+  "delta3": "1/1000000",
+  "delta4": "1/1000000",
+  "mu": "1/50",
+  "c9": "19531250/129140163",
+  "eta": "764191703750823432978457/1500000000000000000000000",
+  "eta_decimal": 0.5094611358338823,
+  "formal_gap_before_transfer_errors": "21908509438123650160314162510503/64570081500000000000000000000000",
+  "all_H_kernels_preserved_exactly": true,
+  "all_strictly_positive_on_H_image": true,
+  "elapsed_seconds": 2.253537893295288
+}

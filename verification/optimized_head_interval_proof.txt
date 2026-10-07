@@ -1,0 +1,229 @@
+RIGOROUS PARAMETER-INTERVAL HEAD CERTIFICATE
+===========================================
+
+Scope and current result
+------------------------
+optimized_head_interval.py proves E_{r,Q}+delta_{r,z} H_{r,Q}>=0 on each
+retained highest block, for EVERY integer Q>=Qmin. The shifts may depend
+on r,z and are read as exact rational numbers from a JSON file. The proof
+is an enclosure on the entire REAL interval 0<=x=1/Q<=1/Qmin, including
+x=0. It does not extrapolate sampled spherical fluxes.
+
+The frozen operator rows are unchanged. There is no premise involving an
+unknown many-body gap. Unlike the earlier continuity bound, this new
+verifier directly proves the planar and spherical comparison together;
+it does not need a separate shifted-planar PSD premise or half-gap premise.
+
+Example already verified, in 14 seconds on the present machine:
+  python -S optimized_head_interval.py --qmin 4000
+      --shifts optimized_head_shifts_Q4000.json
+All 26 blocks pass. At Qmin=4000, these shifts are L_r/Cbar_{r,z}, with
+L_3=0.0035, L_4=0.0022, a_3=83/500, a_4=43/500. The Cbar coefficients
+and their lifting proof are supplied separately by
+optimized_coherent_coefficients.py and optimized_coherent_threshold.txt.
+
+1. Fixed polynomial coordinates, exact metric, and exact common kernel
+----------------------------------------------------------------------
+Use the canonical polynomial occupation basis of exact_relative_blocks.py:
+|A]_x=product_j x_j^{n_j}|0>, with x_j=sqrt(j!) a_j^dagger and
+partial_j=a_j/sqrt(j!). Its planar Gram metric is the positive diagonal
+g_A=product_j n_j! (j!)^{n_j}. x_j,partial_j are formal polynomial creation
+and differentiation operators, not a physical adjoint pair.
+
+At fixed n,M<=16 define
+ P_j(x)=product_{l=0}^{j-1}(1-l x),
+ T_p(x)=product_{l=0}^{p-1}(1-l x/2),
+ d_j=sqrt(P_j), e_p=sqrt(T_p), d_A=product_{j in A}d_j.
+The physical spherical vector associated with a polynomial coordinate
+column c is sum_A c_A d_A^{-1}|A]_x, where |A]_x uses the spherical
+normalized occupation creators. The metric of these coordinates is
+
+  G_{n,M}(x)=diag(g_A/d_A^2).                                 (1)
+
+The diagonal-map identities from explicit_head_threshold.txt are exact:
+J_+/sqrt(Q)=D_{M-1}^{-1} L D_M and
+B_{p,Q}=e_p^{-1} D_out^{-1} B_{p,infinity}D_in.
+Thus the polynomial highest space is the FIXED rational kernel of
+L=sum_{j>=1} j x_{j-1} partial_j. If U is a full rational basis for this
+kernel, ker(U^T Hpoly(x) U) is the same coefficient subspace for every x
+in the interval, where Hpoly denotes the quadratic form in (1).
+
+Every K_3/K_4 term is a pair sandwich. It and the target forms annihilate
+that Hamiltonian kernel exactly, including after SU(2) averaging. Therefore
+one may prove positivity on ANY fixed linear complement of this kernel.
+The program chooses principal pivot coordinates of the exact planar H
+form. Their principal matrix is positive definite by rational elimination.
+It then changes basis on this complement by a rational invertible upper
+triangular matrix P. P is proposed by Decimal Cholesky, but rounded to exact
+rationals and explicitly checked to have nonzero diagonal and zero entries
+below the diagonal. Decimal accuracy is irrelevant to validity: P is just
+a choice of rational coordinates. It approximately makes H(0)=I and keeps
+the rigorous interval bounds well conditioned.
+
+2. Direct normal-ordered body forms
+-----------------------------------
+Let t be a channel, with row-column labels 0 and a=(p,j), and i=p+j-t.
+The frozen rational coefficients are y_{rho,0},y_{rho,a}. Define the exact
+rational covariance
+  C_ab=sum_rho y_{rho,a} y_{rho,b}
+within the channel. Let
+  h_a(x)=i!/(e_p d_i d_j).
+For n=3 or 4 define an integer row functional
+  ell_{p;l_1,...,l_{n-2}}
+to be the vacuum coefficient of
+  partial_{l_1}...partial_{l_{n-2}} Bhat_p
+acting on the canonical n-particle occupation basis, where
+Bhat_p=sum_{a=0}^p partial_a partial_{p-a}. Its source weight is
+M=p+sum l_i. Integer occupation multiplicities are included exactly.
+
+All the following Kpoly matrices are QUADRATIC FORMS in the polynomial
+coordinates (1), already including the physical metric. The channel's
+three-body form is
+
+ sum_a C_0a (h_a/e_t)
+   [ell_{t;i}^T ell_{p;j}+ell_{p;j}^T ell_{t;i}]
+ +sum_{a,b: i=i'} C_ab i!/(e_p e_{p'} d_j d_{j'})
+   ell_{p;j}^T ell_{p';j'},                                  (2)
+
+where b=(p',j'), i'=p'+j'-t. Its four-body form is
+
+ sum_{a,b} C_ab h_a h_b
+   ell_{p;j,i'}^T ell_{p';i,j'}.                             (3)
+
+Each term is added only to its source weight: M=p+j for (2), and
+M=p+j+i'=(p+j)+(p'+j')-t for (3). Summing channels gives the full
+unaveraged forms, supported at M<=8 and M<=16 respectively.
+
+To derive these coefficients rather than infer them numerically, note
+that the physical functional a_l1...a_ls B_p after polynomial pullback is
+  [kappa_p sqrt(l_1!...l_s!)/(e_p d_l1...d_ls)] ell_{p;l_1,...,l_s}.
+Insert lambda=y_0/kappa_t and
+alpha_{p,j}=y_{p,j} sqrt(i!/(kappa_p^2 j!)) in the exact normal-order
+identities. The square-root factorials cancel, giving (2),(3) exactly.
+This direct construction avoids subtracting large 2/3-body lifts from
+the full four-particle square.
+
+For the Hamiltonian, if Bhat_p now denotes its rectangular canonical
+coordinate matrix from n particles to n-2, then
+
+  Hpoly_{n,M}(x)=sum_{p=0}^M
+       (kappa_p^2/e_p^2) Bhat_p^T G_{n-2,M-p}(x) Bhat_p.     (4)
+
+The three-body target form is
+  S3poly=Hpoly G_{3,M}^{-1} Hpoly-Hpoly.                     (5)
+For n=4, let v_p=Bhat_{M-p} Bhat_p be the row to the vacuum. Then
+  S4poly=sum_{p=0}^M
+       [kappa_p^2 kappa_{M-p}^2/(e_p^2 e_{M-p}^2)] v_p^T v_p. (6)
+The latter metric factors cancel between successive pair maps. The actual
+four-body target multiplies (6) by 1-c9-mu, with the same frozen c9,mu.
+
+3. Exact descendant and Schur formulas
+--------------------------------------
+In polynomial coordinates the rescaled spherical lowering operator is
+  R(x)=sum_j (1-jx) x_{j+1} partial_j.                       (7)
+For a fixed rational highest frame U_active, put C_0=U_active and
+C_k=R(x)^k U_active. The squared normalization of the k-th descendant is
+  n_k(x)=product_{l=1}^k l[r-(2z+l-1)x].                    (8)
+The exact averaged form on this highest frame is
+  Kbar_{r,z}(x)=[(2+x)/(r+(1-2z)x)]
+       sum_{M=z}^{D_r} C_{M-z}^T Kpoly_{r,M}(x) C_{M-z}/n_{M-z}(x). (9)
+These are forms on a fixed, generally nonorthonormal complement. The
+Schur identity remains valid because normalized descendants preserve the
+highest-frame Gram matrix. The comparison matrix finally tested is
+
+ F_{r,z}(x)=U_active^T [Targetpoly_{r,z}(x)+delta_{r,z}Hpoly_{r,z}(x)]
+                       U_active-Kbar_{r,z}(x).             (10)
+
+The identities above reduce every entry to a finite expression in rational
+constants, x, addition, multiplication, inversion, and positive square root.
+All denominator ranges and square-root domains are checked by interval
+operations. For the fluxes used here these domains are well inside their
+positive regions.
+
+4. Integer interval arithmetic and Taylor models
+------------------------------------------------
+An interval is [lo,hi]/2^192 with INTEGER endpoints. Addition and integer
+scaling are exact; products and quotients round lower endpoints down and
+upper endpoints up using integer floor/ceiling division. Square roots use
+integer isqrt on endpoint*2^192, with an increment on the upper endpoint
+unless its square is exact. No floating-point value enters any bound.
+
+At chosen Taylor order m (default 3), a Jet encloses
+  f(x)=sum_{k=0}^m c_k x^k + x^(m+1) r_f(x),              (11)
+where every c_k and all values of r_f on [0,X], X=1/Qmin, belong to their
+stored dyadic intervals. The interval for x has lower endpoint zero and
+an outward-rounded upper endpoint at least X. Coefficients are formal
+Taylor coefficients; interval width from arithmetic rounding is included.
+
+Addition is componentwise. If P_f,P_g are the Taylor polynomials, the
+product remainder is EXACTLY
+  truncation_tail(P_f P_g)/x^(m+1)
+       +P_f r_g+P_g r_f+x^(m+1)r_f r_g.                    (12)
+The script evaluates this with interval Horner arithmetic, and convolves
+the lower coefficients in the usual way.
+
+For inversion, its Taylor coefficients b_k obey
+  b_0=1/c_0,
+  b_k=-(1/c_0)sum_{i=1}^k c_i b_{k-i}.
+If P_b is this polynomial, the inverse remainder is
+  r_{1/f}=-r_{f P_b}/f.                                   (13)
+Indeed the polynomial part of f P_b is exactly one. A possibly nonzero
+interval enclosure of its canceled lower coefficients is harmless: these
+are exact algebraic cancellations for the actual coefficients.
+
+For the positive square root, coefficients b_k satisfy
+  b_0=sqrt(c_0),
+  b_k=[c_k-sum_{i=1}^{k-1}b_i b_{k-i}]/(2b_0).
+With P_b the resulting polynomial, the root remainder is exactly
+  r_{sqrt(f)}=(r_f-r_{P_b^2})/(sqrt(f)+P_b).                (14)
+This follows by rationalizing sqrt(f)-P_b. The relevant denominator is
+checked not to contain zero. Thus (12)--(14) prove by structural induction
+that every final matrix entry is enclosed for the WHOLE interval.
+
+5. Rigorous matrix positivity on the whole interval
+---------------------------------------------------
+Symmetrize the final Taylor model by (F+F^T)/2; this leaves the exact form
+unchanged. Write
+  F(x)=sum_{i=0}^m A_i x^i+x^(m+1)R(x).
+The program obtains the rigorous Euclidean operator-norm bound
+  gamma=X^(m+1) max_i sum_j max(|lo(R_ij)|,|hi(R_ij)|),      (15)
+rounded upward. It is valid because each R(x) is real symmetric and its
+spectral norm is bounded by its maximum absolute row sum.
+
+Put s=x/X in [0,1]. The Bernstein control matrices for its polynomial part
+are exactly
+  B_k=sum_{i=0}^k binom(k,i)/binom(m,i) X^i A_i,
+  sum_i A_i x^i=sum_{k=0}^m binom(m,k)s^k(1-s)^(m-k)B_k.   (16)
+The weights on the right are nonnegative and sum to one. The verifier
+checks B_k-gamma I positive definite with interval LDL elimination. Each
+pivot interval must have strictly positive lower endpoint. Since every
+actual symmetric matrix is enclosed, positive pivots prove positivity
+without a numerical eigenvalue tolerance.
+
+If a control matrix is too conservative, de Casteljau subdivision divides
+the parameter interval in half and produces the exact new control matrices
+by repeated arithmetic averaging. The same gamma remains valid. A pass
+requires all leaves to pass and hence covers the entire interval. Failure
+after a bounded depth reports NOT CERTIFIED and returns a nonzero status;
+it does not weaken the requested assertion silently.
+
+Equations (15),(16) imply F(x)>=0 everywhere. Exact annihilation of the
+fixed kernel extends positivity from the selected complement to the full
+highest space, and rotational invariance extends it to all descendants.
+
+6. Reproducibility and audit data
+---------------------------------
+The result JSON records Qmin, Taylor order, precision, the exact rational
+highest frames, all coefficient/remainder intervals, all Bernstein/LDL
+pivot intervals, each exact rational shift, and the final status. Printed
+decimal diagnostics are conveniences only. They do not enter decisions.
+
+The flags --body and --z are for debugging selected blocks; their result
+explicitly says 'selected blocks only'. A whole-head result uses neither.
+The scripts use only the standard library. No NumPy eigenvalue, numerical
+SVD kernel, optimizer, or floating rounding mode enters certification.
+
+This is a computer-assisted proof with a small auditable interval engine,
+not a proof-assistant formalization. Its direct body formulas and interval
+arithmetic have to be audited as mathematical code, just as the earlier
+rational certificate did.

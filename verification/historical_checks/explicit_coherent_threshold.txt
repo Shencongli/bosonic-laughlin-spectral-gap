@@ -1,0 +1,319 @@
+EXPLICIT FINITE-SPIN COHERENT DOMINATION
+7 October 2026
+
+RESULT AND SCOPE
+
+The two bounds in Lemma finite-errors of the research draft hold for every
+integer Q >= Q0 := 10^50, simultaneously on all particle-number sectors:
+
+  R_{3,8,Q}  <= 35 (S_{4,Q}+H_Q),
+  R_{4,16,Q} <= 2100 (2 S_{4,Q}+H_Q).
+
+This is an explicit, highly conservative sufficient threshold, not an
+estimate of the smallest flux where the inequalities hold. It concerns
+only the coherent-domination lemma; it is not by itself an explicit flux
+threshold for the finite certificate or the final many-body gap theorem.
+No growing-particle-number limit, spectral-gap assumption, or numerical
+matrix approximation enters. All matrix estimates below precede the
+positive many-body lift.
+
+The proof replaces the qualitative dominated-convergence and moving-basis
+arguments by a fixed descendant cutoff K=1024 and explicit norm errors.
+The exact coherent kernels, their Schur formulas, their planar Gaussian
+limits, and the positive-lift bounds are those established in Sections
+3--4 and checked in audit_four_independent.txt. This note supplies all
+quantitative estimates needed to use those identities at Q >= Q0.
+
+1. COMMON NOTATION AND FINITE-WEIGHT IDENTIFICATION
+
+Let r=3 or 4 and h=r-2. The physical auxiliary spin space is
+
+  E_{r,Q} = V_Q tensor Sym^h U_Q.
+
+Here V_Q is the spin-Q pair channel and U_Q is the spin-Q/2 one-particle
+space. For h=1 no spectator symmetrization is required. For h=2 all
+spectator-symmetric multiplicities are retained. The total auxiliary spin
+at deficit z is J=rQ/2-z, so its dimension is rQ-2z+1.
+
+Use an auxiliary oscillator Fock space with one pair mode u and h
+spectator modes v_1,...,v_h, symmetric under spectator interchange. The
+degree-l subspace consists of normalized occupation states with
+
+  p+j_1+...+j_h=l.
+
+For l<=Q, identifying these occupation labels with normalized spherical
+orbitals is a unitary identification of finite weight spaces. It is not
+a unitary map between the entire spherical and oscillator Hilbert spaces.
+All norms below are operator norms in these identified finite spaces.
+
+The total center-of-mass annihilator is
+
+  a_zeta = (sqrt(2) a_u + sum_s a_{v_s})/sqrt(r).
+
+The oscillator highest space at degree z is ker(a_zeta) in degree z.
+Choose any orthonormal frame F_{z,infinity} from a fixed multiplicity
+coordinate space into this kernel. For r=3 its dimension is one, while
+for r=4 it is floor(z/2)+1. Only 0<=z<=8 for r=3 and 0<=z<=16 for r=4
+will be needed. The estimates below use the common upper bound z<=16.
+
+Introduce a diagonal positive operator D_{Q,l} on degree l, with entry
+
+  d_Q(p;j_1,...,j_h)
+    = sqrt[(2Q)_p/(2Q)^p] product_s sqrt[(Q)_{j_s}/Q^{j_s}],       (1)
+
+where (x)_j is the falling factorial, with (x)_0=1. This diagonal is
+unchanged by spectator permutations, so it acts on the symmetric space.
+The exact spin raising identity on degree l -> l-1 is
+
+  J_+/sqrt(Q)
+    = D_{Q,l-1}^{-1} (sqrt(r) a_zeta) D_{Q,l}.                   (2)
+
+Indeed a single spin with capacity cQ, c=2 or 1, has raising coefficient
+sqrt[j(cQ-j+1)]/sqrt(Q), while consecutive diagonal entries in (1) have
+ratio sqrt[1-(j-1)/(cQ)]. Thus (2) is an entrywise identity, including
+the normalized spectator-symmetric basis.
+
+Consequently D_{Q,z}^{-1} maps the oscillator highest space bijectively
+onto the finite-Q highest space. Define its normalized frame by
+
+  V_{z,Q} = D_{Q,z}^{-1} F_{z,infinity},
+  G_{z,Q} = V_{z,Q}^* V_{z,Q},
+  F_{z,Q} = V_{z,Q} G_{z,Q}^{-1/2}.                              (3)
+
+These are exact formulas; G is a positive multiplicity-space matrix.
+No surjectivity perturbation theorem or smallest-singular-value estimate
+is needed.
+
+For z<=16 the product inequality product_i(1-x_i)>=1-sum_i x_i gives
+
+  1-128/Q <= D_{Q,z}^2 <= I.                                    (4)
+
+To see the first inequality, sum all factors i/(cQ) in (1). Their sum is
+at most [p(p-1)+sum_s j_s(j_s-1)]/(2Q)
+<=z(z-1)/(2Q)<=120/Q<128/Q.
+For Q>=256, (4) implies
+
+  ||D_{Q,z}^{-1}-I|| <=256/Q,
+  I<=G_{z,Q}<=(1-128/Q)^{-1} I,
+  ||G_{z,Q}^{-1/2}-I|| <=256/Q,
+  ||F_{z,Q}-F_{z,infinity}|| <=512/Q.                            (5)
+
+The final inequality follows by adding and subtracting
+F_{z,infinity} G_{z,Q}^{-1/2}, and using ||G^{-1/2}||<=1.
+
+2. UNIFORM DESCENDANT-FRAME ERROR THROUGH n=1024
+
+Set K=1024 and B=4096. All retained descendant weights obey
+z+n<=1040<B. Let
+
+  X_{z,n,Q}
+    = J_-^n F_{z,Q}/sqrt[n! (rQ-2z)_n],
+  X_{z,n,infinity}
+    = (a_zeta^*)^n F_{z,infinity}/sqrt(n!).                       (6)
+
+For n within its spin multiplet, X_{z,n,Q} is an isometry from the
+multiplicity space into degree z+n. The oscillator map is also an
+isometry because F_{z,infinity} has CM occupation zero. This isometry
+property is used below to avoid dimension factors in matrix errors.
+
+Write T_Q=J_-/sqrt(Q) and T_infinity=sqrt(r) a_zeta^* on one fixed
+degree l=z+n. Then the exact step maps in (6) are
+
+  C_{z,n,Q} = T_Q/[sqrt(r(n+1)) sqrt(1-x_{z,n,Q})],
+  C_{z,n,infinity} = T_infinity/sqrt(r(n+1)),
+  x_{z,n,Q}=(2z+n)/(rQ).                                       (7)
+
+The matrix of T_Q has nonnegative entries bounded entrywise by those of
+T_infinity: each one-mode raising coefficient is multiplied by
+sqrt[1-i/(cQ)]<=1. For matrices with nonnegative entries this gives the
+operator-norm bound because |T_Q v|<=T_infinity |v| componentwise.
+On full degree l, ||T_infinity||=sqrt[r(l+1)], hence
+
+  ||C_{z,n,Q}||
+    <= sqrt[(z+n+1)/(n+1)] (1-x_{z,n,Q})^{-1/2}.                (8)
+
+For Q>=2^24, all x in (7) are below 1/2. Using
+1-sqrt(1-y)<=y for 0<=y<=1, the difference of the one-mode terms gives
+
+  ||T_Q-T_infinity|| <=3 B^{3/2}/Q.
+
+Here the sum of the h+1 one-mode constants is at most 1/sqrt(2)+h<3.
+Since (1-x)^{-1/2}<=2 and (1-x)^{-1/2}-1<=2x for x<=1/2,
+and ||C_{z,n,infinity}||<=sqrt(17)<5, it follows that
+
+  ||C_{z,n,Q}-C_{z,n,infinity}||
+     <=[6B^{3/2}+10B]/Q <2^22/Q.                               (9)
+
+A crucial improvement over multiplying a constant bound 1024 times is
+that the square-root factor in (8) telescopes. For 0<=s<=n<=K,
+
+  product_{t=s}^{n-1} sqrt[(z+t+1)/(t+1)]
+     = sqrt[binom(z+n,z)/binom(z+s,z)]
+     <=(z+n)^{z/2} <=2^88.                                    (10)
+
+The equality is read as 1 for an empty product. Also
+
+  sum_{t=s}^{n-1} x_{z,t,Q}
+    <=K(32+K)/(3Q)<2^19/Q<=1/32.
+
+Applying product(1-x)>=1-sum x again shows that the product of all
+curvature factors (1-x)^{-1/2} in (8) is less than 2. Therefore every
+consecutive product of finite-Q step maps has norm at most 2^89.
+
+Subtract the two recursions in (6), using the finite-Q map on the error
+and the step difference on the oscillator isometry. Unrolling that
+identity, (5), (9), and the preceding product bound yield, uniformly in
+0<=n<=K and z<=16,
+
+  ||X_{z,n,Q}-X_{z,n,infinity}||
+    <=2^89 (512+K 2^22)/Q <2^122/Q.                            (11)
+
+This estimate compares normalized descendants, not unnormalized powers
+of J_-. It is valid in both spectator-symmetry sectors under study.
+
+3. EXPLICIT NORTH-POLE-SEED ERROR AND GEOMETRIC TAIL
+
+Take a=1/12 for r=3 and a=1/16 for r=4, and put M=floor(aQ).
+Let R_Q be the one-spectator diagonal seed with entries
+
+  b_{j,Q}=(Q+1)/(M+Q+1) product_{i=0}^{j-1}(Q-i)/(M+Q-i),
+  b_{j,infinity}=(1+a)^{-(j+1)}.                               (12)
+
+At pair north, the auxiliary seed on weight l is
+
+  Sigma_{Q,l}=|0_u><0_u| tensor [R_Q^{tensor h}]_sym,             (13)
+
+with the analogous oscillator seed Sigma_{infinity,l}. The symmetrized
+spectator basis remains orthonormal, including coincident occupations;
+there is no extra factor 2 or 1/2 in its diagonal eigenvalues.
+
+Write M=aQ-e, 0<=e<1, and A=1+a. For j<=B and Q>=2^24,
+
+  |(Q+1)/(M+Q+1)-1/A| <=2/Q,
+  |(Q-i)/(M+Q-i)-1/A| <=2(i+1)/Q.
+
+The second bound follows exactly by writing the numerator of the
+difference as (e-ai)/Q and bounding its denominator below by 1/2.
+All factors being compared are between zero and one. The telescoping
+product identity therefore gives
+
+  |b_{j,Q}-b_{j,infinity}| <=[2+j(j+1)]/Q <2^26/Q.
+
+There are h<=2 spectator factors, so on every retained weight
+
+  ||Sigma_{Q,l}-Sigma_{infinity,l}|| <=2^27/Q,
+  ||Sigma_{Q,l}||<=1,  ||Sigma_{infinity,l}||<=1.                (14)
+
+For every weight, including weights beyond K, use Q>=2/a and
+M>=aQ/2 to obtain
+
+  0<=b_{j,Q}<=(1+a/2)^{-j}.
+
+With q=32/33, both choices of a satisfy (1+a/2)^{-1}<=q.
+The infinite seed also satisfies this upper bound. Since the pair-north
+slice of weight l has spectator degree l, it follows that
+
+  ||Sigma_{Q,l}||<=q^l,   ||Sigma_{infinity,l}||<=q^l.           (15)
+
+Zero pair-north slices satisfy (15) trivially. These are operator-norm
+estimates, so they control every multiplicity vector simultaneously.
+
+4. QUANTITATIVE SCHUR AVERAGE
+
+In the frames (3), the spin-z multiplicity matrix of the coherent kernel
+is exactly
+
+  A_{r,z,Q}=c_{r,z,Q} sum_{n=0}^{rQ-2z}
+                X_{z,n,Q}^* Sigma_{Q,z+n} X_{z,n,Q},
+  c_{r,z,Q}=(2Q+1)/(rQ-2z+1).                                 (16)
+
+The limiting matrix is defined by the same sum over all n>=0, replacing
+X and Sigma by their oscillator versions and c by c_infinity=2/r.
+The earlier CM displacement-twirl calculation evaluates this absolutely
+norm-convergent sum; the quantitative error below does not assume any
+unproved uniform flattening of the sphere.
+
+For Q>=2^24 and z<=16,
+
+  c_{r,z,Q}<=1,  c_infinity<=1,
+  |c_{r,z,Q}-c_infinity|<=32/Q.                                (17)
+
+For each n<=K, the difference of the compressed seeds has norm at most
+2 times the frame error plus the seed error, since both X maps are
+isometries. Combining (11), (14), and (17), the difference of the two
+truncated Schur sums is thus at most
+
+  (K+1)(32+2^27+2^123)/Q <2^135/Q.                            (18)
+
+The two omitted tails have total norm, by (15), at most
+
+  2 q^{K+1}/(1-q)=66(32/33)^1025.                             (19)
+
+The binomial theorem gives (33/32)^32>1+32/32=2, hence
+(32/33)^1025<2^{-32}. Therefore the uniform retained-block estimate is
+
+  ||A_{r,z,Q}-A_{r,z,infinity}||
+      <=2^135/Q+66(32/33)^1025
+      <2^135/Q+66/2^32
+      <10^{-6},                 Q>=10^50.                    (20)
+
+Equation (20) holds for all retained z and both r, including all r=4
+multiplicities. It is a finite-block statement; no norm convergence on
+the growing entire auxiliary space is asserted.
+
+5. LOWEST EIGENVALUES, LIFT, AND RATIONAL CONSTANT CHECKS
+
+The exact oscillator kernel evaluations from the draft give, for r=3,
+
+  A_{3,z,infinity}=[2/(2+3a)]^{z+1} I.
+
+With a=1/12 and z<=8, its least retained eigenvalue is
+
+  t3=(8/9)^9.
+
+For r=4, the relative-oscillator eigenvalues are
+
+  (1+a)^{-(n1+1)} (1+2a)^{-(n2+1)},
+  n1+n2=z,  n1 even.
+
+With a=1/16 and z<=16, their least retained value is
+
+  t4=(16/17)(8/9)^17.
+
+Let delta=10^{-6}. Equation (20) implies A_{r,z,Q}>=(t_r-delta)I
+on every retained spin block. Invariance separates different total-spin
+isotypic components, while positivity holds outside the cutoff. Thus,
+on the full auxiliary space,
+
+  Pi_aux,<=D,Q <= (t_r-delta)^{-1} A_{r,Q},
+  (r,D)=(3,8) or (4,16).                                      (21)
+
+The exact creation maps W_r satisfy
+W_r Pi_aux W_r^*=H_{r,Q} Pi_phys. Composing (21) with W_r and W_r^*,
+then applying the positive r-body lift and the already-proved coherent
+occupation estimates, gives
+
+  R_{3,8,Q} <= [d/(M+1)]/(t3-delta) (S4,Q+H_Q),
+  R_{4,16,Q} <= [d/(M+1)]^2/(t4-delta) (2S4,Q+H_Q).            (22)
+
+Here d=Q+1. The spectator marginals are exact. Since M+1>aQ,
+
+  d/(M+1) <=a^{-1}(1+1/Q).
+
+For Q>=10^50, bound 1+1/Q by the rational number 10001/10000.
+The final scalar comparisons, all exactly rational, are
+
+  12 (10001/10000)/[(8/9)^9-10^{-6}] <35,
+  256 (10001/10000)^2/[(16/17)(8/9)^17-10^{-6}] <2100.          (23)
+
+This proves the two stated finite-Q domination bounds. The largest flux
+requirement used anywhere in this note is Q>=10^50, and every estimate
+was made in fixed few-body auxiliary spaces before applying a positive
+lift. The same threshold therefore works for every total particle
+number N. For N<r the corresponding r-body lifted form vanishes.
+
+The companion standard-library checker check_explicit_coherent_threshold.py
+verifies (20), (23), and the integer inequalities entering the displayed
+constants with exact Fraction arithmetic. Its floating displays are only
+readable diagnostics; no floating tolerance is part of the certificate.
+

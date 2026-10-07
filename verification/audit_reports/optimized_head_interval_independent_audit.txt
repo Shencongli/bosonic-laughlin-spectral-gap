@@ -1,0 +1,107 @@
+INDEPENDENT ADVERSARIAL AUDIT: optimized_head_interval.py
+
+Scope: direct normal-order formulas, coordinate metric, exact common-kernel
+reduction, directed dyadic arithmetic, Taylor-jet remainders, and Bernstein
+matrix positivity. No mathematical error was found in the inspected code.
+This is an internal analytic/code audit, not external review or formal
+verification. The Q=10000 result file was checked to contain all 26 expected
+blocks, all certified, with scope 'all retained blocks'. The same analytic
+audit applies to later Qmin/shift choices if the script reports success.
+
+COORDINATES AND DIRECT NORMAL ORDERING
+
+Put P_j=product_{l<j}(1-l x), E_p=product_{l<p}(1-l x/2), d_j=sqrt(P_j),
+e_p=sqrt(E_p), x=1/Q. Affine canonical polynomial coordinates represent the
+physical sphere vector D_A^-1|A]_x. Their metric is g_A/product_{j in A}P_j,
+exactly Model.metric. In these coordinates B_p=(kappa_p/e_p)Bhat_p and
+a_j=(sqrt(j!)/d_j) derivative_j. With the frozen definitions
+y0=lambda*kappa_t and y_pj=alpha_pj*kappa_p*sqrt(j!/i!), i=p+j-t,
+the physical three-body cross term has form coefficient
+
+  y0*y_pj*i!/(e_t e_p d_i d_j)
+
+between complete annihilation rows Bhat_t derivative_i and Bhat_p derivative_j.
+This agrees with h*ei[t] and both Hermitian cross terms in make_body_forms.
+The quadratic commutator term has i=i' and coefficient
+
+  y_pj*y_p'j'*i!/(e_p e_p' d_j d_j').
+
+It correctly has no d_i^-2 factor, because the physical commutator is delta_ii'.
+The four-body term has coefficient
+
+  y_pj*y_p'j'*i!i'!/(e_p e_p' d_i d_j d_i' d_j'),
+
+between rows Bhat_p derivative_j derivative_i' and
+Bhat_p' derivative_i derivative_j'. This is exactly h*h'; the common weight
+is p+j+i'=p+j+p'+j'-t. The ordered pair loop and E.ann supply the correct
+canonical occupation factors, including repeated indices. C[a][b] is the
+exact rational row Gram sum. These formulas were independently rederived.
+
+HAMILTONIAN FORMS, DESCENDANTS, AND FIXED KERNEL
+
+Hform=sum(kappa_p^2/E_p)Bhat_p^T Gout Bhat_p, hence the physical H^2 form is
+Hform G^-1 Hform, as implemented. S4 uses the ordered p,q=M-p sum with
+kappa_p^2 kappa_q^2/(E_p E_q) and vacuum metric one. The affine coordinate
+representation of J_-/sqrt(Q) has the planar canonical raising coefficient
+times (1-j/Q), not its square root. raise_frame is correct, and its kth
+squared normalization k[r-(2z+k-1)/Q] and Schur factor
+(2+x)/(r+(1-2z)x) are correct.
+
+The affine B identity fixes exactly the same highest-space H kernel for
+all Q. Normal-ordered K3,K4 and both targets kill that kernel. active_frame
+selects a positive principal minor of the exact planar H form, hence a
+complement of its kernel; orthogonality is unnecessary since the forms kill
+all cross terms to the kernel. Decimal Cholesky only chooses a rational
+conditioning matrix; its triangular shape and exact nonzero diagonal prove
+invertibility. No accuracy of that floating choice is needed for positivity.
+All later entries use those rational values with rigorous interval enclosure.
+A rank-zero block is identically zero by common-kernel annihilation.
+
+DIRECTED INTERVAL ARITHMETIC
+
+I stores closed integer endpoints in units 2^-192. The four endpoint
+products and outward floor/ceil divisions correctly enclose multiplication,
+including both signs. inv gives floor(U^2/hi),ceil(U^2/lo), valid for positive
+or negative intervals avoiding zero. sqrt uses floor/ceiling integer square
+roots. Negative square-root domains or zero-containing inverses fail
+explicitly. Floats occur only in reports, apart from the rational basis
+choice just discussed; they do not decide any positivity inequality.
+
+TAYLOR-JET INVARIANT AND REMAINDERS
+
+The invariant is f(x)=sum_{i=0}^O a_i x^i+x^(O+1)r_f(x), with every true
+Taylor coefficient and remainder enclosed by its interval. Product high
+convolution terms supply sum_{k>O}c_k x^(k-O-1); the cross Horner loop is
+exactly P_f r_g+r_f P_g+x^(O+1)r_f r_g. The range method includes the full
+remainder term. For inv, the formal Taylor recurrence makes the TRUE low
+coefficients of f P_b-1 vanish exactly, so the inverse remainder is
+-(f P_b-1)_remainder/f. For sqrt, the recurrence similarly cancels the low
+coefficients of f-P_c^2 and uses
+
+  sqrt(f)-P_c=(f-P_c^2)/(sqrt(f)+P_c).
+
+Both are precisely the implemented formulas. Interval low coefficients
+need not numerically equal zero: exact algebraic cancellation applies to
+the enclosed true coefficients, while interval arithmetic overestimates
+their high-order remainder. This is not an assumed floating cancellation.
+
+BERNSTEIN CERTIFICATION
+
+After symmetrization, the true remainder matrix is symmetric and its norm
+is bounded by the maximum absolute row sum of interval endpoints. Multiplying
+by Qmin^-(O+1) and rounding upward gives certify's error. For t=Qmin*x,
+the Bernstein control b is sum_{a<=b} A_a binom(b,a)/[binom(O,a)Qmin^a],
+exactly as implemented. Subtracting error*I from every control subtracts
+that constant matrix polynomial. Positive interval LDL pivots certify every
+actual symmetric matrix enclosed, and Bernstein convexity then gives the
+matrix inequality on the entire interval. The de Casteljau midpoint scheme,
+left/right extraction, and finite-depth failure handling are correct.
+
+COVERAGE
+
+The code requires Qmin>=1024, ensuring the retained spaces and ladder formulas
+are valid. --body/--z correctly mark selected-block output; a complete claim
+requires all 26 blocks. Changing shifts requires a new successful certificate
+and the corresponding scalar budget. The interval proof covers all real x
+in the stated interval and hence all relevant integer fluxes; it does not
+infer an infinite-range claim from finite-Q sampling. No repair was needed.

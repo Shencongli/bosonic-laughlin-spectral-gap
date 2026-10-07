@@ -1,0 +1,190 @@
+\subsection{An optimized negative-tail bound at every flux}
+\label{app:optimized-tail}
+
+The coherent weight exponent need not be an integer. Using this freedom
+and exact rational interval bounds removes the flux threshold from the
+negative-tail estimate and gives a useful finite-$Q$ improvement.
+
+\begin{lemma}\label{lem:optimized-tail}
+Put $c_9=30(5/9)^9$ and $\nu=10^{-10}$. For every integer $Q\ge0$,
+\begin{equation}\label{eq:optimized-tail-all-Q}
+ T_{9,Q}\le(c_9+\nu)(S_{4,Q}+H_Q).
+\end{equation}
+The stronger bound
+\begin{equation}\label{eq:optimized-tail-improvement}
+ T_{9,Q}\le\left(c_9+\nu-\frac dQ\right)(S_{4,Q}+H_Q)
+ \qquad(Q\ge Q_*)
+\end{equation}
+holds for each of the following independent choices:
+\begin{equation}\label{eq:optimized-tail-choices}
+ (Q_*,d)=(2500,77/20),\qquad(3000,391/100),\qquad(5000,4).
+\end{equation}
+All these inequalities are independent of total particle number.
+\end{lemma}
+\begin{proof}
+Take $a=2/27$ and $M=aQ$ exactly. The positive coherent auxiliary operator is
+\begin{equation}
+ A_{M,Q}=(2Q+1)(Q+1)\int d\Omega_\alpha d\Omega_\beta\,
+ s(\alpha,\beta)^M
+ |\alpha_{\rm pair}\rangle\langle\alpha_{\rm pair}|
+ \otimes|\beta\rangle\langle\beta|.
+\end{equation}
+The measures have total mass one, the vectors are normalized, and
+$s(\alpha,\beta)=\cos^2(\theta_{\alpha\beta}/2)$.
+Here $M$ is only the exponent of a nonnegative weight, not a spin label;
+the integral defines a positive invariant operator for every real $M\ge0$.
+The exact beta integral still gives
+\begin{equation}
+ b_{j,Q}=(Q+1)\binom Qj\int_0^1s^{M+Q-j}(1-s)^j\,ds
+ =\frac{Q+1}{M+Q+1}\frac{(Q)_j}{(M+Q)_j}.
+\end{equation}
+Indeed this formula follows by $j$ integrations by parts, valid for
+$0\le j\le Q$ and $M\ge0$. The notation $(x)_k$ denotes a descending
+factorial, also for real $x$, with $(x)_0=1$.
+
+Writing $A_{M,Q}=\sum_z\tau_{z,Q}\Pi_z$ in the auxiliary pair--single
+spin decomposition, the exact eigenvalue formula remains
+\begin{align}
+ \tau_{z,Q}&=\frac{2Q+1}{3Q-2z+1}
+                 \sum_{j=z}^Q b_{j,Q}\gamma_{z,j,Q},\notag\\
+ \gamma_{z,j,Q}&=\frac{(2Q)_z}{(3Q-z+1)_z}
+                 \binom jz\frac{(Q-z)_{j-z}}{(3Q-2z)_{j-z}}.
+ \label{eq:optimized-tail-eigenvalue}
+\end{align}
+Every term is nonnegative and $\tau_{z,Q}>0$. The exact coherent marginal
+and positive lifting give
+\begin{equation}
+ \mathcal L_3(W_3A_{M,Q}W_3^\dagger)
+ \le\frac{Q+1}{M+1}(S_{4,Q}+H_Q).
+\end{equation}
+Thus it suffices to bound, on every odd $9\le z\le Q$, the scalar cost
+\begin{equation}\label{eq:optimized-tail-cost}
+ k_{z,Q}:=\frac{Q+1}{M+1}\frac{2f_{z,Q}}{\tau_{z,Q}},
+ \qquad f_{z,Q}=\frac{(Q)_z}{(2Q)_z}.
+\end{equation}
+This definition includes the exact marginal.
+
+For $Q>0$, put $x=1/Q$ and
+$D_{z,Q}:=2/k_{z,Q}=[(M+1)/(Q+1)]\tau_{z,Q}/f_{z,Q}$.
+Dividing each $j=z+n$ term in~\eqref{eq:optimized-tail-eigenvalue} by
+$f_{z,Q}$ and cancelling powers of $Q$ gives the exact positive sum
+\begin{equation}\label{eq:optimized-tail-D}
+ D_{z,Q}=\sum_{n=0}^{Q-z}g_{z,n}(x),
+\end{equation}
+where the rational functions used in the certificate are explicitly
+\begin{align}
+ g_{z,n}(x)&=\binom{z+n}{z}
+ \frac{(2+x)(a+x)}{[3-(2z-1)x](1+a+x)}\notag\\
+ &\quad\times\prod_{i=0}^{z-1}
+ \frac{(2-ix)^2}{(1+a-ix)[3-(z-1+i)x]}\notag\\
+ &\quad\times\prod_{i=0}^{n-1}
+ \frac{[1-(z+i)x]^2}{[1+a-(z+i)x][3-(2z+i)x]}.
+ \label{eq:optimized-tail-g}
+\end{align}
+For $Q\ge256$ and $z\le25$, retain the first $33$ terms:
+\begin{equation}
+ G_z(x):=\sum_{n=0}^{32}g_{z,n}(x)\le D_{z,Q}.
+\end{equation}
+This truncation is valid because $z+32\le57<Q$. All linear factors in
+these rational functions are strictly positive on $[0,1/256]$.
+
+We specify the interval arithmetic completely. For any one positive term
+$g(x)=b\prod_i(c_i+d_ix)/\prod_j(e_j+f_jx)$ on $[0,h]$, let the subscript
+$-$ or $+$ on a linear factor denote its minimum or maximum endpoint value.
+Then
+\begin{equation}
+ g_-:=\frac{b\prod_i(c_i+d_ix)_-}{\prod_j(e_j+f_jx)_+}
+ \le g(x)\le
+ g_+:=\frac{b\prod_i(c_i+d_ix)_+}{\prod_j(e_j+f_jx)_-}.
+\end{equation}
+Since $d/(c+dx)$ has derivative $-d^2/(c+dx)^2\le0$,
+\begin{equation}
+ \frac{g'(x)}{g(x)}\ge
+ L_h(g):=\sum_i\frac{d_i}{c_i+d_ih}-\sum_j\frac{f_j}{e_j}.
+\end{equation}
+Hence a rigorous constant derivative lower bound is
+\begin{equation}\label{eq:optimized-tail-interval-rule}
+ \beta_h(g):=
+ \begin{cases}L_h(g)g_-,&L_h(g)\ge0,\\
+               L_h(g)g_+,&L_h(g)<0.
+ \end{cases}
+ \qquad g'(x)\ge\beta_h(g).
+\end{equation}
+Repeated factors in~\eqref{eq:optimized-tail-g} are simply listed repeatedly.
+All operations and sign decisions in these rules are rational; they bound
+the whole interval without discretizing it.
+
+Applying these rules to~\eqref{eq:optimized-tail-g}, the supplied exact
+checker verifies
+\begin{align}
+ \sum_{n=0}^{32}\beta_{1/256}(g_{9,n})&>73,
+       \label{eq:optimized-tail-derivative}\\
+ G_9(0)&\ge\frac2{c_9+10^{-10}},\label{eq:optimized-tail-endpoint}\\
+ \sum_{n=0}^{32}(g_{z,n})_-&>20,
+ \quad z=11,13,\ldots,25,\quad h=1/256.
+ \label{eq:optimized-tail-other}
+\end{align}
+The endpoint is also checked independently through
+\begin{equation}
+ G_9(0)=\frac2{c_9}\left(\frac{20}{29}\right)^{10}
+         \sum_{n=0}^{32}\binom{n+9}{9}\left(\frac9{29}\right)^n.
+\end{equation}
+Thus $G_9$ is increasing on the interval, so
+$k_{9,Q}\le c_9+\nu$ for every $Q\ge256$. The other retained odd blocks
+satisfy $k_{z,Q}<1/10<c_9$ by~\eqref{eq:optimized-tail-other}.
+
+For all remaining spins, the coarse bound obtained by retaining $j=z$ in
+\eqref{eq:optimized-tail-eigenvalue} remains valid with real $M=aQ$:
+\begin{equation}
+ \frac{2f_{z,Q}}{\tau_{z,Q}}\le3(1+a)\rho^z,
+ \qquad\rho=\frac{3(1+a)}4=\frac{29}{36}.
+\end{equation}
+Its factor-by-factor proof uses only $M\le aQ$, not integrality. Since
+$(Q+1)/(aQ+1)\le1/a$, every $z\ge27$ obeys
+\begin{equation}\label{eq:optimized-tail-high}
+ k_{z,Q}\le\frac{3(1+a)}a\left(\frac{29}{36}\right)^{27}
+              <\frac{13}{100}<c_9,
+\end{equation}
+with both comparisons checked exactly.
+
+To exhaust the finite flux remainder, the checker verifies all $2151$
+pairs consisting of an integer $9\le Q\le255$ and an odd
+$9\le z\le\min(Q,25)$. For each such pair it checks
+\begin{equation}
+ \sum_{n=0}^{\min(32,Q-z)}g_{z,n}(1/Q)>\frac{100}{7}.
+\end{equation}
+The omitted terms in~\eqref{eq:optimized-tail-D} are nonnegative, so these
+blocks have $k_{z,Q}<7/50<c_9$. This is exhaustive verification of the finite
+remainder, not sampling of the infinite range. For $Q<9$, the negative tail
+is empty. These arguments prove~\eqref{eq:optimized-tail-all-Q}.
+
+Finally put $C=c_9+\nu$. The same exact interval rules verify
+\begin{equation}\label{eq:optimized-tail-strong-data}
+ \sum_{n=0}^{32}\beta_{1/Q_*}(g_{9,n})>b
+ \quad\text{for}\quad
+ (Q_*,b,d)=(2500,681/2,77/20),\ (3000,345,391/100),\ (5000,353,4).
+\end{equation}
+For each triple the checker also verifies
+\begin{equation}\label{eq:optimized-tail-strong-budget}
+ bC^2\ge d\left(2+\frac{bC}{Q_*}\right),
+ \qquad C-\frac d{Q_*}>\frac{13}{100}.
+\end{equation}
+Equations~\eqref{eq:optimized-tail-endpoint} and
+\eqref{eq:optimized-tail-strong-data} imply, for every $Q\ge Q_*$,
+\begin{equation}
+ D_{9,Q}\ge\frac2C+\frac bQ,
+ \qquad k_{9,Q}\le\frac{C}{1+bC/(2Q)}\le C-\frac dQ.
+\end{equation}
+The last inequality follows by cross-multiplication and
+\eqref{eq:optimized-tail-strong-budget}. The other odd blocks cost less than
+$1/10$ or $13/100$ and therefore fit the same strengthened bound. Positive
+lifting now proves~\eqref{eq:optimized-tail-improvement}.
+\end{proof}
+
+All scalar interval certificates and finite remainder checks are replayed
+by \path{optimized_tail_threshold_checker.py} with Python's \texttt{-S}
+flag, using only the standard library and exact
+\texttt{fractions.Fraction} arithmetic. The output
+\path{optimized_tail_threshold_results.json} records the exact derivative
+lower bounds, endpoint margins, other retained-block bounds, coarse tail
+bound, and finite exhaustion count. No floating-point decision is used.
