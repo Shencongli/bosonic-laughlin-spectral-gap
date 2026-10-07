@@ -114,9 +114,19 @@ blocks are handled separately for every Q. These are generally
 nonorthogonal bases. The [build record](verification/lean_retained_frames_build.json)
 and [AI semantic audit](verification/audit_reports/lean_retained_frames_audit.txt)
 record the exact frame and coordinate checks.
-The retained comparison matrices, their finite and interval positivity
-certificates, the two-spectator and coherent estimates, and the remaining
-sphere-transfer and averaging steps still require Lean proofs.
+The next extension proves the metric-aware Hamiltonian square and the
+three-particle target form $\mathsf H G^{-1}\mathsf H-\mathsf H$ in the
+actual physical coordinates. It also checks exact integer Gram witnesses
+for the 26 exported planar comparison arrays and 26 Hamiltonian arrays,
+their complete common kernels, and positive definiteness on the selected
+principal-column complements. The two empty blocks are included.
+These array results do not yet identify the full comparison with its
+physical operator formula. That identification, the finite-sphere interval
+certificates, two-spectator and coherent estimates, sphere transfer, and
+Schur averaging remain to be formalized. The
+[new build record](verification/lean_planar_certificates_build.json) and
+[AI self-review](verification/audit_reports/lean_planar_certificates_audit.txt)
+record the checked scope.
 **The uniform spectral-gap theorem remains unproved in Lean.** The package
 documents its remaining proof obligations and reproducible build. The v0.1
 manuscript is unchanged.

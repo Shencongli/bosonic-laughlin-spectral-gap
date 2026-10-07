@@ -157,11 +157,24 @@ are generally nonorthogonal; their completeness is proved by explicit
 linear equivalences and reconstruction.
 The coordinate proofs do not import Python success flags as hypotheses.
 
-All 1113 theorem declarations and 99 physical statement contracts pass the
+In the planar-certificate extension, the Codex assistant proved the physical
+form pullback, the inverse-metric Hamiltonian square, and its three-particle
+normal-order consequence. It generated integer Gram and kernel witnesses
+for all 26 exported planar comparison arrays and the corresponding 26
+Hamiltonian arrays, then proved their common kernels and strict positivity
+on the selected complements. Lean checks the exact witness identities;
+Python supplies the proposed data and checks export reproducibility.
+The assistant also performed the documented self-review. This extension
+did not use a separate reviewing agent or add human verification.
+
+All 1508 theorem declarations and 111 statement contracts pass the
 full build and axiom audit, with pinned Lean/mathlib versions recorded.
 The local build uses Lake package
 overrides pointing to source archives of those same revisions. The only
 axiom dependencies are `propext`, `Classical.choice`, and `Quot.sound`.
+The [planar-certificate build record](verification/lean_planar_certificates_build.json)
+and [AI self-review](verification/audit_reports/lean_planar_certificates_audit.txt)
+record the current extension.
 The [retained-frame build record](verification/lean_retained_frames_build.json)
 and [internal AI semantic audit](verification/audit_reports/lean_retained_frames_audit.txt)
 record the frame and physical-basis checks. The
@@ -176,7 +189,9 @@ available as development history. No independent human review is claimed.
 The remaining tasks include identifying the full comparison matrices,
 proving the two-spectator and coherent-integral estimates,
 and completing the finite-sphere transfer, averaging, and interval-certificate
-proofs. The finite comparison PSD certificates and the uniform spectral-gap
-target remain unproved in Lean. The package's [status](lean/README.md) lists the
+proofs. Exact exported planar-array PSD, common kernels, and selected-complement
+positivity are now proved. Identification of the full comparison arrays with
+the physical operators, finite-sphere interval certificates, and the uniform
+spectral-gap target remain unproved in Lean. The package's [status](lean/README.md) lists the
 remaining proof chain. Neither the v0.1 PDF nor its release is replaced by
 this code update.

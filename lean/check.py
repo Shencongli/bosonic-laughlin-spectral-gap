@@ -35,6 +35,7 @@ def run(command):
 version = run(lake + ['env', 'lean', '--version']).strip()
 run(lake + ['build'])
 run(lake + ['env', 'lean', 'StatementChecks.lean'])
+run(lake + ['env', 'lean', 'CertificateCheckerTests.lean'])
 output = run(lake + ['env', 'lean', 'Audit.lean'])
 dependencies = {}
 for name in names:
@@ -112,6 +113,14 @@ required = [
 ]
 retained_cases = [(3, d) for d in range(9)] + [(4, d) for d in range(17)]
 required += [
+    'physicalFormMatrix_form', 'physicalFormMatrix_comp_frame',
+    'highestWeightPhysicalFrame_range', 'highestWeightPhysicalFrame_nonneg_iff',
+    'certificateMetricMatrix_physical', 'certificateHamiltonian_coordinate_action',
+    'certificateHamiltonian_square_form', 'certificateThreeBody_target_form',
+    'sparseGramCheck_integer', 'sparseGramCheck_complex',
+    'sparseGramCheck_scaled_posSemidef', 'kernelFrame_same_kernel',
+    'complement_form_reconstruction', 'complement_posSemidef_iff',
+    'kernelFrame_complement_posDef',
     'sparseScaledFrameCheck_sound', 'mem_degreePartitions', 'degreePartitions_nodup',
     'degreePartitionTableTuple_injective', 'degreePartitionTableTuple_surjective',
     'indexedOccupationCMMatrix_eq_array', 'HasKernelFrame.ratCast',
@@ -119,6 +128,12 @@ required += [
     'occupationCMBlock_zero_degree', 'physicalHighestWeight_zero_degree_finrank',
 ]
 for n, d in retained_cases:
+    planar = f'planar_{n}_{d}'
+    required += [planar+'_same_kernel', planar+'_complement']
+    for tag in ['A', 'H']:
+        required += [planar+tag+suffix for suffix in
+                     ['_gram_check', '_posSemidef', '_kernel_check',
+                      '_kernel_frame', '_kernel_finrank', '_active_posDef']]
     prefix = f'retainedCM_{n}_{d}'
     required += [prefix + suffix for suffix in
                  ['_sparse_check', '_frame', '_kernel_finrank', '_columns_complete', '_physical_finrank']]
@@ -130,7 +145,7 @@ for name in required:
         raise SystemExit('Missing required theorem: ' + name)
 
 files = sources + [root/n for n in ['BosonicLaughlin.lean', 'Audit.lean',
-    'StatementChecks.lean', 'lakefile.lean', 'lake-manifest.json', 'lean-toolchain', 'check.py']]
+    'StatementChecks.lean', 'CertificateCheckerTests.lean', 'lakefile.lean', 'lake-manifest.json', 'lean-toolchain', 'check.py']]
 record = {
     'lean_version': version,
     'build_passed': True,
@@ -170,6 +185,17 @@ record = {
     'retained_cm_index_tables_complete_and_duplicate_free_proved': True,
     'retained_cm_arrays_identified_with_physical_occupation_matrices_proved': True,
     'all_26_retained_physical_highest_weight_frames_complete_proved': True,
+    'physical_form_pullback_and_highest_weight_completeness_proved': True,
+    'actual_hamiltonian_square_inverse_metric_formula_proved': True,
+    'actual_three_particle_target_H_Ginv_H_minus_H_proved': True,
+    'exported_planar_comparison_matrix_count': 26,
+    'exported_planar_hamiltonian_matrix_count': 26,
+    'all_exported_planar_matrices_complex_posSemidef_proved': True,
+    'exported_planar_comparison_and_hamiltonian_same_kernel_proved': True,
+    'exported_planar_selected_complement_posDef_proved': True,
+    'planar_comparison_operator_to_exported_array_identification_proved': False,
+    'finite_sphere_interval_certificate_semantics_proved': False,
+    'certificate_checker_regression_tests_passed': True,
     'physical_statement_contracts_checked': True,
     'physical_statement_contract_count': len(re.findall(
         r'^example\b', (root/'StatementChecks.lean').read_text(encoding='utf-8'), re.M)),

@@ -1,0 +1,71 @@
+Internal AI self-review, 8 October 2026. No separate reviewing agent or
+external human peer review was used for this extension.
+
+Scope and checked proof structure
+
+1. PhysicalComparisonForms.lean defines Phi^* A Phi using the actual linear
+   map into ordered-tensor states. Its sesquilinear identity has arbitrary
+   complex inputs. Composition is exact congruence. Highest-weight frames
+   include WeightState into State explicitly, and range completeness follows
+   from the previously proved linear equivalence, including degree zero.
+
+2. NonorthogonalHamiltonian.lean derives the coordinate action G^{-1} H
+   from range invariance and a proved inverse physical metric. Hamiltonian
+   invariance uses bosonic and fixed-weight preservation and coordinate
+   surjectivity. For Q>0, the actual square form is H G^{-1} H. The actual
+   three-particle normal-order identity then gives H G^{-1} H-H. No external
+   comparison array occurs in these physical equalities.
+
+3. SparseGramCertificate.lean verifies S M=R^T diag(w) R over integers,
+   including the checked transpose. Positive S and nonnegative weights imply
+   complex PSD, and a positive denominator transports it to rational arrays.
+   The sparse row identities do not assume unique or sorted entries. Three
+   regression tests reject corrupted matrix/transpose data and check the
+   necessity of the scalar/weight sign premises.
+
+4. KernelComplement.lean transports exact kernel frames under nonzero
+   matrix scaling, identifies matrices sharing a complete kernel frame,
+   and reconstructs an entire Hermitian form from a complementary frame.
+   Active positive definiteness uses full kernel reconstruction, L W=0,
+   R W=I, PSD, and the library theorem x^* A x=0 iff A x=0. Orthogonality
+   of W to the kernel is not required.
+
+5. RetainedPlanarCertificates.lean checks 26 comparison arrays and their
+   26 Hamiltonian arrays, using direct kernel reduction of integer witnesses.
+   It proves complex PSD, complete common kernels, nullities, complementary
+   coordinate identities, and active positive definiteness. The two degree-one
+   blocks are empty; their positive-definiteness statements are vacuous.
+   The largest block has dimension 10, rank 8, and nullity 2.
+
+Data provenance and scope limitations
+
+The unchanged exact_shifted_certificate.py is replayed into a temporary result
+file. The exporter generates rational LDL and kernel witnesses; these are
+not trusted hypotheses. Regeneration matches the committed Lean source and
+exact-array JSON byte for byte. A separate exact replay agrees on all array
+entries, and the selected principal columns match all 156 entries in the
+six recorded sphere-verifier runs. These provenance comparisons use Python.
+
+The planar comparison arrays use delta=1/1000000, mu=1/50, and
+c9=19531250/129140163. Their full operator-to-array derivation is not proved
+here. Neither the Q-dependent K3/K4 formulas, descendant normalization and
+Schur averaging, rational whitening of the later interval frames, Taylor
+remainders, interval arithmetic semantics, nor the uniform spectral-gap
+target is proved by this extension. The spherical Q>=3088 estimate is not
+inferred from planar positivity. Existing historical verification files and
+the v0.1 paper remain unchanged.
+
+Validation
+
+The full pinned Lean build, 111 statement contracts, 3 checker regression
+tests, and all 1508 theorem axiom reports passed. Only propext,
+Classical.choice, and Quot.sound occur. No sorry, custom proof axiom, or
+native_decide is used. See lean_planar_certificates_build.json for hashes
+and pinned dependency revisions.
+
+Reviewed new module hashes
+696b283a1909a2c0a7c2121b5f2725d854ff67e14e2a3335c2939aaa475f9f5d  lean/BosonicLaughlin/KernelComplement.lean
+8b80560b390a2617573ea6c41e3b7dbbdd727c756b8d90578e656ff55cdd50c2  lean/BosonicLaughlin/NonorthogonalHamiltonian.lean
+33523eb9ab8e59758276a0786a81aa49fde201ee40df9d9991173fc768353b1b  lean/BosonicLaughlin/PhysicalComparisonForms.lean
+ed931e8441201ef12d9621a21d70f2637f4c6b7491fb2ce48b61703e84e4accd  lean/BosonicLaughlin/RetainedPlanarCertificates.lean
+9b4e4ee7e05da6b48a9d13a1c144ea2e5df565168e0d79b2dd08274067d59ae7  lean/BosonicLaughlin/SparseGramCertificate.lean

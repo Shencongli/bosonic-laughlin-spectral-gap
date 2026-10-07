@@ -1,4 +1,4 @@
-# Lean formalization: operator bounds and occupation/highest-weight coordinates
+# Lean formalization: operator identities, coordinates, and planar certificates
 
 This package proves the coherent occupation bound, its pair-annihilation
 lift, and the normal-order decomposition for the repository's full spherical
@@ -9,6 +9,9 @@ pair kernel, exact weight blocks, and their polynomial-coordinate transport
 are formalized as well. The current extension supplies complete occupation
 and highest-weight coordinates, including the physical normalization,
 spherical metric, integer annihilation matrices, and exact Hamiltonian form.
+Exact Gram and kernel certificates now establish positivity of the exported
+planar arrays and their selected complements. Their full comparison-operator
+identification and the finite-sphere interval certificates remain open.
 **The uniform spectral-gap theorem remains unproved in Lean.**
 
 Prepared and curated by Xin Shen. The Lean code and this account of its status
@@ -384,8 +387,9 @@ $\Phi$ convention and its metric above. At d=0, the retained column is [1], and 
 gives the full one-dimensional highest-weight space for every Q, including
 Q=0, without identifying the two different CM target spaces.
 
-The frame checks establish basis completeness. The full comparison matrices
-and their finite or interval positivity certificates still require proofs.
+The frame checks establish basis completeness. Exact exported planar-array
+certificates are described below; the full comparison-operator correspondence
+and finite-sphere interval certificates still require proofs.
 
 ## Gap target
 
@@ -444,11 +448,16 @@ and deduction of the gap above it.
 | `SparseIntegerMatrix.lean`, `SparseKernelFrame.lean`, `RetainedCMFrames.lean` | Sparse integer verification of all 26 rational frame identities after clearing common denominators. |
 | `PartitionsEnumeration.lean`, `EnumeratedPartitions.lean`, `SortedCMCoefficient.lean`, `IndexedOccupationCM.lean`, `RetainedCMCoordinates.lean` | Complete duplicate-free partition enumeration, exact exported tables and CM entries, and their identification with the actual occupation matrix for Q≥d>0. |
 | `KernelFrameTransport.lean`, `KernelFramePhysical.lean`, `RetainedCMPhysical.lean`, `RetainedCMZeroDegree.lean` | Rational-to-complex frame transport, complete physical highest-weight bases and dimensions, and the separate all-Q degree-zero identification. |
+| `PhysicalComparisonForms.lean`, `NonorthogonalHamiltonian.lean` | Exact physical form pullbacks, complete highest-weight frames, the inverse metric in the Hamiltonian square, and the actual three-particle target form. |
+| `SparseGramCertificate.lean`, `KernelComplement.lean`, `RetainedPlanarCertificates.lean` | Integer Gram soundness over complex amplitudes, all 52 exported planar PSD arrays, complete common kernels, and strict positivity on the selected complements. |
 
 All source files in this table are under `BosonicLaughlin/`.
-All 1113 theorem declarations and 99 physical statement contracts pass the
+All 1508 theorem declarations and 111 statement contracts pass the
 full build and axiom audit. `Audit.lean` and `check.py` check every theorem's
 axiom dependencies.
+The [planar-certificate build record](../verification/lean_planar_certificates_build.json)
+and [AI self-review](../verification/audit_reports/lean_planar_certificates_audit.txt)
+record the current checks, including three checker regression tests.
 The [retained-frame build record](../verification/lean_retained_frames_build.json)
 records the declarations, physical statement contracts, fixed dependency
 revisions, and source hashes for this extension, alongside an
@@ -465,6 +474,39 @@ The [492-theorem three-body lift record](../verification/lean_three_body_lift_bu
 [occupation-stage record](../verification/lean_occupation_build.json) are
 retained as development history.
 
+## Physical forms and exact planar arrays
+
+For the complete normalized occupation map $\Phi$ at Q>0, let
+$G=\Phi^\dagger\Phi$ and $\mathsf H=\Phi^\dagger H_Q\Phi$.
+These are matrices on the finite bosonic degree sector. The code proves
+
+$$\Phi^\dagger H_Q^2\Phi=\mathsf H G^{-1}\mathsf H.$$
+
+For three particles, subtracting the Hamiltonian form gives the actual
+normal-ordered target $\Phi^\dagger S_3\Phi=
+\mathsf H G^{-1}\mathsf H-\mathsf H$. Pullback through a complete
+highest-weight frame preserves positivity on that physical subspace.
+Neither coordinate map is assumed unitary.
+
+`RetainedPlanarCertificates.lean` contains the exact arrays exported from
+the unchanged planar verifier with delta=1/1000000, mu=1/50, and
+c9=19531250/129140163. For each comparison array A and Hamiltonian array H,
+integer witnesses prove positive semidefiniteness over complex amplitudes.
+Kernel-frame identities prove ker(A)=ker(H), including all singular blocks.
+The selected coordinate columns W form a complement to that common kernel:
+Lean checks WR+UL=I, LW=0, and RW=I, where U spans the full kernel and L
+is its coordinate left inverse. It proves W* A W and W* H W positive
+definite; here W* denotes conjugate transpose. The two degree-one spaces
+have dimension zero, so their positivity statements are vacuous.
+
+The array entries and exact export provenance are recorded in
+[`lean_planar_matrices.json`](../verification/lean_planar_matrices.json).
+The principal columns agree with all six recorded sphere-verifier runs;
+this is an exact Python data comparison. The later rational whitening,
+Q-dependent comparison formula, Schur average, and interval remainders
+are not covered by these planar Lean certificates. In particular, the
+shifted planar PSD check alone does not imply the spherical Q≥3088 bound.
+
 ## Remaining proof chain
 
 1. Identify the full comparison matrices with the exact occupation-coordinate
@@ -473,8 +515,9 @@ retained as development history.
 2. Prove the two-spectator bound, coherent integrals and comparisons,
    sphere transfer, and Schur averaging. The occupation sandwich above is
    one input to these further estimates.
-3. Derive the certificate matrices from the operators and verify all exact
-   and interval certificates, including their remainders, inside Lean.
+3. Derive the certificate matrices from the operators and verify the
+   finite-sphere interval certificates, including their remainders, inside Lean.
+   The exact exported planar arrays and their complete kernels are now checked.
 4. Assemble the six flux ranges into `UniformGapTarget`, then identify the
    Laughlin zero mode and derive the spectral statement.
 
@@ -493,8 +536,13 @@ python check.py
 `StatementChecks.lean`, invokes Lean on `Audit.lean`, and rejects
 axiom dependencies outside `propext`, `Classical.choice`, and `Quot.sound`.
 It also checks that every theorem declaration is listed in the audit.
+It also runs `CertificateCheckerTests.lean`, which rejects a corrupted Gram
+coefficient and transpose and checks the sign-premise guard.
 It writes `verification-local.json`, which records checks of this package,
 not verification of the manuscript's main theorem.
+
+To regenerate the planar witnesses without changing the historical verifier
+outputs, run `python ../verification/generate_planar_lean_certificates.py --check`.
 
 Lean is pinned to v4.34.1 and mathlib to
 `d13f23b723b8a846827a245b89c10fc7d3f11612`; transitive revisions are locked
@@ -521,3 +569,9 @@ credited there to Alexander Bentkamp. The file reduces matrix diagonalization
 to mathlib's inner-product-space spectral theorem. The recoupling eigenvalues,
 their connection to the concrete pair contraction, and their multiplicities
 are proved in this package using those library results.
+
+The integer Gram checker uses mathlib's positive-semidefinite matrix
+congruence and scaling lemmas in
+[`Mathlib/LinearAlgebra/Matrix/PosDef.lean`](https://github.com/leanprover-community/mathlib4/blob/d13f23b723b8a846827a245b89c10fc7d3f11612/Mathlib/LinearAlgebra/Matrix/PosDef.lean),
+credited there to Alexander Bentkamp and Mohanad Ahmed. The exact witnesses
+and their connection to these library lemmas are supplied by this package.

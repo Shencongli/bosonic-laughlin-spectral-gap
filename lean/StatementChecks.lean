@@ -477,3 +477,54 @@ example (Q : ℕ) (hd : 16≤Q) (c : Fin 10 → ℂ) :
 
 example (Q : ℕ) : Function.Bijective (fun c : Fin 1 → ℂ => zeroDegreePhysicalHighestEquiv Q 4
     ((retainedCM_4_0U.map (Rat.castHom ℂ)) *ᵥ c)) := retainedCM_4_0_columns_complete Q
+
+/- Planar-certificate extension contracts: physical form identities and
+exact exported arrays have separate statements. -/
+example {Q N d : ℕ} (hQ : 0<Q) :
+    certificateMetricMatrix Q N d=physicalFrameMetric (certificateWeightCoordinates Q N d) :=
+  certificateMetricMatrix_physical hQ
+
+example {Q N d : ℕ} (hQ : 0<Q) :
+    physicalFormMatrix (certificateWeightCoordinates Q N d)
+      ((hamiltonianLinear Q N).comp (hamiltonianLinear Q N)) =
+      certificateHamiltonianFormMatrix Q N d * certificateInverseMetric Q N d *
+        certificateHamiltonianFormMatrix Q N d := certificateHamiltonian_square_form hQ
+
+example {Q d : ℕ} (hQ : 0<Q) :
+    physicalFormMatrix (certificateWeightCoordinates Q 3 d) (normalThreeBodyLinear Q 3) =
+      certificateHamiltonianFormMatrix Q 3 d * certificateInverseMetric Q 3 d *
+        certificateHamiltonianFormMatrix Q 3 d - certificateHamiltonianFormMatrix Q 3 d :=
+  certificateThreeBody_target_form hQ
+
+example (Q : ℕ) (hd : 16≤Q) (A : State Q 4 →ₗ[ℂ] State Q 4) :
+    (∀ v, 0 ≤ (star v ⬝ᵥ (physicalFormMatrix
+      (highestWeightPhysicalFrame (retainedCM_4_16_physicalEquiv Q hd)) A *ᵥ v)).re) ↔
+      ∀ φ ∈ physicalHighestWeightSubspace Q 4 16,
+        0 ≤ (inner (weightInclude 16 φ) (A (weightInclude 16 φ))).re :=
+  highestWeightPhysicalFrame_nonneg_iff (retainedCM_4_16_physicalEquiv Q hd) A
+
+example (Q : ℕ) (A : State Q 3 →ₗ[ℂ] State Q 3) :
+    (∀ v, 0 ≤ (star v ⬝ᵥ (physicalFormMatrix
+      (highestWeightPhysicalFrame (zeroDegreePhysicalHighestEquiv Q 3)) A *ᵥ v)).re) ↔
+      ∀ φ ∈ physicalHighestWeightSubspace Q 3 0,
+        0 ≤ (inner (weightInclude 0 φ) (A (weightInclude 0 φ))).re :=
+  highestWeightPhysicalFrame_nonneg_iff (zeroDegreePhysicalHighestEquiv Q 3) A
+
+example : (planar_3_6A.map (Rat.castHom ℂ)).PosSemidef := planar_3_6A_posSemidef
+
+example : Module.finrank ℂ (LinearMap.ker (planar_3_6A.map (Rat.castHom ℂ)).mulVecLin)=1 :=
+  planar_3_6A_kernel_finrank
+
+example : (planar_4_16A.map (Rat.castHom ℂ)).PosSemidef := planar_4_16A_posSemidef
+
+example (v : Fin 10 → ℂ) :
+    (planar_4_16A.map (Rat.castHom ℂ)) *ᵥ v=0 ↔ (planar_4_16H.map (Rat.castHom ℂ)) *ᵥ v=0 :=
+  planar_4_16_same_kernel v
+
+example : ((planar_4_16W.map (Rat.castHom ℂ))ᴴ * (planar_4_16A.map (Rat.castHom ℂ)) *
+    (planar_4_16W.map (Rat.castHom ℂ))).PosDef := planar_4_16A_active_posDef
+
+example : Module.finrank ℂ (LinearMap.ker (planar_4_16A.map (Rat.castHom ℂ)).mulVecLin)=2 :=
+  planar_4_16A_kernel_finrank
+
+example : (planar_4_1A.map (Rat.castHom ℂ)).PosSemidef := planar_4_1A_posSemidef

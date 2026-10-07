@@ -21,3 +21,5 @@ import BosonicLaughlin.OccupationSortedCoordinates
 import BosonicLaughlin.OccupationScriptMetric
 import BosonicLaughlin.KernelFrames
 import BosonicLaughlin.RetainedCMPhysical
+import BosonicLaughlin.NonorthogonalHamiltonian
+import BosonicLaughlin.RetainedPlanarCertificates
