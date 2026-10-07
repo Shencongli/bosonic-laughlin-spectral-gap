@@ -1,10 +1,12 @@
-# Lean formalization: occupation bounds, normal ordering, and recoupling
+# Lean formalization: occupation bounds, recoupling, and physical kernels
 
 This package proves the coherent occupation bound, its pair-annihilation
 lift, and the normal-order decomposition for the repository's full spherical
 bosonic V0 model. It also constructs the three-particle auxiliary map,
 proves its Gram and Hamiltonian identities, and gives the complete spectrum
-and projector ranks of the actual compressed exchange.
+and projector ranks of the actual compressed exchange. The physical common
+pair kernel, exact weight blocks, and their polynomial-coordinate transport
+are now formalized as well.
 **The uniform spectral-gap theorem remains unproved in Lean.**
 
 Prepared and curated by Xin Shen. The Lean code and this account of its status
@@ -217,6 +219,76 @@ $$\mathcal L_3^{(M)}(|w\rangle\langle w'|)=A_M(w)^\dagger A_M(w'),
 
 with the vacuum identity for bosonic w.
 
+## Physical kernels and exact weight blocks
+
+For bosonic states with M≥2 particles, the code proves
+
+$$\langle\psi,H_{Q,M}\psi\rangle=0
+\quad\Longleftrightarrow\quad H_{Q,M}\psi=0
+\quad\Longleftrightarrow\quad B_p\psi=0\ \text{for every }0\le p\le2Q.$$
+
+On the ambient tensor space, at every particle number, the Hamiltonian
+kernel is also proved to be the common kernel of all distinct-slot pair
+projectors. This implies that the actual S3 and S4 operators annihilate it.
+On three bosonic particles, the adjoint $W_3^\dagger$ and every coefficient
+$W_3 A W_3^\dagger$ vanish on that kernel as well.
+
+The total orbital deficit of an ordered configuration a is
+$d(a)=\sum_{i=1}^M a_i$. `WeightState Q M d` is the coefficient space on
+configurations with $d(a)=d$; Bose symmetry is imposed separately.
+Restriction and zero extension give an exact linear identification with
+the supported subspace. The pair projectors, Hamiltonian, and bosonic
+projection preserve these blocks. Their finite Hamiltonian matrices, in
+the delta basis of ordered configurations, are proved Hermitian and positive
+semidefinite and represent the actual restricted operator.
+
+To express the pair equations without spherical binomial factors, define
+the invertible diagonal coordinate map
+
+$$ (D_Q\psi)(a)=s_Q(a)\psi(a),\qquad
+s_Q(a)=\prod_{i=1}^M\sqrt{\binom Q{a_i}}. $$
+
+This map preserves Bose symmetry and total deficit. It is nonunitary in
+the original coordinate inner product. The induced polynomial-coordinate
+metric and transformed Hamiltonian are
+
+$$\langle\chi,\eta\rangle_{D_Q}
+=\sum_a\frac{\overline{\chi(a)}\eta(a)}{s_Q(a)^2},\qquad
+\widetilde H_{Q,M}=D_QH_{Q,M}D_Q^{-1}.$$
+
+The metric is proved positive definite, and $\widetilde H$ is Hermitian
+in this metric. For M=N+2, the unweighted polynomial pair channel is the map
+from M to N tensor slots defined by
+
+$$ (C_p\chi)(a)=\sum_{x,y=0}^Q\mathbf1_{x+y=p}\chi(x,y,a). $$
+
+Its exact correspondence to the normalized physical pair map is
+
+$$\sqrt{\binom M2}\,C_pD_Q^{(M)}
+=\sqrt{\binom{2Q}p}\,D_Q^{(M-2)}B_p.$$
+
+Here the superscript specifies the particle sector of D. The code constructs
+the finite channel matrices from deficit d to d−p, proves vanishing for
+p>d, and identifies their common kernel with the physical Hamiltonian
+kernel after the coordinate change and Bose restriction.
+
+Every orbital label in a configuration of deficit d is at most d. For
+Q≥d, this gives an explicit bijection between the configurations at caps
+Q and d and a linear equivalence of their coefficient spaces. The equivalence
+preserves Bose symmetry and the common polynomial pair kernel, with the
+different channel-index ranges treated explicitly. Composing it with
+$D_Q$ and $D_d^{-1}$ gives an explicit linear equivalence of the physical
+zero spaces for M≥2. At fixed M and d, their dimensions therefore agree
+for every Q≥d. This is a kernel identification; the induced metrics and the
+nonzero Hamiltonian spectra are not identified across fluxes.
+
+The code also defines the certificate row class
+$R=cB_t+\sum_{p,i,j}c_{pij}a_i^\dagger a_jB_p$ in tensor coordinates,
+with arbitrary complex coefficients, and proves that its rows and Gram
+forms vanish on the physical kernel. The identification of these
+ordered-tensor matrices with the Python verifier's occupation-number and
+highest-weight matrices remains to be formalized.
+
 ## Gap target
 
 `UniformGapTarget` states the requested estimate for all integer Q≥3088,
@@ -256,15 +328,23 @@ and deduction of the gap above it.
 | `ThreeBodyLift.lean`, `ThreeBodyLiftHermitian.lean`, `ThreeBodyLiftIdentity.lean`, `ThreeBodyCounting.lean`, `ThreeBodySymmetry.lean` | Preservation of positivity, order, and self-adjointness under lifting, its binomial normalization, and equality with the actual all-particle normal-order term. |
 | `ThreeBodyAnnihilation.lean` | Actual creation/annihilation adjoints, the rank-one normal-order rule, and creation from vacuum. |
 | `ThreeBodyCoefficient.lean`, `ThreeBodySpectralLift.lean` | Positive Hermitian spectral coefficients, their all-particle lift, and the full $H_Q^2$ identity with lifted recoupling blocks. |
+| `PhysicalKernel.lean`, `PairSandwichKernel.lean` | Exact physical common pair kernel, zero-energy equivalences, and kernel annihilation by pair sandwiches, S3, S4, and three-particle auxiliary coefficients. |
+| `WeightBlocks.lean`, `WeightCoordinates.lean`, `WeightBlockForms.lean` | Conserved total-deficit sectors, restriction/extension, the block bosonic projection, and exact positive Hermitian Hamiltonian matrices. |
+| `PolynomialCoordinates.lean`, `PolynomialMetric.lean`, `PolynomialWeightCoordinates.lean` | Invertible polynomial coordinates, the induced metric and transformed Hamiltonian, and actual pair-kernel correspondence on each weight block. |
+| `PolynomialPairBlocks.lean`, `PhysicalWeightMatrices.lean` | Exact finite channel matrices and equality of their pulled-back common kernel with the actual physical Hamiltonian matrix kernel. |
+| `OrbitalCap.lean`, `OrbitalCapKernel.lean` | Explicit configuration and state equivalences for Q≥d, Bose preservation, and transport of the common polynomial pair kernel. |
+| `WeightKernelTransport.lean` | Explicit linear equivalence of the physical zero spaces at fixed total deficit d for Q≥d, and equality of their dimensions. |
+| `CertificateRows.lean` | Physical certificate rows with arbitrary coefficients, their common-kernel annihilation, and nonnegative Gram forms. |
 
 All source files in this table are under `BosonicLaughlin/`.
-All 492 theorem declarations and 37 physical statement contracts pass the
+All 639 theorem declarations and 54 physical statement contracts pass the
 full build and axiom audit. `Audit.lean` and `check.py` check every theorem's
 axiom dependencies. The
-[three-body lift build record](../verification/lean_three_body_lift_build.json) records
+[common-kernel build record](../verification/lean_common_kernel_build.json) records
 the declarations, fixed dependency revisions, and source hashes, with an
-[internal AI semantic audit](../verification/audit_reports/lean_three_body_lift_audit.txt).
-The [388-theorem recoupling record](../verification/lean_recoupling_build.json),
+[internal AI semantic audit](../verification/audit_reports/lean_common_kernel_audit.txt).
+The [492-theorem three-body lift record](../verification/lean_three_body_lift_build.json),
+[388-theorem recoupling record](../verification/lean_recoupling_build.json),
 [226-theorem normal-order record](../verification/lean_normal_order_build.json),
 [initial 22-lemma record](../verification/lean_initial_build.json) and
 [occupation-stage record](../verification/lean_occupation_build.json) are
@@ -272,7 +352,8 @@ retained as development history.
 
 ## Remaining proof chain
 
-1. Identify the common kernels used for the retained blocks.
+1. Connect the exact tensor-weight kernels to the verifier's occupation-number
+   and highest-weight coordinates and its retained-block matrices.
 2. Prove the two-spectator bound, coherent integrals and comparisons,
    sphere transfer, and Schur averaging. The occupation sandwich above is
    one input to these further estimates.

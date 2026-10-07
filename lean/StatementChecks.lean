@@ -4,6 +4,7 @@ import BosonicLaughlin
 the published results explicit. They must elaborate without assuming an
 occupation inequality, a normal-order identity, or a spectral-gap estimate. -/
 open BosonicLaughlin
+open scoped ComplexOrder
 
 example (Q N : ℕ) (u v : ℂ) (h : Complex.normSq u + Complex.normSq v = 1)
     (ψ : State Q N) :
@@ -196,3 +197,83 @@ example (Q M : ℕ) (ψ : State Q M) (hψ : IsBosonic ψ) :
       (∑ z : Fin (Q+1), ((2 : ℂ) * (recouplingEigenvalue Q z.val : ℂ)) •
         threeBodyLift Q M (threeBodySpectralBlock Q z) ψ) + normalFourBodyApply ψ :=
   hamiltonian_square_lifted_recoupling ψ hψ
+
+example (Q N : ℕ) (ψ : State Q (N+2)) (hψ : IsBosonic ψ) :
+    hamiltonian ψ = 0 ↔ ∀ p : Fin (2*Q+1), v0PairAnnihilate p ψ = 0 :=
+  hamiltonian_zero_iff_v0PairAnnihilate_zero ψ hψ
+
+example (Q N : ℕ) :
+    bosonicSubspace Q (N+2) ⊓ LinearMap.ker (hamiltonianLinear Q (N+2)) =
+      bosonicSubspace Q (N+2) ⊓
+        ⨅ p : Fin (2*Q+1), LinearMap.ker (v0PairAnnihilateLinear Q N p) :=
+  physicalHamiltonian_kernel_eq_common_pair_kernel Q N
+
+example (Q N d : ℕ) (ψ : State Q N) :
+    hamiltonian (weightProjection d ψ) = weightProjection d (hamiltonian ψ) :=
+  hamiltonian_weightProjection d ψ
+
+example (Q N d : ℕ) (φ χ : WeightState Q N d) :
+    BosonicLaughlin.inner (weightInclude d φ) (weightInclude d χ) = weightInner φ χ :=
+  weightInclude_inner φ χ
+
+example (Q N d : ℕ) (φ : WeightState Q N d) :
+    (weightHamiltonianMatrix Q N d).mulVec φ = weightHamiltonian Q N d φ :=
+  weightHamiltonianMatrix_mulVec φ
+
+example (Q N d : ℕ) : (weightHamiltonianMatrix Q N d).PosSemidef :=
+  weightHamiltonianMatrix_posSemidef Q N d
+
+example (Q N : ℕ) (p : Fin (2*Q+1)) (ψ : State Q (N+2)) :
+    (Real.sqrt ((N+2).choose 2) : ℂ) •
+        polynomialPairChannel p.val (polynomialCoordinates Q (N+2) ψ) =
+      (binomialRoot (2*Q) p.val : ℂ) •
+        polynomialCoordinates Q N (v0PairAnnihilate p ψ) :=
+  polynomialPairChannel_annihilate p ψ
+
+example (Q N : ℕ) (χ η : State Q N) :
+    polynomialInner χ η = ∑ a : Configuration Q N,
+      star (χ a) * η a / (polynomialScale a : ℂ)^2 :=
+  polynomialInner_diagonal χ η
+
+example (Q N : ℕ) (χ η : State Q N) :
+    polynomialInner χ (polynomialHamiltonian Q N η) =
+      polynomialInner (polynomialHamiltonian Q N χ) η :=
+  polynomialHamiltonian_hermitian χ η
+
+example (Q N d : ℕ) (φ : WeightState Q (N+2) d) (hφ : WeightIsBosonic φ) :
+    (weightHamiltonianMatrix Q (N+2) d).mulVec φ = 0 ↔ ∀ p : Fin (2*Q+1),
+      (polynomialPairMatrix Q N d p.val).mulVec
+        (polynomialWeightCoordinates Q (N+2) d φ) = 0 :=
+  weightHamiltonianMatrix_zero_iff_polynomialPairMatrices φ hφ
+
+example (Q N d : ℕ) (hd : d ≤ Q) (φ : WeightState Q N d) :
+    polynomialWeightCoordinates d N d (weightKernelTransport hd φ) =
+      capWeightStateEquiv hd (polynomialWeightCoordinates Q N d φ) :=
+  weightKernelTransport_polynomial hd φ
+
+example (Q N d : ℕ) (hd : d ≤ Q)
+    (φ : WeightState Q (N+2) d) (hφ : WeightIsBosonic φ) :
+    weightHamiltonian d (N+2) d (weightKernelTransport hd φ) = 0 ↔
+      weightHamiltonian Q (N+2) d φ = 0 :=
+  weightKernelTransport_kernel_iff hd φ hφ
+
+example (Q N d : ℕ) (hd : d ≤ Q) :
+    Module.finrank ℂ (physicalWeightKernel Q (N+2) d) =
+      Module.finrank ℂ (physicalWeightKernel d (N+2) d) :=
+  physicalWeightKernel_finrank_stable hd
+
+example (Q N : ℕ) (t : Fin (2*Q+1)) (leading : ℂ)
+    (coefficient : Fin (2*Q+1) → Orbital Q → Orbital Q → ℂ)
+    (ψ : State Q (N+2)) (hψ : IsBosonic ψ) (hH : hamiltonian ψ = 0) :
+    certificateRow Q N t leading coefficient ψ = 0 :=
+  certificateRow_annihilates_kernel Q N t leading coefficient ψ hψ hH
+
+example (Q N : ℕ) (ψ : State Q N) (hH : hamiltonian ψ = 0) :
+    normalThreeBodyApply ψ = 0 := normalThreeBody_kernel_zero ψ hH
+
+example (Q N : ℕ) (ψ : State Q N) (hH : hamiltonian ψ = 0) :
+    normalFourBodyApply ψ = 0 := normalFourBody_kernel_zero ψ hH
+
+example (Q : ℕ) (z : Fin (Q+1)) (ψ : State Q 3)
+    (hψ : IsBosonic ψ) (hH : hamiltonian ψ = 0) :
+    threeBodySpectralBlock Q z ψ = 0 := threeBodySpectralBlock_kernel_zero z ψ hψ hH

@@ -11,3 +11,7 @@ import BosonicLaughlin.ThreeBodySpectral
 import BosonicLaughlin.SwapProjectorRanks
 import BosonicLaughlin.ThreeBodyAnnihilation
 import BosonicLaughlin.ThreeBodySpectralLift
+import BosonicLaughlin.PairSandwichKernel
+import BosonicLaughlin.CertificateRows
+import BosonicLaughlin.WeightKernelTransport
+import BosonicLaughlin.PhysicalWeightMatrices

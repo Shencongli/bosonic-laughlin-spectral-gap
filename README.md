@@ -91,9 +91,16 @@ particle sector. The lift preserves positive quadratic forms and is proved
 to send $|w\rangle\langle w'|$ to the corresponding creation-annihilation
 product, with the manuscript's normalization. The full $H_Q^2$ identity is
 connected to these lifted recoupling blocks, each proved positive and Hermitian.
-Retained-block common kernels,
-two-spectator and coherent estimates, sphere transfer, and interval
-certificates remain to be connected in Lean.
+The physical Hamiltonian kernel is now identified with the common kernel
+of its normalized pair annihilators. Exact total-orbital-deficit blocks
+and their matrices are connected to the original operator. In polynomial
+coordinates, their common pair kernel is transported between flux Q and
+orbital cap d whenever Q≥d, where d is the total orbital deficit. The
+nonunitary coordinate change and its induced metric are explicit.
+The certificate row class is also proved to annihilate the physical kernel.
+Connecting these ordered-tensor blocks to the verifier's occupation-number
+and highest-weight matrices, the two-spectator and coherent estimates,
+sphere transfer, and interval certificates remains to be done in Lean.
 **The uniform spectral-gap theorem remains unproved in Lean.** The package
 documents its remaining proof obligations and reproducible build. The v0.1
 manuscript is unchanged.

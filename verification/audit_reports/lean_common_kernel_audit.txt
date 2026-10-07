@@ -1,0 +1,202 @@
+Internal AI semantic audit. This is not external human peer review.
+
+Publication verification: the final whole-library build, 54 physical
+statement contracts, and all 639 theorem axiom reports passed. See
+verification/lean_common_kernel_build.json for exact source hashes.
+
+AI MATHEMATICAL-SEMANTIC REVIEW: PHYSICAL KERNEL AND FINITE WEIGHT BLOCKS
+
+Status: final; all 14 reviewed source modules frozen and individually compiled.
+Date: 2026-10-07.
+Repository: Shencongli/bosonic-laughlin-spectral-gap.
+Reviewer: the angular_algebra AI subagent in the current Codex session.
+
+Review provenance
+-----------------
+This is an AI source-level mathematical review, not an independent human review.
+WeightBlocks.lean, WeightCoordinates.lean and WeightBlockForms.lean were authored
+by this reviewer; checks of those three files are self-review. The remaining
+modules were authored by the parent or other AI agents. The review does not
+replace Lean kernel checking or the separately recorded project-wide axiom audit.
+
+Scope and normalization
+-----------------------
+The model is the finite spherical LLL V0 Hamiltonian at integer flux Q, in
+Q+1 orthonormal orbitals indexed by 0,...,Q. State Q M is the ordered tensor
+coordinate space; IsBosonic specifies its physical symmetric subspace. The
+inner product sums over all ordered configurations and is conjugate-linear in
+its first argument. H is the sum over unordered particle pairs of normalized
+pair projectors, each with coefficient one. No new rescaling of H is made.
+The total orbital deficit d is the sum of the orbital indices, rather than a
+particle number, a pair relative angular momentum, or a highest-weight label.
+
+Source modules reviewed in this increment:
+  PhysicalKernel.lean
+  PairSandwichKernel.lean
+  CertificateRows.lean
+  WeightBlocks.lean                      [self-review]
+  WeightCoordinates.lean                 [self-review]
+  WeightBlockForms.lean                  [self-review]
+  PolynomialCoordinates.lean
+  PolynomialMetric.lean
+  PolynomialWeightCoordinates.lean
+  PolynomialPairBlocks.lean
+  PhysicalWeightMatrices.lean
+  OrbitalCap.lean
+  OrbitalCapKernel.lean
+  WeightKernelTransport.lean
+
+1. Actual Hamiltonian kernel and right-factored operators
+--------------------------------------------------------
+PhysicalKernel derives zero energy iff H psi=0 from the exact sum of squared
+norms of distinct-slot pair projectors. This ambient statement needs no Bose
+symmetry. On M=N+2 bosons it uses the previously proved normalization
+  B_p = sqrt(choose(N+2,2)) times contraction with the normalized pair vector
+to prove H psi=0 iff every B_p psi=0. Bose symmetry is explicitly required for
+this first-two-slot contraction characterization. Without that hypothesis it
+would not characterize the full ambient tensor kernel.
+
+PairSandwichKernel uses this actual common kernel to prove annihilation by
+arbitrary linear right factors ending in B_p, and vanishing of pair-sandwich
+forms. Its operator-from-form consequence includes a bosonic-range condition,
+which makes testing against the output legitimate. The concrete S3 and S4
+kernel statements instead follow directly from the ambient common pair kernel.
+The N=1 normalization in the identity W3-adjoint=B_p is checked explicitly:
+both maps carry sqrt(3). No assumed coefficient matrix or desired gap
+inequality is used to obtain these kernel statements.
+
+CertificateRows defines actual one-body matrix-unit sums a_i-dagger a_j in
+tensor coordinates. Rows lambda B_t + sum c(p,i,j) a_i-dagger a_j B_p therefore
+annihilate the physical H kernel for arbitrary coefficients. Their Gram forms
+are nonnegative for the elementary squared-norm reason. This establishes the
+row class and kernel compatibility; it does not verify any proposed numerical
+coefficient array, coefficient-dependent cancellation, or positive remainder.
+
+2. Exact weight restriction and matrix action
+--------------------------------------------
+WeightBlocks proves weight conservation termwise using the support of the
+pair vector: incoming and outgoing pair orbital sums agree. The distinct-slot
+hypothesis is explicit for pairApply; the actual Hamiltonian always satisfies
+it because its sum uses i<j. Weight projection commutes with H and with the
+normalized bosonic symmetrizer.
+
+WeightCoordinates gives mutually inverse restriction and zero extension
+between the ordered weight-coordinate space and the ambient supported
+subspace. H_block=R H I is accompanied by actual identities I H_block=H I
+and H_block R=R H. The latter holds on every ambient vector because H cannot
+mix the weight blocks. WeightIsBosonic is a separate condition, not silently
+built into the configuration index type.
+
+WeightBlockForms proves that I preserves the coordinate inner product exactly,
+without an occupation multiplicity or factorial. The induced block bosonic
+projector has bosonic range, the expected fixed points, idempotence and exact
+self-adjointness. The matrix LinearMap.toMatrix'(H_block) is taken in the
+ordered-configuration delta basis, acts by the actual H_block, and is Hermitian
+and positive semidefinite in Mathlib's complex star order. These are exact
+operator and matrix statements, rather than an asserted agreement of spectra.
+
+3. Polynomial coordinates and finite pair matrices
+-------------------------------------------------
+PolynomialCoordinates multiplies an orthonormal tensor amplitude by
+  S_Q(a)=product_i sqrt(binomial(Q,a_i)).
+Every factor is strictly positive on the declared orbital range, including
+Q=0, so this diagonal map is invertible. It preserves permutation symmetry.
+The unweighted polynomial pair channel sums coefficients with x+y=p. Its
+comparison with B_p contains the explicit nonzero factors sqrt(binomial(2Q,p))
+and sqrt(choose(N+2,2)); therefore equality of common kernels is justified.
+
+PolynomialMetric keeps the nonunitary character of this coordinate change
+explicit. The inherited metric is diagonal with weight S_Q(a)^(-2), and the
+transformed Hamiltonian is S_Q H S_Q^(-1), self-adjoint for that metric. An
+ordinary unweighted coefficient Euclidean inner product is not substituted.
+PolynomialWeightCoordinates proves the same coordinate relation after actual
+weight restriction and links the finite physical H block kernel to the raw
+polynomial pair equations on bosonic vectors.
+
+PolynomialPairBlocks defines the channel d -> d-p by restricting the actual
+polynomial channel. It proves that zero extension intertwines the maps and
+that p>d gives zero. Thus natural-number subtraction at p>d hides no spurious
+spectator-weight-zero contribution. Its rectangular matrices are exactly the
+standard-coordinate matrices of those maps, and their common kernel detects
+the actual transformed H kernel on bosonic inputs. They remain ordered tensor
+blocks; no occupation-basis or highest-weight quotient is claimed.
+
+PhysicalWeightMatrices composes these identities into a statement about the
+actual physical H_block matrix kernel. The vector entering the raw pair
+matrices is explicitly polynomialWeightCoordinates(phi), whereas phi enters
+the orthonormal physical H matrix. This rescaling is retained in all four
+operator/matrix variants of the theorem. Bose symmetry is required throughout.
+
+4. Fixed-cap transport
+----------------------
+OrbitalCap proves every label in a total-deficit-d configuration is at most d.
+For d<=Q it constructs inverse configuration and coefficient maps between
+the weight-d coordinate sets with caps Q and d, preserving Bose symmetry.
+OrbitalCapKernel transports the actual unweighted pair-channel sums. Terms
+with a label above d vanish by support, and channels above their possible
+orbital sums vanish. The Fin(2Q+1) and Fin(2d+1) index ranges are compared via
+all natural channel indices, so no channel equations are dropped silently.
+This is exact independence of polynomial common-kernel equations from the
+cap in the stated range. It does not assert that physical H at different
+fluxes has equal matrices, equal nonzero eigenvalues, or equal metrics.
+
+WeightKernelTransport assembles the actual physical map
+  T = D_d^(-1) cap D_Q,
+where D_Q and D_d are the source and target polynomial-coordinate scalings.
+It proves Bose symmetry in both directions and, on that symmetric subspace,
+the equivalence of the actual source and target H_block zero conditions.
+The submodule physicalWeightKernel is explicitly the intersection of the
+pulled-back bosonic subspace with the actual block Hamiltonian kernel. The
+restricted linear equivalence includes its inverse and proves equality of
+kernel dimensions for every fixed N+2 and d with Q>=d. No rank-stability
+assumption, dimension formula, or equality of nonzero spectra enters the
+construction. The map's inverse uses the target normalization, so the
+nonunitary rescaling is not silently discarded at this final step.
+
+5. Boundaries and result strength
+--------------------------------
+The weight-coordinate statements quantify over all Q,N,d, including empty
+weight blocks, N=0 and Q=0. The cap equivalence requires d<=Q explicitly.
+Pair-annihilator and polynomial-pair results use total particle number N+2,
+which is their natural domain. Sectors with zero or one particle are already
+covered by the ambient pair-kernel theorem and hamiltonian_small_sector.
+
+These modules provide exact model correspondence, kernel identities, conserved
+finite blocks, and coordinate transports. They do not by themselves prove a
+uniform positive gap or validate the research note's full certificate. The
+occupation/highest-weight reduction and any flux-uniform inequalities still
+require their own explicit maps and proofs.
+
+Integration finding
+-------------------
+The review found one duplicate global declaration, configurationWeight_cons,
+independently defined in PolynomialPairBlocks and OrbitalCapKernel. This is
+an integration issue, not a mathematical discrepancy; it was reported to the
+authors for resolution before the combined import/build. OrbitalCapKernel's
+helper was renamed cap_configurationWeight_cons, its internal uses updated,
+and its author reported a successful rebuild and source freeze. No scientific
+normalization or hypothesis mismatch was found in the reviewed statements.
+
+Source inventory and SHA256
+---------------------------
+The paths below are relative to the repository root. Source hashes were
+computed after all authors reported source freeze. The present review read
+all statements and their proofs; module compilation was confirmed by the
+authors' successful build results. Project-wide combined build, exact Lean
+toolchain, declaration count and axiom checks are recorded separately by the
+parent agent. A plain-text scan of the new modules found no sorry, admit or
+new axiom declarations.
+  11312b220f0d63cfbc64e305df4e12622b2ee24a87ce423aa4988092f4ba18ce  lean/BosonicLaughlin/PhysicalKernel.lean
+  a0d3c25bc31e51d4dab544797d2de607f29eca1c34a9f59a7004fe715b1909b4  lean/BosonicLaughlin/PairSandwichKernel.lean
+  76dc7067e1beb6f251cafafb0cfcae8f1b41dcccea8572ee0c6e930535d71046  lean/BosonicLaughlin/CertificateRows.lean
+  6e063545f5fca261a6ae0857300aa585d6de5e6fc04d049c769fcb71a6e768ce  lean/BosonicLaughlin/WeightBlocks.lean
+  0c0f8f99780e31ba464e9f24f2bc8142d5524ab8f1394bfe6d2448b26a852975  lean/BosonicLaughlin/WeightCoordinates.lean
+  a23f349dda6bf3a4a8f6ff1ed775038df52ab25a064335e31793da3a2f7d0eda  lean/BosonicLaughlin/WeightBlockForms.lean
+  7751a4827be0593ee4db436e1f7ef5410f54177273bca89f50594443451fff01  lean/BosonicLaughlin/PolynomialCoordinates.lean
+  e7a73448bdad2022a2356fe1a3a9b00cb85e54383fed0676689126ceaf694c9e  lean/BosonicLaughlin/PolynomialMetric.lean
+  8ba9748a59d25a3b3113deededcf10e127dd1bea0acddb9d54d2c4cfb766de67  lean/BosonicLaughlin/PolynomialWeightCoordinates.lean
+  f57e863082405c9ba56febea88a207d8d1f838348f18568c3a3f954f5b88afc2  lean/BosonicLaughlin/PolynomialPairBlocks.lean
+  16cb43f5cac28f03f2c090b6c7685981f3a15f3c07196b9a1156f308368cc78b  lean/BosonicLaughlin/PhysicalWeightMatrices.lean
+  b690842f3cd37186f407f852deef38a1bcb20f63631e1c858e4ed660d90be893  lean/BosonicLaughlin/OrbitalCap.lean
+  e86385f91586f6bfcc3df07a30a69a263bbb28a9047360a84d5804f898bce264  lean/BosonicLaughlin/OrbitalCapKernel.lean
+  979e72906060246409ec25653670c4f1a619cad82269dc882ebab21df2b13f65  lean/BosonicLaughlin/WeightKernelTransport.lean

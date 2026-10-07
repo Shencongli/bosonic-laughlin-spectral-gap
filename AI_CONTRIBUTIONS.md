@@ -119,19 +119,37 @@ The three-particle spectral formula is thereby lifted to every finite
 particle sector and inserted into the actual $H_Q^2$ identity. Each lifted
 block $\mathcal L_3^{(M)}(W_3\Pi_zW_3^\dagger)$ is proved positive and Hermitian.
 
-The full build, 492 theorem declarations, 37 physical statement contracts,
+The common-kernel extension proves that zero physical energy, membership
+in the Hamiltonian kernel, and vanishing under every normalized V0 pair
+annihilator are equivalent. AI agents constructed the exact total-orbital-deficit
+blocks and their Hermitian positive Hamiltonian matrices, with Bose symmetry
+imposed within the ordered-tensor coordinates. They also formalized the
+invertible, nonunitary polynomial coordinate change, its induced positive
+metric, and the correspondence between the physical annihilators and
+unweighted polynomial pair channels.
+
+For total deficit d and Q≥d, every occupied orbital label is at most d.
+An explicit configuration bijection therefore transports the common
+polynomial pair kernel between caps Q and d; composing with the coordinate
+changes transports the physical zero spaces. The certificate row class
+is proved to annihilate the physical kernel for arbitrary row coefficients.
+These results do not yet supply the correspondence to the Python verifier's
+occupation-number and highest-weight matrices.
+
+The full build, all 639 theorem declarations, 54 physical statement contracts,
 and axiom dependency audit passed with pinned Lean/mathlib versions.
 The local build uses Lake package
 overrides pointing to source archives of those same revisions. The only
 axiom dependencies are `propext`, `Classical.choice`, and `Quot.sound`.
-The [three-body lift build record](verification/lean_three_body_lift_build.json) and
-[internal AI semantic audit](verification/audit_reports/lean_three_body_lift_audit.txt)
+The [common-kernel build record](verification/lean_common_kernel_build.json) and
+[internal AI semantic audit](verification/audit_reports/lean_common_kernel_audit.txt)
 record this update's scope. The
+[three-body lift build record](verification/lean_three_body_lift_build.json),
 [recoupling build record](verification/lean_recoupling_build.json) and
 [normal-order build record](verification/lean_normal_order_build.json) remain
 available as development history. No independent human review is claimed.
 
-Retained-block common kernels, two-spectator and coherent-integral estimates,
+The remaining retained-block coordinate identification, two-spectator and coherent-integral estimates,
 finite-sphere transfer, the analytic correspondence to the interval
 certificates, and the uniform
 spectral-gap target remain unformalized. The package's [status](lean/README.md) lists the
