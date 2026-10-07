@@ -1,9 +1,10 @@
-# Lean formalization: occupation bounds and normal ordering
+# Lean formalization: occupation bounds, normal ordering, and recoupling
 
 This package proves the coherent occupation bound, its pair-annihilation
 lift, and the normal-order decomposition for the repository's full spherical
-bosonic V0 model. It also constructs the three-particle auxiliary map and
-proves its Gram and Hamiltonian identities.
+bosonic V0 model. It also constructs the three-particle auxiliary map,
+proves its Gram and Hamiltonian identities, and gives the complete spectrum
+and projector ranks of the actual compressed exchange.
 **The uniform spectral-gap theorem remains unproved in Lean.**
 
 Prepared and curated by Xin Shen. The Lean code and this account of its status
@@ -126,16 +127,49 @@ The last two identities act on the bosonic three-particle space. Extending
 the last formula through the manuscript's normal-ordered three-body lift
 to arbitrary N is a remaining proof obligation.
 
-`Recoupling.lean` verifies the falling-factorial ratio
-$f_{z,Q}=(Q)_z/(2Q)_z$, its bound $f_{z,Q}\le2^{-z}$ for $0\le z\le Q$,
-and the highest-weight recurrence's endpoint coefficient. These results
-support the proposed eigenvalue formula $(-1)^zf_{z,Q}$ for T.
-The complete SU(2) spectral decomposition is still to be proved.
+## Complete recoupling spectrum
+
+For $0\le z\le Q$, let
+
+$$f_{z,Q}=\frac{(Q)_z}{(2Q)_z},\qquad \lambda_z=(-1)^zf_{z,Q},$$
+
+where $(a)_z=a(a-1)\cdots(a-z+1)$ and $(a)_0=1$. The index z labels the
+highest-weight total orbital deficit p+k. The code proves
+
+$$\operatorname{spec}(T)=\{\lambda_z:0\le z\le Q\},\qquad
+T=\sum_{z=0}^Q\lambda_z\Pi_z,\qquad
+\sum_{z=0}^Q\Pi_z=I.$$
+
+Here $\Pi_z$ is the orthogonal spectral projector on the auxiliary space
+$V_Q\otimes U_Q$, with dimensions $2Q+1$ and $Q+1$ for the two factors.
+The projectors are proved Hermitian, idempotent, and mutually orthogonal,
+and their ranges are the actual eigenspaces of T. Their exact ranks are
+
+$$\operatorname{rank}\Pi_z=3Q-2z+1.$$
+
+The proof uses the concrete raising, lowering, and weight operators and
+their $\mathfrak{sl}_2$ commutators. At each z it constructs a nonzero
+highest-weight vector whose magnetic weight is $(3Q-2z)/2$. Applying the
+lowering operator n times, for $0\le n\le3Q-2z$, gives nonzero,
+linearly independent descendants.
+These give eigenspace dimension bounds; their sum equals the full auxiliary
+dimension $(2Q+1)(Q+1)$, which fixes every multiplicity. Hermitian-matrix
+diagonalization supplies a complete eigenbasis. The coefficient identities
+in `Recoupling.lean`, including $f_{z,Q}\le2^{-z}$, are thus connected to the
+actual contraction map.
+
+The resulting Gram and three-particle normal-order decompositions are
+
+$$W_3^\dagger W_3=\sum_{z=0}^Q(1+2\lambda_z)\Pi_z,\qquad
+S_{3,Q,3}=\sum_{z=0}^Q2\lambda_z W_3\Pi_zW_3^\dagger.$$
+
+The second identity acts on bosonic three-particle states. Its normal-ordered
+lift to arbitrary particle number remains to be formalized.
 
 For every Q>0, the code also constructs the nonzero auxiliary vector
 $\phi=|p=0,k=1\rangle-\sqrt{1/2}|p=1,k=0\rangle$ and proves
-$W_3\phi=0$ and $T\phi=-\phi/2$. This is a checked eigenvector of the
-actual contraction map. The whole spin multiplet has not yet been constructed.
+$W_3\phi=0$ and $T\phi=-\phi/2$. The complete z=1 auxiliary eigenspace
+has dimension $3Q-1$ and vanishing Gram eigenvalue.
 
 ## Gap target
 
@@ -165,23 +199,30 @@ and deduction of the gap above it.
 | `NormalOrdering.lean`, `FourBody.lean` | Exact support decomposition of $H_Q^2$, Hermitian three- and four-body terms, and positivity of the disjoint-pair term. |
 | `FourBodyFock.lean` | Identification of the disjoint-pair quadratic form with the sum of squared double-pair-annihilator norms. |
 | `ThreeBodyGram.lean`, `ThreeBodyNormal.lean` | Explicit $W_3$, physical adjoint, Gram and three-particle Hamiltonian identities, and the three-particle normal-order coefficient. |
-| `Recoupling.lean` | Exact factorial ratios and highest-weight recurrence coefficients; no complete spectral-decomposition theorem. |
+| `Recoupling.lean`, `RecouplingValues.lean` | Exact factorial ratios, highest-weight recurrence coefficients, and distinct signed recoupling eigenvalues. |
+| `AngularMomentum.lean`, `AngularCommutators.lean`, `AngularMultiplets.lean` | Concrete spin ladders, adjoint and $\mathfrak{sl}_2$ identities, and descendant weight and raising formulas. |
+| `HighestWeight.lean`, `PairEquivariance.lean`, `CompressedSwapEquivariance.lean`, `CompressedSwapLower.lean` | Highest-weight existence and uniqueness, pair-map intertwining, and commutation of the actual T with the ladders. |
+| `SwapStructure.lean`, `SwapDiagonalization.lean`, `SwapEigenvalues.lean`, `SwapSpectrum.lean` | Hermitian matrix correspondence, a complete eigenbasis, and the exact spectrum of T for every Q. |
+| `MultipletCount.lean`, `MultipletDimensions.lean` | Nonzero independent descendants and exact eigenspace dimensions $3Q-2z+1$. |
+| `SpectralPartition.lean`, `SwapProjectors.lean`, `SwapProjectorEigenspaces.lean`, `SwapProjectorRanks.lean` | Orthogonal spectral projectors, their actual eigenspace ranges, and exact ranks. |
+| `ThreeBodySpectral.lean` | The auxiliary Gram decomposition and the three-particle spectral formula for $S_3$. |
 
 All source files in this table are under `BosonicLaughlin/`.
-All 226 theorem declarations pass the build and axiom audit.
-`Audit.lean` and `check.py` check every theorem's axiom dependencies.
-The [current build record](../verification/lean_normal_order_build.json) records
-the declarations, fixed dependency revisions, and source hashes. The
+All 388 theorem declarations and 24 physical statement contracts pass the
+full build and axiom audit. `Audit.lean` and `check.py` check every theorem's
+axiom dependencies. The
+[recoupling build record](../verification/lean_recoupling_build.json) records
+the declarations, fixed dependency revisions, and source hashes, with an
+[internal AI semantic audit](../verification/audit_reports/lean_recoupling_audit.txt).
+The [226-theorem normal-order record](../verification/lean_normal_order_build.json),
 [initial 22-lemma record](../verification/lean_initial_build.json) and
 [occupation-stage record](../verification/lean_occupation_build.json) are
 retained as development history.
 
 ## Remaining proof chain
 
-1. Prove the complete three-body recoupling spectrum, lift its operator
-   coefficient from three particles to arbitrary N, and identify the exact
-   kernels used for the retained blocks. The coefficient recurrence alone
-   does not supply SU(2) invariance or completeness.
+1. Lift the three-body spectral coefficient from three particles to arbitrary N
+   and identify the common kernels used for the retained blocks.
 2. Prove the two-spectator bound, coherent integrals and comparisons,
    sphere transfer, and Schur averaging. The occupation sandwich above is
    one input to these further estimates.
@@ -226,3 +267,10 @@ The coefficient normalization uses mathlib's `Nat.add_choose_eq`
 ([Vandermonde source](https://github.com/leanprover-community/mathlib4/blob/d13f23b723b8a846827a245b89c10fc7d3f11612/Mathlib/Data/Nat/Choose/Vandermonde.lean),
 attributed there to Johan Commelin). The physical model and earlier research
 references are given in the manuscript and repository README.
+
+The complete eigenbasis uses mathlib's Hermitian-matrix spectral theorem
+in [`Mathlib/Analysis/Matrix/Spectrum.lean`](https://github.com/leanprover-community/mathlib4/blob/d13f23b723b8a846827a245b89c10fc7d3f11612/Mathlib/Analysis/Matrix/Spectrum.lean),
+credited there to Alexander Bentkamp. The file reduces matrix diagonalization
+to mathlib's inner-product-space spectral theorem. The recoupling eigenvalues,
+their connection to the concrete pair contraction, and their multiplicities
+are proved in this package using those library results.

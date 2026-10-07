@@ -1,0 +1,184 @@
+Internal AI semantic audit. This is not external human peer review.
+
+Publication verification: the final whole-library build, 24 physical
+statement contracts, and all 388 theorem axiom reports passed. See
+verification/lean_recoupling_build.json for exact source hashes.
+
+AI semantic audit of the concrete bosonic recoupling formalization
+Date: 2026-10-07
+
+Reviewer and independence
+This is an AI-agent source review within the same Codex run, not independent
+human review. The reviewer authored PairLadder.lean, PairEquivariance.lean,
+CompressedSwapEquivariance.lean, CompressedSwapLower.lean, and
+MultipletCount.lean; comments on those five modules are self-review.
+AngularMomentum.lean, AngularCommutators.lean,
+AngularMultiplets.lean, PairContractionEquivariance.lean, HighestWeight.lean,
+SwapStructure.lean, SwapEigenvalues.lean, SwapDiagonalization.lean, and
+SwapSpectrum.lean, RecouplingValues.lean, and MultipletDimensions.lean were
+reviewed by an agent other than their author. The same independent-within-run
+source review covers SpectralPartition.lean, SwapProjectors.lean,
+SwapProjectorEigenspaces.lean, SwapProjectorRanks.lean, and ThreeBodySpectral.lean.
+
+Object and normalization checked
+The auxiliary space is exactly ThreeBodyAux Q = Fin(2Q+1) -> Fin(Q+1) -> C.
+Its two factors are the normalized maximal pair-spin-Q representation and the
+one-particle spin-Q/2 representation, with integer flux Q >= 0. The indices p,k
+are orbital deficits, so the total twice-magnetic-weight operator is
+H phi(p,k) = (3Q - 2(p+k)) phi(p,k). The square-root ladder coefficients are
+sqrt((i+1)(D-i)) for a spin-D/2 factor; raising lowers the deficit. The proved
+commutators [E,F]=H, [H,E]=2E, [H,F]=-2F use this convention consistently.
+
+The insertion uses the actual pairVector kernel already used by the V0
+Hamiltonian, not an abstract representation with an assumed identification.
+Its entries are delta_(x+y,p) sqrt(binomial(Q,x) binomial(Q,y)/binomial(2Q,p)).
+The new threeBodyContract is J-adjoint on the full tensor space and has no
+sqrt(3) factor. It is therefore distinct from the earlier threeBodyAdjoint,
+which is sqrt(3) J-adjoint on physical symmetric three-particle states.
+Consequently compressedSwap is exactly J-adjoint (23) J, and the earlier
+W3-adjoint W3 = I+2T normalization is unchanged. No fermionic exchange sign or
+particle-number-dependent interaction normalization was introduced.
+
+Equivariance checked
+PairLadder proves the binomial square-root ladder identities with their
+endpoint cases. PairEquivariance proves both raising and lowering insertion
+intertwining directly for this kernel. PairContractionEquivariance obtains
+the corresponding contraction identities by finite bilinear transposition.
+Using a bilinear identity here is intentional: all kernel/ladder coefficients
+are real. The separate angular adjoint theorem includes complex conjugation.
+CompressedSwapEquivariance and CompressedSwapLower prove actual T E=E T,
+T F=F T, and T H=H T for every natural Q and every auxiliary vector. They
+have no equivariance hypothesis. The all-Q statements include Q=0; no
+nonexistent z=1 block is asserted at Q=0.
+
+Highest-weight classification checked
+The vector auxHighestWeight Q z is supported on p+k=z, is normalized by its
+p=0 coefficient being one (it is not declared to have unit Hilbert norm),
+and is nonzero and killed by E for 0 <= z <= Q. The proof establishes that
+an E-kernel vector in one deficit block is determined by that coefficient,
+and that no nonzero E-kernel vector has deficit z>Q. This excludes additional
+highest-weight sectors, rather than merely checking proposed vectors.
+Endpoint extraction uses the actual compressedSwap sum and the previously
+proved falling-factorial identity. Kernel uniqueness then upgrades that
+single component to the full eigenvector equation.
+
+Remaining hypotheses in intermediate statements
+HighestWeight.auxHighestWeight_swap_of_raise_commutes and the two named
+SwapEigenvalues '_of_commutation' lemmas explicitly take a commutation
+hypothesis. SwapSpectrum supplies compressedSwap_auxRaise to each of them.
+No such hypothesis is left in compressedSwap_highestWeight,
+compressedSwap_eigenvalue, compressedSwap_spectrum, or
+compressedSwap_complete_labeled_basis. Their quantifiers concern the actual
+defined operator; there is no freely chosen surrogate Hamiltonian or T.
+
+Spectral completeness checked
+compressedSwap_spectrum proves equality of sets of complex spectral values:
+  spectrum(T_Q) = { (-1)^z (Q)_z/(2Q)_z : 0 <= z <= Q }.
+Both directions are present: every value has a concrete nonzero highest
+vector, and every eigenvalue is reduced to one by projecting to a nonzero
+deficit block and successively applying raising until its kernel is reached.
+The finite-dimensional spectrum/eigenvector equivalence is proved for the
+matrix of this same map.
+
+SwapDiagonalization applies the finite Hermitian spectral theorem to the
+actual compressedSwapMatrix. It provides a complete orthonormal eigenbasis
+in EuclideanSpace C (Fin(2Q+1) x Fin(Q+1)). auxEuclideanEquiv explicitly curries
+coordinates into ThreeBodyAux; it is declared as a linear equivalence, not
+as an isometry. compressedSwapEigenbasis is correspondingly a Basis on the
+curried auxiliary type. The coordinate inner product agrees with the
+physical finite tensor inner product. The complete_labeled_basis theorem
+labels each vector in this fixed basis by one of the explicit recoupling
+eigenvalues and proves reconstruction of every auxiliary vector.
+
+Multiplet dimensions and the distinction from spectral-set completeness
+SwapSpectrum alone gives the full spectral set and a complete eigenbasis;
+neither statement alone would imply a specified multiplicity. The additional
+MultipletDimensions theorem supplies a separate proof that the eigenspace
+of (-1)^z (Q)_z/(2Q)_z has dimension exactly 3Q-2z+1 for 0 <= z <= Q.
+Specifically, its vectors are the actual lowering descendants F^n phi_z for
+0 <= n <= 3Q-2z. AngularMultiplets proves the raising coefficient
+E F^(n+1) phi_z = (n+1)(3Q-2z-n) F^n phi_z and the H weight 3Q-2z-2n.
+These identities establish nonzeroness and linear independence in this range.
+The proved T F=F T keeps them in the actual T eigenspace, giving its lower
+dimension bound. RecouplingValues proves distinct labels have distinct
+eigenvalues by strictly decreasing positive magnitudes. Thus the eigenspaces
+are independent, so the sum of their dimensions is at most the ambient
+(2Q+1)(Q+1). The exact natural-number sum of the lower bounds is this same
+ambient dimension, forcing equality for every eigenspace. This argument
+includes Q=0 and has no large-Q hypothesis or numerical rank test.
+
+The twice-highest-weight 3Q-2z corresponds to the manuscript spin
+J=3Q/2-z in the usual hbar=1 convention. This is supported by the actual
+ladder operators and dimensions, not just by a matching dimension formula.
+The formal objects use Lie-algebra operators, concrete descendants, and
+eigenspaces; a named SU(2) group representation or a Casimir operator is not
+introduced. The spin identification is realized through this explicit
+normalized angular-momentum ladder.
+
+Orthogonal projectors and return to the physical three-body coefficient
+SwapProjectors groups the complete orthonormal matrix eigenbasis according
+to the actual spectral value, then conjugates the diagonal indicator
+matrices by its unitary eigenvector matrix. The theorems prove Hermitian
+idempotence, pairwise orthogonality, sum Pi_z=I, and
+T=sum_z (-1)^z f_z Pi_z. This is an actual operator resolution, not merely
+a list of proposed eigenvalues. SpectralPartition's generic star-algebra
+automorphism hypothesis is instantiated by this explicit unitary
+conjugation. SwapProjectorEigenspaces proves that the curried linear map's
+range is exactly the corresponding T eigenspace. SwapProjectorRanks then
+proves rank(Pi_z)=3Q-2z+1, with rank explicitly defined as complex dimension
+of that image.
+
+ThreeBodySpectral defines the Gram matrix I+2T and proves that its action
+equals the existing threeBodyAdjoint(threeBodyMap(phi)), so it does not
+silently substitute a merely isospectral matrix. It proves the actual
+Gram resolution with eigenvalues 1+2(-1)^z f_z and the physical N=3 bosonic
+normal-order coefficient resolution
+S3 psi = sum_z 2(-1)^z f_z W3 Pi_z W3-adjoint psi.
+The latter retains the explicit IsBosonic psi hypothesis. It does not
+claim the arbitrary-N lift. The full auxiliary Gram spectrum should also
+not be identified indiscriminately with the full physical H3 spectrum:
+the nonzero spectral values transfer through W3, whereas zero eigenspaces
+can differ between its domain and codomain. The reviewed theorems respect
+this distinction.
+
+These are exact finite-dimensional operator/spectral results for all Q,
+not numerical finite-Q extrapolations. The operator resolutions concern
+the auxiliary exchange/Gram maps and the physical three-boson coefficient,
+not the arbitrary-particle Hamiltonian. This audit does not certify the
+positive lift to every particle sector, coherent-tail bounds, finite
+certificates, or the final UniformGapTarget.
+
+Findings
+No scientific normalization, index-range, or undisclosed-hypothesis defect
+was found in the modules reviewed above. The older Recoupling.lean module
+comment saying equivariance and a complete family are still required was
+flagged to the integrating agent and updated to reference the completed
+SwapSpectrum and SwapProjectors results, without changing a proof.
+This source-level review is separate from the final build, statement-contract,
+and axiom audits recorded by the repository checker.
+
+Reviewed frozen-source SHA256 (relative to repository root)
+bef47bb96d665792185abfe7b6a8dda9be34bfe2972a9d7c0388186e6c7aa59c  lean/BosonicLaughlin/AngularMomentum.lean
+c41b613d9d8f8074bd6b4d08ea1886af24cd0a8c7e940ab56ca2216682de9222  lean/BosonicLaughlin/AngularCommutators.lean
+0ac57bc4024163bcd5b83da0c8ea09808c07523b06a0c36b917697cfd3b4e929  lean/BosonicLaughlin/AngularMultiplets.lean
+6ec48a8b06abd9ce9cdc5eedb1d214c12d89f7fbafc615cbce4dcf03f6695b89  lean/BosonicLaughlin/PairLadder.lean
+935dfcb315db9d9b7c982be03e13ef6dcdd21d342798a43f3fd8222cfef8837e  lean/BosonicLaughlin/PairEquivariance.lean
+6a69ef2b38be79574664ba1b494819b8bbe94314b699fe80169d974b86a05694  lean/BosonicLaughlin/PairContractionEquivariance.lean
+975411de5492a0bf9f348d4d5c769dd5fe772074e67c3d58fdab98d6383700a9  lean/BosonicLaughlin/CompressedSwapEquivariance.lean
+fb2f88cf5ac1953491389dffa82a1378360f1e7bdefb6a5e0e9659322e9c6a6c  lean/BosonicLaughlin/CompressedSwapLower.lean
+45e3c5e59539826ba373c09b880c858b2e5523e6da7f72700330fd8eab158f66  lean/BosonicLaughlin/HighestWeight.lean
+0a0c5689cc96b9a471fb893cb846afa483e291d26d817014e9487775b5b1553d  lean/BosonicLaughlin/SwapStructure.lean
+c8dc1a928cbb2a89a3db57bb523c85f422d1deb946ee1079ccb0b8a8d790dd23  lean/BosonicLaughlin/SwapEigenvalues.lean
+ff5cdbf0a0f2952edee75ae125ca8eee75846b787ff7f1d981639b02631fdf1e  lean/BosonicLaughlin/SwapDiagonalization.lean
+167b87377a05c68961a2a04eb5b1db246803e09e10e8a33a0f4c2ac522799b1a  lean/BosonicLaughlin/SwapSpectrum.lean
+37e5eb1e06130aa29d4f7e6c2d9244d169e5c04e67f770a5cb5f30f1e225cb4b  lean/BosonicLaughlin/RecouplingValues.lean
+d7a18df7d1a4926ca1693c72a727afcb6400b45c0aebe2e4d079ce94e816fa91  lean/BosonicLaughlin/MultipletCount.lean
+002f52190cb30d878d9cb3a9325d0ea6ef481f7137f8e2055167eea948bde68e  lean/BosonicLaughlin/MultipletDimensions.lean
+29c19e603bf4463df9e7c83062b4564ba5f62c67f6702f40281c5196005217d4  lean/BosonicLaughlin/SpectralPartition.lean
+86251cbbe68094ede3cc7b7c8a0d378f6085304ea6ebc4fbdb910d0d1d3b80a7  lean/BosonicLaughlin/SwapProjectors.lean
+f2d90978ab703b4e32b77139cc6262e4a9983a6158d15bf7a883d81115ff68f4  lean/BosonicLaughlin/SwapProjectorEigenspaces.lean
+3f6af345363b438a7904459fa7a7efccf764082ac26ca9ff2329e2aea45a1751  lean/BosonicLaughlin/SwapProjectorRanks.lean
+b2b2c696b39fffec756a56b4a452db3e304315bbea420e7cf4e700ecf05852eb  lean/BosonicLaughlin/ThreeBodySpectral.lean
+eb6b89786a0067c8a91689d1177dd8ad1ab2b379b3941fe567d9672046c3169d  lean/BosonicLaughlin/Recoupling.lean
+12240ecb322b2188238b9d7c6b724f9b5fa364595775bef24fb4c1e987096a82  lean/BosonicLaughlin/ThreeBodyGram.lean
+f897e709e62785c0961014b941145ffdb6eb470a3fa347a33b0feab47736c0ba  lean/BosonicLaughlin/ThreeBodyNormal.lean

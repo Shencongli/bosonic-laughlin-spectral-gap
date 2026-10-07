@@ -83,25 +83,41 @@ extension proves the normal-order decomposition, the four-body Fock quadratic
 form, and the three-particle Gram and Hamiltonian identities. Separate
 AI agents developed the tensor/Fock correspondence, coherent-pair estimates,
 and operator identities, and reviewed their mathematical scope and normalization.
-The current package contains 226 checked theorem declarations. It proves
-the occupation results in every finite particle sector, with no cutoff in
+The package proves the occupation results in every finite particle sector, with no cutoff in
 particle number or flux, and includes the exact quadratic-form correspondence
 between the physical Hamiltonian and its Fock pair annihilators. The three-body
 coefficient is identified with $2W_3TW_3^\dagger$ on three bosonic particles.
-The recoupling coefficient recurrence is checked separately from the still
-unproved complete SU(2) spectral decomposition.
 
-The full build, physical statement checks, and axiom dependency audit passed
-with pinned Lean/mathlib versions. The local build used Lake package
+The recoupling extension connects the coefficient recurrence to the actual
+compressed exchange T on the auxiliary pair-spin and spectator space
+$V_Q\otimes U_Q$. It proves the full spectrum
+$\lambda_z=(-1)^z(Q)_z/(2Q)_z$ for $0\le z\le Q$, its orthogonal spectral
+projectors $\Pi_z$, and their exact ranks $3Q-2z+1$; $(Q)_z$ is a falling
+factorial. The proof constructs highest-weight vectors of magnetic
+weight $(3Q-2z)/2$ and their independent lowering descendants, using concrete
+spin operators and their $\mathfrak{sl}_2$ commutators. It also proves the
+Gram decomposition and
+$S_{3,Q,3}=\sum_z2\lambda_zW_3\Pi_zW_3^\dagger$ on bosonic three-particle
+states. AI agents wrote these formal proofs and performed the internal
+semantic review. The complete eigenbasis uses the mathlib Hermitian-matrix
+spectral theorem, credited in its
+[pinned source](https://github.com/leanprover-community/mathlib4/blob/d13f23b723b8a846827a245b89c10fc7d3f11612/Mathlib/Analysis/Matrix/Spectrum.lean)
+to Alexander Bentkamp.
+
+The full recoupling build, 388 theorem declarations, 24 physical statement
+contracts, and axiom dependency audit passed with pinned Lean/mathlib
+versions. The local build uses Lake package
 overrides pointing to source archives of those same revisions. The only
 axiom dependencies are `propext`, `Classical.choice`, and `Quot.sound`.
-The [build record](verification/lean_normal_order_build.json) and
-[internal AI semantic audit](verification/audit_reports/lean_normal_order_audit.txt)
-record the tested scope. No independent human review is claimed.
+The [recoupling build record](verification/lean_recoupling_build.json) and
+[internal AI semantic audit](verification/audit_reports/lean_recoupling_audit.txt)
+record this update's scope. The
+[normal-order build record](verification/lean_normal_order_build.json) remains
+available as development history. No independent human review is claimed.
 
-The complete recoupling spectrum, the three-body coefficient's lift to arbitrary
-particle number, the coherent-integral estimates, the analytic correspondence
-to the interval certificates, and the uniform spectral-gap target remain
-unformalized. The package's [status](lean/README.md) lists the
+The three-body coefficient's lift to arbitrary particle number, retained-block
+common kernels, coherent-integral estimates, finite-sphere transfer, the
+analytic correspondence to the interval certificates, and the uniform
+spectral-gap target remain unformalized. The package's [status](lean/README.md) lists the
 remaining proof chain. Neither the v0.1 PDF nor its release is replaced by
 this code update.

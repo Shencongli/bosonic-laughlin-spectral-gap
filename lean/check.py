@@ -66,6 +66,13 @@ required = [
     'threeBodyDeficitOne_kernel', 'threeBodyDeficitOne_swap',
     'coherent_occupation_v0_sum_lift',
     'normalFourBody_eq_sum_v0PairAnnihilate_energy_all_sectors',
+    'compressedSwap_auxRaise', 'compressedSwap_auxLower', 'compressedSwap_auxWeight',
+    'compressedSwap_spectrum', 'compressedSwap_complete_labeled_basis',
+    'compressedSwapProjector_sum', 'compressedSwapProjector_mul',
+    'compressedSwapProjector_hermitian', 'compressedSwap_projector_resolution',
+    'compressedSwapProjector_range', 'compressedSwapProjector_rank',
+    'compressedSwap_eigenspace_dimension', 'threeBodyGram_projector_resolution',
+    'threeBody_normal_spectral_resolution',
 ]
 for name in required:
     if 'BosonicLaughlin.' + name not in dependencies:
@@ -82,7 +89,9 @@ record = {
     'coherent_occupation_and_pair_lift_proved_sectorwise': True,
     'normal_order_and_four_body_fock_form_proved_sectorwise': True,
     'three_particle_gram_and_normal_coefficient_proved': True,
-    'complete_three_body_recoupling_spectrum_proved': False,
+    'complete_three_body_recoupling_spectrum_proved': True,
+    'compressed_swap_orthogonal_projectors_and_exact_ranks_proved': True,
+    'three_particle_normal_coefficient_spectral_resolution_proved': True,
     'three_body_coefficient_lift_to_arbitrary_particle_number_proved': False,
     'physical_statement_contracts_checked': True,
     'physical_statement_contract_count': len(re.findall(

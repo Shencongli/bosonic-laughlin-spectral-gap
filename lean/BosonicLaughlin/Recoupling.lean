@@ -6,8 +6,8 @@ import Mathlib.Tactic
 /-!
 Exact coefficient identities used in the three-body recoupling calculation,
 and one explicit nonzero deficit-one kernel vector of the physical creation map.
-The full spectral decomposition of the compressed transposition still requires
-equivariance and a complete family of eigenvectors.
+The full spectral decomposition of the compressed transposition is supplied
+by SwapSpectrum and SwapProjectors; its exact ranks are proved in SwapProjectorRanks.
 The highest-weight recurrence is represented by its finite product, normalized
 to have first coefficient one.
 -/

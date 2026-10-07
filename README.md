@@ -82,10 +82,16 @@ annihilator, for every flux and particle number in finite-dimensional sectors.
 It also proves the exact normal-order identity $H_Q^2=H_Q+S_3+S_4$,
 identifies the positive four-body term with the double-pair-annihilator
 square sum, and verifies the three-particle Gram and Hamiltonian identities.
-The complete three-body recoupling spectrum remains to be formalized.
-**The uniform spectral-gap
-theorem remains unproved in Lean.** The package documents its remaining
-proof obligations and reproducible build. The v0.1 manuscript is unchanged.
+The actual compressed exchange on the pair-spin and spectator space now has
+a complete spectral decomposition in Lean, with eigenvalues
+$\lambda_z=(-1)^z(Q)_z/(2Q)_z$ and projector ranks $3Q-2z+1$ for $0\le z\le Q$;
+$(Q)_z$ denotes the falling factorial. This also gives the Gram and
+three-particle normal-order spectral formulas. The three-body lift to arbitrary
+particle number, retained-block common kernels, coherent and sphere estimates,
+and interval certificates remain to be connected in Lean.
+**The uniform spectral-gap theorem remains unproved in Lean.** The package
+documents its remaining proof obligations and reproducible build. The v0.1
+manuscript is unchanged.
 
 ## Verification materials
 
@@ -115,6 +121,11 @@ The immediate methodological source is OpenAI's
 to the bosonic $V_0$ model and supplies bosonic coefficients and explicit
 finite-flux certificates. The source preprint is cited as an AI-authored
 work; it is not included in this repository.
+
+The Lean proof uses mathlib's Hermitian-matrix spectral theorem
+([pinned source](https://github.com/leanprover-community/mathlib4/blob/d13f23b723b8a846827a245b89c10fc7d3f11612/Mathlib/Analysis/Matrix/Spectrum.lean),
+credited there to Alexander Bentkamp). The [Lean sources section](lean/README.md#sources)
+also records the formalization's other dependencies and methodological sources.
 
 Topics: `laughlin`, `bosonic`, `spectral-gap`, `fractional-quantum-hall`,
 `mathematical-physics`.

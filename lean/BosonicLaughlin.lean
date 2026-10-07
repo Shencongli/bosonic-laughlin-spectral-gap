@@ -7,3 +7,5 @@ import BosonicLaughlin.NorthPoleBound
 import BosonicLaughlin.FourBodyFock
 import BosonicLaughlin.ThreeBodyNormal
 import BosonicLaughlin.Recoupling
+import BosonicLaughlin.ThreeBodySpectral
+import BosonicLaughlin.SwapProjectorRanks
