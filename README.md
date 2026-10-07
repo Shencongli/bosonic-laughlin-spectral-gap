@@ -85,10 +85,15 @@ square sum, and verifies the three-particle Gram and Hamiltonian identities.
 The actual compressed exchange on the pair-spin and spectator space now has
 a complete spectral decomposition in Lean, with eigenvalues
 $\lambda_z=(-1)^z(Q)_z/(2Q)_z$ and projector ranks $3Q-2z+1$ for $0\le z\le Q$;
-$(Q)_z$ denotes the falling factorial. This also gives the Gram and
-three-particle normal-order spectral formulas. The three-body lift to arbitrary
-particle number, retained-block common kernels, coherent and sphere estimates,
-and interval certificates remain to be connected in Lean.
+$(Q)_z$ denotes the falling factorial. The three-particle coefficient is now
+connected to the actual normal-ordered three-body term in every finite
+particle sector. The lift preserves positive quadratic forms and is proved
+to send $|w\rangle\langle w'|$ to the corresponding creation-annihilation
+product, with the manuscript's normalization. The full $H_Q^2$ identity is
+connected to these lifted recoupling blocks, each proved positive and Hermitian.
+Retained-block common kernels,
+two-spectator and coherent estimates, sphere transfer, and interval
+certificates remain to be connected in Lean.
 **The uniform spectral-gap theorem remains unproved in Lean.** The package
 documents its remaining proof obligations and reproducible build. The v0.1
 manuscript is unchanged.

@@ -9,3 +9,5 @@ import BosonicLaughlin.ThreeBodyNormal
 import BosonicLaughlin.Recoupling
 import BosonicLaughlin.ThreeBodySpectral
 import BosonicLaughlin.SwapProjectorRanks
+import BosonicLaughlin.ThreeBodyAnnihilation
+import BosonicLaughlin.ThreeBodySpectralLift

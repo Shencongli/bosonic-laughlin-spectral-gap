@@ -73,6 +73,12 @@ required = [
     'compressedSwapProjector_range', 'compressedSwapProjector_rank',
     'compressedSwap_eigenspace_dimension', 'threeBodyGram_projector_resolution',
     'threeBody_normal_spectral_resolution',
+    'threeBodyLift_id', 'threeBodyLift_nonneg', 'threeBodyLift_mono',
+    'threeBodyLift_hermitian', 'threeBodyLiftAbove_rankOne', 'threeCreate_inner',
+    'threeCreate_vacuum', 'normalThreeBody_eq_lift',
+    'normalThreeBody_eq_recoupling_lift', 'normalThreeBody_spectral_lift',
+    'threeBodySpectralBlock_lift_nonneg', 'threeBodySpectralBlock_lift_hermitian',
+    'hamiltonian_square_lifted_recoupling',
 ]
 for name in required:
     if 'BosonicLaughlin.' + name not in dependencies:
@@ -92,7 +98,11 @@ record = {
     'complete_three_body_recoupling_spectrum_proved': True,
     'compressed_swap_orthogonal_projectors_and_exact_ranks_proved': True,
     'three_particle_normal_coefficient_spectral_resolution_proved': True,
-    'three_body_coefficient_lift_to_arbitrary_particle_number_proved': False,
+    'three_body_coefficient_lift_to_arbitrary_particle_number_proved': True,
+    'three_body_lift_positivity_monotonicity_and_normalization_proved': True,
+    'three_body_lift_hermitian_preservation_proved': True,
+    'three_body_rank_one_normal_order_rule_proved': True,
+    'all_particle_normal_order_recoupling_formula_proved': True,
     'physical_statement_contracts_checked': True,
     'physical_statement_contract_count': len(re.findall(
         r'^example\b', (root/'StatementChecks.lean').read_text(encoding='utf-8'), re.M)),

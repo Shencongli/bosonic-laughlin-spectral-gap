@@ -104,20 +104,36 @@ spectral theorem, credited in its
 [pinned source](https://github.com/leanprover-community/mathlib4/blob/d13f23b723b8a846827a245b89c10fc7d3f11612/Mathlib/Analysis/Matrix/Spectrum.lean)
 to Alexander Bentkamp.
 
-The full recoupling build, 388 theorem declarations, 24 physical statement
-contracts, and axiom dependency audit passed with pinned Lean/mathlib
-versions. The local build uses Lake package
+The subsequent three-body lift is defined on each finite M-particle sector by
+$\mathcal L_3^{(M)}(A)=\binom M3P_M(A\otimes I_{M-3})P_M$ for $M\ge3$,
+and zero below three particles. Here $P_M$ is the orthogonal bosonic
+projection, and A is a complex linear map on the three-particle tensor space.
+AI agents proved that this lift preserves positive quadratic forms, their
+ordering, and self-adjointness. They checked its normalization on the
+physical sector and proved $S_{3,Q,M}=\mathcal L_3^{(M)}(S_{3,Q,3})$.
+They also constructed the normalized three-particle annihilation and
+creation maps and proved the rank-one rule
+$\mathcal L_3^{(M)}(|w\rangle\langle w'|)=A_M(w)^\dagger A_M(w')$,
+including creation of bosonic w from vacuum.
+The three-particle spectral formula is thereby lifted to every finite
+particle sector and inserted into the actual $H_Q^2$ identity. Each lifted
+block $\mathcal L_3^{(M)}(W_3\Pi_zW_3^\dagger)$ is proved positive and Hermitian.
+
+The full build, 492 theorem declarations, 37 physical statement contracts,
+and axiom dependency audit passed with pinned Lean/mathlib versions.
+The local build uses Lake package
 overrides pointing to source archives of those same revisions. The only
 axiom dependencies are `propext`, `Classical.choice`, and `Quot.sound`.
-The [recoupling build record](verification/lean_recoupling_build.json) and
-[internal AI semantic audit](verification/audit_reports/lean_recoupling_audit.txt)
+The [three-body lift build record](verification/lean_three_body_lift_build.json) and
+[internal AI semantic audit](verification/audit_reports/lean_three_body_lift_audit.txt)
 record this update's scope. The
-[normal-order build record](verification/lean_normal_order_build.json) remains
+[recoupling build record](verification/lean_recoupling_build.json) and
+[normal-order build record](verification/lean_normal_order_build.json) remain
 available as development history. No independent human review is claimed.
 
-The three-body coefficient's lift to arbitrary particle number, retained-block
-common kernels, coherent-integral estimates, finite-sphere transfer, the
-analytic correspondence to the interval certificates, and the uniform
+Retained-block common kernels, two-spectator and coherent-integral estimates,
+finite-sphere transfer, the analytic correspondence to the interval
+certificates, and the uniform
 spectral-gap target remain unformalized. The package's [status](lean/README.md) lists the
 remaining proof chain. Neither the v0.1 PDF nor its release is replaced by
 this code update.

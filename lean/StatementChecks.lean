@@ -126,3 +126,73 @@ example (Q : ℕ) (ψ : State Q 3) (hψ : IsBosonic ψ) :
       ((2 : ℂ) * (recouplingEigenvalue Q z.val : ℂ)) •
         threeBodyMap (auxSpectralProject z (threeBodyAdjoint ψ)) :=
   threeBody_normal_spectral_resolution ψ hψ
+
+example (Q M : ℕ) (ψ : State Q M) (hψ : IsBosonic ψ) :
+    threeBodyLift Q M LinearMap.id ψ = (M.choose 3 : ℂ) • ψ :=
+  threeBodyLift_id Q M ψ hψ
+
+example (Q M : ℕ) (A : State Q 3 →ₗ[ℂ] State Q 3)
+    (hA : ∀ χ, IsBosonic χ → 0 ≤ (BosonicLaughlin.inner χ (A χ)).re)
+    (ψ : State Q M) :
+    0 ≤ (BosonicLaughlin.inner ψ (threeBodyLift Q M A ψ)).re :=
+  threeBodyLift_nonneg Q M A hA ψ
+
+example (Q M : ℕ) (A B : State Q 3 →ₗ[ℂ] State Q 3)
+    (hAB : ∀ χ, IsBosonic χ →
+      (BosonicLaughlin.inner χ (A χ)).re ≤ (BosonicLaughlin.inner χ (B χ)).re)
+    (ψ : State Q M) :
+    (BosonicLaughlin.inner ψ (threeBodyLift Q M A ψ)).re ≤
+      (BosonicLaughlin.inner ψ (threeBodyLift Q M B ψ)).re :=
+  threeBodyLift_mono Q M A B hAB ψ
+
+example (Q M : ℕ) (A : State Q 3 →ₗ[ℂ] State Q 3)
+    (hA : ∀ χ η, IsBosonic χ → IsBosonic η →
+      BosonicLaughlin.inner χ (A η) = BosonicLaughlin.inner (A χ) η)
+    (ψ φ : State Q M) :
+    BosonicLaughlin.inner ψ (threeBodyLift Q M A φ) =
+      BosonicLaughlin.inner (threeBodyLift Q M A ψ) φ :=
+  threeBodyLift_hermitian Q M A hA ψ φ
+
+example (Q N : ℕ) (w w' : State Q 3) (ψ : State Q (N+3)) :
+    threeBodyLiftAbove Q N (rankOneThree w w') ψ =
+      threeCreate w (threeAnnihilate w' ψ) :=
+  threeBodyLiftAbove_rankOne Q N w w' ψ
+
+example (Q N : ℕ) (w : State Q 3) (χ : State Q N) (ψ : State Q (N+3)) :
+    BosonicLaughlin.inner (threeCreate w χ) ψ =
+      BosonicLaughlin.inner χ (threeAnnihilate w ψ) :=
+  threeCreate_inner w χ ψ
+
+example (Q : ℕ) (w : State Q 3) (hw : IsBosonic w) :
+    threeCreate (N := 0) w (fun _ => 1) = w :=
+  threeCreate_vacuum w hw
+
+example (Q M : ℕ) (ψ : State Q M) (hψ : IsBosonic ψ) :
+    normalThreeBodyApply ψ = threeBodyLift Q M (normalThreeBodyLinear Q 3) ψ :=
+  normalThreeBody_eq_lift ψ hψ
+
+example (Q M : ℕ) (ψ : State Q M) (hψ : IsBosonic ψ) :
+    normalThreeBodyApply ψ = threeBodyLift Q M
+      ((2 : ℂ) • threeBodyAuxCoefficient Q (compressedSwapLinear Q)) ψ :=
+  normalThreeBody_eq_recoupling_lift ψ hψ
+
+example (Q M : ℕ) (ψ : State Q M) (hψ : IsBosonic ψ) :
+    normalThreeBodyApply ψ = ∑ z : Fin (Q+1),
+      ((2 : ℂ) * (recouplingEigenvalue Q z.val : ℂ)) •
+        threeBodyLift Q M (threeBodySpectralBlock Q z) ψ :=
+  normalThreeBody_spectral_lift ψ hψ
+
+example (Q M : ℕ) (z : Fin (Q+1)) (ψ : State Q M) :
+    0 ≤ (BosonicLaughlin.inner ψ (threeBodyLift Q M (threeBodySpectralBlock Q z) ψ)).re :=
+  threeBodySpectralBlock_lift_nonneg Q M z ψ
+
+example (Q M : ℕ) (z : Fin (Q+1)) (ψ φ : State Q M) :
+    BosonicLaughlin.inner ψ (threeBodyLift Q M (threeBodySpectralBlock Q z) φ) =
+      BosonicLaughlin.inner (threeBodyLift Q M (threeBodySpectralBlock Q z) ψ) φ :=
+  threeBodySpectralBlock_lift_hermitian Q M z ψ φ
+
+example (Q M : ℕ) (ψ : State Q M) (hψ : IsBosonic ψ) :
+    hamiltonian (hamiltonian ψ) = hamiltonian ψ +
+      (∑ z : Fin (Q+1), ((2 : ℂ) * (recouplingEigenvalue Q z.val : ℂ)) •
+        threeBodyLift Q M (threeBodySpectralBlock Q z) ψ) + normalFourBodyApply ψ :=
+  hamiltonian_square_lifted_recoupling ψ hψ

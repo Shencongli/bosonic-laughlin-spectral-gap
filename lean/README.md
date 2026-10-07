@@ -123,9 +123,8 @@ The checked identities are
 $$W_3^\dagger W_3=I+2T,\qquad W_3W_3^\dagger=H_{Q,3},\qquad
 S_{3,Q,3}=2W_3TW_3^\dagger.$$
 
-The last two identities act on the bosonic three-particle space. Extending
-the last formula through the manuscript's normal-ordered three-body lift
-to arbitrary N is a remaining proof obligation.
+The last two identities act on the bosonic three-particle space. The lift
+to arbitrary particle number is described below.
 
 ## Complete recoupling spectrum
 
@@ -163,13 +162,60 @@ The resulting Gram and three-particle normal-order decompositions are
 $$W_3^\dagger W_3=\sum_{z=0}^Q(1+2\lambda_z)\Pi_z,\qquad
 S_{3,Q,3}=\sum_{z=0}^Q2\lambda_z W_3\Pi_zW_3^\dagger.$$
 
-The second identity acts on bosonic three-particle states. Its normal-ordered
-lift to arbitrary particle number remains to be formalized.
+The second identity acts on bosonic three-particle states.
 
 For every Q>0, the code also constructs the nonzero auxiliary vector
 $\phi=|p=0,k=1\rangle-\sqrt{1/2}|p=1,k=0\rangle$ and proves
 $W_3\phi=0$ and $T\phi=-\phi/2$. The complete z=1 auxiliary eigenspace
 has dimension $3Q-1$ and vanishing Gram eigenvalue.
+
+## Three-body lift in every finite sector
+
+Let M be the total particle number, and let $P_M$ be the orthogonal
+projection from the ordered tensor space $U_Q^{\otimes M}$ to
+$\operatorname{Sym}^M U_Q$. `bosonicProjection` defines $P_M$ by averaging
+all particle permutations with coefficient $1/M!$ and proves its
+idempotence, self-adjointness, and range.
+
+For a complex linear map A on the three-particle tensor space, the lift is
+
+$$\mathcal L_3^{(M)}(A)=\binom M3P_M(A\otimes I_{M-3})P_M
+\quad(M\ge3),\qquad \mathcal L_3^{(M)}(A)=0\quad(M<3).$$
+
+Here A acts on the first three tensor slots. The code constructs their
+slices explicitly and proves that slices of a bosonic state are bosonic.
+The lift depends only on A's action on symmetric three-particle inputs.
+It preserves self-adjointness, positive quadratic forms, and their ordering.
+Its identity normalization on the physical sector is
+$\mathcal L_3^{(M)}(I)=\binom M3I$.
+
+The pair-product counting and slice identities prove, for every Q and M
+on the bosonic sector,
+
+$$S_{3,Q,M}=\mathcal L_3^{(M)}(S_{3,Q,3}).$$
+
+Write $K_z=W_3\Pi_zW_3^\dagger$ for the three-particle coefficient of
+the z-th auxiliary spectral block. The all-particle formulas are
+
+$$S_{3,Q,M}=\sum_{z=0}^Q2\lambda_z\mathcal L_3^{(M)}(K_z),\qquad
+H_{Q,M}^2=H_{Q,M}+\sum_{z=0}^Q2\lambda_z\mathcal L_3^{(M)}(K_z)+S_{4,Q,M}.$$
+
+Each lifted block $\mathcal L_3^{(M)}(K_z)$ is proved Hermitian and positive.
+
+The connection to the manuscript's normal-order convention is also checked.
+For $M\ge3$ and a three-particle vector w, the annihilation map on a physical
+M-particle state is
+
+$$\big(A_M(w)\psi\big)(a)=\sqrt{\binom M3}\,\langle w,\psi_a\rangle,$$
+
+where $\psi_a$ is the three-slot slice obtained by fixing the remaining
+M−3 orbital labels a. The code defines its creation adjoint explicitly and
+proves
+
+$$\mathcal L_3^{(M)}(|w\rangle\langle w'|)=A_M(w)^\dagger A_M(w'),
+\qquad A_3(w)^\dagger|\mathrm{vac}\rangle=w$$
+
+with the vacuum identity for bosonic w.
 
 ## Gap target
 
@@ -206,23 +252,27 @@ and deduction of the gap above it.
 | `MultipletCount.lean`, `MultipletDimensions.lean` | Nonzero independent descendants and exact eigenspace dimensions $3Q-2z+1$. |
 | `SpectralPartition.lean`, `SwapProjectors.lean`, `SwapProjectorEigenspaces.lean`, `SwapProjectorRanks.lean` | Orthogonal spectral projectors, their actual eigenspace ranges, and exact ranks. |
 | `ThreeBodySpectral.lean` | The auxiliary Gram decomposition and the three-particle spectral formula for $S_3$. |
+| `BosonicProjection.lean`, `ThreeBodySlices.lean`, `StateForms.lean` | The orthogonal bosonic projection, exact three-slot slices, and inner-product identities. |
+| `ThreeBodyLift.lean`, `ThreeBodyLiftHermitian.lean`, `ThreeBodyLiftIdentity.lean`, `ThreeBodyCounting.lean`, `ThreeBodySymmetry.lean` | Preservation of positivity, order, and self-adjointness under lifting, its binomial normalization, and equality with the actual all-particle normal-order term. |
+| `ThreeBodyAnnihilation.lean` | Actual creation/annihilation adjoints, the rank-one normal-order rule, and creation from vacuum. |
+| `ThreeBodyCoefficient.lean`, `ThreeBodySpectralLift.lean` | Positive Hermitian spectral coefficients, their all-particle lift, and the full $H_Q^2$ identity with lifted recoupling blocks. |
 
 All source files in this table are under `BosonicLaughlin/`.
-All 388 theorem declarations and 24 physical statement contracts pass the
+All 492 theorem declarations and 37 physical statement contracts pass the
 full build and axiom audit. `Audit.lean` and `check.py` check every theorem's
 axiom dependencies. The
-[recoupling build record](../verification/lean_recoupling_build.json) records
+[three-body lift build record](../verification/lean_three_body_lift_build.json) records
 the declarations, fixed dependency revisions, and source hashes, with an
-[internal AI semantic audit](../verification/audit_reports/lean_recoupling_audit.txt).
-The [226-theorem normal-order record](../verification/lean_normal_order_build.json),
+[internal AI semantic audit](../verification/audit_reports/lean_three_body_lift_audit.txt).
+The [388-theorem recoupling record](../verification/lean_recoupling_build.json),
+[226-theorem normal-order record](../verification/lean_normal_order_build.json),
 [initial 22-lemma record](../verification/lean_initial_build.json) and
 [occupation-stage record](../verification/lean_occupation_build.json) are
 retained as development history.
 
 ## Remaining proof chain
 
-1. Lift the three-body spectral coefficient from three particles to arbitrary N
-   and identify the common kernels used for the retained blocks.
+1. Identify the common kernels used for the retained blocks.
 2. Prove the two-spectator bound, coherent integrals and comparisons,
    sphere transfer, and Schur averaging. The occupation sandwich above is
    one input to these further estimates.

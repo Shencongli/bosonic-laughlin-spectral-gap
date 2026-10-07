@@ -1,0 +1,197 @@
+Internal AI semantic audit. This is not external human peer review.
+
+Publication verification: the final whole-library build, 37 physical
+statement contracts, and all 492 theorem axiom reports passed. See
+verification/lean_three_body_lift_build.json for exact source hashes.
+
+AI MATHEMATICAL-SEMANTIC REVIEW: NORMALIZED THREE-BODY LIFT
+
+Status: final; all 11 reviewed source modules frozen and individually compiled.
+Date: 2026-10-07.
+Repository: Shencongli/bosonic-laughlin-spectral-gap.
+Reviewer: the angular_algebra AI subagent in the current Codex session.
+
+Review provenance
+-----------------
+This is an AI source-level mathematical review, not an independent human review.
+The reviewer authored BosonicProjection.lean, ThreeBodySymmetry.lean, and
+ThreeBodyLiftHermitian.lean in this increment; checks of those three files are
+self-review. The other modules below were authored by the parent agent or
+other AI subagents. Kernel checking and axiom auditing are separate recorded
+verification activities; this report does not itself claim a fresh full build.
+
+Scope
+-----
+The finite spherical V0 model and its tensor-coordinate normalization are
+unchanged. Q is the integer flux parameter; the one-particle space has Q+1
+orbitals. M is the total particle number. For M >= 3, N = M-3 labels spectator
+slots. State Q M is the full ordered tensor-coordinate vector space, with
+the physical bosonic sector specified by IsBosonic. The coordinate inner
+product is conjugate-linear in its first argument. All sums are finite.
+
+Modules reviewed in this increment:
+  StateForms.lean
+  BosonicProjection.lean                   [self-review]
+  ThreeBodySymmetry.lean                   [self-review]
+  ThreeBodySlices.lean
+  ThreeBodyCounting.lean
+  ThreeBodyLift.lean
+  ThreeBodyLiftHermitian.lean              [self-review]
+  ThreeBodyLiftIdentity.lean
+  ThreeBodyAnnihilation.lean
+  ThreeBodyCoefficient.lean
+  ThreeBodySpectralLift.lean
+
+1. Bosonic projection and tensor slices
+---------------------------------------
+The actual projection is
+  P_M psi(a) = (M!)^(-1) sum_sigma psi(a composed with sigma),
+where sigma runs over all permutations of the M particle slots. The factor
+is the actual permutation-group order, including the singleton M=0 group.
+The proofs establish linearity, a bosonic image, identity on bosonic inputs,
+idempotence, and self-adjointness for the coordinate inner product.
+
+ThreeBodySlices splits a configuration into its first three slots and the
+remaining N slots by an explicitly inverted finite equivalence. Consequently
+the inner product is exactly the sum over spectator configurations of the
+three-slot inner products, with no multiplicity or factorial in that step.
+Slicing a bosonic M-particle state is proved to give a bosonic three-particle
+state, by embedding each three-slot permutation into the M-slot permutation
+group. Pair replacement and pair-projector actions are proved compatible
+with the same insertion/slice maps. A slice need not be normalized; the
+subsequent statements are homogeneous sesquilinear or quadratic identities.
+
+2. Lift normalization and positivity
+------------------------------------
+For M=N+3 the independently defined lift is
+  L_3^M(A) = choose(M,3) P_M (A tensor I_N) P_M.
+Here the tensor action is the actual firstThreeApply on the first three
+coordinate slots, and both P_M factors are explicit. The right factor
+makes all slices of an arbitrary ambient input physical three-boson states;
+the left factor guarantees a bosonic output. On bosonic input the right
+factor is the identity. For M=0,1,2 the lift is explicitly zero.
+
+The sesquilinear form is proved to be choose(M,3) times the sum over
+spectators of the physical three-particle forms. Thus nonnegative real
+quadratic forms and their ordering are preserved, requiring the hypothesis
+only on physical three-boson vectors. No hypothesis of positivity on the
+larger unphysical tensor space is inserted.
+
+The generic nonnegativity theorem alone concerns Re<chi,A chi>; this is not
+by itself a self-adjointness statement for arbitrary A. Following this
+review observation, ThreeBodyLiftHermitian separately proves that physical
+self-adjointness of A is preserved as full ambient self-adjointness of the
+lift, for every M including M<3. Together these are genuine preservation
+of positive physical operators. The spectral coefficients use actual
+Hermitian orthogonal auxiliary projectors, not only an assumed real-part
+inequality.
+
+The identity coefficient obeys L_3^M(I) = choose(M,3) I on the physical
+sector, confirming the chosen many-body normalization.
+
+3. Identification with the actual normal-order three-body term
+-------------------------------------------------------------
+normalThreeBodyApply is the pre-existing independent sum of ordered products
+of two unequal overlapping unordered pair projectors. It is not redefined
+as a lift or as H^2-H-S4 during this increment.
+
+For each fixed unordered pair there are exactly 2(M-2) unequal unordered
+pairs sharing one slot. Therefore the number of ordered overlapping-pair
+products is
+  choose(M,2) * 2(M-2) = 6 choose(M,3).
+The factor six counts the six ordered choices of two distinct edges of a
+fixed three-slot triangle. The same six products occur in the actual
+three-particle normal-order coefficient. This cancels the six on comparing
+the many-body and three-body forms, leaving the required choose(M,3).
+
+ThreeBodyCounting reduces each complex sesquilinear matrix element between
+two bosonic vectors to the first shared-slot product P_01 P_02, preserving
+operator order. It does not assume overlapping projectors commute. The
+reduction uses an explicitly extended permutation of three distinct slots
+and the proven pair-exchange symmetry.
+
+ThreeBodySymmetry independently proves that normalThreeBodyApply preserves
+the bosonic sector. Its symmetric overlap predicate agrees with the
+original predicate when both pairs are in increasing order. Reindexing
+the symmetric unordered-pair sums proves preservation without assuming
+the desired lift identity. ThreeBodyLiftIdentity then uses the independent
+counting identity, the exact slice identity, and bosonic inner-product
+extensionality to prove equality of actual operators on bosonic inputs.
+This is stronger than equality of diagonal expectation values or a statement
+only about P_M S3 P_M. For M<3 the original S3 sum is separately proved zero.
+No circular dependence on the lift identity was found.
+
+4. Creation, annihilation, and rank-one normalization
+----------------------------------------------------
+The three-particle annihilator is the actual contraction
+  A(w) psi(a) = sqrt(choose(M,3)) <w, slice_a(P_M psi)>.
+Its creation partner is the explicitly symmetrized tensor insertion with
+the same square-root coefficient. The source proves their sesquilinear
+adjoint relation, that both relevant outputs are bosonic, and
+  A(w)^dagger |vac> = w
+for bosonic w and the normalized vacuum coordinate. No unit-norm assumption
+on w is required for this linear identity.
+
+The rank-one coefficient is literally |w><w'|, acting as
+  chi -> w <w',chi>.
+The rank-one lifting identity is proved as composition of the defined
+creation and annihilation maps, and its two square roots multiply to
+choose(M,3). There is no extra 3! in this convention. This verifies the
+operational normal-order rule in finite normalized symmetric tensors.
+It does not additionally formalize an occupation-monomial expansion of
+every A(w) in the one-particle CCR operators; no such stronger claim is
+needed for, or made by, the lifting identity.
+
+5. Auxiliary coefficients and the all-particle spectral formula
+---------------------------------------------------------------
+The physical coefficient is W_3 A W_3^dagger, with the already established
+sqrt(3) normalization of W_3. threeBodyAdjoint is only used as the actual
+adjoint against a bosonic physical bra, exactly where its earlier adjoint
+identity applies. This is not silently extended to an unrestricted
+ambient-adjoint identity.
+
+For each previously verified auxiliary spectral projector Pi_z, the
+physical coefficient W_3 Pi_z W_3^dagger is nonnegative on the physical
+three-boson sector. The auxiliary nonnegativity is derived from the actual
+matrix's Hermitian and idempotence theorems. Its physical Hermitian property
+is supplied separately. Lifting these coefficients yields nonnegative
+quadratic forms on all ambient finite particle sectors because of P_M on
+both sides of the lift.
+
+The final S3 decomposition retains the signed coefficients
+  2 (-1)^z (Q descending z)/(2Q descending z).
+The positivity of each lifted block does not make S3 positive, and the
+source does not make that inference. The stated S3 and H^2 decompositions
+are exact on bosonic inputs for every finite Q and particle number. They
+do not introduce or prove a uniform gap threshold, complete the remaining
+finite certificates or tail estimates, or change the full-gap theorem's
+unproved status.
+
+Findings
+--------
+No blocking normalization error, type/space substitution, circular
+assumption, or overstrengthening in the reviewed mathematics was found.
+The distinction between real-part nonnegativity and self-adjoint positivity
+was addressed by the separate Hermitian-preservation theorem and the
+Hermitian physical-block bridge.
+
+Final source freeze, validation references, and SHA256 hashes:
+All 11 module builds passed before this source freeze. The reviewer directly
+compiled its three self-reviewed modules; individual compilation of the other
+eight modules was confirmed by their authors and the parent agent. The parent
+agent is separately running the whole-library statement and axiom audit.
+This report records the exact reviewed source bytes, not a claim of an
+independent clean rebuild.
+
+SHA256 (repository-relative paths):
+06c623c819fd962e7bd1b8cd034bd26ec4658faa36b8b4640745c242a4ca33b5  lean/BosonicLaughlin/StateForms.lean
+0d5fa4b98ca7fe9220354684388be2800f6cd14453f1cb42f3287d55160e944b  lean/BosonicLaughlin/BosonicProjection.lean
+4734a2089da5bc81851456336b4cb88342a31e016ae4a54d67206a5928701102  lean/BosonicLaughlin/ThreeBodySymmetry.lean
+0360b6e9fe031e4d02685ba1a6177687e49b9587590afe51fa4306e6211f32e3  lean/BosonicLaughlin/ThreeBodySlices.lean
+6597503ea25b0c71126cf1bbae1a90abc6815614ac326471f78b4a77b9315510  lean/BosonicLaughlin/ThreeBodyCounting.lean
+0e40b394b833591faa5c4b308b777e9ce98c364ad0e342f2c6a30287967c54c7  lean/BosonicLaughlin/ThreeBodyLift.lean
+9e34f16eb09fdc0c6579551fb2464b55740b00f1c4774e089267295fd342a957  lean/BosonicLaughlin/ThreeBodyLiftHermitian.lean
+34d3152422627a535ac7db7a6d921158c5cc2c0961ab0cf2fc3a3a0c14708345  lean/BosonicLaughlin/ThreeBodyLiftIdentity.lean
+84f827dfc5f8031ae47d7985672b7114d078eeafa75485e6be8eeb911e5d7524  lean/BosonicLaughlin/ThreeBodyAnnihilation.lean
+3f46eb5cc3ee8897976661ed23e81e08a10efd8e5e51c5f682277f262a97da68  lean/BosonicLaughlin/ThreeBodyCoefficient.lean
+14cf650639dde19b6af1fcdac4b9b4574a5a5cdd96911e79485db1bf86a879dc  lean/BosonicLaughlin/ThreeBodySpectralLift.lean
