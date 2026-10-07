@@ -147,26 +147,34 @@ They also connected the integer center-of-mass derivative, with source
 coefficient $j n_j$, to the actual angular-momentum raising operator.
 The checked identity is $J_+\Phi_d=\sqrt Q\,\Phi_{d-1}C_d$ for d>0,
 and the CM kernel is proved to represent the full physical highest-weight
-space. A separate algebraic kernel-frame criterion supplies reconstruction
-and dimension statements when its exact matrix identities are checked.
+space. The agents then verified the 26 retained rational frames: N=3 at
+degrees 0–8 and N=4 at degrees 0–16. Clearing common denominators reduces
+$CU=0$, $LU=I$, and $UL+VC=I$ to sparse integer identities checked by the
+Lean kernel. A proved complete partition enumeration and exact CM-entry
+checks connect the supplied arrays to the physical highest-weight spaces
+for Q≥d>0. Separate degree-zero proofs cover every Q. The resulting bases
+are generally nonorthogonal; their completeness is proved by explicit
+linear equivalences and reconstruction.
 The coordinate proofs do not import Python success flags as hypotheses.
 
-All 832 theorem declarations and 70 physical statement contracts pass the
+All 1113 theorem declarations and 99 physical statement contracts pass the
 full build and axiom audit, with pinned Lean/mathlib versions recorded.
 The local build uses Lake package
 overrides pointing to source archives of those same revisions. The only
 axiom dependencies are `propext`, `Classical.choice`, and `Quot.sound`.
-The [occupation/highest-weight build record](verification/lean_occupation_highest_build.json)
-and [internal AI semantic audit](verification/audit_reports/lean_occupation_highest_audit.txt)
-record the 8 October extension. The
+The [retained-frame build record](verification/lean_retained_frames_build.json)
+and [internal AI semantic audit](verification/audit_reports/lean_retained_frames_audit.txt)
+record the frame and physical-basis checks. The
+[occupation/highest-weight build record](verification/lean_occupation_highest_build.json)
+and [audit](verification/audit_reports/lean_occupation_highest_audit.txt),
 [common-kernel build record](verification/lean_common_kernel_build.json),
 [three-body lift build record](verification/lean_three_body_lift_build.json),
 [recoupling build record](verification/lean_recoupling_build.json) and
 [normal-order build record](verification/lean_normal_order_build.json) remain
 available as development history. No independent human review is claimed.
 
-The remaining tasks include identifying the retained rational frames and
-comparison matrices, proving the two-spectator and coherent-integral estimates,
+The remaining tasks include identifying the full comparison matrices,
+proving the two-spectator and coherent-integral estimates,
 and completing the finite-sphere transfer, averaging, and interval-certificate
 proofs. The finite comparison PSD certificates and the uniform spectral-gap
 target remain unproved in Lean. The package's [status](lean/README.md) lists the

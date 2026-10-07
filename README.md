@@ -106,6 +106,14 @@ with coefficients $\kappa_p^2/E_{p,Q}$. The integer center-of-mass derivative
 matrix is connected to the actual angular-momentum raising operator, and
 its kernel represents the full physical highest-weight space. Multisets
 are also put in bijection with sorted orbital tuples.
+Lean now checks the 26 retained rational highest-weight frames: three
+particles at degrees 0–8 and four particles at degrees 0–16. Complete
+enumeration and matrix-entry checks identify their columns with bases of
+the actual physical highest-weight spaces for Q≥d>0; the two degree-zero
+blocks are handled separately for every Q. These are generally
+nonorthogonal bases. The [build record](verification/lean_retained_frames_build.json)
+and [AI semantic audit](verification/audit_reports/lean_retained_frames_audit.txt)
+record the exact frame and coordinate checks.
 The retained comparison matrices, their finite and interval positivity
 certificates, the two-spectator and coherent estimates, and the remaining
 sphere-transfer and averaging steps still require Lean proofs.

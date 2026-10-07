@@ -1,4 +1,5 @@
 import BosonicLaughlin
+open scoped Matrix
 
 /-! These contracts keep the physical model, quantifiers, and hypotheses of
 the published results explicit. They must elaborate without assuming an
@@ -356,3 +357,123 @@ example (Q N d : ℕ) (hQ : 0<Q) (ψ : State Q N) (hψ : IsBosonic ψ)
 
 example (Q N d : ℕ) (hd : d≤Q) : Nonempty (SortedDegreeTuple N d ≃ WeightOccupation Q N d) :=
   ⟨sortedDegreeOccupationEquiv hd⟩
+
+/- Concrete retained highest-weight spaces in the spherical V0 model. -/
+
+example (Q : ℕ) :
+    Module.finrank ℂ (physicalHighestWeightSubspace Q 3 0)=1 :=
+  retainedCM_3_0_physical_finrank Q
+
+example (Q : ℕ) (hd : 1≤Q) :
+    Module.finrank ℂ (physicalHighestWeightSubspace Q 3 1)=0 :=
+  retainedCM_3_1_physical_finrank Q hd
+
+example (Q : ℕ) (hd : 2≤Q) :
+    Module.finrank ℂ (physicalHighestWeightSubspace Q 3 2)=1 :=
+  retainedCM_3_2_physical_finrank Q hd
+
+example (Q : ℕ) (hd : 3≤Q) :
+    Module.finrank ℂ (physicalHighestWeightSubspace Q 3 3)=1 :=
+  retainedCM_3_3_physical_finrank Q hd
+
+example (Q : ℕ) (hd : 4≤Q) :
+    Module.finrank ℂ (physicalHighestWeightSubspace Q 3 4)=1 :=
+  retainedCM_3_4_physical_finrank Q hd
+
+example (Q : ℕ) (hd : 5≤Q) :
+    Module.finrank ℂ (physicalHighestWeightSubspace Q 3 5)=1 :=
+  retainedCM_3_5_physical_finrank Q hd
+
+example (Q : ℕ) (hd : 6≤Q) :
+    Module.finrank ℂ (physicalHighestWeightSubspace Q 3 6)=2 :=
+  retainedCM_3_6_physical_finrank Q hd
+
+example (Q : ℕ) (hd : 7≤Q) :
+    Module.finrank ℂ (physicalHighestWeightSubspace Q 3 7)=1 :=
+  retainedCM_3_7_physical_finrank Q hd
+
+example (Q : ℕ) (hd : 8≤Q) :
+    Module.finrank ℂ (physicalHighestWeightSubspace Q 3 8)=2 :=
+  retainedCM_3_8_physical_finrank Q hd
+
+example (Q : ℕ) :
+    Module.finrank ℂ (physicalHighestWeightSubspace Q 4 0)=1 :=
+  retainedCM_4_0_physical_finrank Q
+
+example (Q : ℕ) (hd : 1≤Q) :
+    Module.finrank ℂ (physicalHighestWeightSubspace Q 4 1)=0 :=
+  retainedCM_4_1_physical_finrank Q hd
+
+example (Q : ℕ) (hd : 2≤Q) :
+    Module.finrank ℂ (physicalHighestWeightSubspace Q 4 2)=1 :=
+  retainedCM_4_2_physical_finrank Q hd
+
+example (Q : ℕ) (hd : 3≤Q) :
+    Module.finrank ℂ (physicalHighestWeightSubspace Q 4 3)=1 :=
+  retainedCM_4_3_physical_finrank Q hd
+
+example (Q : ℕ) (hd : 4≤Q) :
+    Module.finrank ℂ (physicalHighestWeightSubspace Q 4 4)=2 :=
+  retainedCM_4_4_physical_finrank Q hd
+
+example (Q : ℕ) (hd : 5≤Q) :
+    Module.finrank ℂ (physicalHighestWeightSubspace Q 4 5)=1 :=
+  retainedCM_4_5_physical_finrank Q hd
+
+example (Q : ℕ) (hd : 6≤Q) :
+    Module.finrank ℂ (physicalHighestWeightSubspace Q 4 6)=3 :=
+  retainedCM_4_6_physical_finrank Q hd
+
+example (Q : ℕ) (hd : 7≤Q) :
+    Module.finrank ℂ (physicalHighestWeightSubspace Q 4 7)=2 :=
+  retainedCM_4_7_physical_finrank Q hd
+
+example (Q : ℕ) (hd : 8≤Q) :
+    Module.finrank ℂ (physicalHighestWeightSubspace Q 4 8)=4 :=
+  retainedCM_4_8_physical_finrank Q hd
+
+example (Q : ℕ) (hd : 9≤Q) :
+    Module.finrank ℂ (physicalHighestWeightSubspace Q 4 9)=3 :=
+  retainedCM_4_9_physical_finrank Q hd
+
+example (Q : ℕ) (hd : 10≤Q) :
+    Module.finrank ℂ (physicalHighestWeightSubspace Q 4 10)=5 :=
+  retainedCM_4_10_physical_finrank Q hd
+
+example (Q : ℕ) (hd : 11≤Q) :
+    Module.finrank ℂ (physicalHighestWeightSubspace Q 4 11)=4 :=
+  retainedCM_4_11_physical_finrank Q hd
+
+example (Q : ℕ) (hd : 12≤Q) :
+    Module.finrank ℂ (physicalHighestWeightSubspace Q 4 12)=7 :=
+  retainedCM_4_12_physical_finrank Q hd
+
+example (Q : ℕ) (hd : 13≤Q) :
+    Module.finrank ℂ (physicalHighestWeightSubspace Q 4 13)=5 :=
+  retainedCM_4_13_physical_finrank Q hd
+
+example (Q : ℕ) (hd : 14≤Q) :
+    Module.finrank ℂ (physicalHighestWeightSubspace Q 4 14)=8 :=
+  retainedCM_4_14_physical_finrank Q hd
+
+example (Q : ℕ) (hd : 15≤Q) :
+    Module.finrank ℂ (physicalHighestWeightSubspace Q 4 15)=7 :=
+  retainedCM_4_15_physical_finrank Q hd
+
+example (Q : ℕ) (hd : 16≤Q) :
+    Module.finrank ℂ (physicalHighestWeightSubspace Q 4 16)=10 :=
+  retainedCM_4_16_physical_finrank Q hd
+
+example (Q : ℕ) (hd : 16≤Q) :
+    indexedOccupationCMMatrix hd retainedEnum_4_16 retainedEnum_4_15 =
+      retainedCM_4_16C.map (Rat.castHom ℂ) := retainedCM_4_16_physical_matrix Q hd
+
+example (Q : ℕ) (hd : 16≤Q) (c : Fin 10 → ℂ) :
+    (retainedCM_4_16_physicalEquiv Q hd c).val =
+      (polynomialWeightCoordinates Q 4 16).symm
+        (polynomialWeightOccupationInclude
+          (((retainedCM_4_16U.map (Rat.castHom ℂ)) *ᵥ c) ∘ (retainedEnum_4_16.occupationEquiv hd).symm)) :=
+  retainedCM_4_16_physical_apply Q hd c
+
+example (Q : ℕ) : Function.Bijective (fun c : Fin 1 → ℂ => zeroDegreePhysicalHighestEquiv Q 4
+    ((retainedCM_4_0U.map (Rat.castHom ℂ)) *ᵥ c)) := retainedCM_4_0_columns_complete Q

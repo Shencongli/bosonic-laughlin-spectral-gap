@@ -1,0 +1,189 @@
+Internal AI semantic audit. This is not external human peer review.
+
+Publication verification: the final whole-library build, 99 physical
+statement contracts, and all 1113 theorem axiom reports passed. See
+verification/lean_retained_frames_build.json for exact source hashes.
+
+Retained CM frame semantic audit
+Date: 2026-10-08
+Reviewer: internal AI subagent /root/pair_equivariance
+Status: source semantic review complete. The parent agent reported the final
+whole-library check.py run completed with exit 0 (1113 theorem declarations,
+99 statement contracts). Its build/axiom evidence is recorded separately in the
+formal verification record; this report supplies the semantic review.
+
+Scope and independence
+----------------------
+This audit concerns exact rational center-of-mass (CM) kernel frames in the
+retained sectors N=3, d=0,...,8 and N=4, d=0,...,16. It is an internal AI
+cross-check, not independent human review. I independently reviewed the sparse
+checker and rational frame generator/data authored by another agent. I authored
+KernelFrameTransport.lean and KernelFramePhysical.lean; comments on those modules
+are self-review and must not be counted as independent review.
+
+Sparse integer checker
+----------------------
+SparseIntRow n is a finite list of (Fin n, integer) entries. Its mathematical
+interpretation sums all entries with a given column. Repeated column indices,
+unsorted inputs and explicit zero entries are therefore allowed. sparseIntInsert
+updates the first matching entry and may delete it when its sum is zero; the
+remaining entries are retained. The proved evaluation identity remains correct
+even if later entries have the same column. Row addition, scaling and product are
+proved against the full integer matrix operations by induction on the stored
+lists. No sortedness or uniqueness assumption is hidden in those theorems.
+
+SparseScaledFrameCheck requires literal sparse-row results [] for CW, singleton
+[(i,D)] for LW, and singleton [(i,D)] for WL+ZC. These conditions are sufficient,
+not claimed necessary. sparseScaledFrameCheck_integer correctly converts them to
+CW=0, LW=D I, WL+ZC=D I as integer matrix identities, including empty dimensions.
+
+sparseScaledFrameCheck_sound assumes the explicit condition D != 0. Its image
+in Q is nonzero. With U=D^{-1}W and V=D^{-1}Z, multiplying the integer identities
+by D^{-1} proves C U=0, L U=I, U L+V C=I. These are all three HasKernelFrame
+identities. In particular the third identity supplies completeness of the kernel,
+not only independence of the proposed columns. L U=I supplies injectivity.
+No numerical rank or floating-point tolerance enters this argument.
+
+Generated rational frame data
+-----------------------------
+RetainedCMFrames.lean contains 26 cases, exactly N=3 with d=0,...,8 and N=4 with
+d=0,...,16. Each case has its nonzero integer denominator, four sparse integer
+matrices, the corresponding rational C,U,L,V, one sparse checker theorem, one
+HasKernelFrame theorem and one rational kernel-dimension theorem. The finite
+checks use `decide +kernel`; they do not use native_decide or imported Python
+success flags. Their full build was reported successful by the author.
+
+Independent development cross-check
+----------------------------------
+work/check_retained_frame_export.py independently parses the emitted Lean sparse
+literals, rather than calling the exporter. It reconstructs exact Fraction
+matrices, including the denominator scaling, and imports the unchanged published
+verification/exact_relative_blocks.py only for its target cm_lower and
+relative_basis matrices. All 11,960 entries of C and all 2,292 entries of U agree
+exactly, in the published parts(n,d) order. All 26 CU=0, LU=I, UL+VC=I identities
+also passed a separate exact Fraction recomputation. Dimensions, case coverage,
+and uniqueness of the three theorem declarations per case were checked.
+The machine-readable development result is work/retained-frame-export-crosscheck.json.
+These Python results are diagnostic corroboration, not the proof certificate.
+
+Degree-zero boundary
+--------------------
+The script has target parts(N,-1)=empty at d=0, so C is a 0-by-1 matrix. Lean's
+natural subtraction makes the nominal occupationCMBlock target degree 0; its
+target is one-dimensional and the map is zero. There is no row-index equivalence
+between those targets. I raised this point before physical transport. The
+RetainedCMZeroDegree.lean implementation treats it separately: it proves the
+unique source occupation, actual CM map zero, a full physical highest-weight
+linear equivalence, dimension one, and that each retained degree-zero U is [1].
+It proves completeness of those actual columns without inventing a row bijection.
+These coordinate maps are not asserted to be orthonormal.
+
+Scalar extension and reindexing (self-review)
+-------------------------------------------
+KernelFrameTransport maps each frame identity through an actual field ring
+homomorphism; the rational-to-complex specialization therefore preserves the
+entire frame certificate. The kernel reindexing equivalence maps v to v composed
+with the column-index equivalence, with the inverse composed with its inverse.
+The row-index equivalence is used to transport the zero condition. This proves
+complete complex kernel coordinates and the same finite dimension after index
+transport. It does not assert a unitary map or any nonzero spectral equivalence.
+
+Physical transport (self-review)
+--------------------------------
+KernelFramePhysical composes the complex frame equivalence, the inverse index
+transport, the exact equality between CM matrix multiplication and the CM linear
+map, and occupationHighestWeightEquiv. Its actual physical map is D_Q^{-1} after
+the factorial occupation inclusion. It gives a linear equivalence with the full
+physicalHighestWeightSubspace and its dimension. The scalar-normalized certificate
+Phi differs by a nonzero sector scalar for Q>0 and has the same highest-weight
+space. The previously derived G_Q metric belongs to Phi, whose scalar is
+sqrt(Q^d/N!), so the columns in physical_apply must be multiplied by that scalar
+before using U^* G_Q U as their Gram matrix. The unscaled maps are not silently
+identified with those normalized coordinates.
+Matrix identification with the actual CM operator is an explicit premise
+of the generic interface. The generated enumeration and entry theorems discharge
+that premise in all 24 retained positive-degree sectors.
+
+Complete enumeration and actual CM entries
+-----------------------------------------
+PartitionsEnumeration proves membership in degreePartitions N d lo is equivalent
+to length N, total sum d, nondecreasing entries, and lower bound lo. Its recursion
+restricts the first entry to 0,...,d and the remaining entries to values at least
+that first entry. The proved no-duplicate property and the get/ofFn inverse
+identities provide both injectivity and surjectivity. EnumeratedPartitions turns
+an exact table equality into a SortedTupleEnumeration. It does not postulate the
+completeness of the Python list.
+
+SortedCMCoefficient relates each computable natural-number entry to the actual
+occupation CM matrix. A target row B is connected to a source A by replacing an
+entry i of B by i+1; its coefficient is (i+1) count_A(i+1). This is exactly the
+inverse description of lowering one occupied source orbital j with coefficient
+j n_j. The counting factor refers to the source A. The conversion from bounded
+orbitals to natural labels is injective, preserving both counts and replacement.
+For positive degree d and Q >= d, the finite sum truncates to i<d by the target
+degree d-1. The source and target maps use their correct respective degrees.
+
+IndexedOccupationCM introduces a genuine bijective enumeration on both sides.
+Its matrix-entry equality is then applied by RetainedCMCoordinates: all 26 literal
+index tables have kernel-checked equality to the complete recursive enumeration;
+all 24 positive-degree integer entry arrays have kernel-checked equality to the
+tuple coefficient. Each resulting physical_matrix theorem is unconditional apart
+from the displayed bound Q >= d. There is no Python-success premise or hidden
+CM-entry-identification hypothesis in those concrete theorems.
+
+RetainedCMPhysical composes these concrete identifications with each complete
+rational frame. The 24 physicalEquiv declarations are linear equivalences onto
+the full actual spherical bosonic highest-weight subspaces. Each physical_apply
+statement identifies its vector explicitly as D_Q^{-1} of the factorial occupation
+embedding of (U cast to complex) times the coefficient vector, with the inverse
+source enumeration. Each columns_complete statement concerns this actual map,
+and the dimensions are its complex dimensions. The two degree-zero dimensions
+use the separately proved zero-map construction described above. Empty highest-
+weight spaces, including d=1, are covered by Fin 0 coefficient spaces.
+
+Independent checks of the final generated tables
+-----------------------------------------------
+work/check_retained_coordinate_export.py independently parses all 26 literal
+tables and compares all 400 tuples, including their order, with the original
+published parts(N,d). It also checks the exact coverage and uniqueness of 26 table
+certificates, 26 enumerations, 24 entry certificates, 24 physical matrix identities,
+24 explicit positive-degree physical maps/completeness statements, and 26 physical
+dimension statements. Every dimension matches the column count of the script's
+relative_basis(N,d). All checks passed. The result is recorded in
+work/retained-coordinate-export-crosscheck.json. This remains a development
+diagnostic; the Lean statements and kernel terms are the proof certificates.
+
+Additional independent internal review
+-------------------------------------
+The highest_weight agent independently reviewed PartitionsEnumeration and
+EnumeratedPartitions, including both directions of the enumeration and nodup
+proofs, and the generated coordinate/physical declaration coverage. It reported
+no issue. This remains internal AI review and does not replace human review.
+
+Scientific scope
+----------------
+The result concerns exact bases and dimensions of the full retained physical
+highest-weight spaces. A frame for ker(CM) is not a frame for ker(H); the two
+operators have different roles. No finite comparison PSD certificate, interval
+positivity proof, uniform gap estimate or thermodynamic topological claim follows
+from these frame checks alone.
+
+Final reviewed source SHA256
+---------------------------
+All 12 new Lean modules and both new generators relative to HEAD are listed.
+The unchanged published reference script is also bound to this review.
+8000665b67a87b330f07a2b4451b6775d5afa476585aa52bc46a0847bebfd7a7  lean/BosonicLaughlin/EnumeratedPartitions.lean
+eb412d6e18a6478b1100ace45d76bcc2316effb792c0b30f49b384a437227370  lean/BosonicLaughlin/IndexedOccupationCM.lean
+4025258a3266c8b53f4e87f7e00a57784b72d0eb5b9e1e5f4882c456d60a4aed  lean/BosonicLaughlin/KernelFramePhysical.lean
+a1eddc4e5ced68a72ae448ce02a036a38313c4ff7c13efe16cdbea1a55680113  lean/BosonicLaughlin/KernelFrameTransport.lean
+3b04a90e4a0ef24128105a41be3bcd1975d54ccc6d3cb4233c34323145543722  lean/BosonicLaughlin/PartitionsEnumeration.lean
+9edc7993fb7095efc93202c70b6bfea4ad903899ee85cc6debeaac3e09c5a4ec  lean/BosonicLaughlin/RetainedCMCoordinates.lean
+6d0e7e91c742b1e5d53fb5c7d03f07f0a855edaf4795f767b9bdcad211840881  lean/BosonicLaughlin/RetainedCMFrames.lean
+9ec8f98b99e15769f01111e26bff208a39cfad6c4124f93e42e721131358a023  lean/BosonicLaughlin/RetainedCMPhysical.lean
+0febeb02dcbc1754a4e1d3544f98da70b5d15bff9dc7e63dc7b7ac8b4f8e7e9f  lean/BosonicLaughlin/RetainedCMZeroDegree.lean
+6de79a582df9a1bea543a051b84dc539a2ecfd429beade7ed2dc1502532c64a3  lean/BosonicLaughlin/SortedCMCoefficient.lean
+cbde057b810a4e29610675bd356028738504c955a520ccb4911a752828735931  lean/BosonicLaughlin/SparseIntegerMatrix.lean
+37f510e549ecb0aeeb888650edf3d96e9a10cee63ddcc3f0bd999e09798fd35b  lean/BosonicLaughlin/SparseKernelFrame.lean
+5e17a40fc4719e123174fa9b8b073622d515096f9ad8a19b9d32b58e1c0f9d74  verification/generate_retained_cm_coordinates.py
+e3f857a2b6695015d20ccbce61b52a2830da09b7c22ed7053dc1c8d61114b56c  verification/generate_retained_cm_frames.py
+73fcae1a3bebb28928b3fbe94c9d602462592cf8bdfc16a13bd248a998b1bba7  verification/exact_relative_blocks.py

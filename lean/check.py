@@ -16,7 +16,7 @@ sources = sorted((root/'BosonicLaughlin').glob('*.lean'))
 names = []
 for source in sources:
     names += ['BosonicLaughlin.' + n for n in re.findall(
-        r'^(?:@\[[^\]\r\n]*\][ \t]*)*(?:theorem|lemma)\s+(\w+)',
+        r'^(?:@\[[^\]\r\n]*\][ \t]*)*(?:theorem|lemma)\s+([\w.]+)',
         source.read_text(encoding='utf-8'), re.M)]
 audit = (root/'Audit.lean').read_text(encoding='utf-8')
 listed = re.findall(r'^#print axioms (\S+)', audit, re.M)
@@ -110,6 +110,21 @@ required = [
     'certificateWeightCoordinates_highest_surjective',
     'kernelFrame_reconstruction', 'kernelFrame_finrank',
 ]
+retained_cases = [(3, d) for d in range(9)] + [(4, d) for d in range(17)]
+required += [
+    'sparseScaledFrameCheck_sound', 'mem_degreePartitions', 'degreePartitions_nodup',
+    'degreePartitionTableTuple_injective', 'degreePartitionTableTuple_surjective',
+    'indexedOccupationCMMatrix_eq_array', 'HasKernelFrame.ratCast',
+    'kernelFramePhysicalEquiv_apply', 'indexedKernelFramePhysical_finrank',
+    'occupationCMBlock_zero_degree', 'physicalHighestWeight_zero_degree_finrank',
+]
+for n, d in retained_cases:
+    prefix = f'retainedCM_{n}_{d}'
+    required += [prefix + suffix for suffix in
+                 ['_sparse_check', '_frame', '_kernel_finrank', '_columns_complete', '_physical_finrank']]
+    required += [f'retainedParts_{n}_{d}_complete']
+    if d:
+        required += [prefix + suffix for suffix in ['_integer_entries', '_physical_matrix', '_physical_apply']]
 for name in required:
     if 'BosonicLaughlin.' + name not in dependencies:
         raise SystemExit('Missing required theorem: ' + name)
@@ -121,6 +136,8 @@ record = {
     'build_passed': True,
     'package_overrides_used': bool(args.packages),
     'checked_theorem_count': len(names),
+    'retained_cm_frame_count': len(retained_cases),
+    'retained_cm_cases': [{'particles': n, 'degree': d} for n, d in retained_cases],
     'main_uniform_gap_theorem_proved': False,
     'coherent_occupation_and_pair_lift_proved_sectorwise': True,
     'normal_order_and_four_body_fock_form_proved_sectorwise': True,
@@ -149,6 +166,10 @@ record = {
     'complete_physical_highest_weight_coordinate_identification_proved': True,
     'sorted_tuple_and_occupation_index_equivalence_proved': True,
     'full_retained_certificate_matrix_identification_proved': False,
+    'all_26_retained_rational_cm_kernel_frames_proved': True,
+    'retained_cm_index_tables_complete_and_duplicate_free_proved': True,
+    'retained_cm_arrays_identified_with_physical_occupation_matrices_proved': True,
+    'all_26_retained_physical_highest_weight_frames_complete_proved': True,
     'physical_statement_contracts_checked': True,
     'physical_statement_contract_count': len(re.findall(
         r'^example\b', (root/'StatementChecks.lean').read_text(encoding='utf-8'), re.M)),

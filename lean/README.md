@@ -363,8 +363,29 @@ empty target, so their kernels agree despite the different target spaces.
 to be a full kernel basis: matrices L and V must satisfy
 $CU=0$, $LU=I$, and $UL+VC=I$. The criterion gives a linear equivalence
 with the kernel and its dimension. Applying it to the retained rational
-arrays, and deriving the full comparison certificates in these coordinates,
-are separate checks from the coordinate identities above.
+arrays now verifies all 26 retained frames: N=3 with d=0,…,8 and N=4 with
+d=0,…,16. The rational matrices are represented by sparse integer rows and
+common denominators. Lean checks the integer identities obtained by clearing
+those denominators, then proves $CU=0$, $LU=I$, and $UL+VC=I$ over the
+rationals. Extending scalars to the complex numbers preserves the identities.
+
+The index correspondence is checked as well. A recursive partition
+enumeration is proved to contain every nondecreasing tuple of length N and
+sum d exactly once. Each exported table is checked against that enumeration,
+and every CM entry is checked against the integer occupation formula.
+For Q≥d>0, this identifies the retained C with the actual spherical CM
+matrix in that table order. The columns of U then give a complete basis
+of the physical bosonic highest-weight space after factorial occupation
+inclusion and inverse spherical scaling. The code supplies the explicit
+linear equivalence, its action on coefficients, and the resulting dimension.
+These bases are generally nonorthogonal. The displayed `physical_apply` maps
+use $D_Q^{-1}I_{\mathrm{occ}}U$. Multiplying by $\sqrt{Q^d/N!}$ gives the
+$\Phi$ convention and its metric above. At d=0, the retained column is [1], and a separate proof
+gives the full one-dimensional highest-weight space for every Q, including
+Q=0, without identifying the two different CM target spaces.
+
+The frame checks establish basis completeness. The full comparison matrices
+and their finite or interval positivity certificates still require proofs.
 
 ## Gap target
 
@@ -420,15 +441,21 @@ and deduction of the gap above it.
 | `FockInner.lean`, `PolynomialGram.lean`, `CertificateGram.lean` | Sesquilinear Hamiltonian forms through the actual pair annihilators and the exact spherical occupation Gram formula. |
 | `TensorHighestWeight.lean`, `PolynomialHighestWeight.lean`, `OccupationHighestWeight.lean`, `OccupationCMBlocks.lean`, `CertificateHighestWeight.lean` | Actual raising operators, the integer center-of-mass derivative, fixed-degree intertwining, and completeness of the physical highest-weight coordinates. |
 | `KernelFrames.lean` | Exact algebraic kernel-frame certificates, reconstruction, and kernel dimension from checked matrix identities. |
+| `SparseIntegerMatrix.lean`, `SparseKernelFrame.lean`, `RetainedCMFrames.lean` | Sparse integer verification of all 26 rational frame identities after clearing common denominators. |
+| `PartitionsEnumeration.lean`, `EnumeratedPartitions.lean`, `SortedCMCoefficient.lean`, `IndexedOccupationCM.lean`, `RetainedCMCoordinates.lean` | Complete duplicate-free partition enumeration, exact exported tables and CM entries, and their identification with the actual occupation matrix for Q≥d>0. |
+| `KernelFrameTransport.lean`, `KernelFramePhysical.lean`, `RetainedCMPhysical.lean`, `RetainedCMZeroDegree.lean` | Rational-to-complex frame transport, complete physical highest-weight bases and dimensions, and the separate all-Q degree-zero identification. |
 
 All source files in this table are under `BosonicLaughlin/`.
-All 832 theorem declarations and 70 physical statement contracts pass the
+All 1113 theorem declarations and 99 physical statement contracts pass the
 full build and axiom audit. `Audit.lean` and `check.py` check every theorem's
 axiom dependencies.
-The [occupation/highest-weight build record](../verification/lean_occupation_highest_build.json)
+The [retained-frame build record](../verification/lean_retained_frames_build.json)
 records the declarations, physical statement contracts, fixed dependency
 revisions, and source hashes for this extension, alongside an
-[internal AI semantic audit](../verification/audit_reports/lean_occupation_highest_audit.txt).
+[internal AI semantic audit](../verification/audit_reports/lean_retained_frames_audit.txt).
+The [occupation/highest-weight build record](../verification/lean_occupation_highest_build.json)
+and its [audit](../verification/audit_reports/lean_occupation_highest_audit.txt)
+record the preceding coordinate construction.
 The [common-kernel build record](../verification/lean_common_kernel_build.json)
 is retained with its [audit](../verification/audit_reports/lean_common_kernel_audit.txt).
 The [492-theorem three-body lift record](../verification/lean_three_body_lift_build.json),
@@ -440,9 +467,9 @@ retained as development history.
 
 ## Remaining proof chain
 
-1. Identify the retained rational highest-weight frames and all comparison
-   matrices with the exact occupation-coordinate operators. The coordinate
-   map, metric, pair matrices, and highest-weight kernel are now proved.
+1. Identify the full comparison matrices with the exact occupation-coordinate
+   operators. The coordinate map, metric, pair matrices, and retained
+   highest-weight bases are now proved.
 2. Prove the two-spectator bound, coherent integrals and comparisons,
    sphere transfer, and Schur averaging. The occupation sandwich above is
    one input to these further estimates.

@@ -1,0 +1,5928 @@
+{
+  "lean_version": "Lean (version 4.34.1, x86_64-w64-windows-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)",
+  "build_passed": true,
+  "package_overrides_used": true,
+  "checked_theorem_count": 1113,
+  "retained_cm_frame_count": 26,
+  "retained_cm_cases": [
+    {
+      "particles": 3,
+      "degree": 0
+    },
+    {
+      "particles": 3,
+      "degree": 1
+    },
+    {
+      "particles": 3,
+      "degree": 2
+    },
+    {
+      "particles": 3,
+      "degree": 3
+    },
+    {
+      "particles": 3,
+      "degree": 4
+    },
+    {
+      "particles": 3,
+      "degree": 5
+    },
+    {
+      "particles": 3,
+      "degree": 6
+    },
+    {
+      "particles": 3,
+      "degree": 7
+    },
+    {
+      "particles": 3,
+      "degree": 8
+    },
+    {
+      "particles": 4,
+      "degree": 0
+    },
+    {
+      "particles": 4,
+      "degree": 1
+    },
+    {
+      "particles": 4,
+      "degree": 2
+    },
+    {
+      "particles": 4,
+      "degree": 3
+    },
+    {
+      "particles": 4,
+      "degree": 4
+    },
+    {
+      "particles": 4,
+      "degree": 5
+    },
+    {
+      "particles": 4,
+      "degree": 6
+    },
+    {
+      "particles": 4,
+      "degree": 7
+    },
+    {
+      "particles": 4,
+      "degree": 8
+    },
+    {
+      "particles": 4,
+      "degree": 9
+    },
+    {
+      "particles": 4,
+      "degree": 10
+    },
+    {
+      "particles": 4,
+      "degree": 11
+    },
+    {
+      "particles": 4,
+      "degree": 12
+    },
+    {
+      "particles": 4,
+      "degree": 13
+    },
+    {
+      "particles": 4,
+      "degree": 14
+    },
+    {
+      "particles": 4,
+      "degree": 15
+    },
+    {
+      "particles": 4,
+      "degree": 16
+    }
+  ],
+  "main_uniform_gap_theorem_proved": false,
+  "coherent_occupation_and_pair_lift_proved_sectorwise": true,
+  "normal_order_and_four_body_fock_form_proved_sectorwise": true,
+  "three_particle_gram_and_normal_coefficient_proved": true,
+  "complete_three_body_recoupling_spectrum_proved": true,
+  "compressed_swap_orthogonal_projectors_and_exact_ranks_proved": true,
+  "three_particle_normal_coefficient_spectral_resolution_proved": true,
+  "three_body_coefficient_lift_to_arbitrary_particle_number_proved": true,
+  "three_body_lift_positivity_monotonicity_and_normalization_proved": true,
+  "three_body_lift_hermitian_preservation_proved": true,
+  "three_body_rank_one_normal_order_rule_proved": true,
+  "all_particle_normal_order_recoupling_formula_proved": true,
+  "physical_hamiltonian_common_pair_kernel_proved": true,
+  "exact_total_weight_blocks_and_physical_matrices_proved": true,
+  "invertible_polynomial_coordinates_and_metric_proved": true,
+  "physical_weight_kernel_equals_rescaled_pair_matrix_kernel_proved": true,
+  "fixed_weight_physical_kernel_transport_for_Q_ge_d_proved": true,
+  "certificate_row_class_annihilates_physical_kernel_proved": true,
+  "occupation_and_highest_weight_certificate_matrix_correspondence_proved": false,
+  "retained_block_strict_positivity_certificates_formalized": false,
+  "occupation_coordinates_bijective_and_exact_orbit_metric_proved": true,
+  "occupation_pair_matrix_integer_entries_proved": true,
+  "occupation_cm_matrix_integer_entries_proved": true,
+  "normalized_certificate_coordinates_and_spherical_metric_proved": true,
+  "certificate_hamiltonian_sesquilinear_form_matrix_proved": true,
+  "complete_physical_highest_weight_coordinate_identification_proved": true,
+  "sorted_tuple_and_occupation_index_equivalence_proved": true,
+  "full_retained_certificate_matrix_identification_proved": false,
+  "all_26_retained_rational_cm_kernel_frames_proved": true,
+  "retained_cm_index_tables_complete_and_duplicate_free_proved": true,
+  "retained_cm_arrays_identified_with_physical_occupation_matrices_proved": true,
+  "all_26_retained_physical_highest_weight_frames_complete_proved": true,
+  "physical_statement_contracts_checked": true,
+  "physical_statement_contract_count": 99,
+  "required_theorems": [
+    "pairApply_idempotent",
+    "hamiltonian_hermitian",
+    "hamiltonian_isBosonic",
+    "modeNumber_factorial_moment",
+    "modeOccupation_eq_annihilate_normSq",
+    "coherent_pairOccupation_le_energy",
+    "coherent_occupation_bound",
+    "coherent_occupation_pair_lift",
+    "coherent_annihilation_pair_lift",
+    "pairAnnihilate_eq_annihilate_twice",
+    "energy_eq_sum_v0PairAnnihilate_normSq",
+    "projectionPairs_eq_pairAnnihilate_normSq",
+    "coherent_pairAnnihilation_bound",
+    "hamiltonian_normal_order",
+    "normalFourBody_nonneg",
+    "normalFourBody_eq_sum_v0PairAnnihilate_normSq",
+    "normal_order_fock_quadratic_form",
+    "threeBodyMap_isBosonic",
+    "threeBody_gram",
+    "threeBody_hamiltonian",
+    "threeBody_normal_coefficient",
+    "recoupling_endpoint_coefficient",
+    "threeBody_adjoint_inner",
+    "threeBodyDeficitOne_nonzero",
+    "threeBodyDeficitOne_kernel",
+    "threeBodyDeficitOne_swap",
+    "coherent_occupation_v0_sum_lift",
+    "normalFourBody_eq_sum_v0PairAnnihilate_energy_all_sectors",
+    "compressedSwap_auxRaise",
+    "compressedSwap_auxLower",
+    "compressedSwap_auxWeight",
+    "compressedSwap_spectrum",
+    "compressedSwap_complete_labeled_basis",
+    "compressedSwapProjector_sum",
+    "compressedSwapProjector_mul",
+    "compressedSwapProjector_hermitian",
+    "compressedSwap_projector_resolution",
+    "compressedSwapProjector_range",
+    "compressedSwapProjector_rank",
+    "compressedSwap_eigenspace_dimension",
+    "threeBodyGram_projector_resolution",
+    "threeBody_normal_spectral_resolution",
+    "threeBodyLift_id",
+    "threeBodyLift_nonneg",
+    "threeBodyLift_mono",
+    "threeBodyLift_hermitian",
+    "threeBodyLiftAbove_rankOne",
+    "threeCreate_inner",
+    "threeCreate_vacuum",
+    "normalThreeBody_eq_lift",
+    "normalThreeBody_eq_recoupling_lift",
+    "normalThreeBody_spectral_lift",
+    "threeBodySpectralBlock_lift_nonneg",
+    "threeBodySpectralBlock_lift_hermitian",
+    "hamiltonian_square_lifted_recoupling",
+    "hamiltonian_zero_iff_pairs_zero",
+    "hamiltonian_zero_iff_v0PairAnnihilate_zero",
+    "physicalHamiltonian_kernel_eq_common_pair_kernel",
+    "hamiltonian_weightProjection",
+    "weightHamiltonian_include",
+    "weightInclude_inner",
+    "weightHamiltonianMatrix_posSemidef",
+    "polynomialPairChannel_annihilate",
+    "hamiltonian_zero_iff_polynomialPairChannels",
+    "polynomialInner_diagonal",
+    "polynomialHamiltonian_kernel",
+    "polynomialPairBlock_include",
+    "polynomialPairMatrix_mulVec",
+    "weightHamiltonianMatrix_zero_iff_polynomialPairMatrices",
+    "capWeightStateEquiv_pairKernel_iff",
+    "weightKernelTransport_kernel_iff",
+    "physicalWeightKernel_finrank_stable",
+    "certificateRow_annihilates_kernel",
+    "certificateRow_gram_nonneg",
+    "normalThreeBody_kernel_zero",
+    "normalFourBody_kernel_zero",
+    "threeBodySpectralBlock_kernel_zero",
+    "occupationOfConfiguration_representative",
+    "occupationInclude_restrict",
+    "occupationOrbitMultiplicity_mul_factorial",
+    "occupationInclude_inner",
+    "polynomialOccupationInclude_pairChannel",
+    "occupationAnnihilate_twice_single",
+    "occupationPairBlockMatrix_apply",
+    "polynomialWeightOccupationInclude_pairMatrix",
+    "polynomialOccupationInclude_weight_inner",
+    "occupation_metric_script_factor",
+    "factorial_mul_choose_eq_sphereFactor",
+    "sphere_pair_factor",
+    "certificateWeightCoordinates_surjective_bosonic_weight",
+    "certificateWeightCoordinates_hamiltonian_kernel",
+    "certificateWeightCoordinates_inner",
+    "certificateWeightCoordinates_hamiltonian_inner",
+    "certificateHamiltonianFormMatrix_apply",
+    "polynomialCoordinates_tensorRaise",
+    "occupationCMBlockMatrix_apply",
+    "occupationHighestWeight_surjective",
+    "tensorRaise_certificateWeightCoordinates",
+    "tensorRaise_certificateWeightCoordinates_zero_iff",
+    "certificateWeightCoordinates_highest_surjective",
+    "kernelFrame_reconstruction",
+    "kernelFrame_finrank",
+    "sparseScaledFrameCheck_sound",
+    "mem_degreePartitions",
+    "degreePartitions_nodup",
+    "degreePartitionTableTuple_injective",
+    "degreePartitionTableTuple_surjective",
+    "indexedOccupationCMMatrix_eq_array",
+    "HasKernelFrame.ratCast",
+    "kernelFramePhysicalEquiv_apply",
+    "indexedKernelFramePhysical_finrank",
+    "occupationCMBlock_zero_degree",
+    "physicalHighestWeight_zero_degree_finrank",
+    "retainedCM_3_0_sparse_check",
+    "retainedCM_3_0_frame",
+    "retainedCM_3_0_kernel_finrank",
+    "retainedCM_3_0_columns_complete",
+    "retainedCM_3_0_physical_finrank",
+    "retainedParts_3_0_complete",
+    "retainedCM_3_1_sparse_check",
+    "retainedCM_3_1_frame",
+    "retainedCM_3_1_kernel_finrank",
+    "retainedCM_3_1_columns_complete",
+    "retainedCM_3_1_physical_finrank",
+    "retainedParts_3_1_complete",
+    "retainedCM_3_1_integer_entries",
+    "retainedCM_3_1_physical_matrix",
+    "retainedCM_3_1_physical_apply",
+    "retainedCM_3_2_sparse_check",
+    "retainedCM_3_2_frame",
+    "retainedCM_3_2_kernel_finrank",
+    "retainedCM_3_2_columns_complete",
+    "retainedCM_3_2_physical_finrank",
+    "retainedParts_3_2_complete",
+    "retainedCM_3_2_integer_entries",
+    "retainedCM_3_2_physical_matrix",
+    "retainedCM_3_2_physical_apply",
+    "retainedCM_3_3_sparse_check",
+    "retainedCM_3_3_frame",
+    "retainedCM_3_3_kernel_finrank",
+    "retainedCM_3_3_columns_complete",
+    "retainedCM_3_3_physical_finrank",
+    "retainedParts_3_3_complete",
+    "retainedCM_3_3_integer_entries",
+    "retainedCM_3_3_physical_matrix",
+    "retainedCM_3_3_physical_apply",
+    "retainedCM_3_4_sparse_check",
+    "retainedCM_3_4_frame",
+    "retainedCM_3_4_kernel_finrank",
+    "retainedCM_3_4_columns_complete",
+    "retainedCM_3_4_physical_finrank",
+    "retainedParts_3_4_complete",
+    "retainedCM_3_4_integer_entries",
+    "retainedCM_3_4_physical_matrix",
+    "retainedCM_3_4_physical_apply",
+    "retainedCM_3_5_sparse_check",
+    "retainedCM_3_5_frame",
+    "retainedCM_3_5_kernel_finrank",
+    "retainedCM_3_5_columns_complete",
+    "retainedCM_3_5_physical_finrank",
+    "retainedParts_3_5_complete",
+    "retainedCM_3_5_integer_entries",
+    "retainedCM_3_5_physical_matrix",
+    "retainedCM_3_5_physical_apply",
+    "retainedCM_3_6_sparse_check",
+    "retainedCM_3_6_frame",
+    "retainedCM_3_6_kernel_finrank",
+    "retainedCM_3_6_columns_complete",
+    "retainedCM_3_6_physical_finrank",
+    "retainedParts_3_6_complete",
+    "retainedCM_3_6_integer_entries",
+    "retainedCM_3_6_physical_matrix",
+    "retainedCM_3_6_physical_apply",
+    "retainedCM_3_7_sparse_check",
+    "retainedCM_3_7_frame",
+    "retainedCM_3_7_kernel_finrank",
+    "retainedCM_3_7_columns_complete",
+    "retainedCM_3_7_physical_finrank",
+    "retainedParts_3_7_complete",
+    "retainedCM_3_7_integer_entries",
+    "retainedCM_3_7_physical_matrix",
+    "retainedCM_3_7_physical_apply",
+    "retainedCM_3_8_sparse_check",
+    "retainedCM_3_8_frame",
+    "retainedCM_3_8_kernel_finrank",
+    "retainedCM_3_8_columns_complete",
+    "retainedCM_3_8_physical_finrank",
+    "retainedParts_3_8_complete",
+    "retainedCM_3_8_integer_entries",
+    "retainedCM_3_8_physical_matrix",
+    "retainedCM_3_8_physical_apply",
+    "retainedCM_4_0_sparse_check",
+    "retainedCM_4_0_frame",
+    "retainedCM_4_0_kernel_finrank",
+    "retainedCM_4_0_columns_complete",
+    "retainedCM_4_0_physical_finrank",
+    "retainedParts_4_0_complete",
+    "retainedCM_4_1_sparse_check",
+    "retainedCM_4_1_frame",
+    "retainedCM_4_1_kernel_finrank",
+    "retainedCM_4_1_columns_complete",
+    "retainedCM_4_1_physical_finrank",
+    "retainedParts_4_1_complete",
+    "retainedCM_4_1_integer_entries",
+    "retainedCM_4_1_physical_matrix",
+    "retainedCM_4_1_physical_apply",
+    "retainedCM_4_2_sparse_check",
+    "retainedCM_4_2_frame",
+    "retainedCM_4_2_kernel_finrank",
+    "retainedCM_4_2_columns_complete",
+    "retainedCM_4_2_physical_finrank",
+    "retainedParts_4_2_complete",
+    "retainedCM_4_2_integer_entries",
+    "retainedCM_4_2_physical_matrix",
+    "retainedCM_4_2_physical_apply",
+    "retainedCM_4_3_sparse_check",
+    "retainedCM_4_3_frame",
+    "retainedCM_4_3_kernel_finrank",
+    "retainedCM_4_3_columns_complete",
+    "retainedCM_4_3_physical_finrank",
+    "retainedParts_4_3_complete",
+    "retainedCM_4_3_integer_entries",
+    "retainedCM_4_3_physical_matrix",
+    "retainedCM_4_3_physical_apply",
+    "retainedCM_4_4_sparse_check",
+    "retainedCM_4_4_frame",
+    "retainedCM_4_4_kernel_finrank",
+    "retainedCM_4_4_columns_complete",
+    "retainedCM_4_4_physical_finrank",
+    "retainedParts_4_4_complete",
+    "retainedCM_4_4_integer_entries",
+    "retainedCM_4_4_physical_matrix",
+    "retainedCM_4_4_physical_apply",
+    "retainedCM_4_5_sparse_check",
+    "retainedCM_4_5_frame",
+    "retainedCM_4_5_kernel_finrank",
+    "retainedCM_4_5_columns_complete",
+    "retainedCM_4_5_physical_finrank",
+    "retainedParts_4_5_complete",
+    "retainedCM_4_5_integer_entries",
+    "retainedCM_4_5_physical_matrix",
+    "retainedCM_4_5_physical_apply",
+    "retainedCM_4_6_sparse_check",
+    "retainedCM_4_6_frame",
+    "retainedCM_4_6_kernel_finrank",
+    "retainedCM_4_6_columns_complete",
+    "retainedCM_4_6_physical_finrank",
+    "retainedParts_4_6_complete",
+    "retainedCM_4_6_integer_entries",
+    "retainedCM_4_6_physical_matrix",
+    "retainedCM_4_6_physical_apply",
+    "retainedCM_4_7_sparse_check",
+    "retainedCM_4_7_frame",
+    "retainedCM_4_7_kernel_finrank",
+    "retainedCM_4_7_columns_complete",
+    "retainedCM_4_7_physical_finrank",
+    "retainedParts_4_7_complete",
+    "retainedCM_4_7_integer_entries",
+    "retainedCM_4_7_physical_matrix",
+    "retainedCM_4_7_physical_apply",
+    "retainedCM_4_8_sparse_check",
+    "retainedCM_4_8_frame",
+    "retainedCM_4_8_kernel_finrank",
+    "retainedCM_4_8_columns_complete",
+    "retainedCM_4_8_physical_finrank",
+    "retainedParts_4_8_complete",
+    "retainedCM_4_8_integer_entries",
+    "retainedCM_4_8_physical_matrix",
+    "retainedCM_4_8_physical_apply",
+    "retainedCM_4_9_sparse_check",
+    "retainedCM_4_9_frame",
+    "retainedCM_4_9_kernel_finrank",
+    "retainedCM_4_9_columns_complete",
+    "retainedCM_4_9_physical_finrank",
+    "retainedParts_4_9_complete",
+    "retainedCM_4_9_integer_entries",
+    "retainedCM_4_9_physical_matrix",
+    "retainedCM_4_9_physical_apply",
+    "retainedCM_4_10_sparse_check",
+    "retainedCM_4_10_frame",
+    "retainedCM_4_10_kernel_finrank",
+    "retainedCM_4_10_columns_complete",
+    "retainedCM_4_10_physical_finrank",
+    "retainedParts_4_10_complete",
+    "retainedCM_4_10_integer_entries",
+    "retainedCM_4_10_physical_matrix",
+    "retainedCM_4_10_physical_apply",
+    "retainedCM_4_11_sparse_check",
+    "retainedCM_4_11_frame",
+    "retainedCM_4_11_kernel_finrank",
+    "retainedCM_4_11_columns_complete",
+    "retainedCM_4_11_physical_finrank",
+    "retainedParts_4_11_complete",
+    "retainedCM_4_11_integer_entries",
+    "retainedCM_4_11_physical_matrix",
+    "retainedCM_4_11_physical_apply",
+    "retainedCM_4_12_sparse_check",
+    "retainedCM_4_12_frame",
+    "retainedCM_4_12_kernel_finrank",
+    "retainedCM_4_12_columns_complete",
+    "retainedCM_4_12_physical_finrank",
+    "retainedParts_4_12_complete",
+    "retainedCM_4_12_integer_entries",
+    "retainedCM_4_12_physical_matrix",
+    "retainedCM_4_12_physical_apply",
+    "retainedCM_4_13_sparse_check",
+    "retainedCM_4_13_frame",
+    "retainedCM_4_13_kernel_finrank",
+    "retainedCM_4_13_columns_complete",
+    "retainedCM_4_13_physical_finrank",
+    "retainedParts_4_13_complete",
+    "retainedCM_4_13_integer_entries",
+    "retainedCM_4_13_physical_matrix",
+    "retainedCM_4_13_physical_apply",
+    "retainedCM_4_14_sparse_check",
+    "retainedCM_4_14_frame",
+    "retainedCM_4_14_kernel_finrank",
+    "retainedCM_4_14_columns_complete",
+    "retainedCM_4_14_physical_finrank",
+    "retainedParts_4_14_complete",
+    "retainedCM_4_14_integer_entries",
+    "retainedCM_4_14_physical_matrix",
+    "retainedCM_4_14_physical_apply",
+    "retainedCM_4_15_sparse_check",
+    "retainedCM_4_15_frame",
+    "retainedCM_4_15_kernel_finrank",
+    "retainedCM_4_15_columns_complete",
+    "retainedCM_4_15_physical_finrank",
+    "retainedParts_4_15_complete",
+    "retainedCM_4_15_integer_entries",
+    "retainedCM_4_15_physical_matrix",
+    "retainedCM_4_15_physical_apply",
+    "retainedCM_4_16_sparse_check",
+    "retainedCM_4_16_frame",
+    "retainedCM_4_16_kernel_finrank",
+    "retainedCM_4_16_columns_complete",
+    "retainedCM_4_16_physical_finrank",
+    "retainedParts_4_16_complete",
+    "retainedCM_4_16_integer_entries",
+    "retainedCM_4_16_physical_matrix",
+    "retainedCM_4_16_physical_apply"
+  ],
+  "axiom_dependencies": {
+    "BosonicLaughlin.spinWeight_raise_commutator": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.spinWeight_lower_commutator": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.auxLower_add": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.auxLower_smul": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.auxWeight_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.auxRaise_bilinear": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.auxLower_star": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.auxRaise_adjoint": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.spinRaise_spinLower_separate": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.auxRaise_lower_commutator": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.auxWeight_raise_commutator": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.auxWeight_lower_commutator": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.auxWeight_add": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.auxWeight_smul": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.aux_sl2_EF": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.aux_sl2_HE": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.aux_sl2_HF": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.spinRaiseCoeff_pos": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.spinRaiseCoeff_sq": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.spinRaise_add": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.spinRaise_smul": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.spinLower_add": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.spinLower_smul": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.auxRaise_add": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.auxRaise_smul": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.auxRaise_zero": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.auxRaise_power_support": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.auxRaise_nilpotent": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.spinRaise_castSucc": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.spinRaise_last": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.spinLower_succ": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.spinLower_zero": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.spinRaise_bilinear": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.spinLower_bilinear": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.spinLower_star": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.spinRaise_adjoint": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.spinRaise_spinLower": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.spinLower_spinRaise": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.spinRaise_lower_commutator": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.auxLower_power_succ": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.auxRaise_lower": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.auxWeight_lower": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.auxWeight_lower_power": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.auxRaise_lower_power": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.bosonicProjection_add": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.bosonicProjection_smul": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.bosonicProjection_isBosonic": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.bosonicProjection_eq_self": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.bosonicProjection_idempotent": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.inner_permutation_adjoint": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.bosonicProjection_inner_right": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.bosonicProjection_inner_left": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.bosonicProjection_hermitian": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.bosonicProjection_fixed_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.replacePair_swap": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairApply_swap": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.replacePair_permute": [
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairApply_permute": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairApply_permute_bosonic": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.hamiltonian_double": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.hamiltonian_isBosonic": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.certificateSectorScale_complex_ne_zero": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.certificateCoordinates_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.certificateCoordinates_polynomial": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.certificateCoordinates_isBosonic": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.certificateCoordinates_injective": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.certificateCoordinates_surjective_bosonic": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.certificateCoordinates_weightSupported_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.certificateWeightCoordinates_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.certificateWeightCoordinates_polynomial": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.certificateWeightCoordinates_isBosonic": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.certificateWeightCoordinates_weightSupported": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.certificateWeightCoordinates_injective": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.certificateWeightCoordinates_surjective_bosonic_weight": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.certificateCoordinates_hamiltonian_kernel": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.certificateWeightCoordinates_hamiltonian_kernel": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.certificateMetricWeight_pos": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.certificateWeightCoordinates_inner": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.certificateWeightCoordinates_hamiltonian_inner": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.certificateHamiltonianFormMatrix_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.certificateSectorScale_succ": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.certificateSectorScale_pred": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.tensorRaise_certificateCoordinates": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.tensorRaise_certificateWeightCoordinates": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.tensorRaise_certificateWeightCoordinates_zero_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.certificateWeightCoordinates_highest_surjective": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.certificateSectorScale_sq": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.certificateSectorScale_pos": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pair_choose_factorial": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.certificate_sector_pair_ratio": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.certificate_pair_gram_factor": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.orbitalTransfer_add": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.orbitalTransfer_smul": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.orbitalTransfer_isBosonic": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.certificateRow_annihilates_kernel": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.certificateRow_gram_annihilates_kernel": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.certificateRow_gram_nonneg": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.normalized_contraction_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.coherent_modePairContraction": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairApply_coherent_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.coherent_pairCost_le_energy": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.matrixQuadratic_one_eq_normSq": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.modeNumber_factorial_moment": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.modeOccupation_le_pairs_add_norm": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.coherent_pairOccupation_le_energy": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.coherent_occupation_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.coherent_occupation_pair_lift": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.modeOccupation_eq_annihilate_normSq": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.coherent_annihilation_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.coherent_annihilation_pair_lift": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.coherent_pairAnnihilation_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.coherentCoefficient_normSq": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.coherentOrbital_normalized": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairCoefficient_sqrt_choose": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.coherentCoefficient_pair_factorization": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.coherentOrbital_pair_expansion": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.coherentOrbital_pair_witness": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodyContract_spectator_raise": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodyContract_raise": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.compressedSwap_as_contraction": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.compressedSwap_auxRaise": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodyInsertion_spectator_lower": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodyInsertion_auxLower": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.tensorLowerThree_swap23": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodyContract_spectator_lower": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodyContract_lower": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.compressedSwap_auxLower": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.compressedSwap_auxWeight": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.sortedEnumerationOfTable_ofFn": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.v0PairAnnihilate_isBosonic": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.v0PairAnnihilate_normSq": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pair_energy_permute_bosonic": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.exists_pair_permutation": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pair_energy_eq_first_bosonic": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.unordered_pair_count": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.energy_eq_first_pair_bosonic": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.replacePair_cons_zero_one": [
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairApply_cons_zero_one": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.first_pair_energy_identity": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.energy_eq_sum_v0PairAnnihilate_normSq": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pair_cross_permute_bosonic": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pair_cross_first_bosonic": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.v0PairAnnihilate_inner": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.hamiltonian_inner_eq_first_pair": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.hamiltonian_inner_eq_sum_pair_inner": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.replacePair_at_other": [
+      "propext"
+    ],
+    "BosonicLaughlin.replacePair_commute_disjoint": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.fourBody_sum_six_exchange": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairApply_commute_disjoint": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairApply_product_energy_eq_normSq": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairApply_product_energy_nonneg": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.first_pair_inner_identity": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.replacePair_cons_two_three": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.fourBody_sum_two_three_exchange": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.v0PairAmplitude_pairApply_two_three": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.first_four_energy_identity": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.v0PairAmplitude_smul": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.v0PairAnnihilate_composition_normSq": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.sum_v0PairAnnihilate_composition_normSq": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairApply_product_permute_bosonic": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pair_product_energy_permute_bosonic": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.exists_four_permutation": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pair_product_energy_eq_first_bosonic": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.selectedCount_exclude_pair": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.disjoint_unordered_pair_count": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.normalFourBody_energy_eq_first_bosonic": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.normalFourBody_eq_sum_v0PairAnnihilate_normSq": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.normalFourBody_eq_sum_v0PairAnnihilate_energy": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.normalFourBody_eq_sum_v0PairAnnihilate_energy_all_sectors": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.normal_order_fock_quadratic_form": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.normal_order_annihilator_energy": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.coherent_occupation_v0_sum_lift": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairConfiguration_at_left": [
+      "propext"
+    ],
+    "BosonicLaughlin.pairConfiguration_at_right": [
+      "propext"
+    ],
+    "BosonicLaughlin.pairConfiguration_at_spectator": [
+      "propext"
+    ],
+    "BosonicLaughlin.sum_configurations_pair": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.replacePair_pairConfiguration": [
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairApply_pairConfiguration": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairApply_inner": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairApply_energy_identity": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairApply_energy_nonneg": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairVector_zero": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairContraction_zero": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairApply_northPole_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.inner_star": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairApply_hermitian": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.hamiltonian_inner": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.hamiltonian_hermitian": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.energy_eq_sum_pairs": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.energy_nonneg": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.auxRaise_supported_pred": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.auxRaise_supported_zero": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.auxHighestWeight_supported": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.auxHighestWeight_first": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.auxHighestWeight_nonzero": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.auxHighestWeight_raise": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.auxHighestWeight_weight": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.auxRaise_kernel_firstRow_injective": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.auxHighestWeight_unique": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.auxRaise_kernel_highDeficit_zero": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.auxRaise_kernel_deficit_le": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.auxHighestWeight_swap_endpoint": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.auxHighestWeight_swap_of_raise_commutes": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.indexedOccupationCMMatrix_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.indexedOccupationCMMatrix_eq_array": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.kernelFramePhysicalEquiv_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.kernelFramePhysical_finrank": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.indexedOccupationCMMatrix_reindex": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.sortedKernelFramePhysical_finrank": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.indexedKernelFrame_matrix_reindex": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.indexedKernelFramePhysical_finrank": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.kernelFrame_columns_in_kernel": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.kernelFrame_left_inverse": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.kernelFrame_reconstruction": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.kernelFrame_finrank": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.HasKernelFrame.map": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.HasKernelFrame.ratCast": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.matrix_reindex_mulVec": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.matrix_reindex_mulVec_zero_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.matrixKernelReindexEquiv_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.matrixKernelReindex_finrank": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.kernelFrameReindexEquiv_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.kernelFrameReindex_finrank": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.kernelFrameRatCastReindex_finrank": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.update_slotConfiguration": [
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.modeApply_slotConfiguration": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.modeMatrix_inner": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.modeMatrix_energy_identity": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.modeApply_pairConfiguration": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.modeMatrix_pair_inner": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.modeMatrix_pair_energy_identity": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.projectionNumber_mode_energy_identity": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.projectionPairs_mode_energy_identity": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairVector_exchange": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairApply_add": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairApply_smul": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.hamiltonian_zero": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.hamiltonian_add": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.hamiltonian_smul": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.hamiltonian_small_sector": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.slotConfiguration_at_slot": [
+      "propext"
+    ],
+    "BosonicLaughlin.slotSpectator_configuration": [
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.slotConfiguration_spectator": [
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.sum_configurations_slot": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.modeMatrix_mulVec": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.modeMatrix_hermitian": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.modeApply_idempotent": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.modeMatrix_idempotent": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.modeApply_commute_of_ne": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.modeMatrix_commute": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.multiplet_dimension_sum": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.auxLower_power_nonzero": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.auxHighestWeight_weight_nat": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.auxDescendant_nonzero": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.auxDescendant_weight": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.auxDescendant_linearIndependent": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.compressedSwap_descendant": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.compressedSwap_eigenspace_dimension_lower": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodyAux_finrank": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.compressedSwap_eigenspace_dimensions_upper": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.compressedSwap_eigenspace_dimension": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairApply_hamiltonian": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.hamiltonian_normal_order": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.normal_order_quadratic_form": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.normalFourBody_inner": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.normalFourBody_energy": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.normalFourBody_nonneg": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.normalFourBody_hermitian": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.normalThreeBody_hermitian": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.normalFourBody_small_sector": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.three_particle_square": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.northPole_pairOccupation_le_energy": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.northPole_occupation_le_energy_add_norm": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.northPole_occupation_lift": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.update_permute": [
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.modeApply_permute_bosonic": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.mode_energy_permute_bosonic": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.sum_configurations_cons": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.update_cons_zero": [
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.mode_zero_energy": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.annihilate_normSq": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.projectionNumber_eq_annihilate_normSq": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.selectedCount_succ": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.selectedPairs_succ": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.selectedPairs_eq_choose": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupation_scalar_bound": [
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.normSq_eq_sum": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.orbitalPairOccupation_eq_pair_sum": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.orbitalOccupation_le_pairs_add_norm": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupationWeight_replace": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupationCM_weightSupported": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupationCMBlock_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupationCMBlock_extend": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupationCMBlock_zero_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupationCMBlockMatrix_mulVec": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupationCMBlockMatrix_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialWeightOccupationInclude_CMBlock": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialWeightOccupationInclude_CMBlock_zero_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.tensorRaise_weightOccupation_zero_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.weightTensorRaise_occupation_zero_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupationHighestWeight_mem_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupationHighestWeight_surjective": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupationOfConfiguration_cons": [
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupationOfConfiguration_permute": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupationOfConfiguration_weight": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupationOfConfiguration_representative": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupationOfConfiguration_surjective": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.isBosonic_eq_of_occupation_eq": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupationInclude_isBosonic": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupationRestrict_include": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupationInclude_restrict": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupationInclude_injective": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupationReplace_val": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupationReplace_mem": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupationReplace_inverse": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupationOfConfiguration_mem": [
+      "propext"
+    ],
+    "BosonicLaughlin.occupationOfConfiguration_update": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.sum_slots_occupation_count": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupationReplace_factorial": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupationCM_add": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupationCM_smul": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialOccupationInclude_CM": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialOccupationInclude_CM_zero_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupationCMMatrix_mulVec": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupationCMMatrix_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupationReplace_eq_iff_reverse": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.tensorRaise_polynomialOccupation_zero_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.tensorRaise_smul_zero_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.tensorRaise_scaledPolynomialOccupation_zero_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupationOfConfiguration_eq_exists_permutation": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupationOfConfiguration_count": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupationOrbitMultiplicity_mul_factorial": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupationOrbitMultiplicity_eq": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupationInclude_inner": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupationPairChannel_weightSupported": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupationPairChannel_above_weight": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupationPairBlock_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupationPairBlock_extend": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupationPairBlock_zero_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupationPairBlockMatrix_mulVec": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupationWeightExtend_single": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupationPairBlockMatrix_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialWeightOccupationInclude_pairBlock": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialWeightOccupationInclude_pairMatrix": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialHamiltonian_occupation_kernel": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialHamiltonian_weightOccupation_kernel": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupationFactorial_pos": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupationFactorial_cons": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupation_cons_val": [
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialOccupationInclude_isBosonic": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialOccupationInclude_injective": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupationPairChannel_add": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupationPairChannel_smul": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialOccupationInclude_pairChannel": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialOccupationInclude_pairChannel_zero_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupationAnnihilate_twice_single": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.multiset_cons_twice_iff_erase": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupationPairMatrix_mulVec": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupationPairMatrix_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.multisetOccupationFactorial_pos": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.multisetOccupationFactorial_cons": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.multisetOccupationFactorial_cons_twice": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialOccupationInclude_inner": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupationWeightExtend_sum": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialOccupationInclude_weight_inner": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupation_product_count": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupationOrbitalFactorial_count": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupationSphereProduct_count": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupationPlanarMetric_eq": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupation_metric_script_factor": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupationOfConfiguration_injective_monotone": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupationSortedRepresentative_monotone": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupationOfConfiguration_sortedRepresentative": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupationSortedRepresentative_weight": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.sortedDegreeTuple_entry_le": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupationBinomialProduct_pos": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupationSphereProduct_pos": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.multiset_factorial_choose_product": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupation_factorial_choose_product": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialScale_sq_eq_occupationBinomialProduct": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupation_metric_factor": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupationWeight_cons": [
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupationWeightExtend_supported": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupationWeightRestrict_extend": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupationWeightExtend_restrict_supported": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.weightOccupationOfConfiguration_surjective": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.weightOccupationInclude_injective": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupationInclude_weightSupported": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.weightOccupationInclude_include": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.weightOccupationInclude_isBosonic": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.weightOccupationInclude_surjective_bosonic": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.orbital_le_configurationWeight": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.capConfiguration_weight": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.capConfiguration_permute": [
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.capConfiguration_injective": [
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.lower_includeWeightConfiguration": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.include_lowerWeightConfiguration": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.capWeightStateEquiv_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.capWeightStateEquiv_symm_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.capWeightStateEquiv_include": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.weightIsBosonic_iff_permute": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.capWeightStateEquiv_bosonic_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.capOrbital_injective": [
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.sum_orbital_cap": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.capConfiguration_cons": [
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.cap_configurationWeight_cons": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.weightSupported_pair_zero_of_large_label": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialPairChannel_cap": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialPairChannel_zero_of_large_weight": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialPairChannels_cap_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialPairChannel_outside": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialPairChannels_nat_iff_fin": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.capWeightStateEquiv_pairKernel_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairWeight_nonneg": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairCoefficient_nonneg": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairCoefficient_sq": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairWeight_sum": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairCoefficient_normalized": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairCoefficient_exchange": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairCoefficient_zero_left": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairCoefficient_zero_right": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.cons_comp_fixFirst": [
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.annihilate_isBosonic": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairAnnihilate_isBosonic": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairAnnihilate_factor": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairAnnihilate_eq_annihilate_twice": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairCoefficient_normalized_fin": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairCoefficient_normalized_complex": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairBlockAmplitude_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairBlockApply_idempotent": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairBlock_kernel_hermitian": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairBlock_energy_identity": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairBlock_energy_nonneg": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairInsert_lower": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairInsert_raise": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairInsert_bilinear": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairContract_raise_bilinear": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairContract_raise": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairContract_lower_bilinear": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairContract_lower": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.insertion_raise_first": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.insertion_raise_second": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodyInsertion_pair_raise": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.insertion_lower_first": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.insertion_lower_second": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodyInsertion_pair_lower": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodyInsertion_spectator_raise": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodyInsertion_auxRaise": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.tensorRaiseThree_swap23": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.binomialRoot_nonneg": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.binomialRoot_sq": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.binomialRoot_pos": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.binomialRoot_zero": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.binomialRoot_ladder_left": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.binomialRoot_ladder_right": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairVector_binomialRoot": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pair_roots_raise": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodyInsertion_single": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.binomialRoot_lower_ratio": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.modeApply_permute": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.modePairApply_permute_bosonic": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.modePair_energy_permute_bosonic": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.modePair_energy_eq_first_bosonic": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairAnnihilate_normSq": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.modeApply_pair_formula": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.modeApply_cons_zero_one": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.modePair_first_energy_identity": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.projectionPairs_eq_pairAnnihilate_normSq": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.v0PairSandwichForm_right_zero": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.v0PairSandwichForm_left_zero": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.v0PairRightFactoredOperator_kernel_zero": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.operator_kernel_zero_of_v0PairSandwichForm": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairApply_product_kernel_zero": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.normalThreeBody_kernel_zero": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.normalFourBody_kernel_zero": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodyAdjoint_eq_v0PairAnnihilate": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodyAdjoint_kernel_zero": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodyAuxCoefficient_kernel_zero": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodySpectralBlock_kernel_zero": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairVector_row_norm": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairVector_normalized": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairVector_orthogonal": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairVector_overlap": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairVector_overlap_complex": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.replacePair_replacePair": [
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.replacePair_left": [
+      "propext"
+    ],
+    "BosonicLaughlin.replacePair_right": [
+      "propext"
+    ],
+    "BosonicLaughlin.pairTensorAmplitude_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairApply_idempotent": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.mem_degreePartitions": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.degreePartitions_nodup": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.ofFn_partitionTuple": [
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.partitionTuple_monotone": [
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.partitionTuple_sum": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.sortedDegreeTuple_mem_partitions": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.ofFn_degreePartitionTableTuple": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.degreePartitionTableTuple_injective": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.degreePartitionTableTuple_surjective": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.stateNormSq_nonneg": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.stateNormSq_zero_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairApply_energy_eq_normSq": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairApply_energy_zero_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.energy_eq_sum_pair_normSq": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.energy_zero_iff_ordered_pairs_zero": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.hamiltonian_zero_of_ordered_pairs_zero": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.energy_zero_iff_hamiltonian_zero": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.hamiltonian_zero_iff_ordered_pairs_zero": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.hamiltonian_zero_iff_pairs_zero": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.energy_zero_iff_v0PairAnnihilate_zero": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.hamiltonian_zero_iff_v0PairAnnihilate_zero": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.physicalHamiltonian_kernel_eq_common_pair_kernel": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.weightHamiltonian_zero_iff_polynomialPairBlocks": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.weightHamiltonian_zero_iff_polynomialPairMatrices": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.weightHamiltonianMatrix_zero_iff_polynomialPairMatrices": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.hamiltonian_weight_zero_iff_polynomialPairMatrices": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialScale_pos": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialScale_ne_zero": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialScale_cons": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialScale_permute": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialCoordinates_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialCoordinates_bosonic_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialPairChannel_add": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialPairChannel_smul": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairVector_polynomial_scale": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialPairChannel_amplitude": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialPairChannel_annihilate": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialPairChannel_zero_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.hamiltonian_zero_iff_polynomialPairChannels": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.v0PairAnnihilate_polynomial_inverse": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.stateInner_real_smul_both": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.v0PairAnnihilate_polynomial_inner": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialHamiltonian_gram": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialCM_add": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialCM_smul": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialCM_isBosonic": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialCM_weightSupported": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialCM_zero_weight": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialCM_zero_flux": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialCM_vacuum": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialScale_update": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialScale_eq_mul_erase": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialScale_raise_coefficient": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialCoordinates_tensorRaise": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialCM_coordinates_zero_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.weightPolynomialCM_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.weightPolynomialCM_include": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.weightPolynomialCM_isBosonic": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.weightPolynomialCM_zero_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialWeightCoordinates_tensorRaise": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialCMMatrix_mulVec": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.tensorRaiseMatrix_zero_iff_polynomialCMMatrix": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.mem_polynomialHighestWeightSubspace": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialWeightCoordinates_highest_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialCoordinates_symm_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialInner_diagonal": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialInner_nonneg": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialInner_zero_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialInner_coordinates": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialHamiltonian_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialHamiltonian_intertwine": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialHamiltonian_inner": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialHamiltonian_hermitian": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialHamiltonian_kernel": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialOccupationCoordinateEquiv_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialOccupationInclude_surjective_bosonic": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialWeightOccupationInclude_isBosonic": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialWeightOccupationInclude_injective": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialWeightOccupationInclude_surjective_bosonic": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialWeightOccupationInclude_include": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.configurationWeight_cons": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialPairChannel_weightSupported": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialPairChannel_above_weight": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialPairBlock_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialPairBlock_include": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialPairBlock_above_weight": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialPairBlock_zero_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialPairMatrix_mulVec": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialPairMatrix_zero_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialHamiltonian_weight_kernel": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialHamiltonian_weight_matrix_kernel": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialWeightCoordinates_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialWeightCoordinates_include": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialWeightCoordinates_restrict": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.polynomialWeightCoordinates_bosonic_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.weightHamiltonian_zero_iff_include": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.weightHamiltonian_zero_iff_polynomialChannels": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.projectionNumber_succ": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.projectionPairs_succ": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.commute_projectionNumber": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.commute_projectionPairs": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.projection_posSemidef": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.projection_sandwich": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.projection_occupation_decomposition": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.projection_occupation_positive": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.projection_occupation_form": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.projection_factorial_moment": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.recouplingRatio_zero": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.recouplingRatio_pos": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.recouplingRatio_succ": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.recouplingRatio_one": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.recouplingRatio_eq_choose_ratio": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.recouplingRatio_le_half_pow": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairCoefficient_endpoint_recoupling": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.highestWeightCoefficient_zero": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.highestWeightCoefficient_succ": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.highestWeightStepSq_nonneg": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.highestWeightStepSq_pos": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.highestWeightCoefficient_ne_zero": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.highestWeightCoefficient_ratio": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.highestWeightCoefficient_ladder_cancel": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.highestWeightStepSq_product": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.highestWeightStepSq_endpoint_product": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.highestWeightCoefficient_endpoint": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.recoupling_endpoint_coefficient": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.recoupling_one_gram_scalar": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairVector_one": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodyDeficitOne_nonzero": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodyDeficitOne_insertion": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodyDeficitOne_kernel": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodyDeficitOne_swap": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.recouplingRatio_succ_lt": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.recouplingRatio_strict_decrease": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.recouplingEigenvalue_abs": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.recouplingEigenvalue_injective": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedParts_3_0_complete": [],
+    "BosonicLaughlin.retainedParts_3_1_complete": [],
+    "BosonicLaughlin.retainedCM_3_1_integer_entries": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_3_1_physical_matrix": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedParts_3_2_complete": [],
+    "BosonicLaughlin.retainedCM_3_2_integer_entries": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_3_2_physical_matrix": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedParts_3_3_complete": [],
+    "BosonicLaughlin.retainedCM_3_3_integer_entries": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_3_3_physical_matrix": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedParts_3_4_complete": [],
+    "BosonicLaughlin.retainedCM_3_4_integer_entries": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_3_4_physical_matrix": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedParts_3_5_complete": [],
+    "BosonicLaughlin.retainedCM_3_5_integer_entries": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_3_5_physical_matrix": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedParts_3_6_complete": [],
+    "BosonicLaughlin.retainedCM_3_6_integer_entries": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_3_6_physical_matrix": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedParts_3_7_complete": [],
+    "BosonicLaughlin.retainedCM_3_7_integer_entries": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_3_7_physical_matrix": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedParts_3_8_complete": [],
+    "BosonicLaughlin.retainedCM_3_8_integer_entries": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_3_8_physical_matrix": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedParts_4_0_complete": [],
+    "BosonicLaughlin.retainedParts_4_1_complete": [],
+    "BosonicLaughlin.retainedCM_4_1_integer_entries": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_1_physical_matrix": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedParts_4_2_complete": [],
+    "BosonicLaughlin.retainedCM_4_2_integer_entries": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_2_physical_matrix": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedParts_4_3_complete": [],
+    "BosonicLaughlin.retainedCM_4_3_integer_entries": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_3_physical_matrix": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedParts_4_4_complete": [],
+    "BosonicLaughlin.retainedCM_4_4_integer_entries": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_4_physical_matrix": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedParts_4_5_complete": [],
+    "BosonicLaughlin.retainedCM_4_5_integer_entries": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_5_physical_matrix": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedParts_4_6_complete": [],
+    "BosonicLaughlin.retainedCM_4_6_integer_entries": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_6_physical_matrix": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedParts_4_7_complete": [],
+    "BosonicLaughlin.retainedCM_4_7_integer_entries": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_7_physical_matrix": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedParts_4_8_complete": [],
+    "BosonicLaughlin.retainedCM_4_8_integer_entries": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_8_physical_matrix": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedParts_4_9_complete": [],
+    "BosonicLaughlin.retainedCM_4_9_integer_entries": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_9_physical_matrix": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedParts_4_10_complete": [],
+    "BosonicLaughlin.retainedCM_4_10_integer_entries": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_10_physical_matrix": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedParts_4_11_complete": [],
+    "BosonicLaughlin.retainedCM_4_11_integer_entries": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_11_physical_matrix": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedParts_4_12_complete": [],
+    "BosonicLaughlin.retainedCM_4_12_integer_entries": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_12_physical_matrix": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedParts_4_13_complete": [],
+    "BosonicLaughlin.retainedCM_4_13_integer_entries": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_13_physical_matrix": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedParts_4_14_complete": [],
+    "BosonicLaughlin.retainedCM_4_14_integer_entries": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_14_physical_matrix": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedParts_4_15_complete": [],
+    "BosonicLaughlin.retainedCM_4_15_integer_entries": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_15_physical_matrix": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedParts_4_16_complete": [],
+    "BosonicLaughlin.retainedCM_4_16_integer_entries": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_16_physical_matrix": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_3_0_sparse_check": [],
+    "BosonicLaughlin.retainedCM_3_0_frame": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_3_0_kernel_finrank": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_3_1_sparse_check": [],
+    "BosonicLaughlin.retainedCM_3_1_frame": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_3_1_kernel_finrank": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_3_2_sparse_check": [],
+    "BosonicLaughlin.retainedCM_3_2_frame": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_3_2_kernel_finrank": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_3_3_sparse_check": [],
+    "BosonicLaughlin.retainedCM_3_3_frame": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_3_3_kernel_finrank": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_3_4_sparse_check": [],
+    "BosonicLaughlin.retainedCM_3_4_frame": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_3_4_kernel_finrank": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_3_5_sparse_check": [],
+    "BosonicLaughlin.retainedCM_3_5_frame": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_3_5_kernel_finrank": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_3_6_sparse_check": [],
+    "BosonicLaughlin.retainedCM_3_6_frame": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_3_6_kernel_finrank": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_3_7_sparse_check": [],
+    "BosonicLaughlin.retainedCM_3_7_frame": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_3_7_kernel_finrank": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_3_8_sparse_check": [],
+    "BosonicLaughlin.retainedCM_3_8_frame": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_3_8_kernel_finrank": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_0_sparse_check": [],
+    "BosonicLaughlin.retainedCM_4_0_frame": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_0_kernel_finrank": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_1_sparse_check": [],
+    "BosonicLaughlin.retainedCM_4_1_frame": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_1_kernel_finrank": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_2_sparse_check": [],
+    "BosonicLaughlin.retainedCM_4_2_frame": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_2_kernel_finrank": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_3_sparse_check": [],
+    "BosonicLaughlin.retainedCM_4_3_frame": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_3_kernel_finrank": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_4_sparse_check": [],
+    "BosonicLaughlin.retainedCM_4_4_frame": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_4_kernel_finrank": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_5_sparse_check": [],
+    "BosonicLaughlin.retainedCM_4_5_frame": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_5_kernel_finrank": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_6_sparse_check": [],
+    "BosonicLaughlin.retainedCM_4_6_frame": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_6_kernel_finrank": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_7_sparse_check": [],
+    "BosonicLaughlin.retainedCM_4_7_frame": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_7_kernel_finrank": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_8_sparse_check": [],
+    "BosonicLaughlin.retainedCM_4_8_frame": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_8_kernel_finrank": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_9_sparse_check": [],
+    "BosonicLaughlin.retainedCM_4_9_frame": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_9_kernel_finrank": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_10_sparse_check": [],
+    "BosonicLaughlin.retainedCM_4_10_frame": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_10_kernel_finrank": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_11_sparse_check": [],
+    "BosonicLaughlin.retainedCM_4_11_frame": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_11_kernel_finrank": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_12_sparse_check": [],
+    "BosonicLaughlin.retainedCM_4_12_frame": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_12_kernel_finrank": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_13_sparse_check": [],
+    "BosonicLaughlin.retainedCM_4_13_frame": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_13_kernel_finrank": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_14_sparse_check": [],
+    "BosonicLaughlin.retainedCM_4_14_frame": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_14_kernel_finrank": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_15_sparse_check": [],
+    "BosonicLaughlin.retainedCM_4_15_frame": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_15_kernel_finrank": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_16_sparse_check": [],
+    "BosonicLaughlin.retainedCM_4_16_frame": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_16_kernel_finrank": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_3_0_physical_finrank": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_3_1_physical_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_3_1_columns_complete": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_3_1_physical_finrank": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_3_2_physical_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_3_2_columns_complete": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_3_2_physical_finrank": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_3_3_physical_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_3_3_columns_complete": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_3_3_physical_finrank": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_3_4_physical_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_3_4_columns_complete": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_3_4_physical_finrank": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_3_5_physical_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_3_5_columns_complete": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_3_5_physical_finrank": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_3_6_physical_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_3_6_columns_complete": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_3_6_physical_finrank": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_3_7_physical_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_3_7_columns_complete": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_3_7_physical_finrank": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_3_8_physical_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_3_8_columns_complete": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_3_8_physical_finrank": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_0_physical_finrank": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_1_physical_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_1_columns_complete": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_1_physical_finrank": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_2_physical_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_2_columns_complete": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_2_physical_finrank": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_3_physical_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_3_columns_complete": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_3_physical_finrank": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_4_physical_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_4_columns_complete": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_4_physical_finrank": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_5_physical_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_5_columns_complete": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_5_physical_finrank": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_6_physical_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_6_columns_complete": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_6_physical_finrank": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_7_physical_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_7_columns_complete": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_7_physical_finrank": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_8_physical_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_8_columns_complete": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_8_physical_finrank": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_9_physical_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_9_columns_complete": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_9_physical_finrank": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_10_physical_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_10_columns_complete": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_10_physical_finrank": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_11_physical_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_11_columns_complete": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_11_physical_finrank": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_12_physical_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_12_columns_complete": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_12_physical_finrank": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_13_physical_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_13_columns_complete": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_13_physical_finrank": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_14_physical_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_14_columns_complete": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_14_physical_finrank": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_15_physical_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_15_columns_complete": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_15_physical_finrank": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_16_physical_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_16_columns_complete": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_16_physical_finrank": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.sortedDegreeTuple_zero_eq": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupationCMBlock_zero_degree": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.zeroDegreePhysicalHighestEquiv_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.physicalHighestWeight_zero_degree_finrank": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_3_0_U_identity": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_0_U_identity": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_3_0_columns_complete": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.retainedCM_4_0_columns_complete": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupationNatMultiset_mem": [
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupationNatMultiset_mem_le": [
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupationNatMultiset_count": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupationNatMultiset_replace_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.multisetCMEntry_above_cap": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupationCMMatrix_nat": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupationNatMultiset_mem_le_weight": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.occupationCMBlockMatrix_nat": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.sortedDegreeOccupationEquiv_nat": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.sortedCMCoefficient_eq_occupationCMBlockMatrix": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.sparseIntInsert_eval": [
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.sparseIntRowAdd_eval": [
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.sparseIntRowScale_eval": [
+      "propext"
+    ],
+    "BosonicLaughlin.sparseIntMulRow_eval": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.sparseIntMulRow_matrix": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.sparseInt_single_eval": [
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.sparseScaledFrameCheck_integer": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.sparseRatMatrix_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.intMatrix_map_scaled_one": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.sparseScaledFrameCheck_sound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.spectralPartitionDiagonal_sum": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.spectralPartitionDiagonal_mul": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.spectralPartitionDiagonal_hermitian": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.spectralPartition_sum": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.spectralPartition_mul": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.spectralPartition_hermitian": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.spectralPartition_resolution": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.sphereFactor_zero": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.sphereFactor_succ": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.sphereFactor_pos": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.factorial_mul_choose_eq_sphereFactor": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.sphereFactor_eq_factorial_choose": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.sphere_pair_factor": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.stateInner_add_right": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.stateInner_smul_right": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.stateInner_smul_left": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.stateInner_ext": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.normalThreeBody_add": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.normalThreeBody_smul": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.compressedSwapEigenbasis_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.compressedSwapEigenbasis_eigenvector": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.compressedSwapEigenbasis_nonzero": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.compressedSwapEigenbasis_complete": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.compressedSwap_mem_spectrum_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.compressedSwap_spectrum_exists_eigenvector": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.compressedSwap_eigenvector_mem_spectrum": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.compressedSwap_highest_eigenvalue_of_commutation": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.compressedSwap_eigenvalue_of_commutation": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.compressedSwapProjector_eigen_left": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.compressedSwapProjector_eigenvector_other": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.compressedSwapProjector_fixed_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.compressedSwapProjectorLinear_fixed_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.compressedSwapProjectorLinear_idempotent": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.compressedSwapProjector_range": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.compressedSwapProjector_rank": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.compressedSwapProjectorLinear_nonzero": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.compressedSwapSpectralLabel_spec": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.compressedSwapProjector_sum": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.compressedSwapProjector_mul": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.compressedSwapProjector_idempotent": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.compressedSwapProjector_hermitian": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.compressedSwap_projector_resolution": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.compressedSwapProjector_eigen": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.compressedSwap_highestWeight": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.compressedSwap_eigenvalue": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.compressedSwap_spectrum": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.compressedSwapEigenvalues_label": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.compressedSwap_complete_labeled_basis": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.compressedSwap_add": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.compressedSwap_smul": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.compressedSwap_zero": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.compressedSwap_matrix_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.compressedSwapMatrix_mulVec": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.compressedSwapMatrix_hermitian": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.compressedSwapMatrix_off_deficit": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.auxDeficitProject_supported": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.auxDeficitProject_eq_self": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.auxDeficitProject_smul": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.compressedSwap_deficit_project": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.compressedSwap_supported": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.auxDeficitProject_exists_nonzero": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.tensorRaise_add": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.tensorRaise_smul": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.tensorRaise_isBosonic": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.configurationWeight_raise_update": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.tensorRaise_weightSupported": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.tensorRaise_zero_weight": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.tensorRaise_zero_flux": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.tensorRaise_vacuum": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.weightTensorRaise_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.weightTensorRaise_include": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.weightTensorRaise_isBosonic": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.weightTensorRaise_zero_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.tensorRaiseMatrix_mulVec": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.tensorRaiseMatrix_zero_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.mem_physicalHighestWeightSubspace": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeAnnihilate_add": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeAnnihilate_smul": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeCreate_add": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeCreate_smul": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeCreate_isBosonic": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeCreate_vacuum": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodySlice_tail_permute": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeAnnihilate_isBosonic": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeAnnihilate_bosonic_formula": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeCreate_inner": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodyLiftAbove_rankOne": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodyAuxCoefficient_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodyAuxCoefficient_isBosonic": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodyAuxCoefficient_inner": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodyAuxCoefficient_nonneg": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodyAuxCoefficient_hermitian": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.compressedSwapProjector_aux_hermitian": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.compressedSwapProjector_quadratic_nonneg": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodySpectralBlock_nonneg": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodySpectralBlock_hermitian": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.normalThreeBody_small_sector": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.normalThreeBody_inner": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pair_product_inner_permute_bosonic": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.exists_three_permutation": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.overlap_pair_inner_eq_first_bosonic": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.overlap_unordered_pair_count": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.overlapping_pair_count_factor": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.normalThreeBody_inner_eq_first_bosonic": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodyInsertion_exchange": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodyMap_isBosonic": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodyInsertion_contraction": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodyInsertion_cross_contraction": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBody_gram": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodyMap_add": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodyMap_smul": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodyAdjoint_add": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodyAdjoint_smul": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.bosonic_three_swap12": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.bosonic_three_cycle": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBody_hamiltonian": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.sum_configurations_three": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodyInsertion_inner": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBody_adjoint_inner": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodyLiftAbove_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodyLift_above": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodyLift_small_sector": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodyLiftAbove_isBosonic": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodyLiftAbove_inner": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodyLiftAbove_inner_bosonic": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodyLiftAbove_nonneg": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodyLift_nonneg": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodyLiftAbove_mono": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodyLift_mono": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodyLiftAbove_congr": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.firstThreeApply_id": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodyLiftAbove_id": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodyLift_id": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodyLiftAbove_add": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodyLiftAbove_smul": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodyLift_add": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodyLift_smul": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodyLift_congr": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.bosonic_stateInner_ext": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodyLiftAbove_hermitian": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodyLift_hermitian": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.normalThreeBody_inner_eq_slice_sum": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.normalThreeBody_eq_lift_above": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.normalThreeBody_eq_lift": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBody_normal_coefficient": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodyInsert_slot": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodyInsert_tail": [
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodyHead_insert": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodyTail_insert": [
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodyInsert_head_tail": [
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodyHead_eq_vector": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodySlice_add": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodySlice_smul": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodyTailSlot_not_range": [
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodyInsert_permute": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodySlice_isBosonic": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodyInsert_update": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodyInsert_replacePair": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodySlice_pairApply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodySlice_pairProduct": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.sum_configurations_threeBody": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.inner_threeBodySlices": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.inner_firstThree_pairProduct": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodySlice_firstThreeApply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.firstThreeApply_add": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.firstThreeApply_smul": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.inner_firstThreeApply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodyGramMatrix_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodyGram_projector_resolution": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.compressedSwap_aux_resolution": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBody_normal_spectral_resolution": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.normalThreeBody_eq_recoupling_lift": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.normalThreeBody_spectral_lift": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodyAux_lift_nonneg": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodySpectralBlock_lift_nonneg": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.threeBodySpectralBlock_lift_hermitian": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.hamiltonian_square_lifted_recoupling": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.unorderedPairSum_double": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.unorderedPairSum_permute": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.overlappingPairTerm_swap_left": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.overlappingPairTerm_swap_right": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.normalThreeBodyApply_overlap_sum": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.overlappingPairTerm_permute_bosonic": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.normalThreeBodyApply_isBosonic": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.weightInclude_inner": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.weightHamiltonian_hermitian": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.weightHamiltonian_nonneg": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.weightBosonicProjection_include": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.weightBosonicProjection_isBosonic": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.weightBosonicProjection_eq_self": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.weightBosonicProjection_fixed_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.weightBosonicProjection_idempotent": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.weightBosonicProjection_hermitian": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.weightHamiltonianMatrix_mulVec": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.weightInner_single_left": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.weightInner_single_right": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.weightHamiltonianMatrix_hermitian": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.weightHamiltonianMatrix_nonneg": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.weightHamiltonianMatrix_posSemidef": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.configurationWeight_le": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.configurationWeight_permute": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.configurationWeight_update": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.configurationWeight_replacePair": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.weightProjection_add": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.weightProjection_smul": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.weightProjection_supported": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.weightProjection_eq_self": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.weightProjection_fixed_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.weightProjection_idempotent": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.weightProjection_isBosonic": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.weightProjection_bosonicProjection": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.weightProjection_outside": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairApply_weightProjection": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairApply_weightSupported": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.hamiltonian_weightProjection": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.hamiltonian_weightSupported": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.weightRestrict_include": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.weightInclude_restrict": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.weightInclude_supported": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.weightInclude_restrict_supported": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.weightRestrict_projection": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.weightInclude_injective": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.weightInclude_add": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.weightInclude_smul": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.weightRestrict_isBosonic": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.weightHamiltonian_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.weightHamiltonian_include": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.weightHamiltonian_restrict": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.weightHamiltonian_isBosonic": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.weightKernelTransport_polynomial": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.weightKernelTransport_bosonic_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.weightKernelTransport_kernel_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.mem_physicalWeightKernel": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.weightKernelTransport_mem_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.physicalWeightKernel_finrank_stable": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ]
+  },
+  "sha256": {
+    "BosonicLaughlin/AngularCommutators.lean": "c41b613d9d8f8074bd6b4d08ea1886af24cd0a8c7e940ab56ca2216682de9222",
+    "BosonicLaughlin/AngularMomentum.lean": "bef47bb96d665792185abfe7b6a8dda9be34bfe2972a9d7c0388186e6c7aa59c",
+    "BosonicLaughlin/AngularMultiplets.lean": "0ac57bc4024163bcd5b83da0c8ea09808c07523b06a0c36b917697cfd3b4e929",
+    "BosonicLaughlin/BosonicProjection.lean": "0d5fa4b98ca7fe9220354684388be2800f6cd14453f1cb42f3287d55160e944b",
+    "BosonicLaughlin/BosonicSymmetry.lean": "6b9151e30e3ddf7a49b4b4f5a41e61f8a54e58d790bff45082a2904ac7e0f204",
+    "BosonicLaughlin/CertificateCoordinates.lean": "8a8b87958704320e80f036beb7a8c73dd4e22860035f55216651003b33be3e6c",
+    "BosonicLaughlin/CertificateGram.lean": "196196b4aa9ca4f3d49a65d3d74a904551493a7a034b88b67f1651f0da6110ff",
+    "BosonicLaughlin/CertificateHighestWeight.lean": "c2097f8794273506d72d840ed28423e931041d0960bb35340d43a3af1bc360d0",
+    "BosonicLaughlin/CertificateNormalization.lean": "cecade1fab93710a273076284dc7c118f06ea2590a9a86cf85ae9908dfd6b69c",
+    "BosonicLaughlin/CertificateRows.lean": "76dc7067e1beb6f251cafafb0cfcae8f1b41dcccea8572ee0c6e930535d71046",
+    "BosonicLaughlin/CoherentBound.lean": "d0607509c04e6fc419c10f6870d0ecce50fea55587b44ab365a28f84dfb1b673",
+    "BosonicLaughlin/CoherentOccupation.lean": "b302e62034482b9c4c6058403572b151df851c08c6b9b246e1a5d1168db4f776",
+    "BosonicLaughlin/CoherentPair.lean": "c36e05ce9e48d56700b294d7c7237e80ff03161ca3cd85538b1991641ed81a3f",
+    "BosonicLaughlin/CompressedSwapEquivariance.lean": "975411de5492a0bf9f348d4d5c769dd5fe772074e67c3d58fdab98d6383700a9",
+    "BosonicLaughlin/CompressedSwapLower.lean": "fb2f88cf5ac1953491389dffa82a1378360f1e7bdefb6a5e0e9659322e9c6a6c",
+    "BosonicLaughlin/EnumeratedPartitions.lean": "8000665b67a87b330f07a2b4451b6775d5afa476585aa52bc46a0847bebfd7a7",
+    "BosonicLaughlin/FockCorrespondence.lean": "af406ebc2b80eedc94d70473b961c8db3a74df0d9ff1a370ed84714257311c09",
+    "BosonicLaughlin/FockInner.lean": "7ca44ca98ce48823dfa8b176d6482838f88bb60a4efb2004b5a31a78f39685fa",
+    "BosonicLaughlin/FourBody.lean": "b57ec7274967c4a6d4673f80c1cb3c740f07d900aed08f50728966bc8d080392",
+    "BosonicLaughlin/FourBodyFock.lean": "b825c6bf7ab84b0b8b03e9116fa4cbe211eb6334eda5d0a89895b7cb41d9dac7",
+    "BosonicLaughlin/HamiltonianForms.lean": "13a40f069a8a4cde7a454443c007fcf2d1f086a9bfac29df1a75d64d46801f9b",
+    "BosonicLaughlin/HighestWeight.lean": "45e3c5e59539826ba373c09b880c858b2e5523e6da7f72700330fd8eab158f66",
+    "BosonicLaughlin/IndexedOccupationCM.lean": "eb412d6e18a6478b1100ace45d76bcc2316effb792c0b30f49b384a437227370",
+    "BosonicLaughlin/KernelFramePhysical.lean": "4025258a3266c8b53f4e87f7e00a57784b72d0eb5b9e1e5f4882c456d60a4aed",
+    "BosonicLaughlin/KernelFrames.lean": "0b8957c284053c2e14a7eaccc39d3aa7de257c3f64b721c844abf16f44579747",
+    "BosonicLaughlin/KernelFrameTransport.lean": "a1eddc4e5ced68a72ae448ce02a036a38313c4ff7c13efe16cdbea1a55680113",
+    "BosonicLaughlin/ModeForms.lean": "637b707c3aa93ec1f89e9e456d4653a2477b1bac6df168a64552c5c27aa95e3f",
+    "BosonicLaughlin/Model.lean": "11a8ebc8a809821cb16ebaf8dd0bdc7aed96fc5e252f8c0dae3bc370fae40b33",
+    "BosonicLaughlin/ModeProjectors.lean": "e7d586c7ccebb5daedaa3268e3035804de0ac18f9a27be1d5affd5048a9deed4",
+    "BosonicLaughlin/MultipletCount.lean": "d7a18df7d1a4926ca1693c72a727afcb6400b45c0aebe2e4d079ce94e816fa91",
+    "BosonicLaughlin/MultipletDimensions.lean": "002f52190cb30d878d9cb3a9325d0ea6ef481f7137f8e2055167eea948bde68e",
+    "BosonicLaughlin/NormalOrdering.lean": "119178fa45ebb3b7059a059062d905918446538aac0483859d1756a03498b57a",
+    "BosonicLaughlin/NorthPoleBound.lean": "72b4d3ec458db9e642b50aa45568b343981f3754ba9138f0d421821ee999ec18",
+    "BosonicLaughlin/NumberAnnihilation.lean": "1a4a3670b080bfaf832340105311f78e14c51195d2eda326376b6940bbed530b",
+    "BosonicLaughlin/Occupation.lean": "860b74eb1ec1a93289e1513de7e25f48653f18e6ff3f78808c5221ccf00fe579",
+    "BosonicLaughlin/OccupationCMBlocks.lean": "9381ff0cfe05ae131ebe812cb9c29820d274428911693f6f978ed0ba9986730e",
+    "BosonicLaughlin/OccupationCoordinates.lean": "d6216abbf21ee2db497e0edb917aabc657f70fef0edf69479fad6f0fd5376ac0",
+    "BosonicLaughlin/OccupationHighestWeight.lean": "4335e9141ec7b3294d1844041bcd3c39de7045e6b402c28a4c46dd37d799b5c5",
+    "BosonicLaughlin/OccupationMetric.lean": "a7f20090e3ee7bbb3ab39c52f07cf8c0025f9c50f5ebed8d4796b902f2a4d70e",
+    "BosonicLaughlin/OccupationPairBlocks.lean": "7bea1837228381d750a276409647ad7d902f6763f64d6e0a01453093a334bfdc",
+    "BosonicLaughlin/OccupationPairChannels.lean": "40deda794ac6e82c18ed3d2f86351ef8b7b7472496f061f21db949074c576341",
+    "BosonicLaughlin/OccupationPairFactorial.lean": "8503854f119edab0d8ff6063f5975e916fc055bd9e6f67f93346fe61833f4c64",
+    "BosonicLaughlin/OccupationPolynomialMetric.lean": "45439bc8478d239e5ce30631a8d4310649b49b69d12052658a37cd407d472784",
+    "BosonicLaughlin/OccupationScriptMetric.lean": "1548ff2e8b97e16487364313ba0114d7e8dc1c5ec5c304722bddddace3c8d5b6",
+    "BosonicLaughlin/OccupationSortedCoordinates.lean": "7ace646c451da2411562c1405fb4036be462a8715c53d4be695bfc593095ea44",
+    "BosonicLaughlin/OccupationSphereMetric.lean": "dd54b4001570af62aed2bf9a3cdb2d3b8838f3691ed29866d8f40533525b8ba8",
+    "BosonicLaughlin/OccupationWeightCoordinates.lean": "71870d063acb0d0392e86732746c7e326033ef5e0ab136fd6bee9f191f148102",
+    "BosonicLaughlin/OrbitalCap.lean": "b690842f3cd37186f407f852deef38a1bcb20f63631e1c858e4ed660d90be893",
+    "BosonicLaughlin/OrbitalCapKernel.lean": "e86385f91586f6bfcc3df07a30a69a263bbb28a9047360a84d5804f898bce264",
+    "BosonicLaughlin/Pair.lean": "a05eb12a7fe74a7758643a5b9fbfa39330dcf7cf92562c67b5a3cb6acc1c4019",
+    "BosonicLaughlin/PairAnnihilation.lean": "7d4ac171339931dd8f443455abc7dcbbf6c5ddb09b3bc513b56b045f7249755d",
+    "BosonicLaughlin/PairBlock.lean": "062a4c0459de9826b848e94d72e2c229294edb38455c01c30a9675200201e832",
+    "BosonicLaughlin/PairContractionEquivariance.lean": "6a69ef2b38be79574664ba1b494819b8bbe94314b699fe80169d974b86a05694",
+    "BosonicLaughlin/PairEquivariance.lean": "935dfcb315db9d9b7c982be03e13ef6dcdd21d342798a43f3fd8222cfef8837e",
+    "BosonicLaughlin/PairLadder.lean": "6ec48a8b06abd9ce9cdc5eedb1d214c12d89f7fbafc615cbce4dcf03f6695b89",
+    "BosonicLaughlin/PairOccupationAnnihilation.lean": "93277941186a697a1c61ebd96f44ab22d79fc1f531353c37d6bcb2c1cb8baec9",
+    "BosonicLaughlin/PairSandwichKernel.lean": "a0d3c25bc31e51d4dab544797d2de607f29eca1c34a9f59a7004fe715b1909b4",
+    "BosonicLaughlin/PairTensor.lean": "c4addb069497f37000132e119d73ec2897508fc4ca09ba7b766dcf40df53a186",
+    "BosonicLaughlin/PartitionsEnumeration.lean": "3b04a90e4a0ef24128105a41be3bcd1975d54ccc6d3cb4233c34323145543722",
+    "BosonicLaughlin/PhysicalKernel.lean": "11312b220f0d63cfbc64e305df4e12622b2ee24a87ce423aa4988092f4ba18ce",
+    "BosonicLaughlin/PhysicalWeightMatrices.lean": "16cb43f5cac28f03f2c090b6c7685981f3a15f3c07196b9a1156f308368cc78b",
+    "BosonicLaughlin/PolynomialCoordinates.lean": "7751a4827be0593ee4db436e1f7ef5410f54177273bca89f50594443451fff01",
+    "BosonicLaughlin/PolynomialGram.lean": "a5513aaa04a23cc7c84d512c7806ea1f8fcb09746f5298b0dc8f5860445a2ceb",
+    "BosonicLaughlin/PolynomialHighestWeight.lean": "03c0f7c7f8ea199947632b0e918b62fff25b1ea67ff934155acd31d1e4de9252",
+    "BosonicLaughlin/PolynomialMetric.lean": "e7a73448bdad2022a2356fe1a3a9b00cb85e54383fed0676689126ceaf694c9e",
+    "BosonicLaughlin/PolynomialOccupationCoordinates.lean": "dd7af1f4d5332d03fdff6c736fa3fab32baf3a5850f373bd2eb78138132a32c5",
+    "BosonicLaughlin/PolynomialPairBlocks.lean": "f57e863082405c9ba56febea88a207d8d1f838348f18568c3a3f954f5b88afc2",
+    "BosonicLaughlin/PolynomialWeightCoordinates.lean": "8ba9748a59d25a3b3113deededcf10e127dd1bea0acddb9d54d2c4cfb766de67",
+    "BosonicLaughlin/ProjectionOccupation.lean": "e0c4a8ea38549ec7a0f5a8c25597288f1fa8efdc3da261c4042df914df8bf040",
+    "BosonicLaughlin/Recoupling.lean": "eb6b89786a0067c8a91689d1177dd8ad1ab2b379b3941fe567d9672046c3169d",
+    "BosonicLaughlin/RecouplingValues.lean": "37e5eb1e06130aa29d4f7e6c2d9244d169e5c04e67f770a5cb5f30f1e225cb4b",
+    "BosonicLaughlin/RetainedCMCoordinates.lean": "9edc7993fb7095efc93202c70b6bfea4ad903899ee85cc6debeaac3e09c5a4ec",
+    "BosonicLaughlin/RetainedCMFrames.lean": "6d0e7e91c742b1e5d53fb5c7d03f07f0a855edaf4795f767b9bdcad211840881",
+    "BosonicLaughlin/RetainedCMPhysical.lean": "9ec8f98b99e15769f01111e26bff208a39cfad6c4124f93e42e721131358a023",
+    "BosonicLaughlin/RetainedCMZeroDegree.lean": "0febeb02dcbc1754a4e1d3544f98da70b5d15bff9dc7e63dc7b7ac8b4f8e7e9f",
+    "BosonicLaughlin/SortedCMCoefficient.lean": "6de79a582df9a1bea543a051b84dc539a2ecfd429beade7ed2dc1502532c64a3",
+    "BosonicLaughlin/SparseIntegerMatrix.lean": "cbde057b810a4e29610675bd356028738504c955a520ccb4911a752828735931",
+    "BosonicLaughlin/SparseKernelFrame.lean": "37f510e549ecb0aeeb888650edf3d96e9a10cee63ddcc3f0bd999e09798fd35b",
+    "BosonicLaughlin/SpectralPartition.lean": "29c19e603bf4463df9e7c83062b4564ba5f62c67f6702f40281c5196005217d4",
+    "BosonicLaughlin/SphereFactors.lean": "cbe61f0ff4fd1324b60f07e84a1e3d5ca4748053c90277e69d7578788d41643c",
+    "BosonicLaughlin/StateForms.lean": "06c623c819fd962e7bd1b8cd034bd26ec4658faa36b8b4640745c242a4ca33b5",
+    "BosonicLaughlin/SwapDiagonalization.lean": "ff5cdbf0a0f2952edee75ae125ca8eee75846b787ff7f1d981639b02631fdf1e",
+    "BosonicLaughlin/SwapEigenvalues.lean": "c8dc1a928cbb2a89a3db57bb523c85f422d1deb946ee1079ccb0b8a8d790dd23",
+    "BosonicLaughlin/SwapProjectorEigenspaces.lean": "f2d90978ab703b4e32b77139cc6262e4a9983a6158d15bf7a883d81115ff68f4",
+    "BosonicLaughlin/SwapProjectorRanks.lean": "3f6af345363b438a7904459fa7a7efccf764082ac26ca9ff2329e2aea45a1751",
+    "BosonicLaughlin/SwapProjectors.lean": "86251cbbe68094ede3cc7b7c8a0d378f6085304ea6ebc4fbdb910d0d1d3b80a7",
+    "BosonicLaughlin/SwapSpectrum.lean": "167b87377a05c68961a2a04eb5b1db246803e09e10e8a33a0f4c2ac522799b1a",
+    "BosonicLaughlin/SwapStructure.lean": "0a0c5689cc96b9a471fb893cb846afa483e291d26d817014e9487775b5b1553d",
+    "BosonicLaughlin/TensorHighestWeight.lean": "835f9b09f14b74866c4acf9f6672edcf3f6e904744d3ee6fabb4b185d9459916",
+    "BosonicLaughlin/ThreeBodyAnnihilation.lean": "84f827dfc5f8031ae47d7985672b7114d078eeafa75485e6be8eeb911e5d7524",
+    "BosonicLaughlin/ThreeBodyCoefficient.lean": "3f46eb5cc3ee8897976661ed23e81e08a10efd8e5e51c5f682277f262a97da68",
+    "BosonicLaughlin/ThreeBodyCounting.lean": "6597503ea25b0c71126cf1bbae1a90abc6815614ac326471f78b4a77b9315510",
+    "BosonicLaughlin/ThreeBodyGram.lean": "12240ecb322b2188238b9d7c6b724f9b5fa364595775bef24fb4c1e987096a82",
+    "BosonicLaughlin/ThreeBodyLift.lean": "0e40b394b833591faa5c4b308b777e9ce98c364ad0e342f2c6a30287967c54c7",
+    "BosonicLaughlin/ThreeBodyLiftHermitian.lean": "9e34f16eb09fdc0c6579551fb2464b55740b00f1c4774e089267295fd342a957",
+    "BosonicLaughlin/ThreeBodyLiftIdentity.lean": "34d3152422627a535ac7db7a6d921158c5cc2c0961ab0cf2fc3a3a0c14708345",
+    "BosonicLaughlin/ThreeBodyNormal.lean": "f897e709e62785c0961014b941145ffdb6eb470a3fa347a33b0feab47736c0ba",
+    "BosonicLaughlin/ThreeBodySlices.lean": "0360b6e9fe031e4d02685ba1a6177687e49b9587590afe51fa4306e6211f32e3",
+    "BosonicLaughlin/ThreeBodySpectral.lean": "b2b2c696b39fffec756a56b4a452db3e304315bbea420e7cf4e700ecf05852eb",
+    "BosonicLaughlin/ThreeBodySpectralLift.lean": "14cf650639dde19b6af1fcdac4b9b4574a5a5cdd96911e79485db1bf86a879dc",
+    "BosonicLaughlin/ThreeBodySymmetry.lean": "4734a2089da5bc81851456336b4cb88342a31e016ae4a54d67206a5928701102",
+    "BosonicLaughlin/WeightBlockForms.lean": "a23f349dda6bf3a4a8f6ff1ed775038df52ab25a064335e31793da3a2f7d0eda",
+    "BosonicLaughlin/WeightBlocks.lean": "6e063545f5fca261a6ae0857300aa585d6de5e6fc04d049c769fcb71a6e768ce",
+    "BosonicLaughlin/WeightCoordinates.lean": "0c0f8f99780e31ba464e9f24f2bc8142d5524ab8f1394bfe6d2448b26a852975",
+    "BosonicLaughlin/WeightKernelTransport.lean": "979e72906060246409ec25653670c4f1a619cad82269dc882ebab21df2b13f65",
+    "BosonicLaughlin.lean": "aef62a9235be2738716471a27bd871d244ca03797d89070cae856f177143b0b1",
+    "Audit.lean": "dc8d077cc722ca91f6cfbbc40171d9a756e998fa893388006b9c3db90005f64a",
+    "StatementChecks.lean": "41eecb64ad56666032ad26322e624dcd86d1a2a22e2ad7031812ceb3e222f1a4",
+    "lakefile.lean": "eff00efd11a588cfe527b7727aa1364021f82675a4ac7cac2959220fd923f363",
+    "lake-manifest.json": "938baa91e89aa124695477b23bb69f5f0b40d53a3c3ca1f4b9670f347488e9a7",
+    "lean-toolchain": "8152090414016dd5dc871752f8ce4ecdbd604d9845758e9b9047cb80101280b5",
+    "check.py": "ec89eca3cb99dde3e3dacb7198806f14d7e8e06c8f4fd16cf3b8392d731cd23d"
+  },
+  "date": "2026-10-08",
+  "generated_source_reproducibility_checked": true,
+  "dependency_acquisition": "Official GitHub source archives at the locked revisions; official mathlib build cache; Lake path overrides used locally.",
+  "dependency_revisions": {
+    "mathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+    "plausible": "118aa17ee84656b8bd727fef7c458ee8c833385c",
+    "LeanSearchClient": "ddf04cf3949fa556442341e87d47f9f6e6074707",
+    "importGraph": "e928b72544873815af278d38681b31c0293588e3",
+    "proofwidgets": "106ff4fafc74ef4ac99d81dbf3ab399118f497a5",
+    "aesop": "355695d523e41d0554926416cba2a2b3544fbbc9",
+    "Qq": "6a489d9af5d0c47e5b259e2e8bcdfc1811b5a259",
+    "batteries": "f2effa3d803fda822b1f97b806c47cf2adfbcbc2",
+    "Cli": "e92c9f15fdfacc8536f31cfb3b7ad26c3c8cd204"
+  }
+}

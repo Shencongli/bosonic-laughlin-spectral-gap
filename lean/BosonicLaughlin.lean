@@ -20,3 +20,4 @@ import BosonicLaughlin.CertificateHighestWeight
 import BosonicLaughlin.OccupationSortedCoordinates
 import BosonicLaughlin.OccupationScriptMetric
 import BosonicLaughlin.KernelFrames
+import BosonicLaughlin.RetainedCMPhysical
