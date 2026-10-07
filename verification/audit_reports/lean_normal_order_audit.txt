@@ -1,0 +1,108 @@
+Internal AI semantic audit. This is not external human peer review.
+
+Publication verification: the final whole-library build, 14 physical
+statement contracts, and all 226 theorem axiom reports passed. See
+verification/lean_normal_order_build.json for exact source hashes.
+
+Semantic review of the normal-order / three-body Lean increment
+Date: 2026-10-07
+Reviewer: AI subagent recoupling_audit, within the same Codex work session.
+This is not external human review. The reviewer authored Recoupling.lean;
+the other five modules were written by separate agents in this session.
+
+Conclusion
+The reviewed statements implement the stated spherical, LLL-projected V0
+pair-projector model with pair coefficient one. No meaning-changing defect
+was found in the new operator identities or factorial normalizations.
+The complete three-body spectral decomposition and the uniform-gap target
+remain unproved. This review covers source semantics; the separate build
+and axiom audit records establish kernel acceptance for their exact sources.
+
+1. Pair support and normal ordering
+normalThreeBodyApply is defined independently as the sum of P_ij P_kl with
+i<j, k<l, unequal pairs and at least one common particle slot. Every such
+term has exactly three distinct slots. normalFourBodyApply sums the
+disjoint case. These are ordered choices of two unordered pairs.
+hamiltonian_normal_order proves H(H psi)=H psi+S3 psi+S4 psi on the full
+finite tensor space, with no bosonic or spectral hypothesis. The diagonal
+term uses the already-proved idempotence of the actual pair projector.
+It does not define S3 by subtracting the other sides of the desired identity.
+The S3 and S4 Hermitian identities and S4 nonnegativity have the correct
+complex inner-product convention. No positivity of S3 is asserted.
+
+2. Disjoint projectors and Fock normalization
+FourBody.lean proves actual commutation from disjoint slot updates, then
+<psi,P_ij P_kl psi>=||P_ij P_kl psi||^2. FourBodyFock.lean first contracts
+the four distinguished slots, then transports them by an actual permutation
+using IsBosonic. The count is C(n,2) C(n-2,2), without an extra 1/2: pair
+choices remain ordered. This matches the squared normalization of the two
+annihilators B_q B_p, whose individual factors are sqrt(C(n,2)) and
+sqrt(C(n-2,2)). For four particles the multiplicity is six, as expected.
+normalFourBody_eq_sum_v0PairAnnihilate_normSq is a quadratic-form identity
+for every bosonic input in State Q (N+4). It is not a separate construction
+of operator adjoints on a direct-sum Fock Hilbert space.
+normal_order_annihilator_energy and
+normalFourBody_eq_sum_v0PairAnnihilate_energy_all_sectors cover every input
+State Q (N+2), including two and three particles, where the output H has
+zero or one particle. normalFourBody_small_sector covers all N<=3 directly.
+Thus small sectors are not silently dropped from the support identity.
+coherent_occupation_v0_sum_lift sums the previously proved coherent-mode
+occupation bound over physical V0 channels. Its S4+H right-hand side is
+identified by the exact annihilator energy and norm identities; it is not
+introduced as an unproved tail-error assumption.
+
+3. Concrete three-body maps
+ThreeBodyAux Q has coordinates (p,k), with p in Fin(2Q+1) and k in Fin(Q+1).
+threeBodyInsertion uses the same normalized pairVector as the Hamiltonian.
+threeBodyMap is 1/sqrt(3) times the three distinct pair insertions, hence
+sqrt(3) times full bosonic symmetrization of the pair-first insertion.
+Its output is proved bosonic. The contraction called threeBodyAdjoint has
+factor sqrt(3). threeBody_adjoint_inner proves the actual adjoint identity
+when the physical argument is bosonic. This restriction is necessary:
+the displayed contraction is not claimed to be the adjoint on arbitrary
+unsymmetrized tensor states. threeBody_hamiltonian likewise assumes
+IsBosonic and proves WW*=H3 in exactly that sector.
+compressedSwap is explicitly the pair-overlap contraction for exchanging
+the second pair slot and the spectator. The auxiliary identity
+threeBody_gram proves W*W=I+2T for every auxiliary vector. No hypothesized
+eigenvalue or SU(2) decomposition is used.
+
+4. Three-body normal-order coefficient
+threeBody_normal_coefficient proves S3 psi=2 W T W* psi for State Q 3 with
+IsBosonic psi. The derivation combines the already-defined support S3,
+the exact H3 square identity, the Gram identity and WW*=H3. It currently
+establishes the physical three-particle coefficient, not the general
+normal-ordered positive three-body lift on arbitrary particle sectors.
+
+5. Recoupling coefficient and deficit-one scope
+recouplingRatio is the descending-factorial ratio (Q)_z/(2Q)_z. The
+positivity and 2^(-z) bound assume z<=Q. The z=1 value needs Q>0; Q=0 is
+not accidentally divided by zero. The endpoint pairCoefficient(Q,z,0)
+is connected to sqrt(recouplingRatio) using the actual binomial pair basis.
+highestWeightCoefficient is the finite product of the manuscript's
+recurrence factors, with s0=1. Nonzero coefficients, interior ladder
+cancellation, and sz=(-1)^z sqrt((Q)_z/(2Q)_z) are proved. These facts do
+not by themselves prove that T preserves each highest-weight line or
+that the resulting spin multiplets span the auxiliary space.
+There is also a genuine operator result: for Q>0 the explicit vector
+phi=|p=0,k=1>-sqrt(1/2)|p=1,k=0> is nonzero, W phi=0, and T phi=-phi/2.
+This vector is fixed by coordinates; it is not assumed to be an eigenvector.
+The proof does not claim to identify the whole z=1 irreducible multiplet.
+
+6. Unresolved proof obligations and trust scope
+The full formula T=sum_z (-1)^z f_z Pi_z still needs a formal SU(2) action,
+equivariance, construction of the irreducible multiplets and completeness.
+The general three-body lifting bridge, finite block certificates,
+coherent-tail estimates and final uniform-gap assembly remain separate
+obligations. UniformGapTarget in Model.lean remains a proposition definition,
+not a proved theorem. No new sorry, axiom, unsafe or native_decide was found
+in the reviewed source files. A source scan is not a substitute for the
+whole-project #print axioms audit; use its separate verification record.
+
+Reviewed source SHA256 values
+119178fa45ebb3b7059a059062d905918446538aac0483859d1756a03498b57a  BosonicLaughlin/NormalOrdering.lean
+b57ec7274967c4a6d4673f80c1cb3c740f07d900aed08f50728966bc8d080392  BosonicLaughlin/FourBody.lean
+b825c6bf7ab84b0b8b03e9116fa4cbe211eb6334eda5d0a89895b7cb41d9dac7  BosonicLaughlin/FourBodyFock.lean
+12240ecb322b2188238b9d7c6b724f9b5fa364595775bef24fb4c1e987096a82  BosonicLaughlin/ThreeBodyGram.lean
+f897e709e62785c0961014b941145ffdb6eb470a3fa347a33b0feab47736c0ba  BosonicLaughlin/ThreeBodyNormal.lean
+2c4f6bc129084da0674ebac61fa7dff256ab6273115f84b24aa5d37819d01547  BosonicLaughlin/Recoupling.lean

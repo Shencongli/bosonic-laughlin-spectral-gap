@@ -57,10 +57,19 @@ required = [
     'pairAnnihilate_eq_annihilate_twice',
     'energy_eq_sum_v0PairAnnihilate_normSq',
     'projectionPairs_eq_pairAnnihilate_normSq', 'coherent_pairAnnihilation_bound',
+    'hamiltonian_normal_order', 'normalFourBody_nonneg',
+    'normalFourBody_eq_sum_v0PairAnnihilate_normSq',
+    'normal_order_fock_quadratic_form', 'threeBodyMap_isBosonic',
+    'threeBody_gram', 'threeBody_hamiltonian', 'threeBody_normal_coefficient',
+    'recoupling_endpoint_coefficient',
+    'threeBody_adjoint_inner', 'threeBodyDeficitOne_nonzero',
+    'threeBodyDeficitOne_kernel', 'threeBodyDeficitOne_swap',
+    'coherent_occupation_v0_sum_lift',
+    'normalFourBody_eq_sum_v0PairAnnihilate_energy_all_sectors',
 ]
 for name in required:
     if 'BosonicLaughlin.' + name not in dependencies:
-        raise SystemExit('Missing required occupation theorem: ' + name)
+        raise SystemExit('Missing required theorem: ' + name)
 
 files = sources + [root/n for n in ['BosonicLaughlin.lean', 'Audit.lean',
     'StatementChecks.lean', 'lakefile.lean', 'lake-manifest.json', 'lean-toolchain', 'check.py']]
@@ -71,8 +80,14 @@ record = {
     'checked_theorem_count': len(names),
     'main_uniform_gap_theorem_proved': False,
     'coherent_occupation_and_pair_lift_proved_sectorwise': True,
+    'normal_order_and_four_body_fock_form_proved_sectorwise': True,
+    'three_particle_gram_and_normal_coefficient_proved': True,
+    'complete_three_body_recoupling_spectrum_proved': False,
+    'three_body_coefficient_lift_to_arbitrary_particle_number_proved': False,
     'physical_statement_contracts_checked': True,
-    'required_occupation_theorems': required,
+    'physical_statement_contract_count': len(re.findall(
+        r'^example\b', (root/'StatementChecks.lean').read_text(encoding='utf-8'), re.M)),
+    'required_theorems': required,
     'axiom_dependencies': dependencies,
     'sha256': {p.relative_to(root).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest() for p in files},
 }

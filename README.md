@@ -79,8 +79,11 @@ are supplied in the manuscript and remain open to independent review.
 The [Lean formalization](lean/README.md) proves the full-model coherent
 occupation bound $n_\beta\le H_Q+I$ and its lift through the normalized pair
 annihilator, for every flux and particle number in finite-dimensional sectors.
-It also verifies the pair projectors and Hamiltonian self-adjointness,
-positivity, and preservation of bosonic symmetry. **The uniform spectral-gap
+It also proves the exact normal-order identity $H_Q^2=H_Q+S_3+S_4$,
+identifies the positive four-body term with the double-pair-annihilator
+square sum, and verifies the three-particle Gram and Hamiltonian identities.
+The complete three-body recoupling spectrum remains to be formalized.
+**The uniform spectral-gap
 theorem remains unproved in Lean.** The package documents its remaining
 proof obligations and reproducible build. The v0.1 manuscript is unchanged.
 

@@ -78,24 +78,30 @@ $Q_0=3088$ is not claimed to be the smallest possible sufficient threshold.
 
 On 7 October 2026, OpenAI Codex generated the initial 22-lemma Lean package
 under Xin Shen's direction, then extended it to the coherent occupation
-bound and its lift through the actual normalized pair annihilator. Separate
+bound and its lift through the actual normalized pair annihilator. A subsequent
+extension proves the normal-order decomposition, the four-body Fock quadratic
+form, and the three-particle Gram and Hamiltonian identities. Separate
 AI agents developed the tensor/Fock correspondence, coherent-pair estimates,
 and operator identities, and reviewed their mathematical scope and normalization.
-The current package contains 149 checked theorem declarations. It proves
+The current package contains 226 checked theorem declarations. It proves
 the occupation results in every finite particle sector, with no cutoff in
 particle number or flux, and includes the exact quadratic-form correspondence
-between the physical Hamiltonian and its Fock pair annihilators.
+between the physical Hamiltonian and its Fock pair annihilators. The three-body
+coefficient is identified with $2W_3TW_3^\dagger$ on three bosonic particles.
+The recoupling coefficient recurrence is checked separately from the still
+unproved complete SU(2) spectral decomposition.
 
 The full build, physical statement checks, and axiom dependency audit passed
 with pinned Lean/mathlib versions. The local build used Lake package
 overrides pointing to source archives of those same revisions. The only
 axiom dependencies are `propext`, `Classical.choice`, and `Quot.sound`.
-The [build record](verification/lean_occupation_build.json) and
-[internal AI semantic audit](verification/audit_reports/lean_occupation_audit.txt)
+The [build record](verification/lean_normal_order_build.json) and
+[internal AI semantic audit](verification/audit_reports/lean_normal_order_audit.txt)
 record the tested scope. No independent human review is claimed.
 
-The normal-order identity, recoupling and coherent-integral estimates,
-analytic correspondence to the interval certificates, and uniform spectral-gap
-target remain unformalized. The package's [status](lean/README.md) lists the
+The complete recoupling spectrum, the three-body coefficient's lift to arbitrary
+particle number, the coherent-integral estimates, the analytic correspondence
+to the interval certificates, and the uniform spectral-gap target remain
+unformalized. The package's [status](lean/README.md) lists the
 remaining proof chain. Neither the v0.1 PDF nor its release is replaced by
 this code update.

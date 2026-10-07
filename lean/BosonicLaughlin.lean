@@ -4,3 +4,6 @@ import BosonicLaughlin.PairTensor
 import BosonicLaughlin.BosonicSymmetry
 import BosonicLaughlin.CoherentOccupation
 import BosonicLaughlin.NorthPoleBound
+import BosonicLaughlin.FourBodyFock
+import BosonicLaughlin.ThreeBodyNormal
+import BosonicLaughlin.Recoupling
