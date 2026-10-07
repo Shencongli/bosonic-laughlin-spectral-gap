@@ -16,7 +16,8 @@ sources = sorted((root/'BosonicLaughlin').glob('*.lean'))
 names = []
 for source in sources:
     names += ['BosonicLaughlin.' + n for n in re.findall(
-        r'^theorem\s+(\w+)', source.read_text(encoding='utf-8'), re.M)]
+        r'^(?:@\[[^\]\r\n]*\][ \t]*)*(?:theorem|lemma)\s+(\w+)',
+        source.read_text(encoding='utf-8'), re.M)]
 audit = (root/'Audit.lean').read_text(encoding='utf-8')
 listed = re.findall(r'^#print axioms (\S+)', audit, re.M)
 if sorted(names) != sorted(listed):
@@ -33,6 +34,7 @@ def run(command):
 
 version = run(lake + ['env', 'lean', '--version']).strip()
 run(lake + ['build'])
+run(lake + ['env', 'lean', 'StatementChecks.lean'])
 output = run(lake + ['env', 'lean', 'Audit.lean'])
 dependencies = {}
 for name in names:
@@ -47,14 +49,30 @@ for name in names:
         raise SystemExit('Unapproved axiom dependency: ' + name + ': ' + str(axioms - allowed))
     dependencies[name] = sorted(axioms)
 
+required = [
+    'pairApply_idempotent', 'hamiltonian_hermitian', 'hamiltonian_isBosonic',
+    'modeNumber_factorial_moment', 'modeOccupation_eq_annihilate_normSq',
+    'coherent_pairOccupation_le_energy', 'coherent_occupation_bound',
+    'coherent_occupation_pair_lift', 'coherent_annihilation_pair_lift',
+    'pairAnnihilate_eq_annihilate_twice',
+    'energy_eq_sum_v0PairAnnihilate_normSq',
+    'projectionPairs_eq_pairAnnihilate_normSq', 'coherent_pairAnnihilation_bound',
+]
+for name in required:
+    if 'BosonicLaughlin.' + name not in dependencies:
+        raise SystemExit('Missing required occupation theorem: ' + name)
+
 files = sources + [root/n for n in ['BosonicLaughlin.lean', 'Audit.lean',
-    'lakefile.lean', 'lake-manifest.json', 'lean-toolchain', 'check.py']]
+    'StatementChecks.lean', 'lakefile.lean', 'lake-manifest.json', 'lean-toolchain', 'check.py']]
 record = {
     'lean_version': version,
     'build_passed': True,
     'package_overrides_used': bool(args.packages),
     'checked_theorem_count': len(names),
     'main_uniform_gap_theorem_proved': False,
+    'coherent_occupation_and_pair_lift_proved_sectorwise': True,
+    'physical_statement_contracts_checked': True,
+    'required_occupation_theorems': required,
     'axiom_dependencies': dependencies,
     'sha256': {p.relative_to(root).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest() for p in files},
 }

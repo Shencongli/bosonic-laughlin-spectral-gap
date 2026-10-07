@@ -1,0 +1,241 @@
+Internal AI semantic audit. This is not external human peer review.
+
+Publication verification: the final whole-library build, five physical
+statement contracts, and all 149 theorem axiom reports passed. See
+verification/lean_occupation_build.json for exact source hashes.
+
+Occupation and coherent lifting audit -- 2026-10-07
+
+Scope: spherical V0 Hamiltonian with pair projector coefficient one, as in
+paper.tex. This audit checks the occupation/lifting
+step, not the complete candidate proof or finite matrix certificates.
+
+1. Exact coherent-pair containment
+
+In the orthonormal one-particle basis i=0,...,Q, use a normalized complex spinor
+(u,v), |u|^2+|v|^2=1, and beta_i=sqrt(choose(Q,i))*u^(Q-i)*v^i.
+The binomial theorem gives sum_i |beta_i|^2=1. Define c_p similarly at degree
+2Q. For i+j=p the identity beta_i beta_j=t_p(i,j)c_p is exact, and the
+product beta tensor beta is the sum of c_p times the normalized pair vectors.
+The vector c is normalized. This is the concrete reason a coherent double
+occupancy lies in the V0 pair channel, and holds for every integer Q>=0.
+
+Implemented and Lean-checked in BosonicLaughlin/CoherentPair.lean:
+coherentCoefficient_normSq, coherentOrbital_normalized,
+pairCoefficient_sqrt_choose, coherentCoefficient_pair_factorization,
+coherentOrbital_pair_expansion, coherentOrbital_pair_witness.
+These results need no SU(2) covariance theorem and impose no threshold on Q.
+
+2. Occupation inequality and normalization
+
+For a normalized orbital beta, B_beta=a_beta^2/sqrt(2), and exactly
+B_beta^dagger B_beta=n_beta(n_beta-1)/2. Since beta tensor beta is a normalized
+vector in the pair-projector image, its rank-one projector is bounded above
+by the V0 projector. Summing over unordered tensor slots yields
+H_{Q,M} >= n_beta(n_beta-1)/2 for every particle sector M. No factor M,
+Q, or 2 is missing. Coherent-pair containment is necessary here; the claim
+does not hold for an arbitrary normalized orbital without that containment.
+
+For each nonnegative integer occupation n, n <= 1+n(n-1)/2. Equality occurs
+at n=1,2; it is strict at n=0 and n>=3. Functional calculus in an orbital
+occupation basis therefore gives n_beta <= H_{Q,M}+I. More generally the
+manuscript's C_eta=max_{n>=0}[n-eta*n(n-1)/2] is finite for eta>0 and gives
+n_beta <= eta H + C_eta I. Its eta=1 value is exactly 1.
+
+3. Sector typing of the sandwich
+
+B_alpha maps the N-particle physical sector into the (N-2)-particle sector.
+For N>=2, the correctly typed inequality is
+B_alpha^dagger n_beta^(N-2) B_alpha <=
+B_alpha^dagger(H_{Q,N-2}+I_{N-2})B_alpha.
+The manuscript explicitly places its occupation inequality in this output
+sector. Sectors N=0,1 have zero pair annihilator and must be handled directly
+when formalizing all N; natural-number subtraction alone does not define
+their annihilation map.
+
+Pair-frame integration gives integral B_alpha^dagger B_alpha=H_{Q,N};
+and integral B_alpha^dagger H_{Q,N-2} B_alpha=S_{4,Q,N}, because pair
+annihilators commute. The sphere measure is mass one with pair-frame factor
+2Q+1. These are operator equalities requiring their own formal proofs.
+
+4. Two possibly nonorthogonal coherent spectators
+
+With s=<beta,gamma> and annihilators antilinear in orbital coefficients,
+[a_beta,a_gamma^dagger]=s. For A=a_gamma a_beta,
+A^dagger A=(n_beta n_gamma+n_gamma n_beta)/2
+             -Re(s a_beta^dagger a_gamma).
+The noncommuting square (n_beta-n_gamma)^2 is positive and gives the required
+symmetrized product bound; no commutativity assumption is needed. Quadratic
+form Cauchy--Schwarz gives +/- Re(s a_beta^dagger a_gamma)
+<= |s|(n_beta+n_gamma)/2 <= (n_beta+n_gamma)/2. Thus
+A^dagger A <= (n_beta^2+n_gamma^2+n_beta+n_gamma)/2
+<= 2H+n_beta+n_gamma <=4H+2I.
+No normalization error was found in this calculation.
+
+The normalized Sym^2-to-Fock isometry sends P_sym(beta tensor gamma) to
+a_beta^dagger a_gamma^dagger|0>/sqrt(2), also for beta=gamma. Consequently the
+lifted integrand has factor 1/2, giving the manuscript's final 2S4+H rather
+than 4S4+2H. The manuscript states this factor explicitly.
+
+5. Economical route for the remaining Lean occupation proof
+
+For a general normalized beta, define its one-slot rank-one projection P_i.
+The P_i commute for distinct tensor slots. Define n_beta=sum_i P_i; then
+n_beta(n_beta-I)/2=sum_{i<j}P_i P_j. One can prove n_beta<=I+sum_{i<j}P_iP_j
+by decomposing into joint occupancy eigenspaces, or by an arbitrary
+single-particle unitary taking beta to a chosen basis orbital and tensoring
+that unitary. This change of basis only concerns the occupancy projectors:
+it does not require the Hamiltonian to be invariant under an arbitrary
+unitary. Separately, coherent pair containment supplies V0>=P_beta tensor
+P_beta in each pair. Together these give the desired operator inequality.
+
+An alternative polynomial positivity certificate is available on commuting
+projections: joint subset projectors E_S=product_{i in S}P_i
+product_{i notin S}(I-P_i) resolve identity, and the difference
+I+sum_{i<j}P_iP_j-sum_iP_i equals
+sum_S [(|S|-1)(|S|-2)/2] E_S with nonnegative scalar coefficients (including
+the separate |S|=0 case). This avoids constructing a unitary completion.
+
+6. Additional verified pair domination
+
+CoherentBound.lean now proves normalized_contraction_bound by expanding a
+squared residual (finite-dimensional Bessel inequality), the exact coherent
+pair contraction expansion, pairApply_coherent_bound, and the summed
+coherent_pairCost_le_energy for the actual Hamiltonian. Thus the coherent
+rank-one pair domination in item 2 is formally checked, on the full tensor
+space, for all flux and particle numbers. Both new modules build under the
+pinned Lean/mathlib environment. All ten declared theorems were checked by
+#print axioms and depend only on propext, Classical.choice, Quot.sound.
+
+Remaining scope: these two modules do not by themselves prove the general
+n_beta operator inequality, define bosonic annihilation maps, or verify the
+pair-frame integral. Those are explicit subsequent obligations; other task
+agents are working on the first of these.
+
+7. Independent semantic audit of the assembled occupation module
+
+Reviewed ProjectionOccupation.lean, CoherentOccupation.lean, ModeForms.lean,
+PairAnnihilation.lean, NumberAnnihilation.lean, and BosonicSymmetry.lean after
+their implementation by the other agents. This section supersedes the first
+two outstanding obligations listed at the end of item 6.
+
+ProjectionOccupation proves I-n+C >= 0 for every finite commuting family of
+orthogonal projections, where n=sum_i P_i and C=sum_{i<j}P_i P_j. Its induction
+uses the exact decomposition
+I-(P+A)+(PA+C)=(I-P)(I-A+C)(I-P)+P C P.
+No orthogonality between different P_i is assumed, no large-N estimate is
+used, and no N-dependent constant is introduced. Hermiticity, idempotence,
+and commutation are proved for the actual slot-projector matrices before
+the abstract result is used. projection_factorial_moment additionally
+proves n*n-n=C+C, with precisely the unordered-pair count of the manuscript.
+
+ModeForms proves the exact Gram identities of the slot-projector number and
+pair forms by bijective reindexing of the finite tensor basis. Its spectator
+space excludes exactly the contracted slot(s). No dimension, factorial, or
+symmetrizer factor is dropped. In particular the full-space expectation of
+P_beta,i P_beta,j is the sum over spectator configurations of the squared
+two-slot contraction. Combining it with CoherentBound ties C to the actual
+pair-projector Hamiltonian from Model.lean, rather than to an auxiliary
+Hamiltonian or an assumed majorant.
+
+CoherentOccupation defines n_beta explicitly as sum_i |beta><beta|_i and its
+real quadratic form using the finite orthonormal tensor coordinate inner
+product. Its coherent_occupation_bound proves
+<psi,n_beta psi> <= <psi,H_{Q,N} psi> + ||psi||^2
+for every Q,N, every normalized complex spinor, and every full tensor state.
+This stronger full-space statement is legitimate; a missing bosonic
+hypothesis here is not a weakening or error. BosonicSymmetry separately
+proves that the actual H preserves the physical symmetric subspace.
+
+PairAnnihilation defines a_alpha by sqrt(N+1) times contraction of one first
+slot and B_alpha by sqrt(choose(N+2,2)) times contraction of the first two
+slots. On normalized symmetric tensor coordinates these are exactly the
+standard bosonic annihilation normalizations. The algebraic identity
+B_alpha=a_alpha a_alpha/sqrt(2) is itself formally proved, as is preservation
+of permutation symmetry by each annihilator. The coherent_occupation_pair_lift
+is then the preceding all-state inequality evaluated at B_alpha psi, with
+input particle number N+2 and output particle number N. Allowing arbitrary
+alpha is valid: the sandwich inequality does not require alpha to be coherent
+or normalized. The occupation orbital beta is still explicitly coherent and
+normalized. This is the quadratic-form statement of
+B_alpha^dagger n_beta B_alpha <= B_alpha^dagger(H_{Q,N}+I_N) B_alpha.
+It does not merely postulate an arbitrary map bearing the name B_alpha.
+
+NumberAnnihilation closes the first-/second-quantized correspondence for the
+number operator: projectionNumber_eq_annihilate_normSq proves exactly
+<psi,n_beta psi>=||a_beta psi||^2 for every symmetric input state with N+1
+particles, including sqrt(N+1). No beta-normalization condition is needed for
+this identity. Its proof uses permutation invariance to equate every slot
+contribution and the exact N+1 slot count. The vacuum is already included in
+the first-quantized inequality; the typed annihilation map is defined only on
+nonempty sectors, which is explicit rather than a hidden natural-subtraction
+convention.
+
+Semantic verdict: no hidden hypothesis asserting occupation control, no
+coherent north-pole-only restriction, no replacement of the physical H, and
+no changed pair normalization were found. The assembled module establishes
+the intended occupation bound and its actual normalized double-annihilator
+sandwich, subject to successful compilation and the root's final whole-library
+axiom audit. This audit is a reading of the statements and constructions,
+independent of the Lean compiler check.
+
+Publication scope still to distinguish: these are sectorwise finite-dimensional
+results for all particle numbers, with constants independent of particle
+number. They do not construct an unbounded self-adjoint operator on completed
+infinite Fock space or prove domain-extension claims. No such completion is
+needed for their use in the fixed-sector uniform gap argument. The full
+normal-ordering identity, coherent-frame integrations and Schur comparisons,
+analytic-to-certificate identification, and final spectral-gap theorem remain
+separate obligations. The two-spectator 4H+2I argument in item 4 has been
+audited mathematically but is not among the inspected Lean theorems.
+
+8. Final audit of Fock and pair-occupation correspondences
+
+Reviewed the completed FockCorrespondence.lean and the completed source of
+PairOccupationAnnihilation.lean. No normalization or scope issue was found.
+
+FockCorrespondence defines B_p on input particle number N+2 by multiplying
+the contraction against the normalized real pair vector t_p by
+sqrt(choose(N+2,2)). The coefficient is exactly
+sqrt((N+2)(N+1))/sqrt(2), matching the manuscript's
+B_p=(1/sqrt(2))*sum_{ij}t_p(i,j)a_i a_j in normalized symmetric tensor
+coordinates. The pair label runs through every p=0,...,2Q; no orbital or
+pair channel is silently omitted. The real t_p coefficient is its own
+complex conjugate, so the contraction has the correct bra convention.
+
+The proof first uses bosonic symmetry to equate every unordered pair's
+expectation to that of slots 0 and 1, counts choose(N+2,2) unordered pairs
+exactly, and uses the full pair Gram decomposition for those slots. This
+establishes energy_eq_sum_v0PairAnnihilate_normSq:
+<psi,H psi>=sum_p ||B_p psi||^2
+for every symmetric input psi in the actual N+2-particle model. Bosonic
+symmetry of B_p psi is also proved. This is precisely the quadratic-form
+version of H=sum_p B_p^dagger B_p; it is not a theorem about a differently
+normalized or truncated Hamiltonian. A standalone matrix-adjoint expression
+for the right side is not separately constructed in this module; publication
+wording should name the proved quadratic-form identity.
+
+PairOccupationAnnihilation proves
+projectionPairs_eq_pairAnnihilate_normSq, namely
+<psi,sum_{i<j}P_beta,i P_beta,j psi>=||B_beta psi||^2
+on symmetric N+2-particle inputs, with the actual pairAnnihilate definition.
+The same exact unordered-pair count provides the required combinatorial
+coefficient. This identity remains valid for an unnormalized orbital beta
+because both sides scale quartically in beta. Normalization is only needed
+for the additional interpretation of P_beta,i as a projector and of this
+pair form as n_beta(n_beta-I)/2. The final occupation module supplies that
+normalization through its explicit unit spinor hypothesis.
+
+Thus the literal annihilation-norm forms of the intended bounds are supported:
+||a_beta psi||^2 <= <psi,H psi>+||psi||^2,
+||B_beta psi||^2 <= <psi,H psi>,
+and, on the correctly typed post-annihilation sector,
+||a_beta B_alpha psi||^2 <= <B_alpha psi,H B_alpha psi>+||B_alpha psi||^2.
+The vacuum and one-particle pair-zero cases remain separate trivial sectors;
+the explicit double-annihilation maps use the total input index N+2 and do
+not pretend to remove particles from an insufficiently populated sector.
+
+The semantic verdict remains positive. Successful whole-library compilation
+and the kernel's axiom-dependency audit are separate verification steps to be
+recorded by the publishing/root agent. The outstanding full-gap obligations
+and finite-sector scope listed in item 7 remain unchanged.

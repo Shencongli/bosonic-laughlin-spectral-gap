@@ -115,8 +115,8 @@ theorem hamiltonian_small_sector {Q N : ℕ} (hN : N ≤ 1) (ψ : State Q N) :
   simp [hamiltonian, h]
 
 /-- The desired full-model estimate. This is a proposition, not a proved theorem.
-After self-adjointness is established it expresses H_Q² ≥ H_Q/3 on Sym^N U_Q.
-The quantification over all N is essential to the uniform claim. -/
+With self-adjointness proved in HamiltonianForms, it expresses H_Q² ≥ H_Q/3
+on Sym^N U_Q. The quantification over all N is essential to the uniform claim. -/
 def UniformGapTarget : Prop :=
   ∀ Q : ℕ, 3088 ≤ Q → ∀ N : ℕ, ∀ ψ : State Q N,
     IsBosonic ψ → (1/3 : ℝ) * energy ψ ≤ normSq (hamiltonian ψ)

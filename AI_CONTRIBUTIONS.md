@@ -76,14 +76,26 @@ $Q_0=3088$ is not claimed to be the smallest possible sufficient threshold.
 
 ## Lean development after v0.1
 
-On 7 October 2026, OpenAI Codex generated the initial Lean package in `lean/`
-under Xin Shen's direction. It defines the spherical bosonic model and proves
-22 pair-sector and elementary model lemmas. Local compilation and an axiom
-dependency audit passed with the pinned Lean/mathlib versions; the recorded
-build used package overrides pointing to source archives of those revisions.
-The proof of the uniform spectral-gap target, the analytic many-body
-reductions, and the interval certificates have not been formalized. No
-independent human review of the Lean definitions or proofs is claimed.
-The package's [status](lean/README.md) distinguishes these tasks from the
-checked declarations. Neither the v0.1 PDF nor its release is replaced by
+On 7 October 2026, OpenAI Codex generated the initial 22-lemma Lean package
+under Xin Shen's direction, then extended it to the coherent occupation
+bound and its lift through the actual normalized pair annihilator. Separate
+AI agents developed the tensor/Fock correspondence, coherent-pair estimates,
+and operator identities, and reviewed their mathematical scope and normalization.
+The current package contains 149 checked theorem declarations. It proves
+the occupation results in every finite particle sector, with no cutoff in
+particle number or flux, and includes the exact quadratic-form correspondence
+between the physical Hamiltonian and its Fock pair annihilators.
+
+The full build, physical statement checks, and axiom dependency audit passed
+with pinned Lean/mathlib versions. The local build used Lake package
+overrides pointing to source archives of those same revisions. The only
+axiom dependencies are `propext`, `Classical.choice`, and `Quot.sound`.
+The [build record](verification/lean_occupation_build.json) and
+[internal AI semantic audit](verification/audit_reports/lean_occupation_audit.txt)
+record the tested scope. No independent human review is claimed.
+
+The normal-order identity, recoupling and coherent-integral estimates,
+analytic correspondence to the interval certificates, and uniform spectral-gap
+target remain unformalized. The package's [status](lean/README.md) lists the
+remaining proof chain. Neither the v0.1 PDF nor its release is replaced by
 this code update.

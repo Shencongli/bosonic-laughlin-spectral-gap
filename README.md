@@ -76,11 +76,13 @@ outward-rounded dyadic intervals.
 
 The analytic identities connecting these checks to the full Hamiltonian
 are supplied in the manuscript and remain open to independent review.
-An initial [Lean formalization](lean/README.md) now contains checked
-pair-sector lemmas and definitions of the full bosonic model. The uniform
-spectral-gap theorem and its many-body proof are **not yet formalized**.
-See the [Lean status and build instructions](lean/README.md) for the exact
-coverage and remaining proof obligations. The v0.1 manuscript is unchanged.
+The [Lean formalization](lean/README.md) proves the full-model coherent
+occupation bound $n_\beta\le H_Q+I$ and its lift through the normalized pair
+annihilator, for every flux and particle number in finite-dimensional sectors.
+It also verifies the pair projectors and Hamiltonian self-adjointness,
+positivity, and preservation of bosonic symmetry. **The uniform spectral-gap
+theorem remains unproved in Lean.** The package documents its remaining
+proof obligations and reproducible build. The v0.1 manuscript is unchanged.
 
 ## Verification materials
 
