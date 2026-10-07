@@ -277,3 +277,82 @@ example (Q N : ℕ) (ψ : State Q N) (hH : hamiltonian ψ = 0) :
 example (Q : ℕ) (z : Fin (Q+1)) (ψ : State Q 3)
     (hψ : IsBosonic ψ) (hH : hamiltonian ψ = 0) :
     threeBodySpectralBlock Q z ψ = 0 := threeBodySpectralBlock_kernel_zero z ψ hψ hH
+
+example (Q N : ℕ) (A : Occupation Q N) :
+    occupationOrbitMultiplicity A * multisetOccupationFactorial A.val = N.factorial :=
+  occupationOrbitMultiplicity_mul_factorial A
+
+example (Q N : ℕ) (ψ : State Q N) (hψ : IsBosonic ψ) :
+    occupationInclude (occupationRestrict ψ) = ψ := occupationInclude_restrict ψ hψ
+
+example (Q N : ℕ) (x y : Orbital Q) (A : Occupation Q (N+2)) (B : Occupation Q N) :
+    occupationAnnihilate y (occupationAnnihilate x (Pi.single A 1)) B =
+      if Sym.cons x (Sym.cons y B) = A then
+        ((A.val.count x * (A.val.erase x).count y : ℕ) : ℂ) else 0 :=
+  occupationAnnihilate_twice_single x y A B
+
+example (Q N d p : ℕ) (c : WeightOccupationState Q (N+2) d) :
+    (polynomialPairMatrix Q N d p).mulVec (polynomialWeightOccupationInclude c) =
+      polynomialWeightOccupationInclude ((occupationPairBlockMatrix Q N d p).mulVec c) :=
+  polynomialWeightOccupationInclude_pairMatrix Q N d p c
+
+example (Q N : ℕ) (hQ : 0<Q) (A : Occupation Q N) :
+    (Q : ℝ)^(occupationWeight A) * (occupationFactorial A : ℝ) /
+      occupationBinomialProduct A = occupationPlanarMetric A / occupationSphereProduct A :=
+  occupation_metric_script_factor hQ A
+
+example (Q p : ℕ) (hQ : 0<Q) (hp : p≤2*Q) :
+    (Q : ℝ)^p / (2 * ((2*Q).choose p : ℝ)) = planarPairFactor p / sphereFactor (2*Q) p :=
+  sphere_pair_factor hQ hp
+
+example (Q N d : ℕ) (c : WeightOccupationState Q N d) :
+    certificateWeightCoordinates Q N d c = (certificateSectorScale Q N d : ℂ) •
+      (polynomialCoordinates Q N).symm (polynomialOccupationInclude (occupationWeightExtend d c)) := rfl
+
+example (Q N d : ℕ) (hQ : 0<Q) (c e : WeightOccupationState Q N d) :
+    BosonicLaughlin.inner (certificateWeightCoordinates Q N d c)
+      (certificateWeightCoordinates Q N d e) = certificateInner c e :=
+  certificateWeightCoordinates_inner hQ c e
+
+example (Q N d : ℕ) (hQ : 0<Q) (c e : WeightOccupationState Q (N+2) d) :
+    BosonicLaughlin.inner (certificateWeightCoordinates Q (N+2) d c)
+      (hamiltonian (certificateWeightCoordinates Q (N+2) d e)) =
+      ∑ p : Fin (2*Q+1), (planarPairFactor p.val / sphereFactor (2*Q) p.val : ℝ) *
+        certificateInner (occupationPairBlock Q N d p.val c) (occupationPairBlock Q N d p.val e) :=
+  certificateWeightCoordinates_hamiltonian_inner hQ c e
+
+example (Q N d : ℕ) (hQ : 0<Q) (A B : WeightOccupation Q (N+2) d) :
+    certificateHamiltonianFormMatrix Q (N+2) d A B =
+      ∑ p : Fin (2*Q+1), (planarPairFactor p.val / sphereFactor (2*Q) p.val : ℝ) *
+        ∑ C : WeightOccupation Q N (d-p.val), (certificateMetricWeight C.val : ℂ) *
+          star (occupationPairBlockMatrix Q N d p.val C A) *
+            occupationPairBlockMatrix Q N d p.val C B :=
+  certificateHamiltonianFormMatrix_apply hQ A B
+
+example (Q N d : ℕ) (hQ : 0<Q) (c : WeightOccupationState Q (N+2) d) :
+    hamiltonian (certificateWeightCoordinates Q (N+2) d c)=0 ↔
+      ∀ p : Fin (2*Q+1), (occupationPairBlockMatrix Q N d p.val).mulVec c=0 :=
+  certificateWeightCoordinates_hamiltonian_kernel hQ c
+
+example (Q N : ℕ) (ψ : State Q N) :
+    polynomialCoordinates Q N (tensorRaise ψ) = polynomialCM (polynomialCoordinates Q N ψ) :=
+  polynomialCoordinates_tensorRaise ψ
+
+example (Q N d : ℕ) (hd : 0<d) (c : WeightOccupationState Q N d) :
+    tensorRaise (certificateWeightCoordinates Q N d c) =
+      (Real.sqrt Q : ℂ) • certificateWeightCoordinates Q N (d-1) (occupationCMBlock Q N d c) :=
+  tensorRaise_certificateWeightCoordinates hd c
+
+example (Q N d : ℕ) (hQ : 0<Q) (c : WeightOccupationState Q N d) :
+    tensorRaise (certificateWeightCoordinates Q N d c)=0 ↔
+      (occupationCMBlockMatrix Q N d).mulVec c=0 :=
+  tensorRaise_certificateWeightCoordinates_zero_iff hQ c
+
+example (Q N d : ℕ) (hQ : 0<Q) (ψ : State Q N) (hψ : IsBosonic ψ)
+    (hw : WeightSupported d ψ) (hE : tensorRaise ψ=0) :
+    ∃ c : WeightOccupationState Q N d,
+      (occupationCMBlockMatrix Q N d).mulVec c=0 ∧ certificateWeightCoordinates Q N d c=ψ :=
+  certificateWeightCoordinates_highest_surjective hQ ψ hψ hw hE
+
+example (Q N d : ℕ) (hd : d≤Q) : Nonempty (SortedDegreeTuple N d ≃ WeightOccupation Q N d) :=
+  ⟨sortedDegreeOccupationEquiv hd⟩

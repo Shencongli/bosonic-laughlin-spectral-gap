@@ -98,9 +98,17 @@ coordinates, their common pair kernel is transported between flux Q and
 orbital cap d whenever Q≥d, where d is the total orbital deficit. The
 nonunitary coordinate change and its induced metric are explicit.
 The certificate row class is also proved to annihilate the physical kernel.
-Connecting these ordered-tensor blocks to the verifier's occupation-number
-and highest-weight matrices, the two-spectator and coherent estimates,
-sphere transfer, and interval certificates remains to be done in Lean.
+The 8 October 2026 extension constructs complete occupation and highest-weight
+coordinates for these physical blocks. It includes the sector normalization
+$\sqrt{Q^d/N!}$, derives the verifier's spherical diagonal metric and
+integer pair-annihilation matrices, and proves the exact Hamiltonian form
+with coefficients $\kappa_p^2/E_{p,Q}$. The integer center-of-mass derivative
+matrix is connected to the actual angular-momentum raising operator, and
+its kernel represents the full physical highest-weight space. Multisets
+are also put in bijection with sorted orbital tuples.
+The retained comparison matrices, their finite and interval positivity
+certificates, the two-spectator and coherent estimates, and the remaining
+sphere-transfer and averaging steps still require Lean proofs.
 **The uniform spectral-gap theorem remains unproved in Lean.** The package
 documents its remaining proof obligations and reproducible build. The v0.1
 manuscript is unchanged.

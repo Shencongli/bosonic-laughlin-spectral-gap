@@ -1,0 +1,241 @@
+Internal AI semantic audit. This is not external human peer review.
+
+Publication verification: the final whole-library build, 70 physical
+statement contracts, and all 832 theorem axiom reports passed. See
+verification/lean_occupation_highest_build.json for exact source hashes.
+
+AI MATHEMATICAL-SEMANTIC REVIEW: OCCUPATION AND HIGHEST-WEIGHT COORDINATES
+
+Status: final semantic review of the 23 frozen source modules listed below. RetainedCMFrames is explicitly excluded from this increment and publication.
+Date: 2026-10-08.
+Repository: Shencongli/bosonic-laughlin-spectral-gap.
+Reviewer: the angular_algebra AI subagent in the current Codex session.
+
+Provenance
+----------
+This is an AI source-level mathematical review, not an independent human
+review. The reviewer authored OccupationCoordinates, OccupationWeightCoordinates,
+OccupationMetric, OccupationPolynomialMetric, OccupationSortedCoordinates and
+OccupationScriptMetric; those six modules are self-reviewed. The other source modules were authored
+by the parent agent or other AI agents. Compilation and project-wide axiom
+audits are separate verification activities.
+
+Model and coordinate conventions
+--------------------------------
+The underlying Hamiltonian is the existing finite spherical LLL bosonic V0
+model, with Q+1 orthonormal one-particle orbitals and coefficient one for every
+unordered-pair projector. Orbital labels are deficits from the north-pole
+orbital; total deficit is d. The ordered tensor-coordinate inner product is
+conjugate-linear in its first argument. Physical vectors are permutation
+invariant. This increment changes coordinates and proves the required maps;
+it does not change the Hamiltonian normalization or take a continuum limit.
+
+1. Actual occupation quotient and orbit count
+--------------------------------------------
+Occupation Q N is Mathlib's Sym (Orbital Q) N, namely multisets of actual
+orbitals with cardinality N. The map from configurations uses List.ofFn
+followed by the multiset quotient. Equality of multisets is proved equivalent
+to a permutation of the particle slots. Consequently the unscaled map
+I(c)(a)=c(occupation(a)) is injective, has bosonic range, and is onto the
+bosonic tensor subspace. Its inverse is a chosen representative evaluation;
+Bose symmetry makes that evaluation independent of the representative.
+
+The fiber multiplicity m(A) is defined as the actual cardinality of the
+ordered configurations with occupation A. The proof uses the actual
+permutation orbit and Mathlib's stabilizer decomposition into permutations
+of equal-label fibers. It proves
+  m(A) * product_j n_j! = N!,
+including N=0 and repeated labels. No orbit-size formula is assumed. The
+sesquilinear inner product is correspondingly sum_A m(A) conjugate(c_A)e_A.
+
+Weight restriction and zero extension have exact inverse/support properties.
+The square relating occupation inclusion to ordered tensor weight inclusion
+commutes. The weight occupation coordinate space is complete for the bosonic
+weight subspace, not an additional low-energy truncation.
+
+2. Relation to sorted tuples
+---------------------------
+Sorted orbital tuples are identified explicitly with WeightOccupation.
+For d<=Q, every entry is at most its nonnegative total d, so the cap is
+inactive and there is an explicit equivalence with nondecreasing natural
+tuples of length N and sum d. These are precisely the mathematical indexing
+constraints used by parts(n,D). The theorem does not certify the Python
+enumeration recursion, its ordering, or any numerical output array. It
+provides the coordinate correspondence needed to specify such arrays.
+
+3. Factorial-scaled coefficients and actual pair maps
+----------------------------------------------------
+The polynomial occupation inclusion is
+  chi(a) = f(A)c_A,  f(A)=product_j n_j!,  A=occupation(a).
+Both the factorial scaling and the orbital binomial scaling are explicitly
+invertible; neither is treated as a unitary change of basis.
+
+The one-label occupation derivative has row coefficient n_x in its source.
+The two-label derivative has coefficient n_x*(n_y-delta_xy). The code proves
+this by sequential count/erase operations, so the coincident-label case
+has the required falling factorial rather than n_x^2. The ordered sum x+y=p
+contains both orders for unequal labels, exactly as the raw polynomial pair
+channel does. There is no extra unmentioned factor of two.
+
+The factorial-cons identities prove full operator intertwining with the
+actual raw tensor pair channel. Restriction yields finite rectangular weight
+matrices, their explicit integer entries, and actual zero-extension and
+matrix-action identities. Channels p>d vanish before restriction; natural
+subtraction d-p therefore introduces no artificial weight-zero output.
+Completeness of the factorial occupation basis and the physical common-kernel
+characterization are proved using the actual maps, rather than inferred
+from a numerical rank or an apparent dimension match.
+
+4. Exact finite-sphere metric and pair coefficients
+--------------------------------------------------
+Write D_Q(a)=product_i sqrt(binomial(Q,a_i)) and
+  alpha(Q,N,d)=sqrt(Q^d/N!).
+The final physical coordinate map is Phi=alpha D_Q^(-1) I_f, with I_f the
+factorial occupation inclusion. Its injectivity and bosonic-weight
+surjectivity require Q>0 where the sector scalar must be invertible.
+
+OccupationPolynomialMetric derives the full complex inner product, not only
+norms, by grouping the actual tensor sum into fibers and using the proved
+identity m(A)f(A)=N!. Before multiplying by alpha^2, the diagonal coefficient
+is N! f(A)/product_i binomial(Q,a_i).
+
+SphereFactors and OccupationSphereMetric retain the exact finite products
+  P_j(Q)=product_(0<=s<j)(1-s/Q).
+For j<=Q and positive Q, j! binomial(Q,j)=Q^j P_j(Q), with P_j(Q)>0.
+Thus the normalized fixed-degree metric has the finite-sphere form
+  f(A) product_i a_i! / product_i P_(a_i)(Q).
+The actual pair Gram coefficient becomes
+  [p!/2^(p+1)] / P_p(2Q),
+using p<=2Q, p<=d, and the explicit cancellation of the N-particle and
+N+2-particle sector scalars with choose(N+2,2).
+
+The script exact_relative_blocks.py defines the planar numerator metric
+g_A=product_j n_j! (j!)^(n_j) and planar coefficient kappa_p^2=p!/2^(p+1).
+At finite Q the P factors are retained. These identities are not asymptotic
+expansions and do not identify the finite-sphere matrix with the planar
+matrix obtained by setting those factors to one.
+
+FockInner establishes H=sum_p B_p^dagger B_p as a full sesquilinear identity
+on bosonic bra and ket vectors. PolynomialGram transports every matrix
+element through the explicit nonunitary diagonal map. Consequently later
+Gram matrices are tied to the actual Hamiltonian, with its original pair
+normalization; a quadratic-form assertion is not silently promoted to a
+different matrix representation.
+
+5. Actual highest-weight condition
+---------------------------------
+TensorHighestWeight defines total J+ as the sum of the actual normalized
+spin-Q/2 single-slot raising operators. It decreases the total deficit by
+one, preserves Bose symmetry, and includes the cap boundary, zero-deficit,
+zero-flux and vacuum cases. PolynomialHighestWeight proves the exact identity
+  D_Q J+ = CM D_Q,
+where each tensor coordinate derivative has coefficient j. Its full and
+fixed-weight matrix kernels therefore represent the actual J+ kernel.
+No claim about thermal, low-energy, or phase-level behavior is used here.
+
+OccupationHighestWeight proves the integer coefficient j*n_j from the source
+occupation by explicit count/erase replacement and the factorial metric
+identity. OccupationCMBlocks supplies the actual matrix-action identity,
+the inclusion intertwiner, and a linear equivalence between its full kernel
+and the actual bosonic highest-weight subspace. A particular chosen nullspace
+frame is not required for this complete-subspace result.
+
+CertificateHighestWeight retains the normalization between adjacent degrees:
+  J+ Phi_(N,d) = sqrt(Q) Phi_(N,d-1) CM_(N,d),  d>0.
+For Q>0 it proves the corresponding matrix-kernel iff and surjectivity onto
+the physical highest-weight vectors. The scalar sqrt(Q) is not discarded in
+the operator identity. The unnormalized polynomial/occupation APIs include
+Q=0; the normalized invertibility claims explicitly require positive Q.
+
+There is a target-space convention at d=0: the Lean natural-number expression
+d-1 is 0, so its CM block is the zero map from degree zero to degree zero.
+The script parts(n,-1) is empty, so cm_lower(n,0) has an empty row index.
+These maps have the same full input kernel, but their target dimensions and
+literal matrices differ. The stated source-column rule and equal-entry
+identification with the script's CM matrix use d>0 and the cap-inactive
+regime d<=Q, together with the sorted-tuple index correspondence above.
+The analogous p>d pair branch is explicitly proved zero before restriction.
+
+6. Conditional kernel-frame certificates
+---------------------------------------
+KernelFrames defines HasKernelFrame by the actual matrix identities
+  C U=0, L U=1, U L+V C=1.
+These imply that U's columns form a complete, independent basis of ker C,
+with inverse coordinate map L. The statements remain conditional on those
+identities; they do not declare an arbitrary supplied or RREF-computed U
+to be complete without verification. The dimension conclusion is derived
+from the explicit linear equivalence, rather than assumed to construct it.
+
+7. Final metric and Hamiltonian matrix assembly
+-----------------------------------------------
+OccupationScriptMetric proves that the multiset product is exactly the
+count-powered product in g(A), including zero occupations and N=0. It is an
+algebraic equality of metric weights, not a claim about script execution.
+CertificateGram then proves the normalized physical Phi inner product is
+the explicit diagonal certificateInner and that every physical Hamiltonian
+matrix element is the sum of pair-matrix adjoint/metric/pair-matrix entries
+with coefficient kappa_p^2/P_p(2Q). Both sides use the actual Phi and actual H;
+this is not an unproved identification inferred from matching dimensions.
+The resulting certificateHamiltonianFormMatrix is the sesquilinear form
+matrix (G times the coordinate action matrix in a nonorthonormal basis).
+It is not mislabeled as the coordinate Hamiltonian acting with Euclidean
+inner product. Physical positivity uses the positive finite-sphere metric.
+
+Review outcome and scope
+------------------------
+No scientific-meaning or normalization defect was found in the 23 reviewed
+frozen modules. The cardinality, coordinate completeness, operator
+intertwiners and full sesquilinear forms are exact finite-dimensional claims.
+No approximate series, measured rank, external numerical output or assumed
+model-correspondence hypothesis is used to derive these results.
+
+The matrix arrays produced by a particular Python run are a separate
+verification boundary. SortedDegreeOccupationEquiv matches the indexing
+sets when d<=Q, but does not by itself certify the program's enumeration
+order or every exported matrix entry. HasKernelFrame gives the exact algebraic
+criterion to check a chosen frame. The RetainedCMFrames experiment did not
+complete Lean kernel evaluation of the proposed rational array identities.
+It was moved to work/retained_cm_frames_experiment and is excluded from the
+publication source and this verified-module inventory. The finite rational
+array identities remain unproved here; incomplete evaluation neither proves
+nor disproves them. No retained-frame result is claimed in this report.
+This increment also does not prove a uniform thermodynamic spectral gap.
+
+Integration correction
+----------------------
+The whole-project declaration scan found that the original FockInner draft
+repeated first_pair_inner_identity, already proved in FourBodyFock. FockInner
+now imports FourBodyFock and reuses that same theorem; the duplicate statement
+and proof were removed. The reviewer compared the old and reused statements
+and proofs and found them identical. This is an import/declaration integration
+correction, with no change to mathematical content or assumptions. Its updated
+source hash appears below. The final whole-project build and axiom audit are
+recorded separately by the parent agent.
+
+Final source inventory and SHA256 hashes
+---------------------------------------
+All hashes below refer to the saved frozen Lean source, not compiled artifacts.
+
+8a8b87958704320e80f036beb7a8c73dd4e22860035f55216651003b33be3e6c  lean/BosonicLaughlin/CertificateCoordinates.lean
+196196b4aa9ca4f3d49a65d3d74a904551493a7a034b88b67f1651f0da6110ff  lean/BosonicLaughlin/CertificateGram.lean
+c2097f8794273506d72d840ed28423e931041d0960bb35340d43a3af1bc360d0  lean/BosonicLaughlin/CertificateHighestWeight.lean
+cecade1fab93710a273076284dc7c118f06ea2590a9a86cf85ae9908dfd6b69c  lean/BosonicLaughlin/CertificateNormalization.lean
+7ca44ca98ce48823dfa8b176d6482838f88bb60a4efb2004b5a31a78f39685fa  lean/BosonicLaughlin/FockInner.lean
+0b8957c284053c2e14a7eaccc39d3aa7de257c3f64b721c844abf16f44579747  lean/BosonicLaughlin/KernelFrames.lean
+9381ff0cfe05ae131ebe812cb9c29820d274428911693f6f978ed0ba9986730e  lean/BosonicLaughlin/OccupationCMBlocks.lean
+d6216abbf21ee2db497e0edb917aabc657f70fef0edf69479fad6f0fd5376ac0  lean/BosonicLaughlin/OccupationCoordinates.lean
+4335e9141ec7b3294d1844041bcd3c39de7045e6b402c28a4c46dd37d799b5c5  lean/BosonicLaughlin/OccupationHighestWeight.lean
+a7f20090e3ee7bbb3ab39c52f07cf8c0025f9c50f5ebed8d4796b902f2a4d70e  lean/BosonicLaughlin/OccupationMetric.lean
+7bea1837228381d750a276409647ad7d902f6763f64d6e0a01453093a334bfdc  lean/BosonicLaughlin/OccupationPairBlocks.lean
+40deda794ac6e82c18ed3d2f86351ef8b7b7472496f061f21db949074c576341  lean/BosonicLaughlin/OccupationPairChannels.lean
+8503854f119edab0d8ff6063f5975e916fc055bd9e6f67f93346fe61833f4c64  lean/BosonicLaughlin/OccupationPairFactorial.lean
+45439bc8478d239e5ce30631a8d4310649b49b69d12052658a37cd407d472784  lean/BosonicLaughlin/OccupationPolynomialMetric.lean
+1548ff2e8b97e16487364313ba0114d7e8dc1c5ec5c304722bddddace3c8d5b6  lean/BosonicLaughlin/OccupationScriptMetric.lean
+7ace646c451da2411562c1405fb4036be462a8715c53d4be695bfc593095ea44  lean/BosonicLaughlin/OccupationSortedCoordinates.lean
+dd54b4001570af62aed2bf9a3cdb2d3b8838f3691ed29866d8f40533525b8ba8  lean/BosonicLaughlin/OccupationSphereMetric.lean
+71870d063acb0d0392e86732746c7e326033ef5e0ab136fd6bee9f191f148102  lean/BosonicLaughlin/OccupationWeightCoordinates.lean
+a5513aaa04a23cc7c84d512c7806ea1f8fcb09746f5298b0dc8f5860445a2ceb  lean/BosonicLaughlin/PolynomialGram.lean
+03c0f7c7f8ea199947632b0e918b62fff25b1ea67ff934155acd31d1e4de9252  lean/BosonicLaughlin/PolynomialHighestWeight.lean
+dd7af1f4d5332d03fdff6c736fa3fab32baf3a5850f373bd2eb78138132a32c5  lean/BosonicLaughlin/PolynomialOccupationCoordinates.lean
+cbe61f0ff4fd1324b60f07e84a1e3d5ca4748053c90277e69d7578788d41643c  lean/BosonicLaughlin/SphereFactors.lean
+835f9b09f14b74866c4acf9f6672edcf3f6e904744d3ee6fabb4b185d9459916  lean/BosonicLaughlin/TensorHighestWeight.lean

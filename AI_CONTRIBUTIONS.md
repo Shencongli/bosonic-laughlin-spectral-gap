@@ -133,25 +133,42 @@ An explicit configuration bijection therefore transports the common
 polynomial pair kernel between caps Q and d; composing with the coordinate
 changes transports the physical zero spaces. The certificate row class
 is proved to annihilate the physical kernel for arbitrary row coefficients.
-These results do not yet supply the correspondence to the Python verifier's
-occupation-number and highest-weight matrices.
+On 8 October 2026, AI agents extended this bridge to complete occupation
+and highest-weight coordinates. They proved the multiset/sorted-tuple
+bijection, the factorial-weighted occupation inclusion, and the physical
+normalization $\Phi_{Q,N,d}=\sqrt{Q^d/N!}D_Q^{-1}I_{\mathrm{occ}}$.
+The resulting coordinates are proved injective and onto the physical
+bosonic degree sector for Q>0. The agents derived the integer pair-removal
+coefficients and the spherical diagonal metric from the physical maps,
+then proved the Hamiltonian form with the verifier's
+$\kappa_p^2/E_{p,Q}$ factors.
 
-The full build, all 639 theorem declarations, 54 physical statement contracts,
-and axiom dependency audit passed with pinned Lean/mathlib versions.
+They also connected the integer center-of-mass derivative, with source
+coefficient $j n_j$, to the actual angular-momentum raising operator.
+The checked identity is $J_+\Phi_d=\sqrt Q\,\Phi_{d-1}C_d$ for d>0,
+and the CM kernel is proved to represent the full physical highest-weight
+space. A separate algebraic kernel-frame criterion supplies reconstruction
+and dimension statements when its exact matrix identities are checked.
+The coordinate proofs do not import Python success flags as hypotheses.
+
+All 832 theorem declarations and 70 physical statement contracts pass the
+full build and axiom audit, with pinned Lean/mathlib versions recorded.
 The local build uses Lake package
 overrides pointing to source archives of those same revisions. The only
 axiom dependencies are `propext`, `Classical.choice`, and `Quot.sound`.
-The [common-kernel build record](verification/lean_common_kernel_build.json) and
-[internal AI semantic audit](verification/audit_reports/lean_common_kernel_audit.txt)
-record this update's scope. The
+The [occupation/highest-weight build record](verification/lean_occupation_highest_build.json)
+and [internal AI semantic audit](verification/audit_reports/lean_occupation_highest_audit.txt)
+record the 8 October extension. The
+[common-kernel build record](verification/lean_common_kernel_build.json),
 [three-body lift build record](verification/lean_three_body_lift_build.json),
 [recoupling build record](verification/lean_recoupling_build.json) and
 [normal-order build record](verification/lean_normal_order_build.json) remain
 available as development history. No independent human review is claimed.
 
-The remaining retained-block coordinate identification, two-spectator and coherent-integral estimates,
-finite-sphere transfer, the analytic correspondence to the interval
-certificates, and the uniform
-spectral-gap target remain unformalized. The package's [status](lean/README.md) lists the
+The remaining tasks include identifying the retained rational frames and
+comparison matrices, proving the two-spectator and coherent-integral estimates,
+and completing the finite-sphere transfer, averaging, and interval-certificate
+proofs. The finite comparison PSD certificates and the uniform spectral-gap
+target remain unproved in Lean. The package's [status](lean/README.md) lists the
 remaining proof chain. Neither the v0.1 PDF nor its release is replaced by
 this code update.

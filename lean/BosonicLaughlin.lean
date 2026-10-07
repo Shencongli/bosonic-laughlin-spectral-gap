@@ -15,3 +15,8 @@ import BosonicLaughlin.PairSandwichKernel
 import BosonicLaughlin.CertificateRows
 import BosonicLaughlin.WeightKernelTransport
 import BosonicLaughlin.PhysicalWeightMatrices
+import BosonicLaughlin.CertificateGram
+import BosonicLaughlin.CertificateHighestWeight
+import BosonicLaughlin.OccupationSortedCoordinates
+import BosonicLaughlin.OccupationScriptMetric
+import BosonicLaughlin.KernelFrames
