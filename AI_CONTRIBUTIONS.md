@@ -73,3 +73,17 @@ peer review or independent human validation is recorded for v0.1. The
 publication status is therefore **candidate proof**, with the proposed
 bound and its assumptions stated in the manuscript. The threshold
 $Q_0=3088$ is not claimed to be the smallest possible sufficient threshold.
+
+## Lean development after v0.1
+
+On 7 October 2026, OpenAI Codex generated the initial Lean package in `lean/`
+under Xin Shen's direction. It defines the spherical bosonic model and proves
+22 pair-sector and elementary model lemmas. Local compilation and an axiom
+dependency audit passed with the pinned Lean/mathlib versions; the recorded
+build used package overrides pointing to source archives of those revisions.
+The proof of the uniform spectral-gap target, the analytic many-body
+reductions, and the interval certificates have not been formalized. No
+independent human review of the Lean definitions or proofs is claimed.
+The package's [status](lean/README.md) distinguishes these tasks from the
+checked declarations. Neither the v0.1 PDF nor its release is replaced by
+this code update.

@@ -1,0 +1,24 @@
+import BosonicLaughlin
+
+#print axioms BosonicLaughlin.pairVector_exchange
+#print axioms BosonicLaughlin.pairApply_add
+#print axioms BosonicLaughlin.pairApply_smul
+#print axioms BosonicLaughlin.hamiltonian_zero
+#print axioms BosonicLaughlin.hamiltonian_add
+#print axioms BosonicLaughlin.hamiltonian_smul
+#print axioms BosonicLaughlin.hamiltonian_small_sector
+#print axioms BosonicLaughlin.pairWeight_nonneg
+#print axioms BosonicLaughlin.pairCoefficient_nonneg
+#print axioms BosonicLaughlin.pairCoefficient_sq
+#print axioms BosonicLaughlin.pairWeight_sum
+#print axioms BosonicLaughlin.pairCoefficient_normalized
+#print axioms BosonicLaughlin.pairCoefficient_exchange
+#print axioms BosonicLaughlin.pairCoefficient_zero_left
+#print axioms BosonicLaughlin.pairCoefficient_zero_right
+#print axioms BosonicLaughlin.pairCoefficient_normalized_fin
+#print axioms BosonicLaughlin.pairCoefficient_normalized_complex
+#print axioms BosonicLaughlin.pairBlockAmplitude_apply
+#print axioms BosonicLaughlin.pairBlockApply_idempotent
+#print axioms BosonicLaughlin.pairBlock_kernel_hermitian
+#print axioms BosonicLaughlin.pairBlock_energy_identity
+#print axioms BosonicLaughlin.pairBlock_energy_nonneg

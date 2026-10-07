@@ -76,7 +76,11 @@ outward-rounded dyadic intervals.
 
 The analytic identities connecting these checks to the full Hamiltonian
 are supplied in the manuscript and remain open to independent review.
-The repository does not contain a proof-assistant formalization.
+An initial [Lean formalization](lean/README.md) now contains checked
+pair-sector lemmas and definitions of the full bosonic model. The uniform
+spectral-gap theorem and its many-body proof are **not yet formalized**.
+See the [Lean status and build instructions](lean/README.md) for the exact
+coverage and remaining proof obligations. The v0.1 manuscript is unchanged.
 
 ## Verification materials
 
@@ -90,7 +94,7 @@ The repository does not contain a proof-assistant formalization.
 - `verification/historical_checks/`: the earlier conservative estimates
   retained in Appendix A.
 - `verification/manifest.json`: verification-file hashes and replay metadata.
-- `SHA256SUMS`: hashes of the released files, excluding this checksum file.
+- `SHA256SUMS`: hashes of the current repository files, excluding this checksum file.
 
 ## Sources and attribution
 

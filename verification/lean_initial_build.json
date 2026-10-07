@@ -1,0 +1,143 @@
+{
+  "lean_version": "Lean (version 4.34.1, x86_64-w64-windows-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)",
+  "build_passed": true,
+  "package_overrides_used": true,
+  "checked_theorem_count": 22,
+  "main_uniform_gap_theorem_proved": false,
+  "axiom_dependencies": {
+    "BosonicLaughlin.pairVector_exchange": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairApply_add": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairApply_smul": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.hamiltonian_zero": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.hamiltonian_add": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.hamiltonian_smul": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.hamiltonian_small_sector": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairWeight_nonneg": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairCoefficient_nonneg": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairCoefficient_sq": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairWeight_sum": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairCoefficient_normalized": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairCoefficient_exchange": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairCoefficient_zero_left": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairCoefficient_zero_right": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairCoefficient_normalized_fin": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairCoefficient_normalized_complex": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairBlockAmplitude_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairBlockApply_idempotent": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairBlock_kernel_hermitian": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairBlock_energy_identity": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BosonicLaughlin.pairBlock_energy_nonneg": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ]
+  },
+  "sha256": {
+    "BosonicLaughlin/Model.lean": "35cb85e80522ab01b3aeefe77d90a6a9ce16e580d7fac2875c189e5b4998c16e",
+    "BosonicLaughlin/Pair.lean": "a05eb12a7fe74a7758643a5b9fbfa39330dcf7cf92562c67b5a3cb6acc1c4019",
+    "BosonicLaughlin/PairBlock.lean": "062a4c0459de9826b848e94d72e2c229294edb38455c01c30a9675200201e832",
+    "BosonicLaughlin.lean": "d8b681e220da829585dd430eb1a4892086e0ec9c568ac76a978bd3ec052fbee4",
+    "Audit.lean": "85388157c056a6224d88f7cc770642f28ae73d9e9972404c9f54b5e66fe943c2",
+    "lakefile.lean": "eff00efd11a588cfe527b7727aa1364021f82675a4ac7cac2959220fd923f363",
+    "lake-manifest.json": "938baa91e89aa124695477b23bb69f5f0b40d53a3c3ca1f4b9670f347488e9a7",
+    "lean-toolchain": "8152090414016dd5dc871752f8ce4ecdbd604d9845758e9b9047cb80101280b5",
+    "check.py": "532cc2865d6942114413ab14ca76f45a7dad70641af09c86fc25e0a45b4f84f6"
+  },
+  "date": "2026-10-07",
+  "dependency_acquisition": "Official GitHub source archives at the locked revisions; official mathlib build cache; Lake path overrides used locally.",
+  "dependency_revisions": {
+    "mathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+    "plausible": "118aa17ee84656b8bd727fef7c458ee8c833385c",
+    "LeanSearchClient": "ddf04cf3949fa556442341e87d47f9f6e6074707",
+    "importGraph": "e928b72544873815af278d38681b31c0293588e3",
+    "proofwidgets": "106ff4fafc74ef4ac99d81dbf3ab399118f497a5",
+    "aesop": "355695d523e41d0554926416cba2a2b3544fbbc9",
+    "Qq": "6a489d9af5d0c47e5b259e2e8bcdfc1811b5a259",
+    "batteries": "f2effa3d803fda822b1f97b806c47cf2adfbcbc2",
+    "Cli": "e92c9f15fdfacc8536f31cfb3b7ad26c3c8cd204"
+  }
+}
