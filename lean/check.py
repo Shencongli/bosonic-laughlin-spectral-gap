@@ -113,6 +113,18 @@ required = [
 ]
 retained_cases = [(3, d) for d in range(9)] + [(4, d) for d in range(17)]
 required += [
+    'v0PairAnnihilate_certificateWeightCoordinates',
+    'v0PairAnnihilate_twice_certificateWeightCoordinates',
+    'certificateFourBody_target_quadratic', 'certificateFourBodyFormMatrix_gram',
+    'certificateFourBodyFormMatrix_posSemidef', 'annihilate_single_certificateCoordinates',
+    'single_pair_certificateCoordinates', 'double_single_pair_certificateCoordinates',
+    'orbitalTransfer_gram_one', 'orbitalTransfer_gram_two',
+    'selectedCertificateRow_all_terms', 'selectedCertificateRow_annihilates_kernel',
+    'selectedCertificateRow_normal_order_three', 'selectedCertificateRow_normal_order_four',
+    'certificateRow_three_parts_nonneg', 'certificateRow_four_parts_nonneg',
+    'single_pair_vacuum_coordinates', 'double_single_pair_vacuum_coordinates',
+    'directRow_three_cross_factor', 'directRow_three_contraction_factor', 'directRow_four_factor',
+    'physical_direct_three_cross', 'physical_direct_three_contraction', 'physical_direct_four',
     'physicalFormMatrix_form', 'physicalFormMatrix_comp_frame',
     'highestWeightPhysicalFrame_range', 'highestWeightPhysicalFrame_nonneg_iff',
     'certificateMetricMatrix_physical', 'certificateHamiltonian_coordinate_action',
@@ -195,6 +207,14 @@ record = {
     'exported_planar_selected_complement_posDef_proved': True,
     'planar_comparison_operator_to_exported_array_identification_proved': False,
     'finite_sphere_interval_certificate_semantics_proved': False,
+    'actual_spherical_pair_annihilation_coordinate_intertwiner_proved': True,
+    'actual_four_body_target_double_pair_gram_quadratic_form_proved': True,
+    'single_and_double_spectator_annihilation_coordinate_factors_proved': True,
+    'physical_certificate_row_normal_order_in_three_and_four_particle_sectors_proved': True,
+    'direct_K3_K4_termwise_physical_pullbacks_and_frozen_row_factors_proved': True,
+    'all_particle_certificate_row_normal_order_proved': False,
+    'full_frozen_row_sum_and_exported_K3_K4_arrays_identified': False,
+    'physical_multiparticle_descendant_normalization_and_schur_average_proved': False,
     'certificate_checker_regression_tests_passed': True,
     'physical_statement_contracts_checked': True,
     'physical_statement_contract_count': len(re.findall(

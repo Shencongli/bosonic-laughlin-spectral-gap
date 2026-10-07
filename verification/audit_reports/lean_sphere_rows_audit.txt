@@ -1,0 +1,80 @@
+Internal AI self-review, 8 October 2026. The authoring Codex assistant
+reviewed this extension. No separate reviewing agent or additional human
+verification was used.
+
+Scope and checked proof structure
+
+1. CertificatePairIntertwiner.lean derives the exact coefficient sqrt(kappa_p^2 /
+   P_p(2Q)) in the physical pair-annihilation coordinate map. At integer Q>0,
+   p ranges over Fin(2Q+1). The weight-sector identity covers p above the input
+   degree, when both sides vanish. Composing two maps retains each intermediate
+   degree and its normalization.
+
+2. CertificateFourBody.lean defines the integer double-pair matrix and its
+   output-metric Gram form. It proves the physical double-annihilator
+   sesquilinear identity and the actual S4 quadratic-form identity on every
+   N+4-particle sector, Q>0. The matrix is positive semidefinite. The S4 theorem
+   is stated as a quadratic-form equality, not a separate complex-entry
+   operator-matrix equality.
+
+3. CertificateSingleIntertwiner.lean proves the sqrt(j! / P_j(Q)) factor for
+   single-orbital annihilation, j<=Q, with j<=d in its degree-labelled map.
+   Single-pair and double-single-pair compositions track the remaining degree.
+   These maps act on actual occupation coordinates in the ordered-tensor model.
+
+4. LowSectorTransfer.lean derives the one- and two-particle coordinate inner
+   products and the transfer-operator contractions from physical definitions.
+   Two-particle transfer identities require bosonic inputs; the swap symmetry,
+   sqrt(2) normalization, and quartic contraction factor are proved.
+
+5. CertificateRowNormalOrder.lean defines a finite selected row with arbitrary
+   complex coefficients. It agrees with certificateRow when all index triples
+   are selected and annihilates the actual Hamiltonian kernel at arbitrary
+   particle number. The normal-order equalities are proved for three- and
+   four-particle input sectors; the latter requires bosonic inputs. Their
+   nonnegative sums are actual row norms. The arbitrary-particle-number
+   normal-order equality for these selected rows remains unproved.
+
+6. CertificateVacuumRows.lean identifies the integer-derivative functionals
+   for one and two spectator annihilators, including repeated labels. The
+   input degree equals the sum of pair and spectator labels. Exact vacuum
+   normalization gives the physical coefficients and cross inner products.
+
+7. CertificateRowFactors.lean uses the specified real frozen-row conventions,
+   with unrestricted signs. Exact scalar cancellations give the direct K3
+   cross/contraction and K4 factors. This is algebra at finite Q, not a
+   Taylor expansion or an interval estimate.
+
+8. CertificateDirectTerms.lean combines these scalar cancellations with the
+   physical vacuum-functional identities. Its three theorems identify the
+   direct terms at matching degrees, for arbitrary real row entries, Q>0,
+   pair indices at most 2Q, and orbital indices at most Q.
+
+Scope limitations
+
+Full frozen-row summation, degree support, covariance, and identification with
+the exported K3/K4 arrays remain open. The actual many-particle lowering
+descendant normalization and Schur averaging were not proved in this extension.
+No new interval arithmetic semantics, Taylor remainders, or finite-sphere
+certificate checks were added. The 156 recorded numerical certificates are
+not promoted to Lean theorems. The uniform spectral-gap target remains
+unproved. Earlier planar-array certificates are retained with their recorded
+scope. The manuscript, numerical data, and v0.1 Release are unchanged.
+
+Validation
+
+The full pinned Lean build, 124 statement contracts, 3 existing checker
+regression tests, and all 1574 theorem axiom reports passed. The extension
+adds 66 theorem declarations. Only propext, Classical.choice, and Quot.sound
+occur. No sorry, custom proof axiom, or native_decide is used. Source hashes
+and pinned dependency revisions are recorded in lean_sphere_rows_build.json.
+
+Reviewed new module hashes
+78e8a53f36ee8316121a2d01dbf04486d43160bdddbfcf0873e37b714122f2c5  lean/BosonicLaughlin/CertificateDirectTerms.lean
+97c12cf05d05a4d1e4f3339ee734f2d251cdd314a62cd06f6d7362b5aaaf2dbf  lean/BosonicLaughlin/CertificateFourBody.lean
+c4f304a818f9d0dc2425b7e29716c88c162133c35615f62a2eb917c4d2225a38  lean/BosonicLaughlin/CertificatePairIntertwiner.lean
+a069ebc64184404c6a211ba5f3dba5e1a4f80c01657bac2527b9eff772988406  lean/BosonicLaughlin/CertificateRowFactors.lean
+b3f6cfeb892820a601b84dd4a4da9b3716f4a597cfadcde817649d844e0f99a0  lean/BosonicLaughlin/CertificateRowNormalOrder.lean
+760aba4568a956fcd5a03e7554308133caf90298da3fa45f025662dcf8244b64  lean/BosonicLaughlin/CertificateSingleIntertwiner.lean
+3d92d3fe094af5a8f0a93731e861354530b3a1346ef961bb536a956c8e5bb0c8  lean/BosonicLaughlin/CertificateVacuumRows.lean
+cd7dc671bc7d49b8912657e054f2bfec316de8749d3b0c2787325f1d5fc014de  lean/BosonicLaughlin/LowSectorTransfer.lean

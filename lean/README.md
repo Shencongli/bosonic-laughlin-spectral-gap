@@ -9,8 +9,10 @@ pair kernel, exact weight blocks, and their polynomial-coordinate transport
 are formalized as well. The current extension supplies complete occupation
 and highest-weight coordinates, including the physical normalization,
 spherical metric, integer annihilation matrices, and exact Hamiltonian form.
-Exact Gram and kernel certificates now establish positivity of the exported
-planar arrays and their selected complements. Their full comparison-operator
+Exact Gram and kernel certificates establish positivity of the exported
+planar arrays and their selected complements. The spherical-row extension
+derives physical annihilation coordinates, the double-pair four-body target,
+and the normal-ordered K3/K4 vacuum terms with their exact coefficients. Their full comparison-operator
 identification and the finite-sphere interval certificates remain open.
 **The uniform spectral-gap theorem remains unproved in Lean.**
 
@@ -450,11 +452,17 @@ and deduction of the gap above it.
 | `KernelFrameTransport.lean`, `KernelFramePhysical.lean`, `RetainedCMPhysical.lean`, `RetainedCMZeroDegree.lean` | Rational-to-complex frame transport, complete physical highest-weight bases and dimensions, and the separate all-Q degree-zero identification. |
 | `PhysicalComparisonForms.lean`, `NonorthogonalHamiltonian.lean` | Exact physical form pullbacks, complete highest-weight frames, the inverse metric in the Hamiltonian square, and the actual three-particle target form. |
 | `SparseGramCertificate.lean`, `KernelComplement.lean`, `RetainedPlanarCertificates.lean` | Integer Gram soundness over complex amplitudes, all 52 exported planar PSD arrays, complete common kernels, and strict positivity on the selected complements. |
+| `CertificatePairIntertwiner.lean`, `CertificateSingleIntertwiner.lean`, `CertificateFourBody.lean` | Actual pair and spectator annihilation coordinates, their exact spherical factors, and the four-body target as a double-pair Gram quadratic form. |
+| `LowSectorTransfer.lean`, `CertificateRowNormalOrder.lean` | Actual one-body-transfer contractions and normal ordering of finite selected certificate rows on the three- and four-particle input sectors. |
+| `CertificateVacuumRows.lean`, `CertificateRowFactors.lean`, `CertificateDirectTerms.lean` | Polynomial vacuum functionals, frozen-row coefficient cancellations, and term-by-term physical pullbacks of the direct K3/K4 formulas at matching degrees. |
 
 All source files in this table are under `BosonicLaughlin/`.
-All 1508 theorem declarations and 111 statement contracts pass the
+All 1574 theorem declarations and 124 statement contracts pass the
 full build and axiom audit. `Audit.lean` and `check.py` check every theorem's
 axiom dependencies.
+The [spherical-row build record](../verification/lean_sphere_rows_build.json)
+and [AI self-review](../verification/audit_reports/lean_sphere_rows_audit.txt)
+record the current physical identities and their scope.
 The [planar-certificate build record](../verification/lean_planar_certificates_build.json)
 and [AI self-review](../verification/audit_reports/lean_planar_certificates_audit.txt)
 record the current checks, including three checker regression tests.
@@ -507,11 +515,64 @@ Q-dependent comparison formula, Schur average, and interval remainders
 are not covered by these planar Lean certificates. In particular, the
 shifted planar PSD check alone does not imply the spherical Q≥3088 bound.
 
+## Spherical annihilation and direct row terms
+
+Let $\Phi_{N,d}$ be the normalized occupation map defined above,
+$\kappa_p^2=p!/2^{p+1}$, $e_p=\sqrt{P_p(2Q)}$, and
+$d_j=\sqrt{P_j(Q)}$, where $P_j(Q)=\prod_{s<j}(1-s/Q)$.
+At integer Q>0 and within the actual orbital cap, Lean proves
+
+$$B_p\Phi_{N+2,d}=(\kappa_p/e_p)\Phi_{N,d-p}\widehat B_p,$$
+
+where $\widehat B_p$ is the integer occupation pair matrix. Above the
+input degree both sides vanish. Single-orbital annihilation has coefficient
+$\sqrt{j!}/d_j$ and polynomial derivative $\partial_j$; its stated
+degree condition is j≤d. Composing these maps proves the physical
+vacuum-functional coefficient
+
+$$a_{l_1}\cdots a_{l_s}B_p\Phi
+=\frac{\kappa_p\sqrt{l_1!\cdots l_s!}}
+ {e_p d_{l_1}\cdots d_{l_s}}\,
+ \ell_{p;l_1,\ldots,l_s}$$
+
+for s=1,2 on the s+2-particle sector at total degree $p+\sum l_a$.
+Here the equality is of
+functionals to the one-dimensional vacuum space, and $\ell$ is defined
+by the actual integer occupation derivatives, including repeated labels.
+The four-body target is proved as a quadratic-form identity with the
+double-pair Gram matrix on every N+4-particle sector. Its finite output
+degree metrics are retained in the matrix definition.
+
+For a finite selected row
+$F=\lambda B_t+\sum_a\alpha_a a_{i_a}^\dagger a_{j_a}B_{p_a}$,
+the actual one- and two-particle output contractions give the two-, three-,
+and four-body terms of $F^\dagger F$ on the three- and four-particle
+input sectors. The four-particle identity requires bosonic inputs.
+This selected-row definition agrees with `certificateRow` when all
+pair and orbital indices are included. It annihilates the physical
+Hamiltonian kernel.
+
+Substituting the real frozen-row conventions
+$\lambda=y_0/\kappa_t$ and
+$\alpha_{pj}=y_{pj}\sqrt{i!/(\kappa_p^2 j!)}$ yields the direct
+K3/K4 coefficients with $h_a=i!/(e_p d_i d_j)$. The cancellation and
+physical functional identities are proved for arbitrary real row entries,
+with the matching-degree hypotheses stated in each theorem. These are
+exact integer-flux identities, not an expansion in 1/Q.
+
+The extension does not yet assemble all frozen rows and their degree
+support into the exported K3/K4 arrays, or prove the corresponding row
+normal-order identity in arbitrary particle number. Normalized physical
+lowering descendants and the Schur average still require proofs. Neither
+the generic coefficient identities nor the array data are used to assert
+those missing steps.
+
 ## Remaining proof chain
 
 1. Identify the full comparison matrices with the exact occupation-coordinate
    operators. The coordinate map, metric, pair matrices, and retained
-   highest-weight bases are now proved.
+   highest-weight bases are now proved, as are the physical target forms
+   and the direct K3/K4 terms. Frozen-row assembly and indexing remain.
 2. Prove the two-spectator bound, coherent integrals and comparisons,
    sphere transfer, and Schur averaging. The occupation sandwich above is
    one input to these further estimates.

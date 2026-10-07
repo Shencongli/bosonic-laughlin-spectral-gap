@@ -528,3 +528,99 @@ example : Module.finrank ℂ (LinearMap.ker (planar_4_16A.map (Rat.castHom ℂ))
   planar_4_16A_kernel_finrank
 
 example : (planar_4_1A.map (Rat.castHom ℂ)).PosSemidef := planar_4_1A_posSemidef
+
+/- Sphere-row extension contracts. Physical identities are at integer Q>0;
+no Schur-average identity, interval bound, or frozen-array equality is assumed. -/
+example {Q N d : ℕ} (hQ : 0<Q) (p : Fin (2*Q+1))
+    (c : WeightOccupationState Q (N+2) d) :
+    v0PairAnnihilate p (certificateWeightCoordinates Q (N+2) d c)=
+      (certificatePairCoefficient Q p.val : ℂ) • certificateWeightCoordinates Q N (d-p.val)
+        (occupationPairBlock Q N d p.val c) := v0PairAnnihilate_certificateWeightCoordinates hQ p c
+
+example {Q N d : ℕ} (hQ : 0<Q) (p q : Fin (2*Q+1))
+    (c : WeightOccupationState Q (N+4) d) :
+    v0PairAnnihilate q (v0PairAnnihilate p (certificateWeightCoordinates Q (N+4) d c))=
+      ((certificatePairCoefficient Q q.val * certificatePairCoefficient Q p.val : ℝ) : ℂ) •
+        certificateWeightCoordinates Q N (d-p.val-q.val)
+          (occupationPairBlock Q N (d-p.val) q.val (occupationPairBlock Q (N+2) d p.val c)) :=
+  v0PairAnnihilate_twice_certificateWeightCoordinates hQ p q c
+
+example {Q N d : ℕ} (hQ : 0<Q) (c : WeightOccupationState Q (N+4) d) :
+    (inner (certificateWeightCoordinates Q (N+4) d c)
+      (normalFourBodyApply (certificateWeightCoordinates Q (N+4) d c))).re=
+        (star c ⬝ᵥ (certificateFourBodyFormMatrix Q N d *ᵥ c)).re :=
+  certificateFourBody_target_quadratic hQ c
+
+example {Q N d : ℕ} (hQ : 0<Q) : (certificateFourBodyFormMatrix Q N d).PosSemidef :=
+  certificateFourBodyFormMatrix_posSemidef hQ
+
+example {Q N d : ℕ} (hQ : 0<Q) (j : Orbital Q) (hj : j.val≤d)
+    (c : OccupationState Q (N+1)) :
+    annihilate (Pi.single j 1) (certificateCoordinates Q (N+1) d c)=
+      (certificateSingleCoefficient Q j.val : ℂ) •
+        certificateCoordinates Q N (d-j.val) (occupationAnnihilate j c) :=
+  annihilate_single_certificateCoordinates hQ j hj c
+
+example {Q : ℕ} (i j k l : Orbital Q) (ψ φ : State Q 2)
+    (hψ : IsBosonic ψ) (hφ : IsBosonic φ) :
+    inner (orbitalTransfer i j ψ) (orbitalTransfer k l φ)=
+      (if i=k then inner (annihilate (Pi.single j 1) ψ) (annihilate (Pi.single l 1) φ) else 0)+
+      inner (annihilate (Pi.single k 1) (annihilate (Pi.single j 1) ψ))
+        (annihilate (Pi.single i 1) (annihilate (Pi.single l 1) φ)) :=
+  orbitalTransfer_gram_two i j k l ψ φ hψ hφ
+
+example (Q N : ℕ) (t : Fin (2*Q+1)) (leading : ℂ)
+    (coefficient : Fin (2*Q+1) → Orbital Q → Orbital Q → ℂ) :
+    selectedCertificateRow (ι := Fin (2*Q+1) × Orbital Q × Orbital Q) Q N t leading
+      (fun a => a.1) (fun a => a.2.1) (fun a => a.2.2)
+      (fun a => coefficient a.1 a.2.1 a.2.2)=certificateRow Q N t leading coefficient :=
+  selectedCertificateRow_all_terms Q N t leading coefficient
+
+example {Q : ℕ} {ι : Type*} [Fintype ι] (t : Fin (2*Q+1)) (leading : ℂ)
+    (p : ι → Fin (2*Q+1)) (i j : ι → Orbital Q) (α : ι → ℂ) (ψ φ : State Q 3) :
+    inner (selectedCertificateRow Q 1 t leading p i j α ψ) (selectedCertificateRow Q 1 t leading p i j α φ)=
+      certificateRowTwoForm t leading ψ φ+certificateRowThreeForm t leading p i j α ψ φ :=
+  selectedCertificateRow_normal_order_three t leading p i j α ψ φ
+
+example {Q : ℕ} {ι : Type*} [Fintype ι] (t : Fin (2*Q+1)) (leading : ℂ)
+    (p : ι → Fin (2*Q+1)) (i j : ι → Orbital Q) (α : ι → ℂ) (ψ φ : State Q 4)
+    (hψ : IsBosonic ψ) (hφ : IsBosonic φ) :
+    inner (selectedCertificateRow Q 2 t leading p i j α ψ) (selectedCertificateRow Q 2 t leading p i j α φ)=
+      certificateRowTwoForm t leading ψ φ+certificateRowThreeForm t leading p i j α ψ φ+
+        certificateRowFourForm p i j α ψ φ :=
+  selectedCertificateRow_normal_order_four t leading p i j α ψ φ hψ hφ
+
+example {Q : ℕ} (hQ : 0<Q) (p : Fin (2*Q+1)) (j : Orbital Q) (c : OccupationState Q 3) :
+    annihilate (Pi.single j 1) (v0PairAnnihilate p (certificateCoordinates Q 3 (p.val+j.val) c))
+      (vacuumConfiguration Q)=
+        ((certificatePairCoefficient Q p.val*certificateSingleCoefficient Q j.val : ℝ) : ℂ)*
+          occupationThreeFunctional p.val j c := single_pair_vacuum_coordinates hQ p j c
+
+example {Q : ℕ} (hQ : 0<Q) (p : Fin (2*Q+1)) (i j : Orbital Q) (c : OccupationState Q 4) :
+    annihilate (Pi.single i 1) (annihilate (Pi.single j 1) (v0PairAnnihilate p
+      (certificateCoordinates Q 4 (p.val+i.val+j.val) c))) (vacuumConfiguration Q)=
+        ((certificatePairCoefficient Q p.val*certificateSingleCoefficient Q j.val*
+          certificateSingleCoefficient Q i.val : ℝ) : ℂ)*occupationFourFunctional p.val i j c :=
+  double_single_pair_vacuum_coordinates hQ p i j c
+
+example {Q : ℕ} (hQ : 0<Q) (t p : Fin (2*Q+1)) (i j : Orbital Q)
+    (hd : t.val+i.val=p.val+j.val) (y0 y : ℝ)
+    (c e : WeightOccupationState Q 3 (p.val+j.val)) :
+    (frozenRowLeading t.val y0 : ℂ)*(frozenRowTransfer p.val i.val j.val y : ℂ)*
+      inner (annihilate (Pi.single i 1) (v0PairAnnihilate t (certificateWeightCoordinates Q 3 (p.val+j.val) c)))
+        (annihilate (Pi.single j 1) (v0PairAnnihilate p (certificateWeightCoordinates Q 3 (p.val+j.val) e)))=
+      ((y0*y*directRowFactor Q p.val i.val j.val/spherePairRoot Q t.val : ℝ) : ℂ)*
+        star (occupationThreeFunctional t.val i (occupationWeightExtend (p.val+j.val) c))*
+          occupationThreeFunctional p.val j (occupationWeightExtend (p.val+j.val) e) :=
+  physical_direct_three_cross hQ t p i j hd y0 y _ _
+
+example {Q : ℕ} (hQ : 0<Q) (p q : Fin (2*Q+1)) (i j k l : Orbital Q)
+    (hd : p.val+k.val+j.val=q.val+i.val+l.val) (y z : ℝ) (c e : OccupationState Q 4) :
+    (frozenRowTransfer p.val i.val j.val y : ℂ)*(frozenRowTransfer q.val k.val l.val z : ℂ)*
+      inner (annihilate (Pi.single k 1) (annihilate (Pi.single j 1) (v0PairAnnihilate p
+        (certificateCoordinates Q 4 (p.val+k.val+j.val) c))))
+        (annihilate (Pi.single i 1) (annihilate (Pi.single l 1) (v0PairAnnihilate q
+        (certificateCoordinates Q 4 (p.val+k.val+j.val) e))))=
+      ((y*z*directRowFactor Q p.val i.val j.val*directRowFactor Q q.val k.val l.val : ℝ) : ℂ)*
+        star (occupationFourFunctional p.val k j c)*occupationFourFunctional q.val i l e :=
+  physical_direct_four hQ p q i j k l hd y z c e

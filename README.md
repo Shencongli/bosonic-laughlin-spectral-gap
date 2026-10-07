@@ -127,6 +127,16 @@ Schur averaging remain to be formalized. The
 [new build record](verification/lean_planar_certificates_build.json) and
 [AI self-review](verification/audit_reports/lean_planar_certificates_audit.txt)
 record the checked scope.
+The spherical-row extension now derives the physical pair-annihilation
+coordinate map, the four-body target's double-pair Gram form, and the
+normal ordering of certificate rows in the three- and four-particle input
+sectors. It proves the vacuum-functional pullbacks and exact coefficient
+cancellations used term by term in the direct K3 and K4 construction.
+The [spherical-row build record](verification/lean_sphere_rows_build.json)
+and [AI self-review](verification/audit_reports/lean_sphere_rows_audit.txt)
+record these operator identities. Full frozen-array assembly, normalized
+many-particle descendants, Schur averaging, and interval verification
+remain to be connected.
 **The uniform spectral-gap theorem remains unproved in Lean.** The package
 documents its remaining proof obligations and reproducible build. The v0.1
 manuscript is unchanged.

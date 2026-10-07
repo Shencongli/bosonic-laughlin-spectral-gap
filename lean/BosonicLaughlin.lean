@@ -23,3 +23,5 @@ import BosonicLaughlin.KernelFrames
 import BosonicLaughlin.RetainedCMPhysical
 import BosonicLaughlin.NonorthogonalHamiltonian
 import BosonicLaughlin.RetainedPlanarCertificates
+import BosonicLaughlin.CertificateFourBody
+import BosonicLaughlin.CertificateDirectTerms

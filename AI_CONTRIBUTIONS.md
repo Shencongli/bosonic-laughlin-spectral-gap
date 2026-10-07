@@ -167,14 +167,29 @@ Python supplies the proposed data and checks export reproducibility.
 The assistant also performed the documented self-review. This extension
 did not use a separate reviewing agent or add human verification.
 
-All 1508 theorem declarations and 111 statement contracts pass the
+The subsequent spherical-row extension was written and self-reviewed by
+the Codex assistant. It derives exact pair and single-orbital annihilation
+maps in the physical occupation coordinates, including their spherical
+normalization. The four-body target is connected to a double-pair Gram
+quadratic form. Explicit one- and two-particle transfer contractions prove
+the certificate-row normal-order identities in the three- and four-particle
+input sectors. Vacuum-functional identities and frozen-row scalar
+cancellations then give the direct K3/K4 terms at matching degrees.
+The extension uses arbitrary row coefficients; it does not claim that the
+full frozen arrays, Schur average, or interval verifier have been formalized.
+No additional human verification or separate reviewing agent was used.
+
+All 1574 theorem declarations and 124 statement contracts pass the
 full build and axiom audit, with pinned Lean/mathlib versions recorded.
 The local build uses Lake package
 overrides pointing to source archives of those same revisions. The only
 axiom dependencies are `propext`, `Classical.choice`, and `Quot.sound`.
+The [spherical-row build record](verification/lean_sphere_rows_build.json)
+and [AI self-review](verification/audit_reports/lean_sphere_rows_audit.txt)
+record the current physical-coordinate and normal-order checks.
 The [planar-certificate build record](verification/lean_planar_certificates_build.json)
 and [AI self-review](verification/audit_reports/lean_planar_certificates_audit.txt)
-record the current extension.
+record the preceding planar extension.
 The [retained-frame build record](verification/lean_retained_frames_build.json)
 and [internal AI semantic audit](verification/audit_reports/lean_retained_frames_audit.txt)
 record the frame and physical-basis checks. The
