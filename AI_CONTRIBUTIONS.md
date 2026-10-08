@@ -188,11 +188,26 @@ complete physical highest-weight frame. No separate reviewing agent or
 additional human verification was used. The Schur-averaged comparison
 formula and its identification with exported arrays remain unproved.
 
-All 1626 theorem declarations and 136 statement contracts pass the
+The verifier-lowering extension was written and self-reviewed by the
+Codex assistant. It derives the polynomial and occupation lowering maps
+from the physical total-spin operator, preserving source multiplicities
+and the degree-dependent coordinate normalization. An exporter replays
+the published `raise_frame` routine with exact affine scalars; Lean then
+checks all 24 exported arrays against independently defined multiset entries.
+The assistant also proves the iterated coordinate map, the verifier's norm
+recurrence, and the normalized physical form identity. Python export
+reproducibility is checked separately. This does not verify Python Jet
+interval semantics or prove the Schur average. No separate reviewing agent
+or additional human verification was used.
+
+All 1701 theorem declarations and 148 statement contracts pass the
 full build and axiom audit, with pinned Lean/mathlib versions recorded.
 The local build uses Lake package
 overrides pointing to source archives of those same revisions. The only
 axiom dependencies are `propext`, `Classical.choice`, and `Quot.sound`.
+The [lowering build record](verification/lean_lowering_build.json)
+and [AI self-review](verification/audit_reports/lean_lowering_audit.txt)
+record the exported lowering matrices and their physical correspondence.
 The [descendant build record](verification/lean_descendants_build.json)
 and [AI self-review](verification/audit_reports/lean_descendants_audit.txt)
 record the physical lowering and frame-metric checks.

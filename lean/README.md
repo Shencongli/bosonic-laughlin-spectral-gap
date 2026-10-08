@@ -15,6 +15,8 @@ derives physical annihilation coordinates, the double-pair four-body target,
 and the normal-ordered K3/K4 vacuum terms with their exact coefficients.
 The physical-descendant extension proves the exact total-spin lowering norms
 and preserves the full highest-weight frame metric at each lowering level.
+All 24 retained degree-raising arrays are now identified with those physical
+maps, including their norm recurrence and normalized form pullback.
 The full comparison-operator identification and the finite-sphere interval certificates remain open.
 **The uniform spectral-gap theorem remains unproved in Lean.**
 
@@ -459,11 +461,17 @@ and deduction of the gap above it.
 | `CertificateVacuumRows.lean`, `CertificateRowFactors.lean`, `CertificateDirectTerms.lean` | Polynomial vacuum functionals, frozen-row coefficient cancellations, and term-by-term physical pullbacks of the direct K3/K4 formulas at matching degrees. |
 | `TensorSlotLinear.lean`, `TensorSpin.lean` | Single-slot lift, total-spin commutators and adjoints, and preservation of Bose symmetry and deficit support. |
 | `TensorDescendants.lean`, `CertificateDescendants.lean` | Exact physical descendant norms and endpoint, normalized cross-level Gram identities, and certificate/highest-weight frame correspondence. |
+| `PolynomialLowering.lean`, `OccupationLowering.lean` | Actual lowering in polynomial and occupation coordinates, source multiplicities, and the sqrt(Q) degree-normalization factor. |
+| `IndexedOccupationLowering.lean`, `RetainedLoweringArrays.lean` | Sorted-index identification and all 24 retained matrices as exact affine functions of 1/Q. |
+| `VerifierDescendants.lean` | Iterated coordinate correspondence, positive norm recurrence, and the normalized physical sesquilinear form for any linear operator. |
 
 All source files in this table are under `BosonicLaughlin/`.
-All 1626 theorem declarations and 136 statement contracts pass the
+All 1701 theorem declarations and 148 statement contracts pass the
 full build and axiom audit. `Audit.lean` and `check.py` check every theorem's
 axiom dependencies.
+The [lowering build record](../verification/lean_lowering_build.json)
+and [AI self-review](../verification/audit_reports/lean_lowering_audit.txt)
+record the 24 exact affine lowering arrays and their physical pullbacks.
 The [descendant build record](../verification/lean_descendants_build.json)
 and [AI self-review](../verification/audit_reports/lean_descendants_audit.txt)
 record the physical total-spin algebra and normalized frame identities.
@@ -616,9 +624,56 @@ matrix $G=P^*P$, the normalized descendant frame $P_n=D_nP$ satisfies
 $P_n^*P_\ell=\delta_{n\ell}G$. This statement retains the full multiplicity
 space $\mathbb C^k$; no multiplicity-one assumption is made.
 
-The current result supplies normalized physical frames. It does not yet
-identify the verifier's explicit polynomial descendant arrays with these
-frames or prove the Schur-averaged comparison formula.
+## Verifier degree-raising arrays and their physical meaning
+
+Write $R_d(Q)$ for the verifier's map from occupation coefficients of degree
+d to degree d+1. Its source-column rule replaces one orbital j by j+1,
+with coefficient $n_j(1-j/Q)$, where $n_j$ is the multiplicity in the source
+occupation. The code derives this rule from actual total-spin lowering:
+
+$$J_-\Phi_{N,d}=\sqrt Q\,\Phi_{N,d+1}R_d(Q),\qquad Q>0.$$
+
+The intermediate polynomial map has coefficient Q-j. Multiplicity factors
+come from the factorial occupation inclusion, and the remaining sqrt(Q)
+comes from the degree-dependent sector scalar. The finite orbital boundary
+is included. Thus the script's degree-raising name refers to increasing
+polynomial degree, which lowers the magnetic weight.
+
+In the exact sorted order used by `parts`, each retained step has the form
+$R_d(Q)=C_d-Q^{-1}S_d$. Lean checks every integer entry of $C_d,S_d$ against
+the occupation replacement formula and identifies the arrays with the
+physical coordinate map whenever Q≥d+1. There are 8 steps for N=3
+(d=0,...,7) and 16 for N=4 (d=0,...,15). The last matrix is 64 by 54.
+The table order and completeness come from the earlier proved enumerations.
+`indexedVerifierRaiseMatrix_mulVec` connects matrix multiplication to the
+occupation map on arbitrary coefficient columns.
+
+Define $V_k=R_{d+k-1}\cdots R_d$, with $V_0=I$. The dependent degree labels
+are retained in `verifierDescendant`. For every input coefficient vector c,
+
+$$J_-^k\Phi_{N,d}c=Q^{k/2}\Phi_{N,d+k}V_kc.$$
+
+For $m=NQ-2d\ge0$ and $0\le k\le m$, the verifier's recurrence is proved to
+equal the physical ladder normalization divided by $Q^k$:
+
+$$\rho_0=1,\qquad
+\rho_{k+1}=\rho_k(k+1)\left(N-\frac{2d+k}{Q}\right),\qquad
+\rho_k=\frac{k!\,m!}{Q^k(m-k)!}>0.$$
+
+For highest-weight inputs, the descendant Gram form is $\rho_k$ times the
+initial certificate metric. More generally, for any physical linear
+operator A, the normalized descendant form equals
+
+$$\langle D_k\Phi_{N,d}c,A D_k\Phi_{N,d}e\rangle
+=\rho_k^{-1}\langle\Phi_{N,d+k}V_kc,A\Phi_{N,d+k}V_ke\rangle.$$
+
+This supplies the descendant normalization and pullback needed by the finite
+comparison sum. The exporter replays the unchanged `Model.raise_frame`
+with exact affine scalars and rejects any nonzero quadratic term; it also
+checks the source-column rule separately. The resulting arrays are
+kernel-checked independently of that Python computation. Reproduction of
+the exported files is a Python check. The Jet interval implementation,
+full K3/K4 assembly, and Schur-averaged comparison formula remain open.
 
 ## Remaining proof chain
 
@@ -657,6 +712,8 @@ not verification of the manuscript's main theorem.
 
 To regenerate the planar witnesses without changing the historical verifier
 outputs, run `python ../verification/generate_planar_lean_certificates.py --check`.
+To reproduce the affine lowering arrays, run
+`python ../verification/generate_lowering_lean_arrays.py --check`.
 
 Lean is pinned to v4.34.1 and mathlib to
 `d13f23b723b8a846827a245b89c10fc7d3f11612`; transitive revisions are locked

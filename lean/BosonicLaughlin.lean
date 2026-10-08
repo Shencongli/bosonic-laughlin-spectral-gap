@@ -26,3 +26,5 @@ import BosonicLaughlin.RetainedPlanarCertificates
 import BosonicLaughlin.CertificateFourBody
 import BosonicLaughlin.CertificateDirectTerms
 import BosonicLaughlin.CertificateDescendants
+import BosonicLaughlin.VerifierDescendants
+import BosonicLaughlin.RetainedLoweringArrays

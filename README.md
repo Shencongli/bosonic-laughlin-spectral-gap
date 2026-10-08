@@ -141,8 +141,14 @@ and preservation of the highest-weight frame's Gram matrix by normalized
 descendants. Different lowering levels are orthogonal. The
 [descendant build record](verification/lean_descendants_build.json) and
 [AI self-review](verification/audit_reports/lean_descendants_audit.txt)
-record these checks. Full frozen-array assembly, the Schur-averaged
-comparison formula, and interval verification remain to be connected.
+record these checks.
+The verifier's degree-raising rule is now identified with physical lowering
+in the certificate coordinates. All 24 retained affine matrices are checked
+entry by entry, and their iterated descendants and norm recurrence have
+exact physical pullback formulas. The [lowering build record](verification/lean_lowering_build.json)
+and [AI self-review](verification/audit_reports/lean_lowering_audit.txt)
+give the scope and reproduction checks. Full frozen K3/K4 assembly, the
+Schur-averaged comparison formula, and interval verification remain open.
 **The uniform spectral-gap theorem remains unproved in Lean.** The package
 documents its remaining proof obligations and reproducible build. The v0.1
 manuscript is unchanged.

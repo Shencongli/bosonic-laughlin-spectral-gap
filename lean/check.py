@@ -113,6 +113,11 @@ required = [
 ]
 retained_cases = [(3, d) for d in range(9)] + [(4, d) for d in range(17)]
 required += [
+    'polynomialCoordinates_tensorLower', 'polynomialOccupationInclude_lower',
+    'tensorLower_certificateWeightCoordinates', 'verifierRaiseMatrix_apply',
+    'indexedVerifierRaiseMatrix_eq_arrays', 'indexedVerifierRaiseMatrix_mulVec',
+    'tensorDescendant_certificateCoordinates', 'verifierDescendantNorm_eq_factor',
+    'verifierDescendantNorm_pos', 'verifierDescendant_inner', 'verifierDescendant_normalized_form',
     'tensorRaise_eq_tensorSum', 'tensorLower_apply', 'tensorWeight_apply',
     'tensorRaise_lower_commutator', 'tensorWeight_lower_commutator', 'tensorRaise_adjoint',
     'tensorLower_isBosonic', 'tensorLower_weightSupported', 'tensorRaise_descendant',
@@ -161,6 +166,9 @@ for n, d in retained_cases:
     required += [f'retainedParts_{n}_{d}_complete']
     if d:
         required += [prefix + suffix for suffix in ['_integer_entries', '_physical_matrix', '_physical_apply']]
+lowering_cases = [(3,d) for d in range(8)] + [(4,d) for d in range(16)]
+required += [f'retainedRaise_{N}_{d}_{suffix}' for N,d in lowering_cases
+             for suffix in ['entries','physical']]
 for name in required:
     if 'BosonicLaughlin.' + name not in dependencies:
         raise SystemExit('Missing required theorem: ' + name)
@@ -228,6 +236,11 @@ record = {
     'physical_multiparticle_descendant_norm_and_endpoint_proved': True,
     'normalized_physical_descendant_frame_gram_proved': True,
     'schur_averaged_comparison_operator_formula_proved': False,
+    'verifier_affine_raise_step_physical_intertwiner_proved': True,
+    'all_24_retained_affine_lowering_arrays_identified_with_physical_maps': True,
+    'verifier_descendant_norm_recurrence_and_normalized_form_proved': True,
+    'retained_lowering_array_count': len(lowering_cases),
+    'python_jet_interval_semantics_proved': False,
     'certificate_checker_regression_tests_passed': True,
     'physical_statement_contracts_checked': True,
     'physical_statement_contract_count': len(re.findall(

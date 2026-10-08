@@ -684,3 +684,67 @@ example {Q N d k : ℕ} (hd : 2*d≤N*Q)
     inner (normalizedDescendantFrame E n.val c) (normalizedDescendantFrame E l.val e)=
       if n=l then inner (highestWeightPhysicalFrame E c) (highestWeightPhysicalFrame E e) else 0 :=
   normalizedDescendantFrame_finite_gram hd E n l c e
+
+/- Verifier lowering extension contracts. Array identities are exact at x=1/Q;
+they do not assume semantics for the Python Jet interval implementation. -/
+example {Q N : ℕ} (ψ : State Q N) :
+    polynomialCoordinates Q N (tensorLower ψ)=polynomialLower (polynomialCoordinates Q N ψ) :=
+  polynomialCoordinates_tensorLower ψ
+
+example {Q N d : ℕ} (hQ : 0 < Q) (c : WeightOccupationState Q N d) :
+    tensorLower (certificateWeightCoordinates Q N d c)=
+      (Real.sqrt Q : ℂ) • certificateWeightCoordinates Q N (d+1) (verifierRaiseBlock Q N d c) :=
+  tensorLower_certificateWeightCoordinates hQ c
+
+example {Q N d rows cols : ℕ} (hQ : 0 < Q) (hd : d+1≤Q)
+    (src : SortedTupleEnumeration N d cols) (dst : SortedTupleEnumeration N (d+1) rows)
+    (i : Fin rows) (j : Fin cols) :
+    indexedVerifierRaiseMatrix hd src dst i j=
+      (tupleLowerConstant d (List.ofFn (dst.tuple i).val) (List.ofFn (src.tuple j).val) : ℂ)-
+      (Q : ℂ)⁻¹*(tupleLowerSlope d (List.ofFn (dst.tuple i).val) (List.ofFn (src.tuple j).val) : ℂ) :=
+  indexedVerifierRaiseMatrix_apply hQ hd src dst i j
+
+example {Q N d rows cols : ℕ} (hd : d+1≤Q)
+    (src : SortedTupleEnumeration N d cols) (dst : SortedTupleEnumeration N (d+1) rows)
+    (c : Fin cols → ℂ) (i : Fin rows) :
+    (indexedVerifierRaiseMatrix hd src dst).mulVec c i=
+      verifierRaiseBlock Q N d (c ∘ (src.occupationEquiv (by omega)).symm) (dst.occupationEquiv hd i) :=
+  indexedVerifierRaiseMatrix_mulVec hd src dst c i
+
+example {Q N d : ℕ} (hQ : 0 < Q) (c : WeightOccupationState Q N d) (n : ℕ) :
+    tensorDescendant (certificateWeightCoordinates Q N d c) n=
+      ((Real.sqrt Q : ℂ)^n) • certificateWeightCoordinates Q N (d+n) (verifierDescendant Q N d n c) :=
+  tensorDescendant_certificateCoordinates hQ c n
+
+example {Q N d : ℕ} (hQ : 0 < Q) (hd : 2*d≤N*Q) (n : ℕ) (hn : n≤N*Q-2*d) :
+    verifierDescendantNorm Q N d n=(descendantFactor (N*Q-2*d) n : ℝ)/(Q : ℝ)^n :=
+  verifierDescendantNorm_eq_factor hQ hd n hn
+
+example {Q N d : ℕ} (hQ : 0 < Q) (hd : 2*d≤N*Q) (n : ℕ) (hn : n≤N*Q-2*d) :
+    0 < verifierDescendantNorm Q N d n := verifierDescendantNorm_pos hQ hd n hn
+
+example {Q N d : ℕ} (hQ : 0 < Q) (hd : 2*d≤N*Q) (c e : WeightOccupationState Q N d)
+    (he : (occupationCMBlockMatrix Q N d).mulVec e=0) (n : ℕ) (hn : n≤N*Q-2*d) :
+    certificateInner (verifierDescendant Q N d n c) (verifierDescendant Q N d n e)=
+      (verifierDescendantNorm Q N d n : ℂ)*certificateInner c e := verifierDescendant_inner hQ hd c e he n hn
+
+example {Q N d : ℕ} (hQ : 0 < Q) (hd : 2*d≤N*Q) (c e : WeightOccupationState Q N d)
+    (n : ℕ) (hn : n≤N*Q-2*d) (A : State Q N →ₗ[ℂ] State Q N) :
+    inner (normalizedTensorDescendant (certificateWeightCoordinates Q N d c) (N*Q-2*d) n)
+      (A (normalizedTensorDescendant (certificateWeightCoordinates Q N d e) (N*Q-2*d) n))=
+      ((verifierDescendantNorm Q N d n : ℂ)⁻¹)*
+        inner (certificateWeightCoordinates Q N (d+n) (verifierDescendant Q N d n c))
+          (A (certificateWeightCoordinates Q N (d+n) (verifierDescendant Q N d n e))) :=
+  verifierDescendant_normalized_form hQ hd c e n hn A
+
+example (Q : ℕ) (hd : 1≤Q) : indexedVerifierRaiseMatrix hd retainedEnum_3_0 retainedEnum_3_1=
+    retainedRaise_3_0C.map (Nat.castRingHom ℂ)-(Q : ℂ)⁻¹ • retainedRaise_3_0S.map (Nat.castRingHom ℂ) :=
+  retainedRaise_3_0_physical Q hd
+
+example (Q : ℕ) (hd : 8≤Q) : indexedVerifierRaiseMatrix hd retainedEnum_3_7 retainedEnum_3_8=
+    retainedRaise_3_7C.map (Nat.castRingHom ℂ)-(Q : ℂ)⁻¹ • retainedRaise_3_7S.map (Nat.castRingHom ℂ) :=
+  retainedRaise_3_7_physical Q hd
+
+example (Q : ℕ) (hd : 16≤Q) : indexedVerifierRaiseMatrix hd retainedEnum_4_15 retainedEnum_4_16=
+    retainedRaise_4_15C.map (Nat.castRingHom ℂ)-(Q : ℂ)⁻¹ • retainedRaise_4_15S.map (Nat.castRingHom ℂ) :=
+  retainedRaise_4_15_physical Q hd

@@ -1,0 +1,74 @@
+Internal AI self-review, 8 October 2026. The authoring Codex assistant
+reviewed this extension. No separate reviewing agent or additional human
+verification was used.
+
+Scope and checked proof structure
+
+1. PolynomialLowering.lean derives the actual total J- map in polynomial
+   coordinates from the binomial-root ladder identity. The output orbital
+   i>0 has source i-1 and coefficient Q-(i-1). All finite-cap boundary
+   cases are included. The polynomial map is conjugate to the actual
+   N-particle tensor lowering operator, not an auxiliary replacement.
+
+2. OccupationLowering.lean passes through the factorial occupation inclusion.
+   Its multiplicity is that of the removed source label, proved using the
+   occupation-factorial identity. Deficit d maps to d+1. Defining R=Q^{-1}L
+   gives J- Phi_d=sqrt(Q) Phi_(d+1) R for Q>0. The coefficient includes the
+   degree-dependent normalization of Phi. The matrix entry reconstructs the
+   source by output i -> i-1, equivalent to source j -> j+1.
+
+3. IndexedOccupationLowering.lean gives computable multiset formulas for
+   the constant and slope coefficients. Their support permits restricting
+   the sum to output labels at most d+1. Under Q>=d+1, the previously proved
+   sorted enumerations identify the complete physical occupation indices
+   in the verifier's actual order. The matrix equals C-Q^{-1}S and its
+   multiplication is proved to act as the physical coordinate map on
+   arbitrary coefficient columns.
+
+4. RetainedLoweringArrays.lean checks every integer entry of the 24 pairs
+   C,S by direct Lean kernel reduction. There are 8 steps for N=3, d=0..7,
+   and 16 for N=4, d=0..15. The last matrix is 64 by 54. The physical
+   equality is quantified over all integer Q>=d+1, not sampled Q values.
+   The generated definitions retain the existing complete partition tables.
+
+5. VerifierDescendants.lean iterates R with dependent degree labels and
+   proves J-^k Phi_d=Q^(k/2) Phi_(d+k) V_k for all input columns at Q>0.
+   For m=N*Q-2*d>=0 and k<=m, the exact verifier recurrence
+   rho_(k+1)=rho_k*(k+1)*(N-(2*d+k)/Q) equals g(m,k)/Q^k and is positive.
+   On the CM kernel, the descendant Gram form is rho_k times the initial
+   metric. For an arbitrary physical linear operator A, the normalized
+   descendant form equals rho_k^{-1} times the form pulled back through
+   Phi_(d+k) V_k. That scalar form identity does not require A to be
+   Hermitian, rotationally invariant, or positive. Initial-metric
+   preservation uses the explicit highest-weight condition.
+
+Data provenance and scope limitations
+
+The new exporter calls the unchanged Model.raise_frame method with exact
+affine scalars, rejecting nonzero quadratic products, and independently
+replays its source-column rule. Regeneration matches the committed Lean
+source and JSON byte for byte. Those Python checks document provenance;
+Lean independently checks the mathematical entries. The Python program
+and Jet interval implementation are not themselves verified by this step.
+
+No group integral, Haar measure, or Schur-averaged comparison formula is
+proved here. The operator-to-array identification of all frozen K3/K4 sums,
+active/whitened comparison assembly, arbitrary-particle certificate-row
+normal ordering, interval arithmetic semantics, Taylor remainders, and
+the uniform-gap target remain open. The paper, PDF, previously recorded
+numerical certificates, and v0.1 Release are unchanged.
+
+Validation
+
+The pinned full Lean build, 148 statement contracts, 3 existing checker
+regression tests, and all 1701 theorem axiom reports passed. The extension
+adds 75 theorem declarations and 12 contracts. Only propext, Classical.choice,
+and Quot.sound occur. No sorry, custom proof axiom, or native_decide is used.
+See lean_lowering_build.json for source hashes and dependency revisions.
+
+Reviewed new module hashes
+78d40db3afb27134835594beb63db88ba52231112245a25872208171835f6b48  lean/BosonicLaughlin/IndexedOccupationLowering.lean
+117dd5e11df9114f37d0679e62b53984e48dcd4a4fb931cd5f3bc2204acf3380  lean/BosonicLaughlin/OccupationLowering.lean
+11fd41a2f1bda6d5e0754014c8430b6d543a17275ed585be00c565397276da0b  lean/BosonicLaughlin/PolynomialLowering.lean
+48add03b7cd216cc5cdc4cb2a130fdd6091eeb698907826d576c1e35f74127b6  lean/BosonicLaughlin/RetainedLoweringArrays.lean
+4c2f1d76867254257bf1539be88acf23aac114bb12983135f099dfe1727c615b  lean/BosonicLaughlin/VerifierDescendants.lean
