@@ -1,0 +1,55 @@
+Internal AI self-review, 8 October 2026. Written and reviewed by the
+authoring Codex assistant; no separate agent or additional human review.
+
+Scope
+
+DescendantSchur.lean proves that commutation with the actual J+ makes the
+equal-level normalized descendant forms constant. This follows by moving
+J- off the left vector with its already proved adjoint and applying the
+physical ladder recurrence. No Hermiticity of the tested operator is needed.
+The sum has exactly m+1 levels, where m=N*Q-2*d>=0. Its normalization is
+1/(m+1), including m=0. The tensorWeight adjoint and real eigenvalue
+orthogonality prove that commutation with 2Jz removes unequal-level entries.
+For a complete physical highest-weight frame, the resulting commutant block
+is delta_(n,l) times the full multiplicity form matrix. Arbitrary complex
+coefficient vectors and nonorthonormal multiplicity frames are retained.
+
+Schur identification is conditional: the candidate averaged operator must
+commute with J+ and preserve the spin partial trace for every pair of frame
+columns. This is a matrix-valued condition, not equality of a single scalar
+trace. The finite sum is then identified with the highest-weight form matrix.
+The verifier coordinate formula follows from the preceding physical
+normalized-descendant theorem; every rho_n inverse has the previously proved
+positive denominator for n<=m and Q>0. The exact rational dimension-ratio
+identity is algebraic. It does not prove the coherent integral's 2Q+1 factor.
+
+SpinPartialTrace.lean proves the change-of-basis formula U^dagger K U for
+two independent spin-indexed physical frames. The cyclic trace identity
+and U U^dagger=I give trace preservation. Finite weighted conjugations
+preserve the trace if their complex weights sum to one; this theorem makes
+no positivity claim about such weights. A physical pullback theorem uses
+explicit hypotheses that the same unitary spin matrix acts on both ladders.
+No completeness of the entire many-body spin decomposition is assumed.
+
+Remaining work
+
+There is no constructed physical SU(2) representation, Haar integral, or
+proof of its covariance and invariance in this extension. The abstract
+unitary mixing and partial-trace premises must be discharged for that
+physical average. The normal-order support cutoff, full frozen K3/K4 sums,
+all-particle certificate-row assembly, coherent comparisons, interval
+semantics, and final uniform gap remain open. No manuscript, PDF, numerical
+certificate, or v0.1 Release content is changed.
+
+Validation
+
+The full pinned Lean build passed, along with 156 statement contracts,
+3 existing checker regression tests, and all 1723 theorem axiom reports.
+This extension adds 22 theorems and 8 contracts. The only proof axioms are
+propext, Classical.choice, and Quot.sound; no sorry, custom axiom, or
+native_decide is used. See lean_schur_build.json for all checked source
+hashes, exact remaining-status flags, and dependency revisions.
+
+New source hashes
+5743a0058e638b83eaf9a78aa90c0aaf528794962dd0ed57cd415e11a3437aa8  lean/BosonicLaughlin/DescendantSchur.lean
+2a93921c1577d3425090e9ecd4b088bbed151a37cb8c66f649368510a575c088  lean/BosonicLaughlin/SpinPartialTrace.lean

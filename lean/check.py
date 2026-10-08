@@ -50,7 +50,7 @@ for name in names:
         raise SystemExit('Unapproved axiom dependency: ' + name + ': ' + str(axioms - allowed))
     dependencies[name] = sorted(axioms)
 
-required = [
+required = ['tensorDescendant_commuting_form', 'normalizedDescendant_commuting_form', 'descendantPartialTrace_commuting', 'descendantSchurForm_commuting', 'schurForm_of_commuting_partialTrace', 'descendantSchurMatrix_apply', 'highestWeightPhysicalFrame_weight', 'descendantSchurMatrix_commuting', 'schurMatrix_of_commuting_partialTrace', 'certificateSchurForm_verifier', 'verifierSchur_prefactor', 'tensorWeight_adjoint', 'stateInner_distinct_weight_eigenvalues', 'normalizedDescendant_weight', 'normalizedDescendant_commuting_offdiagonal', 'normalizedDescendantFrame_commutant_block', 'spinCrossForm_mix', 'spinTrace_unitary_conjugate', 'spinCrossForm_trace_mix', 'descendantPartialTrace_eq_trace', 'spinTrace_finite_conjugate_average', 'descendantPartialTrace_of_spin_covariance'] + [
     'pairApply_idempotent', 'hamiltonian_hermitian', 'hamiltonian_isBosonic',
     'modeNumber_factorial_moment', 'modeOccupation_eq_annihilate_normSq',
     'coherent_pairOccupation_le_energy', 'coherent_occupation_bound',
@@ -235,6 +235,11 @@ record = {
     'actual_multiparticle_spin_commutators_and_adjoint_proved': True,
     'physical_multiparticle_descendant_norm_and_endpoint_proved': True,
     'normalized_physical_descendant_frame_gram_proved': True,
+    'finite_schur_reduction_with_explicit_partial_trace_premise_proved': True,
+    'physical_descendant_commutant_block_with_multiplicity_proved': True,
+    'spin_partial_trace_unitary_covariance_and_finite_average_proved': True,
+    'verifier_schur_finite_sum_and_dimension_ratio_proved': True,
+    'physical_SU2_haar_average_constructed_and_identified': False,
     'schur_averaged_comparison_operator_formula_proved': False,
     'verifier_affine_raise_step_physical_intertwiner_proved': True,
     'all_24_retained_affine_lowering_arrays_identified_with_physical_maps': True,

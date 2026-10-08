@@ -200,7 +200,18 @@ reproducibility is checked separately. This does not verify Python Jet
 interval semantics or prove the Schur average. No separate reviewing agent
 or additional human verification was used.
 
-All 1701 theorem declarations and 148 statement contracts pass the
+The finite Schur-reduction extension (8 October 2026) was written and
+self-reviewed by the Codex assistant. It proves the physical descendant
+commutant block, a conditional matrix-valued Schur reduction, unitary
+spin-basis covariance and finite-average trace preservation, and the
+verifier's finite sum and dimension ratio. All multiplicity entries remain
+free. Physical SU(2) covariance and Haar averaging are explicit remaining
+obligations, not imported facts. No separate agent or additional human
+review was used. The [build record](verification/lean_schur_build.json)
+and [self-review](verification/audit_reports/lean_schur_audit.txt) document
+the exact scope. The manuscript and PDF are unchanged.
+
+All 1723 theorem declarations and 156 statement contracts pass the
 full build and axiom audit, with pinned Lean/mathlib versions recorded.
 The local build uses Lake package
 overrides pointing to source archives of those same revisions. The only

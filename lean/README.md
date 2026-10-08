@@ -464,11 +464,15 @@ and deduction of the gap above it.
 | `PolynomialLowering.lean`, `OccupationLowering.lean` | Actual lowering in polynomial and occupation coordinates, source multiplicities, and the sqrt(Q) degree-normalization factor. |
 | `IndexedOccupationLowering.lean`, `RetainedLoweringArrays.lean` | Sorted-index identification and all 24 retained matrices as exact affine functions of 1/Q. |
 | `VerifierDescendants.lean` | Iterated coordinate correspondence, positive norm recurrence, and the normalized physical sesquilinear form for any linear operator. |
+| `DescendantSchur.lean`, `SpinPartialTrace.lean` | Physical commutant block, conditional Schur reduction with full multiplicity, unitary spin partial-trace covariance, and the verifier finite sum and dimension ratio. |
 
 All source files in this table are under `BosonicLaughlin/`.
-All 1701 theorem declarations and 148 statement contracts pass the
+All 1723 theorem declarations and 156 statement contracts pass the
 full build and axiom audit. `Audit.lean` and `check.py` check every theorem's
 axiom dependencies.
+The [Schur-reduction build record](../verification/lean_schur_build.json)
+and [AI self-review](../verification/audit_reports/lean_schur_audit.txt)
+record the conditional finite reduction and spin partial-trace identities.
 The [lowering build record](../verification/lean_lowering_build.json)
 and [AI self-review](../verification/audit_reports/lean_lowering_audit.txt)
 record the 24 exact affine lowering arrays and their physical pullbacks.
@@ -675,6 +679,61 @@ kernel-checked independently of that Python computation. Reproduction of
 the exported files is a Python check. The Jet interval implementation,
 full K3/K4 assembly, and Schur-averaged comparison formula remain open.
 
+## Finite Schur reduction with multiplicity
+
+`DescendantSchur.lean` works on the actual spherical tensor state space.
+Fix particle number $N$, flux $Q$, and highest deficit $d$ with $2d\le NQ$;
+write $m=NQ-2d$, twice the total spin. Let $F$ be any complete linear frame
+of the physical bosonic highest-weight space, with multiplicity dimension
+$k$. Its columns need not be orthonormal. The previously constructed
+normalized lowering maps $D_n$, $0\le n\le m$, preserve the frame metric.
+
+For a physical linear operator $A$, define the matrix-valued spin partial
+trace by retaining both multiplicity vectors $c,e\in\mathbb C^k$:
+
+$$T_A(c,e)=\sum_{n=0}^{m}\langle D_nFc,A D_nFe\rangle.$$
+
+If $B$ commutes with $J_+$ and $2J_z$, the checked commutant-block identity is
+
+$$\langle D_nFc,B D_lFe\rangle
+=\delta_{nl}\langle Fc,BFe\rangle.$$
+
+Commutation with $J_+$ alone suffices for the equal-level identity. Hence,
+if $T_B(c,e)=T_A(c,e)$ for every pair of frame columns, Lean proves the
+conditional Schur reduction
+
+$$\langle Fc,BFe\rangle=\frac{T_A(c,e)}{m+1}.$$
+
+The formal conclusion is an equality of the complete $k\times k$ form
+matrices. No trace over the multiplicity indices is taken, and no inverse
+frame metric is inserted into this form identity.
+
+`SpinPartialTrace.lean` proves the covariance formula $K\mapsto U^\dagger K U$
+for arbitrary pairs of physical spin-indexed frames, and trace preservation
+when $UU^\dagger=I$. It also proves trace preservation for finite weighted
+conjugations whose weights sum to one, and a physical pullback theorem
+assuming a common unitary spin matrix acts on both descendant ladders.
+These are exact finite-dimensional results; the code does not construct a
+physical SU(2) representation or a Haar integral. Their covariance,
+integrability, and invariance must still be supplied to identify $B$ with
+the manuscript's rotation average.
+
+For the certificate coordinates $\Phi_{N,d}$ and unnormalized verifier
+descendants $V_n$, the same finite sum is exactly
+
+$$\frac{1}{m+1}\sum_{n=0}^{m}\rho_n^{-1}
+\langle\Phi_{N,d+n}V_nc,A\Phi_{N,d+n}V_ne\rangle.$$
+
+The scalar identity
+
+$$\frac{2+1/Q}{N+(1-2d)/Q}=\frac{2Q+1}{NQ-2d+1}$$
+
+is proved for $Q>0$ and $2d\le NQ$. The numerator $2Q+1$ is the factor used
+in the manuscript's coherent-state normalization; its integral origin is
+not proved by this scalar identity. Restricting the full sum to the retained
+normal-order support, assembling K3/K4, and verifying interval remainders
+remain further obligations.
+
 ## Remaining proof chain
 
 1. Identify the full comparison matrices with the exact occupation-coordinate
@@ -682,7 +741,8 @@ full K3/K4 assembly, and Schur-averaged comparison formula remain open.
    highest-weight bases are now proved, as are the physical target forms
    and the direct K3/K4 terms. Frozen-row assembly and indexing remain.
 2. Prove the two-spectator bound, coherent integrals and comparisons,
-   sphere transfer, and Schur averaging. The occupation sandwich above is
+   sphere transfer, and the physical SU(2) Haar average. The finite Schur
+   reduction above supplies its algebraic interface. The occupation sandwich is
    one input to these further estimates.
 3. Derive the certificate matrices from the operators and verify the
    finite-sphere interval certificates, including their remainders, inside Lean.
@@ -752,3 +812,8 @@ The descendant factorial normalization uses mathlib's
 credited there to Mario Carneiro, Chris Hughes, Floris van Doorn, and
 Yaël Dillies. The physical spin algebra, descendant inner products, and
 their connection to the certificate frames are proved in this package.
+
+The spin partial-trace calculation uses mathlib's cyclic matrix-trace
+identities in [`Mathlib/LinearAlgebra/Matrix/Trace.lean`](https://github.com/leanprover-community/mathlib4/blob/d13f23b723b8a846827a245b89c10fc7d3f11612/Mathlib/LinearAlgebra/Matrix/Trace.lean),
+credited there to Johannes Hölzl, Patrick Massot, Casper Putz, and Anne Baanen.
+The physical descendant and multiplicity-frame connections are proved here.

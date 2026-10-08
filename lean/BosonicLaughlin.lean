@@ -28,3 +28,5 @@ import BosonicLaughlin.CertificateDirectTerms
 import BosonicLaughlin.CertificateDescendants
 import BosonicLaughlin.VerifierDescendants
 import BosonicLaughlin.RetainedLoweringArrays
+import BosonicLaughlin.DescendantSchur
+import BosonicLaughlin.SpinPartialTrace

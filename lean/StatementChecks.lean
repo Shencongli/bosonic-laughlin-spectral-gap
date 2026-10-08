@@ -748,3 +748,73 @@ example (Q : ℕ) (hd : 8≤Q) : indexedVerifierRaiseMatrix hd retainedEnum_3_7 
 example (Q : ℕ) (hd : 16≤Q) : indexedVerifierRaiseMatrix hd retainedEnum_4_15 retainedEnum_4_16=
     retainedRaise_4_15C.map (Nat.castRingHom ℂ)-(Q : ℂ)⁻¹ • retainedRaise_4_15S.map (Nat.castRingHom ℂ) :=
   retainedRaise_4_15_physical Q hd
+
+/- Finite Schur-reduction contracts. Group covariance and partial-trace
+premises remain explicit; no Haar average is assumed to have been constructed. -/
+example {Q N d k : ℕ} (hd : 2*d≤N*Q)
+    (E : (Fin k → ℂ) ≃ₗ[ℂ] physicalHighestWeightSubspace Q N d)
+    (A : State Q N →ₗ[ℂ] State Q N)
+    (hE : ∀ v, tensorRaise (A v)=A (tensorRaise v))
+    (hW : ∀ v, tensorWeight (A v)=A (tensorWeight v))
+    (n l : Fin (N*Q-2*d+1)) (c e : Fin k → ℂ) :
+    inner (normalizedDescendantFrame E n.val c) (A (normalizedDescendantFrame E l.val e))=
+      if n=l then inner (highestWeightPhysicalFrame E c) (A (highestWeightPhysicalFrame E e)) else 0 := by
+  exact normalizedDescendantFrame_commutant_block hd E A hE hW n l c e
+
+example {Q N d k : ℕ} (hd : 2*d≤N*Q)
+    (E : (Fin k → ℂ) ≃ₗ[ℂ] physicalHighestWeightSubspace Q N d)
+    (A B : State Q N →ₗ[ℂ] State Q N)
+    (hB : ∀ v, tensorRaise (B v)=B (tensorRaise v))
+    (htrace : ∀ i j : Fin k, descendantPartialTrace (N*Q-2*d) B
+        (highestWeightPhysicalFrame E (Pi.single i 1))
+        (highestWeightPhysicalFrame E (Pi.single j 1))=
+      descendantPartialTrace (N*Q-2*d) A
+        (highestWeightPhysicalFrame E (Pi.single i 1))
+        (highestWeightPhysicalFrame E (Pi.single j 1))) :
+    physicalFormMatrix (highestWeightPhysicalFrame E) B=descendantSchurMatrix E A := by
+  exact schurMatrix_of_commuting_partialTrace hd E A B hB htrace
+
+example {Q N d : ℕ} (hQ : 0 < Q) (hd : 2*d≤N*Q)
+    (A : State Q N →ₗ[ℂ] State Q N) (c e : WeightOccupationState Q N d) :
+    descendantSchurForm (N*Q-2*d) A (certificateWeightCoordinates Q N d c)
+      (certificateWeightCoordinates Q N d e)=
+      (((N*Q-2*d+1 : ℕ) : ℂ)⁻¹) * ∑ n : Fin (N*Q-2*d+1),
+        ((verifierDescendantNorm Q N d n.val : ℂ)⁻¹)*
+          inner (certificateWeightCoordinates Q N (d+n.val) (verifierDescendant Q N d n.val c))
+            (A (certificateWeightCoordinates Q N (d+n.val) (verifierDescendant Q N d n.val e))) := by
+  exact certificateSchurForm_verifier hQ hd A c e
+
+example {Q N d : ℕ} (hQ : 0 < Q) (hd : 2*d≤N*Q) :
+    ((2 : ℂ)+(Q : ℂ)⁻¹)/((N : ℂ)+(Q : ℂ)⁻¹*(1-2*(d : ℂ)))=
+      ((2*Q+1 : ℕ) : ℂ)/((N*Q-2*d+1 : ℕ) : ℂ) := by
+  exact verifierSchur_prefactor hQ hd
+
+example {Q N d k : ℕ} (hd : 2*d≤N*Q)
+    (E : (Fin k → ℂ) ≃ₗ[ℂ] physicalHighestWeightSubspace Q N d)
+    (A : State Q N →ₗ[ℂ] State Q N)
+    (hA : ∀ v, tensorRaise (A v)=A (tensorRaise v)) :
+    descendantSchurMatrix E A=physicalFormMatrix (highestWeightPhysicalFrame E) A := by
+  exact descendantSchurMatrix_commuting hd E A hA
+
+example {Q N s : ℕ} (P R : Fin s → State Q N)
+    (A : State Q N →ₗ[ℂ] State Q N) (U : Matrix (Fin s) (Fin s) ℂ) :
+    spinCrossForm (mixSpinFrame P U) (mixSpinFrame R U) A=
+      Uᴴ * spinCrossForm P R A * U := by
+  exact spinCrossForm_mix P R A U
+
+example {s : ℕ} {ι : Type*} [Fintype ι]
+    (K : Matrix (Fin s) (Fin s) ℂ) (U : ι → Matrix (Fin s) (Fin s) ℂ)
+    (w : ι → ℂ) (hw : ∑ g, w g=1) (hU : ∀ g, U g * (U g)ᴴ=1) :
+    Matrix.trace (∑ g, w g • ((U g)ᴴ * K * U g))=Matrix.trace K := by
+  exact spinTrace_finite_conjugate_average K U w hw hU
+
+example {Q N : ℕ} (m : ℕ)
+    (A B T : State Q N →ₗ[ℂ] State Q N) (ψ φ : State Q N)
+    (U : Matrix (Fin (m+1)) (Fin (m+1)) ℂ) (hU : U * Uᴴ=1)
+    (hB : ∀ v w, inner v (B w)=inner (T v) (A (T w)))
+    (hψ : ∀ n : Fin (m+1), T (normalizedTensorDescendant ψ m n.val)=
+      mixSpinFrame (fun j : Fin (m+1) => normalizedTensorDescendant ψ m j.val) U n)
+    (hφ : ∀ n : Fin (m+1), T (normalizedTensorDescendant φ m n.val)=
+      mixSpinFrame (fun j : Fin (m+1) => normalizedTensorDescendant φ m j.val) U n) :
+    descendantPartialTrace m B ψ φ=descendantPartialTrace m A ψ φ := by
+  exact descendantPartialTrace_of_spin_covariance m A B T ψ φ U hU hB hψ hφ

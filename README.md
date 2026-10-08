@@ -149,6 +149,15 @@ exact physical pullback formulas. The [lowering build record](verification/lean_
 and [AI self-review](verification/audit_reports/lean_lowering_audit.txt)
 give the scope and reproduction checks. Full frozen K3/K4 assembly, the
 Schur-averaged comparison formula, and interval verification remain open.
+The finite Schur-reduction extension proves the physical commutant block,
+retaining the full highest-weight multiplicity matrix, and identifies its
+normalized descendant sum under an explicit partial-trace preservation
+premise. Unitary spin-basis changes and finite weighted conjugations preserve
+that trace. The verifier sum and its dimension ratio are also checked.
+The [Schur-reduction build record](verification/lean_schur_build.json) and
+[AI self-review](verification/audit_reports/lean_schur_audit.txt) state the
+conditions. Constructing the physical SU(2) Haar average and proving that it
+satisfies these interfaces remain open.
 **The uniform spectral-gap theorem remains unproved in Lean.** The package
 documents its remaining proof obligations and reproducible build. The v0.1
 manuscript is unchanged.
