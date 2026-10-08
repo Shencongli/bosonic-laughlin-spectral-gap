@@ -12,8 +12,10 @@ spherical metric, integer annihilation matrices, and exact Hamiltonian form.
 Exact Gram and kernel certificates establish positivity of the exported
 planar arrays and their selected complements. The spherical-row extension
 derives physical annihilation coordinates, the double-pair four-body target,
-and the normal-ordered K3/K4 vacuum terms with their exact coefficients. Their full comparison-operator
-identification and the finite-sphere interval certificates remain open.
+and the normal-ordered K3/K4 vacuum terms with their exact coefficients.
+The physical-descendant extension proves the exact total-spin lowering norms
+and preserves the full highest-weight frame metric at each lowering level.
+The full comparison-operator identification and the finite-sphere interval certificates remain open.
 **The uniform spectral-gap theorem remains unproved in Lean.**
 
 Prepared and curated by Xin Shen. The Lean code and this account of its status
@@ -455,11 +457,16 @@ and deduction of the gap above it.
 | `CertificatePairIntertwiner.lean`, `CertificateSingleIntertwiner.lean`, `CertificateFourBody.lean` | Actual pair and spectator annihilation coordinates, their exact spherical factors, and the four-body target as a double-pair Gram quadratic form. |
 | `LowSectorTransfer.lean`, `CertificateRowNormalOrder.lean` | Actual one-body-transfer contractions and normal ordering of finite selected certificate rows on the three- and four-particle input sectors. |
 | `CertificateVacuumRows.lean`, `CertificateRowFactors.lean`, `CertificateDirectTerms.lean` | Polynomial vacuum functionals, frozen-row coefficient cancellations, and term-by-term physical pullbacks of the direct K3/K4 formulas at matching degrees. |
+| `TensorSlotLinear.lean`, `TensorSpin.lean` | Single-slot lift, total-spin commutators and adjoints, and preservation of Bose symmetry and deficit support. |
+| `TensorDescendants.lean`, `CertificateDescendants.lean` | Exact physical descendant norms and endpoint, normalized cross-level Gram identities, and certificate/highest-weight frame correspondence. |
 
 All source files in this table are under `BosonicLaughlin/`.
-All 1574 theorem declarations and 124 statement contracts pass the
+All 1626 theorem declarations and 136 statement contracts pass the
 full build and axiom audit. `Audit.lean` and `check.py` check every theorem's
 axiom dependencies.
+The [descendant build record](../verification/lean_descendants_build.json)
+and [AI self-review](../verification/audit_reports/lean_descendants_audit.txt)
+record the physical total-spin algebra and normalized frame identities.
 The [spherical-row build record](../verification/lean_sphere_rows_build.json)
 and [AI self-review](../verification/audit_reports/lean_sphere_rows_audit.txt)
 record the current physical identities and their scope.
@@ -562,10 +569,56 @@ exact integer-flux identities, not an expansion in 1/Q.
 
 The extension does not yet assemble all frozen rows and their degree
 support into the exported K3/K4 arrays, or prove the corresponding row
-normal-order identity in arbitrary particle number. Normalized physical
-lowering descendants and the Schur average still require proofs. Neither
-the generic coefficient identities nor the array data are used to assert
-those missing steps.
+normal-order identity in arbitrary particle number. The normalized physical
+descendants are proved below; the Schur-averaged comparison formula remains
+open. The generic coefficient identities and array data do not supply the
+missing frozen-row assembly or averaging identity.
+
+## Physical lowering descendants
+
+On `State Q N`, the total operators are $J_+=\sum_a J_+^{(a)}$,
+$J_-=\sum_a J_-^{(a)}$, and $2J_z$. Each summand acts in one tensor
+slot in the orthonormal spherical orbital basis. The code proves
+$[J_+,J_-]=2J_z$, $[2J_z,J_-]=-2J_-$, and $J_+^*=J_-$ from the
+single-orbital identities. The maps preserve the physical bosonic subspace.
+Lowering increases the total orbital deficit by one. These operator
+identities hold for all integer Q,N≥0, including the vacuum and zero flux.
+
+Let $\mathcal H^{\mathrm{hw}}_{Q,N,d}$ denote the bosonic states supported
+at total deficit d and annihilated by $J_+$. Assume $2d\le NQ$ and set
+$m=NQ-2d=2J$, where J is the total-spin label. For n≤m define the positive
+integer ladder factor and the normalized lowering map on this space by
+
+$$g_{m,n}=n!\,\frac{m!}{(m-n)!},\qquad
+D_n\psi=\frac{J_-^n\psi}{\sqrt{g_{m,n}}}.$$
+
+Lean represents $g_{m,n}$ by `n.factorial * m.descFactorial n` and proves
+the factorial identity without natural-number division. The ladder
+recurrence and adjoint relation give, for any two states in the same
+highest-weight space,
+
+$$\langle J_-^n\psi,J_-^n\phi\rangle
+=g_{m,n}\langle\psi,\phi\rangle,\qquad
+\langle D_n\psi,D_\ell\phi\rangle
+=\delta_{n\ell}\langle\psi,\phi\rangle
+\quad(0\le n,\ell\le m).$$
+
+The endpoint $J_-^{m+1}\psi=0$ is proved from the positive physical inner
+product. If ψ≠0, each descendant through level m is nonzero. Each $D_n$
+remains bosonic and has deficit d+n. Thus the normalization preserves the
+initial metric, without requiring the highest-weight basis to be orthogonal.
+
+For the actual certificate map at Q>0, the CM-kernel condition supplies
+the highest-weight hypothesis and the initial inner product is exactly
+`certificateInner`. For any complete frame
+$P:\mathbb C^k\to\mathcal H^{\mathrm{hw}}_{Q,N,d}$, with physical Gram
+matrix $G=P^*P$, the normalized descendant frame $P_n=D_nP$ satisfies
+$P_n^*P_\ell=\delta_{n\ell}G$. This statement retains the full multiplicity
+space $\mathbb C^k$; no multiplicity-one assumption is made.
+
+The current result supplies normalized physical frames. It does not yet
+identify the verifier's explicit polynomial descendant arrays with these
+frames or prove the Schur-averaged comparison formula.
 
 ## Remaining proof chain
 
@@ -636,3 +689,9 @@ congruence and scaling lemmas in
 [`Mathlib/LinearAlgebra/Matrix/PosDef.lean`](https://github.com/leanprover-community/mathlib4/blob/d13f23b723b8a846827a245b89c10fc7d3f11612/Mathlib/LinearAlgebra/Matrix/PosDef.lean),
 credited there to Alexander Bentkamp and Mohanad Ahmed. The exact witnesses
 and their connection to these library lemmas are supplied by this package.
+
+The descendant factorial normalization uses mathlib's
+[`Mathlib/Data/Nat/Factorial/Basic.lean`](https://github.com/leanprover-community/mathlib4/blob/d13f23b723b8a846827a245b89c10fc7d3f11612/Mathlib/Data/Nat/Factorial/Basic.lean),
+credited there to Mario Carneiro, Chris Hughes, Floris van Doorn, and
+Yaël Dillies. The physical spin algebra, descendant inner products, and
+their connection to the certificate frames are proved in this package.

@@ -134,9 +134,15 @@ sectors. It proves the vacuum-functional pullbacks and exact coefficient
 cancellations used term by term in the direct K3 and K4 construction.
 The [spherical-row build record](verification/lean_sphere_rows_build.json)
 and [AI self-review](verification/audit_reports/lean_sphere_rows_audit.txt)
-record these operator identities. Full frozen-array assembly, normalized
-many-particle descendants, Schur averaging, and interval verification
-remain to be connected.
+record these operator identities.
+The physical-descendant extension proves the actual N-particle total-spin
+commutators and adjoint relations, the exact lowering norms and endpoint,
+and preservation of the highest-weight frame's Gram matrix by normalized
+descendants. Different lowering levels are orthogonal. The
+[descendant build record](verification/lean_descendants_build.json) and
+[AI self-review](verification/audit_reports/lean_descendants_audit.txt)
+record these checks. Full frozen-array assembly, the Schur-averaged
+comparison formula, and interval verification remain to be connected.
 **The uniform spectral-gap theorem remains unproved in Lean.** The package
 documents its remaining proof obligations and reproducible build. The v0.1
 manuscript is unchanged.

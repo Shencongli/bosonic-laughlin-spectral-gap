@@ -179,11 +179,23 @@ The extension uses arbitrary row coefficients; it does not claim that the
 full frozen arrays, Schur average, or interval verifier have been formalized.
 No additional human verification or separate reviewing agent was used.
 
-All 1574 theorem declarations and 124 statement contracts pass the
+The physical-descendant extension was also written and self-reviewed by
+the Codex assistant. It lifts actual single-orbital spin maps to all N
+tensor slots, derives their commutators and adjoint relations, and proves
+the factorial lowering norm, endpoint, and cross-level orthogonality.
+It connects normalized descendants to the certificate metric and any
+complete physical highest-weight frame. No separate reviewing agent or
+additional human verification was used. The Schur-averaged comparison
+formula and its identification with exported arrays remain unproved.
+
+All 1626 theorem declarations and 136 statement contracts pass the
 full build and axiom audit, with pinned Lean/mathlib versions recorded.
 The local build uses Lake package
 overrides pointing to source archives of those same revisions. The only
 axiom dependencies are `propext`, `Classical.choice`, and `Quot.sound`.
+The [descendant build record](verification/lean_descendants_build.json)
+and [AI self-review](verification/audit_reports/lean_descendants_audit.txt)
+record the physical lowering and frame-metric checks.
 The [spherical-row build record](verification/lean_sphere_rows_build.json)
 and [AI self-review](verification/audit_reports/lean_sphere_rows_audit.txt)
 record the current physical-coordinate and normal-order checks.

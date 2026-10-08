@@ -113,6 +113,15 @@ required = [
 ]
 retained_cases = [(3, d) for d in range(9)] + [(4, d) for d in range(17)]
 required += [
+    'tensorRaise_eq_tensorSum', 'tensorLower_apply', 'tensorWeight_apply',
+    'tensorRaise_lower_commutator', 'tensorWeight_lower_commutator', 'tensorRaise_adjoint',
+    'tensorLower_isBosonic', 'tensorLower_weightSupported', 'tensorRaise_descendant',
+    'descendantFactor_factorial', 'tensorDescendant_inner', 'tensorDescendant_normSq',
+    'tensorDescendant_endpoint', 'tensorDescendant_nonzero', 'normalizedTensorDescendant_inner',
+    'normalizedTensorDescendant_orthogonal', 'certificateDescendant_inner',
+    'normalizedCertificateDescendant_inner', 'normalizedDescendantFrame_gram',
+    'normalizedDescendantFrame_finite_gram', 'normalizedDescendantFrame_isBosonic',
+    'normalizedDescendantFrame_supported',
     'v0PairAnnihilate_certificateWeightCoordinates',
     'v0PairAnnihilate_twice_certificateWeightCoordinates',
     'certificateFourBody_target_quadratic', 'certificateFourBodyFormMatrix_gram',
@@ -215,6 +224,10 @@ record = {
     'all_particle_certificate_row_normal_order_proved': False,
     'full_frozen_row_sum_and_exported_K3_K4_arrays_identified': False,
     'physical_multiparticle_descendant_normalization_and_schur_average_proved': False,
+    'actual_multiparticle_spin_commutators_and_adjoint_proved': True,
+    'physical_multiparticle_descendant_norm_and_endpoint_proved': True,
+    'normalized_physical_descendant_frame_gram_proved': True,
+    'schur_averaged_comparison_operator_formula_proved': False,
     'certificate_checker_regression_tests_passed': True,
     'physical_statement_contracts_checked': True,
     'physical_statement_contract_count': len(re.findall(

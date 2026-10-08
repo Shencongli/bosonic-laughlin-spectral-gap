@@ -1,0 +1,69 @@
+Internal AI self-review, 8 October 2026. The authoring Codex assistant
+reviewed this extension. No separate reviewing agent or additional human
+verification was used.
+
+Scope and checked proof structure
+
+1. TensorSlotLinear.lean lifts an arbitrary single-orbital complex linear
+   map to one ordered tensor slot. Composition within a slot and commutation
+   between distinct slots are derived using the actual configuration-update
+   map. The existing slot/spectator bijection proves the physical adjoint
+   identity. Summing slots derives the commutator and adjoint relations
+   without restricting to bosonic states or substituting an auxiliary space.
+
+2. TensorSpin.lean identifies the existing physical tensorRaise with the
+   sum of the normalized single-orbital raising maps. It defines the matching
+   total lowering map and the diagonal twice-weight N*Q-2*configurationWeight.
+   The actual relations [J+,J-]=2Jz, [2Jz,J-]=-2J-, and J+*=J- are proved.
+   Lowering preserves Bose symmetry and sends deficit d to d+1. This layer
+   permits all integer Q,N>=0, including zero flux and the vacuum.
+
+3. TensorDescendants.lean defines the physical state J-^n psi using powers
+   of that same lowering map. Highest-weight hypotheses are J+ phi=0 and
+   2Jz phi=m phi, with natural m. The exact raising recurrence, transferred
+   through the physical adjoint identity, proves the sesquilinear factor
+   g(m,n)=n! m.descFactorial n for n<=m. The factorial identity and positivity
+   are separately proved. The sesquilinear theorem only needs the right
+   input to satisfy the highest-weight hypotheses; the left input is arbitrary.
+   For the norm and nonzero corollaries both inputs are the same vector.
+   Positivity of the physical inner product proves J-^(m+1) psi=0. Normalizing
+   by sqrt(g(m,n)) preserves the initial inner product; distinct levels
+   are orthogonal for inputs of the same initial deficit. Division is used
+   with g(m,n)>0 in the norm-preserving statement.
+
+4. CertificateDescendants.lean transports these facts to the actual normalized
+   occupation coordinates using their proved metric and CM-kernel/raising
+   equivalence. These instances require Q>0 and 2*d<=N*Q, with m=N*Q-2*d.
+   For an arbitrary complete physical highest-weight frame E, it constructs
+   the normalized descendant frame and proves its Bose symmetry, support,
+   same-level Gram preservation, and cross-level orthogonality. The finite
+   indexed statement has n,l in Fin(m+1). It retains all multiplicities and
+   does not assume an orthonormal initial frame. The identity-operator form
+   matrix equality is proved entrywise from the sesquilinear identity.
+
+Scope limitations
+
+These results provide actual normalized physical descendant frames. Their
+identification with the verifier's explicit polynomial descendant arrays
+remains open. No SU(2) group integral, Haar measure, or Schur-averaged
+comparison formula is proved by this extension. It does not assert that
+the descendant frames exhaust the full bosonic space across all highest
+weights. Full frozen-row assembly, all-particle certificate-row normal
+ordering, interval semantics, Taylor remainders, and the final uniform-gap
+target remain open. The earlier combined descendant-and-Schur status flag
+remains false because the averaging component is still missing. The
+manuscript, PDF, numerical certificates, and v0.1 Release are unchanged.
+
+Validation
+
+The pinned full Lean build, 136 statement contracts, 3 existing checker
+regression tests, and all 1626 theorem axiom reports passed. This extension
+adds 52 theorem declarations and 12 contracts. Only propext, Classical.choice,
+and Quot.sound occur. No sorry, custom proof axiom, or native_decide is used.
+See lean_descendants_build.json for source hashes and dependency revisions.
+
+Reviewed new module hashes
+4120887539c78376b92ad41d77b793146e50bc81e567591944d501fdae8bcea7  lean/BosonicLaughlin/CertificateDescendants.lean
+d3160d1433c56931982ec7b083d216bb71946f6a44bedf0511ade854e506c2e8  lean/BosonicLaughlin/TensorDescendants.lean
+6170c9d190b5fd89e4f566f4b80f303860d05ddf543868757425ac18fa353517  lean/BosonicLaughlin/TensorSlotLinear.lean
+7ccb6fb46abd5bcfdcfebb5aec6ade7d1d3abe554961f3cea95e01a482e84d9b  lean/BosonicLaughlin/TensorSpin.lean

@@ -25,3 +25,4 @@ import BosonicLaughlin.NonorthogonalHamiltonian
 import BosonicLaughlin.RetainedPlanarCertificates
 import BosonicLaughlin.CertificateFourBody
 import BosonicLaughlin.CertificateDirectTerms
+import BosonicLaughlin.CertificateDescendants

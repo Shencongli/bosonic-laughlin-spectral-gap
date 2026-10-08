@@ -624,3 +624,63 @@ example {Q : ℕ} (hQ : 0<Q) (p q : Fin (2*Q+1)) (i j k l : Orbital Q)
       ((y*z*directRowFactor Q p.val i.val j.val*directRowFactor Q q.val k.val l.val : ℝ) : ℂ)*
         star (occupationFourFunctional p.val k j c)*occupationFourFunctional q.val i l e :=
   physical_direct_four hQ p q i j k l hd y z c e
+
+/- Physical descendant extension contracts. The spin label m is twice J;
+certificate/frame instances use m=N*Q-2*d with 2*d<=N*Q. -/
+example {Q N : ℕ} (ψ : State Q N) (a : Configuration Q N) :
+    tensorLower ψ a = ∑ k : Fin N, if h : 0<(a k).val then
+      (spinRaiseCoeff Q ((a k).val-1) : ℂ)*
+        ψ (Function.update a k ⟨(a k).val-1, by omega⟩) else 0 := tensorLower_apply ψ a
+
+example {Q N : ℕ} (ψ : State Q N) :
+    tensorRaise (tensorLower ψ)-tensorLower (tensorRaise ψ)=tensorWeight ψ :=
+  tensorRaise_lower_commutator ψ
+
+example {Q N : ℕ} (ψ : State Q N) :
+    tensorWeight (tensorLower ψ)-tensorLower (tensorWeight ψ)=(-2 : ℂ) • tensorLower ψ :=
+  tensorWeight_lower_commutator ψ
+
+example {Q N : ℕ} (ψ φ : State Q N) :
+    inner ψ (tensorRaise φ)=inner (tensorLower ψ) φ := tensorRaise_adjoint ψ φ
+
+example {m n : ℕ} (hn : n≤m) :
+    (m-n).factorial * descendantFactor m n=n.factorial*m.factorial := descendantFactor_factorial hn
+
+example {Q N : ℕ} (ψ φ : State Q N) (m : ℕ)
+    (hE : tensorRaise φ=0) (hW : tensorWeight φ=(m : ℂ) • φ)
+    (n : ℕ) (hn : n≤m) :
+    inner (tensorDescendant ψ n) (tensorDescendant φ n)=
+      (descendantFactor m n : ℂ)*inner ψ φ := tensorDescendant_inner ψ φ m hE hW n hn
+
+example {Q N : ℕ} (ψ : State Q N) (m : ℕ)
+    (hE : tensorRaise ψ=0) (hW : tensorWeight ψ=(m : ℂ) • ψ) :
+    tensorDescendant ψ (m+1)=0 := tensorDescendant_endpoint ψ m hE hW
+
+example {Q N : ℕ} (ψ : State Q N) (m : ℕ)
+    (hψ : ψ≠0) (hE : tensorRaise ψ=0) (hW : tensorWeight ψ=(m : ℂ) • ψ)
+    (n : ℕ) (hn : n≤m) : tensorDescendant ψ n≠0 := tensorDescendant_nonzero ψ m hψ hE hW n hn
+
+example {Q N : ℕ} (ψ φ : State Q N) (m : ℕ)
+    (hE : tensorRaise φ=0) (hW : tensorWeight φ=(m : ℂ) • φ)
+    (n : ℕ) (hn : n≤m) :
+    inner (normalizedTensorDescendant ψ m n) (normalizedTensorDescendant φ m n)=inner ψ φ :=
+  normalizedTensorDescendant_inner ψ φ m hE hW n hn
+
+example {Q N d : ℕ} (hQ : 0<Q) (hd : 2*d≤N*Q) (c e : WeightOccupationState Q N d)
+    (he : (occupationCMBlockMatrix Q N d).mulVec e=0) (n : ℕ) (hn : n≤N*Q-2*d) :
+    inner (normalizedTensorDescendant (certificateWeightCoordinates Q N d c) (N*Q-2*d) n)
+      (normalizedTensorDescendant (certificateWeightCoordinates Q N d e) (N*Q-2*d) n)=certificateInner c e :=
+  normalizedCertificateDescendant_inner hQ hd c e he n hn
+
+example {Q N d k : ℕ} (hd : 2*d≤N*Q)
+    (E : (Fin k → ℂ) ≃ₗ[ℂ] physicalHighestWeightSubspace Q N d) (n : ℕ) (hn : n≤N*Q-2*d) :
+    physicalFormMatrix (normalizedDescendantFrame E n) (LinearMap.id : State Q N →ₗ[ℂ] State Q N)=
+      physicalFormMatrix (highestWeightPhysicalFrame E) (LinearMap.id : State Q N →ₗ[ℂ] State Q N) :=
+  normalizedDescendantFrame_gram hd E n hn
+
+example {Q N d k : ℕ} (hd : 2*d≤N*Q)
+    (E : (Fin k → ℂ) ≃ₗ[ℂ] physicalHighestWeightSubspace Q N d)
+    (n l : Fin (N*Q-2*d+1)) (c e : Fin k → ℂ) :
+    inner (normalizedDescendantFrame E n.val c) (normalizedDescendantFrame E l.val e)=
+      if n=l then inner (highestWeightPhysicalFrame E c) (highestWeightPhysicalFrame E e) else 0 :=
+  normalizedDescendantFrame_finite_gram hd E n l c e
